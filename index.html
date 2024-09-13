@@ -15,8 +15,9 @@
 	<style>body { background-color: black; font-family: 'Courier New', Courier, monospace; } </style>
 	<!--jank ass code chris-->
 
-    <h1 style="color: rgb(255, 255, 255);"> <b>Hello user!</b> </h1>
-	<h3 style="color: green;"> How can I assist you today? </h3>
+    <h1 style="color: rgb(255, 255, 255); margin-bottom: 5px; text-decoration: underline;"> 
+		<b>Hello user!</b> </h1>
+	<h3 style="color: green; margin-top: 0px;"> How can I assist you today? </h3>
 	<br>
 	
 	<h3 style="color: rgb(219, 219, 219); font-size: medium;"> I'd like to go to... </h3>
@@ -31,9 +32,16 @@
 	
 <!--fuck all this shit, actually dont, it's already fucked itself-->
 <br>
-<h3 style="color: brown; font-size: small;"><i>catch ya on the fliside!</i></h3>
-<hr style="border: 1px solid red; width: 100%;">
+<hr style="border: 1px solid rgb(175, 175, 175); width: 18%;">
+<h3 style="color: rgb(131, 131, 131); font-size: smaller;"><i>catch ya on the fliside!</i></h3>
 
+
+<div id="footer"></div>
+<script>
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => document.getElementById('footer').innerHTML = data);
+</script>
 </body>
 </head>
 </html> 

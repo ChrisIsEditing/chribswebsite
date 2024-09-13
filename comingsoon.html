@@ -16,4 +16,11 @@
 <br>
 <h3 style="color: rgb(175, 175, 175); font-size: medium;">Dont worry, we can do a magic trick to get you back to the <a href="https://chrisisediting.github.io/chribswebsite/" style="color: rgb(175, 175, 175); text-decoration: underline;">Home Page!</a></h3>
 
+<div id="footer"></div>
+<script>
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => document.getElementById('footer').innerHTML = data);
+</script>
 </head>
+</html>

@@ -51,6 +51,14 @@
     <a href="https://x.com/chrisisediting" class="option twitter">~&gt; Twitter</a>
     <br>
     <a href="mailto:cgstudio02@gmail.com" class="option email">~&gt; Email</a>
+    
+    
+<div id="footer"></div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
 </body>
 </html>
 

@@ -1,13 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="styles.css">
-
-<style>body { background-color: black; font-family: 'Courier New', Courier, monospace; } </style>  
-<title>Blog</title>
-<p style="color: brown;">Coming soon</p>
-<!--TODO: This.-->
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .news-item {
+            margin-bottom: 20px;
+        }
+        .title {
+            color: #ffffff; 
+            /*As shaggy once said, "it wasn't me"*/
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .date {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .content {
+            margin-bottom: 10px;
+        }
+        .image-placeholder {
+            background-color: #333;
+            width: 300px;
+            height: 200px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        .separator {
+            border-bottom: 1px solid #00ff00;
+            margin: 20px 0;
+        }
+    </style>
 </head>
+<body>
+    div class="news-item">
+        <div class="title">New website!</div>
+        <div class="date">11 September 2024</div>
+        <div class="image-placeholder">[Image Placeholder]</div>
+        <div class="content">
+            Ladies and gentle people, we have a custom website!
+            Let's hope it works...
+        </div>
+    </div>
+
+    <div class="separator"></div>
+    <div class="news-item">
+        <div class="title">Poor user makes wrong donation.</div>
+        <div class="date">11 September 2024</div>
+        <div class="image-placeholder">[Image Placeholder]</div>
+        <div class="content">
+            Today I noticed this poor user trying to donate to Revanced, but
+            they donated to scam website instead of the official website. When
+            I tried clicking on the post, it was deleted.
+            Whoops.
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="news-item">
+        <div class="title">New website in the works.</div>
+        <div class="date">11 September 2024</div>
+        <div class="content">
+            More content coming soon...
+        </div>
+    </div>
+
+<div id="footer"></div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+
+</body>
 </html>

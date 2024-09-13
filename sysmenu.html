@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Menu</title>
     <style>
         body {
             background-color: black;
-            color: #00ff00;
+            color: #dddddd;
             font-family: monospace;
+            font-size:larger;
             
         }
         .warning {
@@ -19,6 +21,12 @@
             margin-bottom: 20px;
             color: #e08700;
         }
+        .menu {
+            font-size: small;
+            color: #439103;
+            font-family: monospace;
+        }
+
         .ascii-art {
             white-space: pre;
             font-size: 0.8em;
@@ -26,6 +34,7 @@
         }
         .info {
             margin-top: 20px;
+            color: gray;
         }
     </style>
 </head>
@@ -36,26 +45,63 @@
     </div>
     <div class="ascii-art">
 
-     ___ __   __ ___ _____ _____   __   __
+     ___ __   __ ___ _____ _____   __  __
     / ___\ \ / / ___|_   _| ____| |  \/  |
     \___ \\ V /\___ \ | | |  _|   | |\/| |
      ___) || |_ ___) || |_| |____ | |  | |
     |____(_)_(_)____(_)_(_)_____(_)_|  |_|
-    <i>2024 - Chribs</i> /////////////// <b>Ver: 1.0</b>
+    <i>2024 - Chribs</i> /////////////// Ver: 1.0
 
     </div>
     <div class="title">
         "Stupid Yet Simple Terminal Emulation Machine"
     </div>
-    <p style="color: gray;">_______________________________</p>
-    
+    <!--"I see trees of jank... fucked hacks too... something something... what a wonderful world"-->
     <div class="info">
-        Site Version: 0.1<br>
-        Last upgrade: 12 September 2024
+        Site Version: 0.3<br>
+        Last upgrade: 13 September 2024
     </div>
+    <p style="color: gray;">_______________________________</p>
     <div class="menu">
         <br>
-        ADMIN MENU SELECTION:
+        MAIN PAGES SELECTION:
     </div>
+<br>
+<!--Ignore the following bullshit-->
+<div class="menu-row">
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/blog">{Blog}</a> <span class="separator"> // </span>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/contact">{Contact}</a> <span class="separator"> // </span>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/media"> {Media} </a> <span class="separator"> // </span>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/comingsoon"> {Coming Soon} </a> <span class="separator"> // </span>
+</div>
+<div class="menu">
+    <br>
+    400 CLASS - ERROR PAGES SELECTION:
+</div>
+<br>
+
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/400">{400}</a> <span class="separator"> // </span>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/403">{403}</a> <span class="separator"> // </span>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/404">{404}</a> <span class="separator"> // </span>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/418">{418}</a> <span class="separator"> // </span>
+</div>
+<div class="menu">
+    <br>
+    500 CLASS - ERROR PAGES SELECTION:
+</div>
+<br>
+
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/500">{500}</a> <span class="separator"> // </span>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/503">{503}</a> <span class="separator"> // </span>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/505">{505}</a> <span class="separator"> // </span>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/404">{PLACHOLDER}</a> <span class="separator"> // </span>
+</div>
+<div id="footer"></div>
+<script>
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => document.getElementById('footer').innerHTML = data);
+</script>
+<!--work piece of shit-->
 </body>
 </html>

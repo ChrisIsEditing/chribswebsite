@@ -1,5 +1,4 @@
 let songs = [];
-const keysPressed = new Set();
 const queue = [];
 let currentSongIndex = -1; // Track the index of the currently playing song
 
@@ -35,16 +34,15 @@ function playSong(song, index) {
         console.error("Error playing song:", error);
     });
 
-    // Update current song index and queue display
-    currentSongIndex = index;
-    updateQueueDisplay();
+    currentSongIndex = index; // Update current song index
+    updateQueueDisplay(); // Update queue display
 }
 
 // Play the next song in the queue
 function playNextInQueue() {
     if (queue.length === 0) return;
     const nextSong = queue.shift(); // Remove the first song from the queue
-    playSong(nextSong.song, nextSong.index);
+    playSong(nextSong.song, nextSong.index); // Pass song and its index
 }
 
 // Add a song to the queue
@@ -58,23 +56,15 @@ function updateQueueDisplay() {
     const queueList = document.getElementById("queueList");
     queueList.innerHTML = '';
 
-    queue.forEach((item, idx) => {
+    queue.forEach(item => {
         const listItem = document.createElement("li");
-        if (idx === currentSongIndex) {
-            listItem.textContent = `> ${item.song.title}`;
-            listItem.style.backgroundColor = 'salmon'; // Dark salmon or any other color
-        } else {
-            listItem.textContent = item.song.title;
+        listItem.textContent = item.song.title;
+        if (item.index === currentSongIndex) {
+            listItem.textContent = `> ${listItem.textContent}`; // Add `> ` prefix
+            listItem.style.backgroundColor = 'salmon'; // Highlight current song
         }
         queueList.appendChild(listItem);
     });
-}
-
-// Play random song
-function playRandomSong() {
-    if (songs.length === 0) return; 
-    const randomIndex = Math.floor(Math.random() * songs.length);
-    playSong(songs[randomIndex], -1);
 }
 
 // Search for a song
@@ -83,11 +73,19 @@ function searchSongs() {
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
 
     if (matchingSongs.length > 0) {
-        playSong(matchingSongs[0], -1);
-        addToQueue(matchingSongs[0], queue.length);
+        playSong(matchingSongs[0], songs.indexOf(matchingSongs[0])); // Pass song and index
+        addToQueue(matchingSongs[0], songs.indexOf(matchingSongs[0])); // Pass song and index
     } else {
         alert("I couldn't find that song :(");
     }
+}
+
+
+// Play random song
+function playRandomSong() {
+    if (songs.length === 0) return; 
+    const randomIndex = Math.floor(Math.random() * songs.length);
+    playSong(songs[randomIndex], -1);
 }
 
 // Play a test song

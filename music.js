@@ -1,18 +1,17 @@
-
 let songs = [];
 const repoOwner = 'chrisisediting'; 
 const repoName = 'chribswebsite';
 const directoryPath = 'Music'; 
-const token = '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'; 
 
-
+// Placeholder for the API URL
 const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${directoryPath}`;
 
-
+// Function to fetch and load songs
 function loadSongs() {
+    // Fetch request with authorization header
     fetch(apiUrl, {
         headers: {
-            'Authorization': `token ${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}`
+            'Authorization': `token ${getGithubToken()}`
         }
     })
     .then(response => response.json())
@@ -23,9 +22,15 @@ function loadSongs() {
                 title: item.name.replace('.mp3', ''),
                 url: `https://raw.githubusercontent.com/chrisisediting/chribswebsite/main/Music/${item.name}`
             }));
-        console.log(songs); // songs array check
+        console.log(songs); // Check the songs array
     })
     .catch(error => console.error('Error loading songs:', error));
+}
+
+// Function to get GitHub token from environment
+function getGithubToken() {
+    // Return the token set in environment variables or use a secret management system
+    return 'YOUR_GITHUB_TOKEN'; // This should be replaced securely
 }
 
 document.addEventListener('DOMContentLoaded', loadSongs);
@@ -36,7 +41,7 @@ function playRandomSong() {
     playSong(songs[randomIndex]);
 }
 
-// Search 
+// Search
 function searchSongs() {
     const query = document.getElementById("searchInput").value.toLowerCase();
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
@@ -58,7 +63,7 @@ function playSong(song) {
     audioPlayer.play();
 }
 
-// event listeners
+// Event listeners
 document.getElementById("searchButton").addEventListener("click", searchSongs);
 
 // Volume Meter
@@ -66,19 +71,19 @@ const canvas = document.getElementById('volumeMeter');
 const ctx = canvas.getContext('2d');
 const audioPlayer = document.getElementById('audioPlayer');
 
-// audio context
+// Audio context
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 const analyser = audioContext.createAnalyser();
 const source = audioContext.createMediaElementSource(audioPlayer);
 source.connect(analyser);
 analyser.connect(audioContext.destination);
 
-//analyser
+// Configure analyser
 analyser.fftSize = 256;
 const bufferLength = analyser.frequencyBinCount;
 const dataArray = new Uint8Array(bufferLength);
 
-//drawmeter
+// Draw meter
 function drawMeter() {
     requestAnimationFrame(drawMeter);
     analyser.getByteFrequencyData(dataArray);
@@ -92,9 +97,9 @@ function drawMeter() {
     for (let i = 0; i < bufferLength; i++) {
         barHeight = dataArray[i] / 2;
 
-        // gradient 
+        // Create gradient for each bar
         const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-        const colorStop = i / bufferLength; // Gradient color stop 
+        const colorStop = i / bufferLength;
         gradient.addColorStop(0, `hsl(${colorStop * 240}, 100%, 50%)`); // Blue to Pink
         gradient.addColorStop(1, `hsl(${colorStop * 330}, 100%, 50%)`); // Pink
 
@@ -114,7 +119,7 @@ audioPlayer.onplay = function() {
 // Random song (Ctrl + R)
 document.addEventListener('keydown', function(event) {
     if (event.ctrlKey && event.key === 'r') {
-        event.preventDefault(); // prevent default action
+        event.preventDefault();
         playRandomSong();
     }
 });

@@ -1,6 +1,7 @@
 let songs = [];
 const keysPressed = new Set();
 const queue = [];
+let currentPlayingSong = null; // Track the currently playing song
 
 // Load songs from JSON
 function loadSongs() {
@@ -33,6 +34,10 @@ function playSong(song) {
     audioPlayer.play().catch(error => {
         console.error("Error playing song:", error);
     });
+
+    // Update the currently playing song
+    currentPlayingSong = song;
+    updateQueueDisplay();
 }
 
 // Play the next song in the queue
@@ -40,7 +45,6 @@ function playNextInQueue() {
     if (queue.length === 0) return;
     const nextSong = queue.shift(); // Remove the first song from the queue
     playSong(nextSong);
-    updateQueueDisplay();
 }
 
 // Add a song to the queue
@@ -57,6 +61,14 @@ function updateQueueDisplay() {
     queue.forEach(song => {
         const listItem = document.createElement("li");
         listItem.textContent = song.title;
+
+        if (song === currentPlayingSong) {
+            listItem.style.backgroundColor = 'darksalmon'; // Highlight color
+            listItem.style.color = 'black'; // Text color for better contrast
+            listItem.style.fontWeight = 'bold'; // Optional: Make it bold
+            listItem.textContent = '> ' + song.title; // Indicator for the playing song
+        }
+
         queueList.appendChild(listItem);
     });
 }

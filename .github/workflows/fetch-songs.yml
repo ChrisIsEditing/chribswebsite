@@ -15,8 +15,7 @@ jobs:
 
       - name: Fetch music from GitHub API
         run: |
-          curl -H "Authorization: token ${{ secrets.CHRIBSTOKEN }}" \
-https://api.github.com/repos/chrisisediting/chribswebsite/contents/Music > music_list.json
+          curl -H "Authorization: token ${{ secrets.CHRIBSTOKEN }}" \https://api.github.com/repos/chrisisediting/chribswebsite/contents/Music > music_list.json
 
       - name: Commit updated music list
         run: |

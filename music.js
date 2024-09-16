@@ -34,15 +34,22 @@ function searchSongs() {
     }
 }
 
-// Play specified song
 function playSong(song) {
+    if (!song || !song.url) {
+        console.error("Invalid song or URL");
+        return;
+    }
+    
     const audioSource = document.getElementById("audioSource");
     audioSource.src = song.url;
 
     const audioPlayer = document.getElementById("audioPlayer");
     audioPlayer.load();
-    audioPlayer.play();
+    audioPlayer.play().catch(error => {
+        console.error("Error playing song:", error);
+    });
 }
+
 
 // Event listeners
 document.getElementById("searchButton").addEventListener("click", searchSongs);

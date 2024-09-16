@@ -1,8 +1,14 @@
+
+
 let songs = [];
 const queue = [];
-let currentSongIndex = -1; // Track the index of the currently playing song
+let currentSongIndex = -1; 
 
-// Load songs from JSON
+//on a hilltop somewhere, there is a man,
+//a man of great passion and filled with pure happiness.
+//He is not I, for I am the direct opposite of such a concept.
+//There is no joy to be found here, only pain and suffering as far as one can see.
+
 function loadSongs() {
     fetch('music_list.json')
         .then(response => response.json())
@@ -41,8 +47,8 @@ function playSong(song, index) {
 // Play the next song in the queue
 function playNextInQueue() {
     if (queue.length === 0) return;
-    const nextSong = queue.shift(); // Remove the first song from the queue
-    playSong(nextSong.song, nextSong.index); // Pass song and its index
+    const nextSong = queue.shift(); 
+    playSong(nextSong.song, nextSong.index); 
 }
 
 // Add a song to the queue
@@ -59,15 +65,15 @@ function updateQueueDisplay() {
         const listItem = document.createElement("li");
         listItem.textContent = item.song.title;
 
-        // Remove any existing classes
+        
         listItem.classList.remove('current-song', 'queue-song');
 
-        // Add appropriate class based on whether it's the current song
+        
         if (item.index === currentSongIndex) {
-            listItem.textContent = `> ${item.song.title}`;  // Add '> ' in front of the song title
-            listItem.classList.add('current-song');  // Set the class for the current song
+            listItem.textContent = `> ${item.song.title}`; 
+            listItem.classList.add('current-song');  
         } else {
-            listItem.classList.add('queue-song');  // Set the default class for other songs
+            listItem.classList.add('queue-song'); 
         }
 
         queueList.appendChild(listItem);
@@ -75,7 +81,7 @@ function updateQueueDisplay() {
 }
 
 
-// Search for a song
+
 function searchSongs() {
     const query = document.getElementById("searchInput").value.toLowerCase();
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
@@ -162,10 +168,10 @@ audioPlayer.onplay = function() {
     }
     drawMeter();
 };
-
 // Event listeners
 document.getElementById("searchButton").addEventListener("click", searchSongs);
 
+// Event listeners for keydown and keyup
 document.addEventListener('keydown', function(event) {
     keysPressed.add(event.key.toLowerCase());
 
@@ -199,3 +205,6 @@ document.addEventListener('click', () => {
 
 // Play the next song in the queue when the current song ends
 audioPlayer.addEventListener('ended', playNextInQueue);
+
+const keysPressed = new Set(); // Initialize keysPressed
+

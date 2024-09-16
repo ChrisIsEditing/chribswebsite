@@ -10,7 +10,7 @@ function playRandomSong() {
     playSong(songs[randomIndex]);
 }
 
-// Search Function
+// searcher
 function searchSongs() {
     const query = document.getElementById("searchInput").value.toLowerCase();
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
@@ -22,7 +22,7 @@ function searchSongs() {
     }
 }
 
-// Play a specific song
+// playasonger
 function playSong(song) {
     const audioSource = document.getElementById("audioSource");
     audioSource.src = song.url;
@@ -32,26 +32,27 @@ function playSong(song) {
     audioPlayer.play();
 }
 
-// Event listeners
+// no clue dont ask
 document.getElementById("searchButton").addEventListener("click", searchSongs);
 
-// Volume Meter Visualization
+// Volume meter
 const canvas = document.getElementById('volumeMeter');
 const ctx = canvas.getContext('2d');
 const audioPlayer = document.getElementById('audioPlayer');
 
-// Audio Context
+// aduio contect shit
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 const analyser = audioContext.createAnalyser();
 const source = audioContext.createMediaElementSource(audioPlayer);
 source.connect(analyser);
 analyser.connect(audioContext.destination);
 
-// Configure Analyser
+// ANALYSER
 analyser.fftSize = 256;
 const bufferLength = analyser.frequencyBinCount;
 const dataArray = new Uint8Array(bufferLength);
 
+//draw meter!
 function drawMeter() {
     requestAnimationFrame(drawMeter);
     analyser.getByteFrequencyData(dataArray);
@@ -64,11 +65,21 @@ function drawMeter() {
 
     for (let i = 0; i < bufferLength; i++) {
         barHeight = dataArray[i] / 2;
-        ctx.fillStyle = 'rgb(0, 220, 0)';
+
+        // gradient for each bar
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+        const colorStop = i / bufferLength; // color stop position
+        gradient.addColorStop(0, `hsl(${colorStop * 240}, 100%, 50%)`); // Blue to Pink
+        gradient.addColorStop(1, `hsl(${colorStop * 330}, 100%, 50%)`); // Pink
+
+        ctx.fillStyle = gradient;
         ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+
         x += barWidth + 1;
     }
 }
+
+
 
 // VM Draw
 audioPlayer.onplay = function() {

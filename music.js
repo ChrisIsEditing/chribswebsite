@@ -59,10 +59,14 @@ function updateQueueDisplay() {
     queue.forEach(item => {
         const listItem = document.createElement("li");
         listItem.textContent = item.song.title;
+
         if (item.index === currentSongIndex) {
             listItem.textContent = `> ${listItem.textContent}`; // Add `> ` prefix
-            listItem.style.backgroundColor = 'salmon'; // Highlight current song
+            listItem.style.color = 'salmon'; // Change text color to salmon
+        } else {
+            listItem.style.color = 'white'; // Default color for other songs
         }
+
         queueList.appendChild(listItem);
     });
 }

@@ -1,14 +1,10 @@
-
+const keysPressed = new Set(); // Initialize keysPressed
 
 let songs = [];
 const queue = [];
 let currentSongIndex = -1; 
 
-//on a hilltop somewhere, there is a man,
-//a man of great passion and filled with pure happiness.
-//He is not I, for I am the direct opposite of such a concept.
-//There is no joy to be found here, only pain and suffering as far as one can see.
-
+// Function to load songs from JSON
 function loadSongs() {
     fetch('music_list.json')
         .then(response => response.json())
@@ -24,7 +20,6 @@ function loadSongs() {
 
 document.addEventListener('DOMContentLoaded', loadSongs);
 
-
 // Play the next song in the queue
 function playNextInQueue() {
     if (queue.length === 0) return;
@@ -38,6 +33,7 @@ function addToQueue(song, index) {
     updateQueueDisplay();
 }
 
+// Update queue display
 function updateQueueDisplay() {
     const queueList = document.getElementById("queueList");
     queueList.innerHTML = '';
@@ -46,10 +42,8 @@ function updateQueueDisplay() {
         const listItem = document.createElement("li");
         listItem.textContent = item.song.title;
 
-        
         listItem.classList.remove('current-song', 'queue-song');
 
-        
         if (item.index === currentSongIndex) {
             listItem.textContent = `> ${item.song.title}`; 
             listItem.classList.add('current-song');  
@@ -61,8 +55,7 @@ function updateQueueDisplay() {
     });
 }
 
-
-
+// Search songs and play the first match
 function searchSongs() {
     const query = document.getElementById("searchInput").value.toLowerCase();
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
@@ -75,8 +68,7 @@ function searchSongs() {
     }
 }
 
-
-// Play random song
+// Play a random song
 function playRandomSong() {
     if (songs.length === 0) return; 
     const randomIndex = Math.floor(Math.random() * songs.length);
@@ -140,17 +132,16 @@ function drawMeter() {
     }
 }
 
-const TEST_SONG_URL = 'https://example.com/your-audio-file.mp3'; // Replace with a working URL
-
+// Function to play a song
 function playSong(song, index) {
     if (!song || !song.download_url) { // Use download_url
         console.error("Invalid song or URL");
         return;
     }
 
-    const audioPlayer = document.getElementById("audioPlayer");
     const audioSource = document.getElementById("audioSource");
     audioSource.src = song.download_url; // Use download_url
+    const audioPlayer = document.getElementById("audioPlayer");
 
     audioPlayer.load();
     audioPlayer.play().catch(error => {
@@ -170,10 +161,9 @@ audioPlayer.onplay = function() {
     }
     drawMeter();
 };
+
 // Event listeners
 document.getElementById("searchButton").addEventListener("click", searchSongs);
-
-// Event listeners for keydown and keyup
 document.addEventListener('keydown', function(event) {
     keysPressed.add(event.key.toLowerCase());
 
@@ -207,6 +197,3 @@ document.addEventListener('click', () => {
 
 // Play the next song in the queue when the current song ends
 audioPlayer.addEventListener('ended', playNextInQueue);
-
-const keysPressed = new Set(); // Initialize keysPressed
-

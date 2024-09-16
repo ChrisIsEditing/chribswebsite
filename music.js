@@ -1,8 +1,34 @@
-const songs = [
-    { title: "Jet Fuel", url: "/Music/jet Fuel.mp3" },
-    { title: "Song 2", url: "/Music/song2.mp3" },
-    { title: "Song 3", url: "/Music/song3.mp3" },
-];
+
+let songs = [];
+const repoOwner = 'chrisisediting'; 
+const repoName = 'chribswebsite';
+const directoryPath = 'Music'; 
+const token = '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'; 
+
+
+const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${directoryPath}`;
+
+
+function loadSongs() {
+    fetch(apiUrl, {
+        headers: {
+            'Authorization': `token ${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}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        songs = data
+            .filter(item => item.name.endsWith('.mp3'))
+            .map(item => ({
+                title: item.name.replace('.mp3', ''),
+                url: `https://raw.githubusercontent.com/chrisisediting/chribswebsite/main/Music/${item.name}`
+            }));
+        console.log(songs); // songs array check
+    })
+    .catch(error => console.error('Error loading songs:', error));
+}
+
+document.addEventListener('DOMContentLoaded', loadSongs);
 
 // Randomizer
 function playRandomSong() {
@@ -10,19 +36,19 @@ function playRandomSong() {
     playSong(songs[randomIndex]);
 }
 
-// searcher
+// Search 
 function searchSongs() {
     const query = document.getElementById("searchInput").value.toLowerCase();
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
-    
+
     if (matchingSongs.length > 0) {
-        playSong(matchingSongs[0]); // Play the first matching song
+        playSong(matchingSongs[0]); // Play first matching song
     } else {
         alert("I couldn't find that song :(");
     }
 }
 
-// playasonger
+// Play specified song
 function playSong(song) {
     const audioSource = document.getElementById("audioSource");
     audioSource.src = song.url;
@@ -32,27 +58,27 @@ function playSong(song) {
     audioPlayer.play();
 }
 
-// no clue dont ask
+// event listeners
 document.getElementById("searchButton").addEventListener("click", searchSongs);
 
-// Volume meter
+// Volume Meter
 const canvas = document.getElementById('volumeMeter');
 const ctx = canvas.getContext('2d');
 const audioPlayer = document.getElementById('audioPlayer');
 
-// aduio contect shit
+// audio context
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 const analyser = audioContext.createAnalyser();
 const source = audioContext.createMediaElementSource(audioPlayer);
 source.connect(analyser);
 analyser.connect(audioContext.destination);
 
-// ANALYSER
+//analyser
 analyser.fftSize = 256;
 const bufferLength = analyser.frequencyBinCount;
 const dataArray = new Uint8Array(bufferLength);
 
-//draw meter!
+//drawmeter
 function drawMeter() {
     requestAnimationFrame(drawMeter);
     analyser.getByteFrequencyData(dataArray);
@@ -66,9 +92,9 @@ function drawMeter() {
     for (let i = 0; i < bufferLength; i++) {
         barHeight = dataArray[i] / 2;
 
-        // gradient for each bar
+        // gradient 
         const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-        const colorStop = i / bufferLength; // color stop position
+        const colorStop = i / bufferLength; // Gradient color stop 
         gradient.addColorStop(0, `hsl(${colorStop * 240}, 100%, 50%)`); // Blue to Pink
         gradient.addColorStop(1, `hsl(${colorStop * 330}, 100%, 50%)`); // Pink
 
@@ -79,20 +105,16 @@ function drawMeter() {
     }
 }
 
-
-
 // VM Draw
 audioPlayer.onplay = function() {
     audioContext.resume();
     drawMeter();
-
 };
 
-// random song (Ctrl + R)
+// Random song (Ctrl + R)
 document.addEventListener('keydown', function(event) {
     if (event.ctrlKey && event.key === 'r') {
         event.preventDefault(); // prevent default action
         playRandomSong();
     }
 });
-

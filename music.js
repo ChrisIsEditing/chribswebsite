@@ -1,6 +1,6 @@
 let songs = [];
 
-
+// Load songs from JSON
 function loadSongs() {
     fetch('music_list.json') 
         .then(response => response.json())
@@ -16,13 +16,14 @@ function loadSongs() {
 
 document.addEventListener('DOMContentLoaded', loadSongs);
 
-// Randomizer
+// Play random song
 function playRandomSong() {
+    if (songs.length === 0) return; // Ensure songs are loaded
     const randomIndex = Math.floor(Math.random() * songs.length);
     playSong(songs[randomIndex]);
 }
 
-// Search
+// Search for a song
 function searchSongs() {
     const query = document.getElementById("searchInput").value.toLowerCase();
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
@@ -34,6 +35,7 @@ function searchSongs() {
     }
 }
 
+// Play a specified song
 function playSong(song) {
     if (!song || !song.url) {
         console.error("Invalid song or URL");
@@ -50,28 +52,22 @@ function playSong(song) {
     });
 }
 
-
-// Event listeners
-document.getElementById("searchButton").addEventListener("click", searchSongs);
-
-// Volume Meter
-const canvas = document.getElementById('volumeMeter');
-const ctx = canvas.getContext('2d');
-const audioPlayer = document.getElementById('audioPlayer');
-
-// Audio context
+// Create and configure AudioContext
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 const analyser = audioContext.createAnalyser();
+const audioPlayer = document.getElementById('audioPlayer');
 const source = audioContext.createMediaElementSource(audioPlayer);
 source.connect(analyser);
 analyser.connect(audioContext.destination);
 
-// Configure analyser
+// Volume meter configuration
 analyser.fftSize = 256;
 const bufferLength = analyser.frequencyBinCount;
 const dataArray = new Uint8Array(bufferLength);
+const canvas = document.getElementById('volumeMeter');
+const ctx = canvas.getContext('2d');
 
-// Draw meter
+// Draw volume meter
 function drawMeter() {
     requestAnimationFrame(drawMeter);
     analyser.getByteFrequencyData(dataArray);
@@ -85,11 +81,10 @@ function drawMeter() {
     for (let i = 0; i < bufferLength; i++) {
         barHeight = dataArray[i] / 2;
 
-        // Create gradient for each bar
         const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
         const colorStop = i / bufferLength;
-        gradient.addColorStop(0, `hsl(${colorStop * 240}, 100%, 50%)`); // Blue to Pink
-        gradient.addColorStop(1, `hsl(${colorStop * 330}, 100%, 50%)`); // Pink
+        gradient.addColorStop(0, `hsl(${colorStop * 240}, 100%, 50%)`);
+        gradient.addColorStop(1, `hsl(${colorStop * 330}, 100%, 50%)`);
 
         ctx.fillStyle = gradient;
         ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
@@ -98,11 +93,18 @@ function drawMeter() {
     }
 }
 
-// VM Draw
+// Resume audio context and draw meter when audio starts playing
 audioPlayer.onplay = function() {
-    audioContext.resume();
+    if (audioContext.state === 'suspended') {
+        audioContext.resume().then(() => {
+            console.log('AudioContext resumed');
+        });
+    }
     drawMeter();
 };
+
+// Event listeners
+document.getElementById("searchButton").addEventListener("click", searchSongs);
 
 // Random song (Ctrl + R)
 document.addEventListener('keydown', function(event) {

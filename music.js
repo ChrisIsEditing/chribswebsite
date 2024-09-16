@@ -1,7 +1,7 @@
 let songs = [];
 const keysPressed = new Set();
 const queue = [];
-let currentPlayingSong = null; // Track the currently playing song
+let currentSongIndex = -1; // Track the index of the currently playing song
 
 // Load songs from JSON
 function loadSongs() {
@@ -20,7 +20,7 @@ function loadSongs() {
 document.addEventListener('DOMContentLoaded', loadSongs);
 
 // Play a song from the queue
-function playSong(song) {
+function playSong(song, index) {
     if (!song || !song.url) {
         console.error("Invalid song or URL");
         return;
@@ -35,8 +35,8 @@ function playSong(song) {
         console.error("Error playing song:", error);
     });
 
-    // Update the currently playing song
-    currentPlayingSong = song;
+    // Update current song index and queue display
+    currentSongIndex = index;
     updateQueueDisplay();
 }
 
@@ -44,12 +44,12 @@ function playSong(song) {
 function playNextInQueue() {
     if (queue.length === 0) return;
     const nextSong = queue.shift(); // Remove the first song from the queue
-    playSong(nextSong);
+    playSong(nextSong.song, nextSong.index);
 }
 
 // Add a song to the queue
-function addToQueue(song) {
-    queue.push(song);
+function addToQueue(song, index) {
+    queue.push({ song, index });
     updateQueueDisplay();
 }
 
@@ -58,17 +58,14 @@ function updateQueueDisplay() {
     const queueList = document.getElementById("queueList");
     queueList.innerHTML = '';
 
-    queue.forEach(song => {
+    queue.forEach((item, idx) => {
         const listItem = document.createElement("li");
-        listItem.textContent = song.title;
-
-        if (song === currentPlayingSong) {
-            listItem.style.backgroundColor = 'darksalmon'; // Highlight color
-            listItem.style.color = 'black'; // Text color for better contrast
-            listItem.style.fontWeight = 'bold'; // Optional: Make it bold
-            listItem.textContent = '> ' + song.title; // Indicator for the playing song
+        if (idx === currentSongIndex) {
+            listItem.textContent = `> ${item.song.title}`;
+            listItem.style.backgroundColor = 'salmon'; // Dark salmon or any other color
+        } else {
+            listItem.textContent = item.song.title;
         }
-
         queueList.appendChild(listItem);
     });
 }
@@ -77,7 +74,7 @@ function updateQueueDisplay() {
 function playRandomSong() {
     if (songs.length === 0) return; 
     const randomIndex = Math.floor(Math.random() * songs.length);
-    playSong(songs[randomIndex]);
+    playSong(songs[randomIndex], -1);
 }
 
 // Search for a song
@@ -86,8 +83,8 @@ function searchSongs() {
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
 
     if (matchingSongs.length > 0) {
-        playSong(matchingSongs[0]);
-        addToQueue(matchingSongs[0]);
+        playSong(matchingSongs[0], -1);
+        addToQueue(matchingSongs[0], queue.length);
     } else {
         alert("I couldn't find that song :(");
     }

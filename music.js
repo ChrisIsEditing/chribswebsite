@@ -1,36 +1,17 @@
 let songs = [];
-const repoOwner = 'chrisisediting'; 
-const repoName = 'chribswebsite';
-const directoryPath = 'Music'; 
 
-// Placeholder for the API URL
-const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${directoryPath}`;
 
-// Function to fetch and load songs
 function loadSongs() {
-    // Fetch request with authorization header
-    fetch(apiUrl, {
-        headers: {
-            'Authorization': `token ${getGithubToken()}`
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        songs = data
-            .filter(item => item.name.endsWith('.mp3'))
-            .map(item => ({
+    fetch('/path/to/music_list.json') 
+        .then(response => response.json())
+        .then(data => {
+            songs = data.map(item => ({
                 title: item.name.replace('.mp3', ''),
-                url: `https://raw.githubusercontent.com/chrisisediting/chribswebsite/main/Music/${item.name}`
+                url: item.url  
             }));
-        console.log(songs); // Check the songs array
-    })
-    .catch(error => console.error('Error loading songs:', error));
-}
-
-// Function to get GitHub token from environment
-function getGithubToken() {
-    // Return the token set in environment variables or use a secret management system
-    return 'YOUR_GITHUB_TOKEN'; // This should be replaced securely
+            console.log(songs); 
+        })
+        .catch(error => console.error('Error loading songs:', error));
 }
 
 document.addEventListener('DOMContentLoaded', loadSongs);

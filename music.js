@@ -18,17 +18,16 @@ function loadSongs() {
 
 document.addEventListener('DOMContentLoaded', loadSongs);
 
-// Play a song from the queue
 function playSong(song, index) {
     if (!song || !song.url) {
         console.error("Invalid song or URL");
         return;
     }
 
+    const audioPlayer = document.getElementById("audioPlayer");
     const audioSource = document.getElementById("audioSource");
     audioSource.src = song.url;
 
-    const audioPlayer = document.getElementById("audioPlayer");
     audioPlayer.load();
     audioPlayer.play().catch(error => {
         console.error("Error playing song:", error);
@@ -37,6 +36,7 @@ function playSong(song, index) {
     currentSongIndex = index; // Update current song index
     updateQueueDisplay(); // Update queue display
 }
+
 
 // Play the next song in the queue
 function playNextInQueue() {

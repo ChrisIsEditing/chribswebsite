@@ -1,22 +1,26 @@
-name: Fetch Songs
+name: Update Music List
 
 on:
   push:
     branches:
       - main
-
+  schedule:
+    - cron: "0 * * * *" 
 jobs:
-  fetch-songs:
+  updateMusic:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Fetch songs
-      run: |
-        curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-             -H "Accept: application/vnd.github.v3+json" \
-             https://api.github.com/repos/${{ github.repository }}/contents/Music > songs.json
-      env:
-        CHRIBSTOKEN: ${{ secrets.CHRIBSTOKEN }}
+      - name: Fetch music from GitHub API
+        run: |
+          curl -H "Authorization: token ${{ secrets.CHRIBSTOKEN }}" \https://api.github.com/repos/chrisisediting/chribswebsite/contents/Music > music_list.json
+
+      - name: Commit updated music list
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git add music_list.json
+          git commit -m "Update music list"
+          git push

@@ -64,17 +64,6 @@ function playTestSong() {
     });
 }
 
-// Show keyboard shortcuts
-function showShortcuts() {
-    const shortcuts = `
-    Keyboard Shortcuts:
-    - R: Play a Random song
-    - T: Play a Test song
-    - H: Show this Help dialog
-    - Ctrl + I + C + K: Redirect to YouTube video
-    `;
-    alert(shortcuts);
-}
 
 // Redirect to YouTube video
 function redirectToYouTube() {
@@ -138,23 +127,19 @@ document.getElementById("searchButton").addEventListener("click", searchSongs);
 document.addEventListener('keydown', function(event) {
     keysPressed.add(event.key.toLowerCase());
 
-    if (event.key.toLowerCase() === 'r') {
+    if (keysPressed.has('alt') && keysPressed.has('r')) {
         event.preventDefault();
         playRandomSong();
+    
     }
 
-    if (event.key.toLowerCase() === 't') {
+    if (keysPressed.has('alt') && keysPressed.has('t')) {
         event.preventDefault();
         playTestSong();
     }
 
-    if (event.key.toLowerCase() === 'h') {
-        event.preventDefault();
-        showShortcuts();
-    }
-
     
-    if (keysPressed.has('control') && keysPressed.has('i') && keysPressed.has('c') && keysPressed.has('k')) {
+    if (keysPressed.has('r') && keysPressed.has('i') && keysPressed.has('c') && keysPressed.has('k')) {
         event.preventDefault();
         redirectToYouTube();
     }

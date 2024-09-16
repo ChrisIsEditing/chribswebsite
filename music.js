@@ -2,7 +2,7 @@ let songs = [];
 
 
 function loadSongs() {
-    fetch('/path/to/music_list.json') 
+    fetch('/music_list.json') 
         .then(response => response.json())
         .then(data => {
             songs = data.map(item => ({

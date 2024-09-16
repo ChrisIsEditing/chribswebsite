@@ -1,5 +1,6 @@
 let songs = [];
 const keysPressed = new Set();
+const queue = [];
 
 // Load songs from JSON
 function loadSongs() {
@@ -17,26 +18,7 @@ function loadSongs() {
 
 document.addEventListener('DOMContentLoaded', loadSongs);
 
-// Play random song
-function playRandomSong() {
-    if (songs.length === 0) return; 
-    const randomIndex = Math.floor(Math.random() * songs.length);
-    playSong(songs[randomIndex]);
-}
-
-// Search for a song
-function searchSongs() {
-    const query = document.getElementById("searchInput").value.toLowerCase();
-    const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
-
-    if (matchingSongs.length > 0) {
-        playSong(matchingSongs[0]); 
-    } else {
-        alert("I couldn't find that song :(");
-    }
-}
-
-// Play a specified song
+// Play a song from the queue
 function playSong(song) {
     if (!song || !song.url) {
         console.error("Invalid song or URL");
@@ -53,6 +35,52 @@ function playSong(song) {
     });
 }
 
+// Play the next song in the queue
+function playNextInQueue() {
+    if (queue.length === 0) return;
+    const nextSong = queue.shift(); // Remove the first song from the queue
+    playSong(nextSong);
+    updateQueueDisplay();
+}
+
+// Add a song to the queue
+function addToQueue(song) {
+    queue.push(song);
+    updateQueueDisplay();
+}
+
+// Update the song queue display
+function updateQueueDisplay() {
+    const queueList = document.getElementById("queueList");
+    queueList.innerHTML = '';
+
+    queue.forEach(song => {
+        const listItem = document.createElement("li");
+        listItem.textContent = song.title;
+        queueList.appendChild(listItem);
+    });
+}
+
+// Play random song
+function playRandomSong() {
+    if (songs.length === 0) return; 
+    const randomIndex = Math.floor(Math.random() * songs.length);
+    playSong(songs[randomIndex]);
+}
+
+// Search for a song
+function searchSongs() {
+    const query = document.getElementById("searchInput").value.toLowerCase();
+    const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
+
+    if (matchingSongs.length > 0) {
+        playSong(matchingSongs[0]);
+        addToQueue(matchingSongs[0]);
+    } else {
+        alert("I couldn't find that song :(");
+    }
+}
+
 // Play a test song
 function playTestSong() {
     const audioSource = document.getElementById("audioSource");
@@ -63,7 +91,6 @@ function playTestSong() {
         console.error("Error playing test song:", error);
     });
 }
-
 
 // Redirect to YouTube video
 function redirectToYouTube() {
@@ -130,7 +157,6 @@ document.addEventListener('keydown', function(event) {
     if (keysPressed.has('alt') && keysPressed.has('r')) {
         event.preventDefault();
         playRandomSong();
-    
     }
 
     if (keysPressed.has('alt') && keysPressed.has('t')) {
@@ -138,7 +164,6 @@ document.addEventListener('keydown', function(event) {
         playTestSong();
     }
 
-    
     if (keysPressed.has('r') && keysPressed.has('i') && keysPressed.has('c') && keysPressed.has('k')) {
         event.preventDefault();
         redirectToYouTube();
@@ -149,7 +174,6 @@ document.addEventListener('keyup', function(event) {
     keysPressed.delete(event.key.toLowerCase());
 });
 
-
 document.addEventListener('click', () => {
     if (audioContext.state === 'suspended') {
         audioContext.resume().then(() => {
@@ -157,3 +181,6 @@ document.addEventListener('click', () => {
         });
     }
 });
+
+// Play the next song in the queue when the current song ends
+audioPlayer.addEventListener('ended', playNextInQueue);

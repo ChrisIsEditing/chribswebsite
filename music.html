@@ -4,34 +4,143 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Player</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        h2 {
+            color: salmon;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 10px;
+        }
+
+        p {
+            color: salmon;
+            margin: 0;
+        }
+
+        #search-container {
+            margin: 10px 0;
+        }
+
+        #searchInput, #searchButton {
+            padding: 5px;
+            border-radius: 10px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #searchInput {
+            width: 30%;
+            background-color: salmon;
+            border: 1px solid black;
+            margin-bottom: 40px; 
+        }
+
+        #searchButton {
+            margin-left: 4px;
+            background-color: salmon;
+            border: 1px solid salmon;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: stretch;
+            margin: 10px 0;
+        }
+
+        #volumeMeterContainer {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        #volumeMeter {
+            background-color: #1f1f1fbd;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+        }
+
+        #queueContainer {
+            width: 250px;
+            padding: 10px;
+            background-color: #1f1f1fbd;
+            border-radius: 10px;
+            margin-left: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+            height: 300px; 
+        }
+
+        #queueContainer h3 {
+            margin-top: 0;
+            color: salmon;
+            font-family: 'Courier New', Courier, monospace;
+            text-decoration: underline;
+            font-size: small;
+        }
+
+        #queueList {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            color: white;
+        }
+
+        #queueList li {
+            padding: 5px;
+            border-bottom: 1px solid #333;
+        }
+
+        #player-container {
+            padding: 10px;
+            background-color: #000000;
+            border-radius: 0 0 15px 15px;
+        }
+
+        audio {
+            width: 50%;
+            border-radius: 10px;
+            align-self: center;
+        }
+    </style>
 </head>
-<body style="margin: 0; padding: 0; display: flex; flex-direction: column; height: 100vh; background-color: #000000; color: white; text-align: center; font-family: Arial, sans-serif;">
-    <h2 style="color: salmon; font-family: 'Courier New', Courier, monospace; margin-bottom: 5px;">
-        S.Y.S.T.E.M Music Player
-    </h2>
-    <p style="color: salmon; margin-top: 0px;">
-        _______________________________________________________
-    </p>
+<body>
+    <h2>S.Y.S.T.E.M Music Player</h2>
+    <p>______________________________________________________</p>
     
-    <div id="search-container" style="margin-bottom: 10px;">
-        <input type="text" id="searchInput" placeholder="Search for a song..." 
-        style="padding: 5px; width: 30%; border-radius: 10px; background-color: salmon; 
-        border: 1px solid black; font-family: 'Courier New', Courier, monospace;">
-        
-        <button id="searchButton" style="padding: 5px; margin-left: 4px; border-radius: 10px; 
-        background-color: salmon;
-        border: 1px solid rgb(255, 64, 0); font-family: 'Courier New', Courier, monospace;">
-            Search
-        </button>
+    <div id="search-container">
+        <input type="text" id="searchInput" placeholder="Search for a song...">
+        <button id="searchButton">Search</button>
     </div>
 
-    <div id="volumeMeterContainer" style="flex-grow: 1; display: flex; align-items: center; justify-content: center; background-color: #000000; color: aqua; width: 100%; height: 50px;">
-        <canvas id="volumeMeter" width="800" height="400" 
-        style="background-color: #1f1f1fbd; border-radius: 10px;"></canvas>
+    <div id="container">
+        <div id="volumeMeterContainer">
+            <canvas id="volumeMeter"></canvas>
+            <div id="queueContainer">
+                <h3>NOW PLAYING</h3>
+                <ul id="queueList"></ul>
+            </div>
+        </div>
     </div>
     
-    <div id="player-container" style="padding: 10px; background-color: #000000; border-radius: 0 0 15px 15px;">
-        <audio id="audioPlayer" controls style="width: 50%; border-radius: 10px; align-self: center;">
+    <div id="player-container">
+        <audio id="audioPlayer" controls>
             <source id="audioSource" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>

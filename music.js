@@ -1,8 +1,8 @@
-const keysPressed = new Set(); // 
+const keysPressed = new Set(); 
 
 let songs = [];
 const queue = [];
-let currentSongIndex = -1; 
+let currentSongIndex = -1;
 
 
 function loadSongs() {
@@ -75,7 +75,6 @@ function playRandomSong() {
     playSong(songs[randomIndex], -1);
 }
 
-
 function playTestSong() {
     const audioSource = document.getElementById("audioSource");
     audioSource.src = 'https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/japan.mp3'; 
@@ -91,7 +90,6 @@ function redirectToYouTube() {
     window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'; 
 }
 
-
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 const analyser = audioContext.createAnalyser();
 const audioPlayer = document.getElementById('audioPlayer');
@@ -99,12 +97,19 @@ const source = audioContext.createMediaElementSource(audioPlayer);
 source.connect(analyser);
 analyser.connect(audioContext.destination);
 
-
 analyser.fftSize = 256;
 const bufferLength = analyser.frequencyBinCount;
 const dataArray = new Uint8Array(bufferLength);
 const canvas = document.getElementById('volumeMeter');
 const ctx = canvas.getContext('2d');
+
+function drawAlbumCover(imageSrc) {
+    const img = new Image();
+    img.onload = function() {
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    };
+    img.src = imageSrc;
+}
 
 
 function drawMeter() {
@@ -132,8 +137,6 @@ function drawMeter() {
     }
 }
 
-
-
 let drawInterval = 60; 
 let lastDrawTime = 0;
 
@@ -147,6 +150,13 @@ function drawMeter() {
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+        
+        if (currentSongIndex !== -1 && songs[currentSongIndex]) {
+            const albumCoverUrl = songs[currentSongIndex].cover_url;
+                drawAlbumCover(albumCoverUrl);
+            }
+        }
+
         const barWidth = (canvas.width / bufferLength) * 2.5;
         let barHeight;
         let x = 0;
@@ -155,7 +165,7 @@ function drawMeter() {
             barHeight = dataArray[i] / 2;
 
             const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-            const colorStop = (i / bufferLength) * 0.6; // Adjusted to slow down color transition
+            const colorStop = (i / bufferLength) * 0.6; 
             gradient.addColorStop(0, `hsl(${colorStop * 240}, 70%, 60%)`); // Blue
             gradient.addColorStop(1, `hsl(${colorStop * 340}, 70%, 80%)`); // Pink
 
@@ -166,7 +176,6 @@ function drawMeter() {
         }
     }
 }
-
 
 function playSong(song, index) {
     if (!song || !song.download_url) { 
@@ -197,7 +206,7 @@ audioPlayer.onplay = function() {
     drawMeter();
 };
 
-
+// Event listeners
 document.getElementById("searchButton").addEventListener("click", searchSongs);
 document.addEventListener('keydown', function(event) {
     keysPressed.add(event.key.toLowerCase());
@@ -229,6 +238,5 @@ document.addEventListener('click', () => {
         });
     }
 });
-
 
 audioPlayer.addEventListener('ended', playNextInQueue);

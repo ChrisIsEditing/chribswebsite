@@ -51,7 +51,6 @@ function addToQueue(song, index) {
     updateQueueDisplay();
 }
 
-// Update the song queue display
 function updateQueueDisplay() {
     const queueList = document.getElementById("queueList");
     queueList.innerHTML = '';
@@ -60,16 +59,21 @@ function updateQueueDisplay() {
         const listItem = document.createElement("li");
         listItem.textContent = item.song.title;
 
+        // Remove any existing classes
+        listItem.classList.remove('current-song', 'queue-song');
+
+        // Add appropriate class based on whether it's the current song
         if (item.index === currentSongIndex) {
-            listItem.textContent = `> ${listItem.textContent}`; // Add `> ` prefix
-            listItem.style.color = 'salmon'; // Change text color to salmon
+            listItem.textContent = `> ${item.song.title}`;  // Add '> ' in front of the song title
+            listItem.classList.add('current-song');  // Set the class for the current song
         } else {
-            listItem.style.color = 'white'; // Default color for other songs
+            listItem.classList.add('queue-song');  // Set the default class for other songs
         }
 
         queueList.appendChild(listItem);
     });
 }
+
 
 // Search for a song
 function searchSongs() {

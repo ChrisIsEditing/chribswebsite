@@ -33,6 +33,14 @@
             margin: 10px 0;
         }
 
+        .current-song {
+            color: salmon;
+        }
+
+        .queue-song {
+            color: white;
+        }
+
         #searchInput, #searchButton {
             padding: 5px;
             border-radius: 10px;
@@ -43,7 +51,7 @@
             width: 30%;
             background-color: salmon;
             border: 1px solid black;
-            margin-bottom: 40px; 
+            margin-bottom: 40px;
         }
 
         #searchButton {
@@ -84,7 +92,7 @@
             margin-left: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             overflow-y: auto;
-            height: 300px; 
+            height: 300px;
         }
 
         #queueContainer h3 {
@@ -119,12 +127,32 @@
             border-radius: 10px;
             align-self: center;
         }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            #container {
+                flex-direction: column;
+            }
+
+            audio {
+                width: 90%; /* Ensure the audio player doesn’t overflow */
+            }
+
+            #queueContainer, #volumeMeter {
+                width: 100%; /* Full width for smaller screens */
+            }
+
+            #queueContainer {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
     </style>
 </head>
 <body>
     <h2>S.Y.S.T.E.M Music Player</h2>
     <p>______________________________________________________</p>
-    
+
     <div id="search-container">
         <input type="text" id="searchInput" placeholder="Search for a song...">
         <button id="searchButton">Search</button>
@@ -139,7 +167,7 @@
             </div>
         </div>
     </div>
-    
+
     <div id="player-container">
         <audio id="audioPlayer" controls>
             <source id="audioSource" type="audio/mpeg">

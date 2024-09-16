@@ -85,6 +85,14 @@ function drawMeter() {
 audioPlayer.onplay = function() {
     audioContext.resume();
     drawMeter();
+
 };
 
+// random song (Ctrl + R)
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && event.key === 'r') {
+        event.preventDefault(); // prevent default action
+        playRandomSong();
+    }
+});
 

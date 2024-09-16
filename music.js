@@ -24,25 +24,6 @@ function loadSongs() {
 
 document.addEventListener('DOMContentLoaded', loadSongs);
 
-function playSong(song, index) {
-    if (!song || !song.url) {
-        console.error("Invalid song or URL");
-        return;
-    }
-
-    const audioPlayer = document.getElementById("audioPlayer");
-    const audioSource = document.getElementById("audioSource");
-    audioSource.src = song.url;
-
-    audioPlayer.load();
-    audioPlayer.play().catch(error => {
-        console.error("Error playing song:", error);
-    });
-
-    currentSongIndex = index; // Update current song index
-    updateQueueDisplay(); // Update queue display
-}
-
 
 // Play the next song in the queue
 function playNextInQueue() {
@@ -157,6 +138,27 @@ function drawMeter() {
 
         x += barWidth + 1;
     }
+}
+
+const TEST_SONG_URL = 'https://example.com/your-audio-file.mp3'; // Replace with a working URL
+
+function playSong(song, index) {
+    if (!song || !song.download_url) { // Use download_url
+        console.error("Invalid song or URL");
+        return;
+    }
+
+    const audioPlayer = document.getElementById("audioPlayer");
+    const audioSource = document.getElementById("audioSource");
+    audioSource.src = song.download_url; // Use download_url
+
+    audioPlayer.load();
+    audioPlayer.play().catch(error => {
+        console.error("Error playing song:", error);
+    });
+
+    currentSongIndex = index; // Update current song index
+    updateQueueDisplay(); // Update queue display
 }
 
 // Resume audio context and draw meter when audio starts playing

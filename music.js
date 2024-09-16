@@ -175,7 +175,7 @@ function drawMeter() {
             x += barWidth + 1;
         }
     }
-}
+
 
 function playSong(song, index) {
     if (!song || !song.download_url) { 

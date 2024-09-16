@@ -15,7 +15,7 @@ function loadSongs() {
         .then(data => {
             songs = data.map(item => ({
                 title: item.name.replace('.mp3', ''),
-                url: item.url
+                download_url: item.download_url // Ensure this field is used
             }));
             console.log(songs);
         })

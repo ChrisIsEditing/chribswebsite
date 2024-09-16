@@ -2,14 +2,14 @@ let songs = [];
 
 // Load songs from JSON
 function loadSongs() {
-    fetch('music_list.json') 
+    fetch('music_list.json')
         .then(response => response.json())
         .then(data => {
             songs = data.map(item => ({
                 title: item.name.replace('.mp3', ''),
-                url: item.url  
+                url: item.url
             }));
-            console.log(songs); 
+            console.log(songs);
         })
         .catch(error => console.error('Error loading songs:', error));
 }
@@ -41,7 +41,7 @@ function playSong(song) {
         console.error("Invalid song or URL");
         return;
     }
-    
+
     const audioSource = document.getElementById("audioSource");
     audioSource.src = song.url;
 
@@ -111,5 +111,14 @@ document.addEventListener('keydown', function(event) {
     if (event.ctrlKey && event.key === 'r') {
         event.preventDefault();
         playRandomSong();
+    }
+});
+
+// Resume audio context on user click
+document.addEventListener('click', () => {
+    if (audioContext.state === 'suspended') {
+        audioContext.resume().then(() => {
+            console.log('AudioContext resumed');
+        });
     }
 });

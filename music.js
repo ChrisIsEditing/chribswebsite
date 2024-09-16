@@ -1,6 +1,6 @@
 let songs = [];
 
-// Load songs from JSON
+
 function loadSongs() {
     fetch('music_list.json')
         .then(response => response.json())
@@ -16,26 +16,26 @@ function loadSongs() {
 
 document.addEventListener('DOMContentLoaded', loadSongs);
 
-// Play random song
+
 function playRandomSong() {
-    if (songs.length === 0) return; // Ensure songs are loaded
+    if (songs.length === 0) return; 
     const randomIndex = Math.floor(Math.random() * songs.length);
     playSong(songs[randomIndex]);
 }
 
-// Search for a song
+
 function searchSongs() {
     const query = document.getElementById("searchInput").value.toLowerCase();
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
 
     if (matchingSongs.length > 0) {
-        playSong(matchingSongs[0]); // Play first matching song
+        playSong(matchingSongs[0]); 
     } else {
         alert("I couldn't find that song :(");
     }
 }
 
-// Play a specified song
+
 function playSong(song) {
     if (!song || !song.url) {
         console.error("Invalid song or URL");
@@ -52,7 +52,29 @@ function playSong(song) {
     });
 }
 
-// Create and configure AudioContext
+
+function playTestSong() {
+    const audioSource = document.getElementById("audioSource");
+    audioSource.src = 'https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/japan.mp3'; 
+    const audioPlayer = document.getElementById("audioPlayer");
+    audioPlayer.load();
+    audioPlayer.play().catch(error => {
+        console.error("Error playing test song:", error);
+    });
+}
+
+
+function showShortcuts() {
+    const shortcuts = `
+    Keyboard Shortcuts:
+    - Ctrl + R: Play a Random song
+    - Ctrl + Shift + T: Play a Test song
+    - Ctrl + H: Show this Help dialog
+    `;
+    alert(shortcuts);
+}
+
+
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 const analyser = audioContext.createAnalyser();
 const audioPlayer = document.getElementById('audioPlayer');
@@ -60,14 +82,14 @@ const source = audioContext.createMediaElementSource(audioPlayer);
 source.connect(analyser);
 analyser.connect(audioContext.destination);
 
-// Volume meter configuration
+
 analyser.fftSize = 256;
 const bufferLength = analyser.frequencyBinCount;
 const dataArray = new Uint8Array(bufferLength);
 const canvas = document.getElementById('volumeMeter');
 const ctx = canvas.getContext('2d');
 
-// Draw volume meter
+
 function drawMeter() {
     requestAnimationFrame(drawMeter);
     analyser.getByteFrequencyData(dataArray);
@@ -93,7 +115,7 @@ function drawMeter() {
     }
 }
 
-// Resume audio context and draw meter when audio starts playing
+
 audioPlayer.onplay = function() {
     if (audioContext.state === 'suspended') {
         audioContext.resume().then(() => {
@@ -103,18 +125,28 @@ audioPlayer.onplay = function() {
     drawMeter();
 };
 
-// Event listeners
+
 document.getElementById("searchButton").addEventListener("click", searchSongs);
 
-// Random song (Ctrl + R)
+
 document.addEventListener('keydown', function(event) {
     if (event.ctrlKey && event.key === 'r') {
         event.preventDefault();
         playRandomSong();
     }
+
+    if (event.ctrlKey && event.shiftKey && event.key === 'T') {
+        event.preventDefault();
+        playTestSong();
+    }
+
+    if (event.ctrlKey && event.key === 'h') {
+        event.preventDefault();
+        showShortcuts();
+    }
 });
 
-// Resume audio context on user click
+
 document.addEventListener('click', () => {
     if (audioContext.state === 'suspended') {
         audioContext.resume().then(() => {

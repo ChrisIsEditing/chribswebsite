@@ -1248,22 +1248,6 @@
     }
   },
   {
-    "name": "Five Nights at Freddy's (Instrumental Mix).mp3",
-    "path": "Music/Five Nights at Freddy's (Instrumental Mix).mp3",
-    "sha": "fae41573a74ef510f0b91a1cc945766c3ceacd00",
-    "size": 4015279,
-    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Five%20Nights%20at%20Freddy's%20(Instrumental%20Mix).mp3?ref=main",
-    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Five%20Nights%20at%20Freddy's%20(Instrumental%20Mix).mp3",
-    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/fae41573a74ef510f0b91a1cc945766c3ceacd00",
-    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Five%20Nights%20at%20Freddy's%20(Instrumental%20Mix).mp3",
-    "type": "file",
-    "_links": {
-      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Five%20Nights%20at%20Freddy's%20(Instrumental%20Mix).mp3?ref=main",
-      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/fae41573a74ef510f0b91a1cc945766c3ceacd00",
-      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Five%20Nights%20at%20Freddy's%20(Instrumental%20Mix).mp3"
-    }
-  },
-  {
     "name": "Five Nights at Freddy's.mp3",
     "path": "Music/Five Nights at Freddy's.mp3",
     "sha": "c67ed21b50cb0c36192d8b9d4b067e59807cbb45",
@@ -1280,19 +1264,19 @@
     }
   },
   {
-    "name": "Footloose (From ＂Footloose＂ Soundtrack).mp3",
-    "path": "Music/Footloose (From ＂Footloose＂ Soundtrack).mp3",
+    "name": "Footloose.mp3",
+    "path": "Music/Footloose.mp3",
     "sha": "d8fbbcd95129e6eaf25dacda52361161c0fffc5c",
     "size": 5484515,
-    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Footloose%20(From%20%EF%BC%82Footloose%EF%BC%82%20Soundtrack).mp3?ref=main",
-    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Footloose%20(From%20%EF%BC%82Footloose%EF%BC%82%20Soundtrack).mp3",
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Footloose.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Footloose.mp3",
     "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/d8fbbcd95129e6eaf25dacda52361161c0fffc5c",
-    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Footloose (From ＂Footloose＂ Soundtrack).mp3",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Footloose.mp3",
     "type": "file",
     "_links": {
-      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Footloose%20(From%20%EF%BC%82Footloose%EF%BC%82%20Soundtrack).mp3?ref=main",
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Footloose.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/d8fbbcd95129e6eaf25dacda52361161c0fffc5c",
-      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Footloose%20(From%20%EF%BC%82Footloose%EF%BC%82%20Soundtrack).mp3"
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Footloose.mp3"
     }
   },
   {

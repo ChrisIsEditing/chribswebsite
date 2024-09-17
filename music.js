@@ -230,6 +230,17 @@ function drawMeter() {
     }
 }
 
+function autoPlayNextInQueue() {
+    if (queue.length > 0) {
+        const nextSong = queue.shift(); 
+        playSong(nextSong.song, nextSong.index);
+    } else {
+        console.log("Queue is empty. Playback stopped.");
+        currentSongIndex = -1; 
+    }
+    updateQueueDisplay();
+}
+
 function playSong(song, index) {
     if (!song || !song.download_url) {
         console.error("Invalid song or URL");
@@ -258,6 +269,7 @@ function playSong(song, index) {
     currentSongIndex = index;
     updateQueueDisplay();
 }
+audioPlayer.addEventListener('ended', autoPlayNextInQueue);
 
 audioPlayer.onplay = function() {
     if (audioContext.state === 'suspended') {

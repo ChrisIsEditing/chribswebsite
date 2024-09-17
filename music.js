@@ -58,7 +58,7 @@ function nextTrack() {
     if (track_index < track_list.length - 1) {
         track_index++;
     } else {
-        track_index = 0; 
+        track_index = 0; // Loop to start
     }
     const nextSong = track_list[track_index];
     playSong(nextSong, track_index);
@@ -91,21 +91,29 @@ function updateQueueDisplay() {
 
     queueList.innerHTML = '';
 
-    queue.forEach(item => {
-        const listItem = document.createElement("li");
-        listItem.textContent = item.song.title;
+    if (queue.length === 0) {
+        const emptyMessage = document.createElement("li");
+        emptyMessage.textContent = "Queue is empty";
+        emptyMessage.style.fontStyle = "italic";
+        emptyMessage.style.color = "#888";
+        queueList.appendChild(emptyMessage);
+    } else {
+        queue.forEach(item => {
+            const listItem = document.createElement("li");
+            listItem.textContent = item.song.title;
 
-        listItem.classList.remove('current-song', 'queue-song');
+            listItem.classList.remove('current-song', 'queue-song');
 
-        if (item.index === currentSongIndex) {
-            listItem.textContent = `> ${item.song.title}`;
-            listItem.classList.add('current-song');
-        } else {
-            listItem.classList.add('queue-song');
-        }
+            if (item.index === currentSongIndex) {
+                listItem.textContent = `> ${item.song.title}`;
+                listItem.classList.add('current-song');
+            } else {
+                listItem.classList.add('queue-song');
+            }
 
-        queueList.appendChild(listItem);
-    });
+            queueList.appendChild(listItem);
+        });
+    }
 }
 
 function downloadCurrentSong() {
@@ -131,13 +139,13 @@ function searchSongs() {
         const foundSong = matchingSongs[0];
 
         if (currentSongIndex !== -1) {
-            
+            // A song is already playing, so add the found song to queue
             addToQueue(foundSong, songIndex);
             console.log(`Added "${foundSong.title}" to the queue`);
         } else {
-            
+            // No song currently playing, so play the found song immediately
             playSong(foundSong, songIndex);
-            
+            // Don't add to queue here, as it's now playing
         }
     } else {
         alert("I couldn't find that song :(");
@@ -265,13 +273,19 @@ function playSong(song, index) {
         console.error("Error playing song:", error);
     });
 
-   
+    // Clear the queue if we're starting a new song from scratch
     if (currentSongIndex === -1) {
         queue.length = 0;
     }
 
     currentSongIndex = index;
     updateQueueDisplay();
+
+    // Update the currently playing song name
+    const currentSongNameElement = document.getElementById("currentSongName");
+    if (currentSongNameElement) {
+        currentSongNameElement.textContent = song.title;
+    }
 }
 
 audioPlayer.addEventListener('ended', autoPlayNextInQueue);
@@ -286,7 +300,7 @@ audioPlayer.onplay = function() {
 };
 
 audioPlayer.onpause = function() {
-    
+    // You can add pause-specific behavior here if needed
 };
 
 audioPlayer.onloadeddata = function() {

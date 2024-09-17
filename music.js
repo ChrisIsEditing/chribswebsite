@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    
     const searchButton = document.getElementById("searchButton");
     const prevButton = document.getElementById("prevButton");
     const nextButton = document.getElementById("nextButton");
@@ -17,10 +16,12 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 const keysPressed = new Set();
-
 let songs = [];
 const queue = [];
 let currentSongIndex = -1;
+let track_list = [];
+let track_index = 0; // Default starting index
+
 
 function loadSongs() {
     fetch('music_list.json')
@@ -28,7 +29,8 @@ function loadSongs() {
         .then(data => {
             songs = data.map(item => ({
                 title: item.name.replace('.mp3', ''),
-                download_url: item.download_url 
+                download_url: item.download_url,
+                cover_url: item.cover_url // Assuming cover_url is available
             }));
             console.log(songs);
         })
@@ -54,18 +56,29 @@ function playPreviousSong() {
     playSong(previousSong.song, previousSong.index);
     updateQueueDisplay();
 }
+function nextTrack() {
+    if (track_index < track_list.length - 1) {
+        track_index++;
+    } else {
+        track_index = 0; // Loop to start
+    }
+    const nextSong = track_list[track_index];
+    playSong(nextSong, track_index);
+}
 
 function playNextInQueue() {
-    if (queue.length === 1) {
+    if (queue.length === 0) {
         console.log("Queue is empty.");
         return;
     }
 
-    const nextSong = queue.shift();
-    if (nextSong) {
-        playSong(nextSong.song, nextSong.index);
+    queue.shift(); 
+    if (queue.length > 0) {
+        nextTrack(); 
+    } else {
+        console.log("Queue is now empty.");
     }
-    updateQueueDisplay();
+    updateQueueDisplay(); 
 }
 
 
@@ -90,10 +103,10 @@ function updateQueueDisplay() {
         listItem.classList.remove('current-song', 'queue-song');
 
         if (item.index === currentSongIndex) {
-            listItem.textContent = `> ${item.song.title}`; 
-            listItem.classList.add('current-song');  
+            listItem.textContent = `> ${item.song.title}`;
+            listItem.classList.add('current-song');
         } else {
-            listItem.classList.add('queue-song'); 
+            listItem.classList.add('queue-song');
         }
 
         queueList.appendChild(listItem);
@@ -128,14 +141,14 @@ function searchSongs() {
 }
 
 function playRandomSong() {
-    if (songs.length === 0) return; 
+    if (songs.length === 0) return;
     const randomIndex = Math.floor(Math.random() * songs.length);
     playSong(songs[randomIndex], randomIndex);
 }
 
 function playTestSong() {
     const audioSource = document.getElementById("audioSource");
-    audioSource.src = 'https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/japan.mp3'; 
+    audioSource.src = 'https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/japan.mp3';
     const audioPlayer = document.getElementById("audioPlayer");
     audioPlayer.load();
     audioPlayer.play().catch(error => {
@@ -175,11 +188,11 @@ function drawAlbumCover(imageSrc) {
     img.src = imageSrc;
 }
 
-let drawInterval = 80; 
+let drawInterval = 80;
 let lastDrawTime = 0;
 
 function drawMeter() {
-    requestAnimationFrame(drawMeter); 
+    requestAnimationFrame(drawMeter);
     const now = performance.now();
     
     if (now - lastDrawTime > drawInterval) {

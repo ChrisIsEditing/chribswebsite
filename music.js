@@ -4,7 +4,6 @@ let songs = [];
 const queue = [];
 let currentSongIndex = -1;
 
-
 function loadSongs() {
     fetch('music_list.json')
         .then(response => response.json())
@@ -20,19 +19,16 @@ function loadSongs() {
 
 document.addEventListener('DOMContentLoaded', loadSongs);
 
-
 function playNextInQueue() {
     if (queue.length === 0) return;
     const nextSong = queue.shift(); 
     playSong(nextSong.song, nextSong.index); 
 }
 
-
 function addToQueue(song, index) {
     queue.push({ song, index });
     updateQueueDisplay();
 }
-
 
 function updateQueueDisplay() {
     const queueList = document.getElementById("queueList");
@@ -60,9 +56,6 @@ function updateQueueDisplay() {
     });
 }
 
-
-
-
 function searchSongs() {
     const query = document.getElementById("searchInput").value.toLowerCase();
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
@@ -75,8 +68,6 @@ function searchSongs() {
         alert("I couldn't find that song :(");
     }
 }
-
-
 
 function playRandomSong() {
     if (songs.length === 0) return; 
@@ -93,7 +84,6 @@ function playTestSong() {
         console.error("Error playing test song:", error);
     });
 }
-
 
 function easteregg1() {
     const audioSource = document.getElementById("audioSource");
@@ -127,13 +117,11 @@ function drawAlbumCover(imageSrc) {
     img.src = imageSrc;
 }
 
-
-
 let drawInterval = 80; 
 let lastDrawTime = 0;
 
 function drawMeter() {
-    requestAnimationFrame(drawMeter); // Start the animation loop
+    requestAnimationFrame(drawMeter); 
     const now = performance.now();
     
     if (now - lastDrawTime > drawInterval) {
@@ -166,8 +154,6 @@ function drawMeter() {
     }
 }
 
-
-
 function playSong(song, index) {
     if (!song || !song.download_url) {
         console.error("Invalid song or URL");
@@ -197,8 +183,6 @@ function playSong(song, index) {
     updateQueueDisplay(); 
 }
 
-
-
 audioPlayer.onplay = function() {
     if (audioContext.state === 'suspended') {
         audioContext.resume().then(() => {
@@ -207,7 +191,6 @@ audioPlayer.onplay = function() {
     }
     drawMeter();
 };
-
 
 document.getElementById("searchButton").addEventListener("click", searchSongs);
 document.addEventListener('keydown', function(event) {
@@ -240,6 +223,7 @@ document.addEventListener('click', () => {
         });
     }
 });
+
 document.getElementById('prevButton').addEventListener('click', playPreviousSong);
 document.getElementById('shuffleButton').addEventListener('click', shuffleQueue);
 document.getElementById('nextButton').addEventListener('click', playNextInQueue);
@@ -250,7 +234,6 @@ function playPreviousSong() {
     if (currentSongIndex > 0) {
         playSong(songs[currentSongIndex - 1], currentSongIndex - 1);
     } else if (queue.length > 0) {
-        // If we're at the start of the queue, play the last song if there are songs in the queue
         playSong(queue[queue.length - 1].song, queue[queue.length - 1].index);
     }
 }
@@ -258,9 +241,9 @@ function playPreviousSong() {
 function shuffleQueue() {
     shuffleMode = !shuffleMode;
     if (shuffleMode) {
-        queue.sort(() => Math.random() - 0.5); // Shuffle the queue array
+        queue.sort(() => Math.random() - 0.5); 
     }
-    updateQueueDisplay();
+    updateQueueDisplay(); 
 }
 
 function playNextInQueue() {

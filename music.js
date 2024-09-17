@@ -139,13 +139,13 @@ function searchSongs() {
         const foundSong = matchingSongs[0];
 
         if (currentSongIndex !== -1) {
-            // A song is already playing, so add the found song to queue
+            
             addToQueue(foundSong, songIndex);
             console.log(`Added "${foundSong.title}" to the queue`);
         } else {
-            // No song currently playing, so play the found song immediately
+            
             playSong(foundSong, songIndex);
-            // Don't add to queue here, as it's now playing
+            
         }
     } else {
         alert("I couldn't find that song :(");
@@ -273,7 +273,7 @@ function playSong(song, index) {
         console.error("Error playing song:", error);
     });
 
-    // Clear the queue if we're starting a new song from scratch
+   
     if (currentSongIndex === -1) {
         queue.length = 0;
     }
@@ -281,7 +281,7 @@ function playSong(song, index) {
     currentSongIndex = index;
     updateQueueDisplay();
 
-    // Update the currently playing song name
+ 
     const currentSongNameElement = document.getElementById("currentSongName");
     if (currentSongNameElement) {
         currentSongNameElement.textContent = song.title;
@@ -300,7 +300,7 @@ audioPlayer.onplay = function() {
 };
 
 audioPlayer.onpause = function() {
-    // You can add pause-specific behavior here if needed
+    
 };
 
 audioPlayer.onloadeddata = function() {

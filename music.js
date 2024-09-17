@@ -1,18 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Ensure the elements exist before adding event listeners
+    
     const searchButton = document.getElementById("searchButton");
-    const shuffleButton = document.getElementById("shuffleButton");
     const prevButton = document.getElementById("prevButton");
     const nextButton = document.getElementById("nextButton");
     const downloadButton = document.getElementById("downloadButton");
 
-    if (!searchButton || !shuffleButton || !prevButton || !nextButton || !downloadButton) {
+    if (!searchButton || !prevButton || !nextButton || !downloadButton) {
         console.error("One or more buttons are missing from the HTML.");
         return;
     }
 
     searchButton.addEventListener("click", searchSongs);
-    shuffleButton.addEventListener("click", toggleShuffleMode);
     prevButton.addEventListener("click", playPreviousSong);
     nextButton.addEventListener("click", playNextInQueue);
     downloadButton.addEventListener("click", downloadCurrentSong);
@@ -23,7 +21,6 @@ const keysPressed = new Set();
 let songs = [];
 const queue = [];
 let currentSongIndex = -1;
-let shuffleMode = false;
 
 function loadSongs() {
     fetch('music_list.json')
@@ -47,22 +44,11 @@ function playPreviousSong() {
     }
 
     let previousSong;
-    if (shuffleMode) {
-        // Shuffle mode
-        const currentIndex = queue.findIndex(item => item.index === currentSongIndex);
-        if (currentIndex === 0) {
-            previousSong = queue[queue.length - 1];
-        } else {
-            previousSong = queue[currentIndex - 1];
-        }
+    const currentIndex = queue.findIndex(item => item.index === currentSongIndex);
+    if (currentIndex === 0) {
+        previousSong = queue[queue.length - 1];
     } else {
-        // Normal mode
-        const currentIndex = queue.findIndex(item => item.index === currentSongIndex);
-        if (currentIndex === 0) {
-            previousSong = queue[queue.length - 1];
-        } else {
-            previousSong = queue[currentIndex - 1];
-        }
+        previousSong = queue[currentIndex - 1];
     }
 
     playSong(previousSong.song, previousSong.index);
@@ -75,17 +61,10 @@ function playNextInQueue() {
         return;
     }
 
-    let nextSong;
-    if (shuffleMode) {
-        // Shuffle mode
-        const randomIndex = Math.floor(Math.random() * queue.length);
-        nextSong = queue.splice(randomIndex, 1)[0];
-    } else {
-        // Normal mode
-        nextSong = queue.shift();
+    const nextSong = queue.shift();
+    if (nextSong) {
+        playSong(nextSong.song, nextSong.index);
     }
-
-    playSong(nextSong.song, nextSong.index);
     updateQueueDisplay();
 }
 
@@ -134,11 +113,6 @@ function downloadCurrentSong() {
     a.click();
 }
 
-function toggleShuffleMode() {
-    shuffleMode = !shuffleMode;
-    document.getElementById("shuffleButton").textContent = shuffleMode ? "Shuffle On" : "Shuffle Off";
-}
-
 function searchSongs() {
     const query = document.getElementById("searchInput").value.toLowerCase();
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
@@ -179,7 +153,6 @@ function easteregg1() {
     });
 }
 
-// Visualize audio data
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 const analyser = audioContext.createAnalyser();
 const audioPlayer = document.getElementById('audioPlayer');
@@ -201,7 +174,7 @@ function drawAlbumCover(imageSrc) {
     img.src = imageSrc;
 }
 
-let drawInterval = 80; 
+let drawInterval = 100; 
 let lastDrawTime = 0;
 
 function drawMeter() {
@@ -277,10 +250,9 @@ audioPlayer.onplay = function() {
 };
 
 audioPlayer.onpause = function() {
-    // Any additional actions to take when the audio is paused
+    
 };
 
-// Make sure the buttons and controls are only functional when the audio player is ready
 audioPlayer.onloadeddata = function() {
     console.log('Audio data loaded');
 };

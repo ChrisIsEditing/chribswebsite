@@ -36,6 +36,11 @@ function addToQueue(song, index) {
 
 function updateQueueDisplay() {
     const queueList = document.getElementById("queueList");
+    if (!queueList) {
+        console.error("Queue list element not found");
+        return;
+    }
+
     queueList.innerHTML = '';
 
     queue.forEach(item => {
@@ -54,6 +59,8 @@ function updateQueueDisplay() {
         queueList.appendChild(listItem);
     });
 }
+
+
 
 
 function searchSongs() {
@@ -162,14 +169,24 @@ function drawMeter() {
 
 
 function playSong(song, index) {
-    if (!song || !song.download_url) { 
+    if (!song || !song.download_url) {
         console.error("Invalid song or URL");
         return;
     }
 
     const audioSource = document.getElementById("audioSource");
+    if (!audioSource) {
+        console.error("Audio source element not found");
+        return;
+    }
+    
     audioSource.src = song.download_url; 
+    
     const audioPlayer = document.getElementById("audioPlayer");
+    if (!audioPlayer) {
+        console.error("Audio player element not found");
+        return;
+    }
 
     audioPlayer.load();
     audioPlayer.play().catch(error => {
@@ -179,6 +196,7 @@ function playSong(song, index) {
     currentSongIndex = index; 
     updateQueueDisplay(); 
 }
+
 
 
 audioPlayer.onplay = function() {
@@ -222,5 +240,39 @@ document.addEventListener('click', () => {
         });
     }
 });
+document.getElementById('prevButton').addEventListener('click', playPreviousSong);
+document.getElementById('shuffleButton').addEventListener('click', shuffleQueue);
+document.getElementById('nextButton').addEventListener('click', playNextInQueue);
+
+let shuffleMode = false;
+
+function playPreviousSong() {
+    if (currentSongIndex > 0) {
+        playSong(songs[currentSongIndex - 1], currentSongIndex - 1);
+    } else if (queue.length > 0) {
+        // If we're at the start of the queue, play the last song if there are songs in the queue
+        playSong(queue[queue.length - 1].song, queue[queue.length - 1].index);
+    }
+}
+
+function shuffleQueue() {
+    shuffleMode = !shuffleMode;
+    if (shuffleMode) {
+        queue.sort(() => Math.random() - 0.5); // Shuffle the queue array
+    }
+    updateQueueDisplay();
+}
+
+function playNextInQueue() {
+    if (queue.length === 0) return;
+    if (shuffleMode) {
+        const randomIndex = Math.floor(Math.random() * queue.length);
+        const nextSong = queue.splice(randomIndex, 1)[0];
+        playSong(nextSong.song, nextSong.index);
+    } else {
+        const nextSong = queue.shift();
+        playSong(nextSong.song, nextSong.index);
+    }
+}
 
 audioPlayer.addEventListener('ended', playNextInQueue);

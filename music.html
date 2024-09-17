@@ -109,6 +109,29 @@
             margin: 0;
             color: white;
         }
+        #controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 5px;
+    background-color: rgb(32, 32, 32);
+    border-radius: 10px;
+}
+
+#controls button {
+    background-color: rgba(0, 0, 0, 0.37);
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    color: salmon;
+    font-family: 'Courier New', Courier, monospace;
+    cursor: pointer;
+}
+
+#controls button:hover {
+    background-color: rgb(43, 43, 43);
+}
+
 
         #queueList li {
             padding: 5px;
@@ -164,6 +187,13 @@
             <div id="queueContainer">
                 <h3>NOW PLAYING</h3>
                 <ul id="queueList"></ul>
+                
+<div id="controls">
+    <button id="prevButton">Prev</button>
+    <button id="shuffleButton">Shuffle</button>
+    <button id="nextButton">Next</button>
+</div>
+
             </div>
         </div>
     </div>

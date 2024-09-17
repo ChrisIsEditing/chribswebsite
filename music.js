@@ -3,6 +3,7 @@ const keysPressed = new Set();
 let songs = [];
 const queue = [];
 let currentSongIndex = -1;
+let shuffleMode = false;
 
 function loadSongs() {
     fetch('music_list.json')
@@ -20,9 +21,22 @@ function loadSongs() {
 document.addEventListener('DOMContentLoaded', loadSongs);
 
 function playNextInQueue() {
-    if (queue.length === 0) return;
-    const nextSong = queue.shift(); 
-    playSong(nextSong.song, nextSong.index); 
+    if (queue.length === 0) {
+        console.log("Queue is empty.");
+        return;
+    }
+
+    let nextSong;
+    if (shuffleMode) {
+        // Shuffle mode
+        const randomIndex = Math.floor(Math.random() * queue.length);
+        nextSong = queue.splice(randomIndex, 1)[0];
+    } else {
+        // Normal mode
+        nextSong = queue.shift();
+    }
+
+    playSong(nextSong.song, nextSong.index);
 }
 
 function addToQueue(song, index) {
@@ -224,20 +238,6 @@ document.addEventListener('click', () => {
     }
 });
 
-document.getElementById('prevButton').addEventListener('click', playPreviousSong);
-document.getElementById('shuffleButton').addEventListener('click', shuffleQueue);
-document.getElementById('nextButton').addEventListener('click', playNextInQueue);
-
-let shuffleMode = false;
-
-function playPreviousSong() {
-    if (currentSongIndex > 0) {
-        playSong(songs[currentSongIndex - 1], currentSongIndex - 1);
-    } else if (queue.length > 0) {
-        playSong(queue[queue.length - 1].song, queue[queue.length - 1].index);
-    }
-}
-
 function shuffleQueue() {
     shuffleMode = !shuffleMode;
     if (shuffleMode) {
@@ -246,16 +246,17 @@ function shuffleQueue() {
     updateQueueDisplay(); 
 }
 
-function playNextInQueue() {
-    if (queue.length === 0) return;
-    if (shuffleMode) {
-        const randomIndex = Math.floor(Math.random() * queue.length);
-        const nextSong = queue.splice(randomIndex, 1)[0];
-        playSong(nextSong.song, nextSong.index);
+function playPreviousSong() {
+    if (currentSongIndex > 0) {
+        playSong(songs[currentSongIndex - 1], currentSongIndex - 1);
+    } else if (queue.length > 0) {
+        playSong(queue[queue.length - 1].song, queue[queue.length - 1].index);
     } else {
-        const nextSong = queue.shift();
-        playSong(nextSong.song, nextSong.index);
+        console.log("No previous song available.");
     }
 }
+
+document.getElementById('prevButton').addEventListener('click', playPreviousSong);
+document.getElementById('nextButton').addEventListener('click', playNextInQueue);
 
 audioPlayer.addEventListener('ended', playNextInQueue);

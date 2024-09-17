@@ -119,30 +119,6 @@ function drawAlbumCover(imageSrc) {
 }
 
 
-function drawMeter() {
-    requestAnimationFrame(drawMeter);
-    analyser.getByteFrequencyData(dataArray);
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    const barWidth = (canvas.width / bufferLength) * 2.5;
-    let barHeight;
-    let x = 0;
-
-    for (let i = 0; i < bufferLength; i++) {
-        barHeight = dataArray[i] / 2;
-
-        const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-        const colorStop = (i / bufferLength) * 0.8; // Meter buffer
-        gradient.addColorStop(0, `rgb(31, 10, 255)`); // Primary (Start)
-        gradient.addColorStop(1, `rgb(255, 0, 115)`); // Secondary (End)
-
-        ctx.fillStyle = gradient;
-        ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
-
-        x += barWidth + 1;
-    }
-}
 
 let drawInterval = 80; 
 let lastDrawTime = 0;
@@ -172,8 +148,8 @@ function drawMeter() {
             barHeight = dataArray[i] / 2;
 
             const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-            gradient.addColorStop(0, `hsl(${colorStop * 240}, 70%, 60%)`); // Blue
-            gradient.addColorStop(1, `hsl(${colorStop * 340}, 70%, 80%)`); // Pink
+            gradient.addColorStop(0, `rgb(31, 10, 255)`); // Start
+            gradient.addColorStop(1, `rgb(31, 10, 255)`); // End
 
             ctx.fillStyle = gradient;
             ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);

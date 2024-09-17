@@ -61,12 +61,14 @@ function searchSongs() {
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
 
     if (matchingSongs.length > 0) {
-        playSong(matchingSongs[0], songs.indexOf(matchingSongs[0])); 
-        addToQueue(matchingSongs[0], songs.indexOf(matchingSongs[0])); 
+        const songIndex = songs.findIndex(song => song.title === matchingSongs[0].title);
+        playSong(matchingSongs[0], songIndex);
+        addToQueue(matchingSongs[0], songIndex);
     } else {
         alert("I couldn't find that song :(");
     }
 }
+
 
 
 function playRandomSong() {

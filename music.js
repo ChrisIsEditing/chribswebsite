@@ -54,16 +54,6 @@ function playPreviousSong() {
     updateQueueDisplay();
 }
 
-function nextTrack() {
-    if (track_index < track_list.length - 1) {
-        track_index++;
-    } else {
-        track_index = 0; // Loop to start
-    }
-    const nextSong = track_list[track_index];
-    playSong(nextSong, track_index);
-}
-
 function playNextInQueue() {
     if (queue.length === 0) {
         console.log("Queue is empty.");
@@ -139,44 +129,96 @@ function searchSongs() {
         const foundSong = matchingSongs[0];
 
         if (currentSongIndex !== -1) {
-            
             addToQueue(foundSong, songIndex);
             console.log(`Added "${foundSong.title}" to the queue`);
         } else {
-            
             playSong(foundSong, songIndex);
-            
         }
     } else {
         alert("I couldn't find that song :(");
     }
 }
 
-function playRandomSong() {
-    if (songs.length === 0) return;
-    const randomIndex = Math.floor(Math.random() * songs.length);
-    playSong(songs[randomIndex], randomIndex);
-}
+function playSong(song, index) {
+    if (!song || !song.download_url) {
+        console.error("Invalid song or URL");
+        return;
+    }
 
-function playTestSong() {
     const audioSource = document.getElementById("audioSource");
-    audioSource.src = 'https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/japan.mp3';
-    const audioPlayer = document.getElementById("audioPlayer");
-    audioPlayer.load();
-    audioPlayer.play().catch(error => {
-        console.error("Error playing test song:", error);
-    });
-}
+    audioSource.src = song.download_url;
 
-function easteregg1() {
-    const audioSource = document.getElementById("audioSource");
-    audioSource.src = '/Music/Never Gonna Give You Up.mp3';
     const audioPlayer = document.getElementById("audioPlayer");
+    if (!audioPlayer) {
+        console.error("Audio player element not found");
+        return;
+    }
 
     audioPlayer.load();
     audioPlayer.play().catch(error => {
-        console.error("Error playing Easter egg 1:", error);
+        console.error("Error playing song:", error);
     });
+
+    if (currentSongIndex === -1) {
+        queue.length = 0;
+    }
+
+    currentSongIndex = index;
+    updateQueueDisplay();
+
+    const currentSongNameElement = document.getElementById("currentSongName");
+    if (currentSongNameElement) {
+        currentSongNameElement.textContent = song.title;
+    }
+
+    fetchAlbumArt(song.download_url); // Fetch and display album art
+}
+
+function fetchAlbumArt(url) {
+    jsmediatags.read(url, {
+        onSuccess: function (tag) {
+            const { tags } = tag;
+            if (tags && tags.picture) {
+                const picture = tags.picture;
+                const base64String = "data:" + picture.format + ";base64," + arrayBufferToBase64(picture.data);
+                displayAlbumArt(base64String);
+            }
+        },
+        onError: function (error) {
+            console.error("Error reading ID3 tags:", error);
+        }
+    });
+}
+
+function arrayBufferToBase64(buffer) {
+    let binary = '';
+    const bytes = new Uint8Array(buffer);
+    const len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+        binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
+}
+
+function displayAlbumArt(base64String) {
+    const img = new Image();
+    img.onload = function () {
+        const canvas = document.getElementById('volumeMeter');
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    };
+    img.src = base64String;
+}
+
+function autoPlayNextInQueue() {
+    if (queue.length > 0) {
+        const nextSong = queue.shift(); 
+        playSong(nextSong.song, nextSong.index);
+    } else {
+        console.log("Queue is empty. Playback stopped.");
+        currentSongIndex = -1; 
+    }
+    updateQueueDisplay();
 }
 
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -192,14 +234,6 @@ const dataArray = new Uint8Array(bufferLength);
 const canvas = document.getElementById('volumeMeter');
 const ctx = canvas.getContext('2d');
 
-function drawAlbumCover(imageSrc) {
-    const img = new Image();
-    img.onload = function() {
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    };
-    img.src = imageSrc;
-}
-
 let drawInterval = 80;
 let lastDrawTime = 0;
 
@@ -212,11 +246,6 @@ function drawMeter() {
         analyser.getByteFrequencyData(dataArray);
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        if (currentSongIndex !== -1 && songs[currentSongIndex] && songs[currentSongIndex].cover_url) {
-            const albumCoverUrl = songs[currentSongIndex].cover_url;
-            drawAlbumCover(albumCoverUrl);
-        }
 
         const barWidth = (canvas.width / bufferLength) * 2.5;
         let barHeight;
@@ -237,57 +266,6 @@ function drawMeter() {
     }
 }
 
-function autoPlayNextInQueue() {
-    if (queue.length > 0) {
-        const nextSong = queue.shift(); 
-        playSong(nextSong.song, nextSong.index);
-    } else {
-        console.log("Queue is empty. Playback stopped.");
-        currentSongIndex = -1; 
-    }
-    updateQueueDisplay();
-}
-
-function playSong(song, index) {
-    if (!song || !song.download_url) {
-        console.error("Invalid song or URL");
-        return;
-    }
-
-    const audioSource = document.getElementById("audioSource");
-    if (!audioSource) {
-        console.error("Audio source element not found");
-        return;
-    }
-    
-    audioSource.src = song.download_url; 
-    
-    const audioPlayer = document.getElementById("audioPlayer");
-    if (!audioPlayer) {
-        console.error("Audio player element not found");
-        return;
-    }
-
-    audioPlayer.load();
-    audioPlayer.play().catch(error => {
-        console.error("Error playing song:", error);
-    });
-
-   
-    if (currentSongIndex === -1) {
-        queue.length = 0;
-    }
-
-    currentSongIndex = index;
-    updateQueueDisplay();
-
- 
-    const currentSongNameElement = document.getElementById("currentSongName");
-    if (currentSongNameElement) {
-        currentSongNameElement.textContent = song.title;
-    }
-}
-
 audioPlayer.addEventListener('ended', autoPlayNextInQueue);
 
 audioPlayer.onplay = function() {
@@ -300,7 +278,7 @@ audioPlayer.onplay = function() {
 };
 
 audioPlayer.onpause = function() {
-    
+    // Optional: Pause meter animation
 };
 
 audioPlayer.onloadeddata = function() {

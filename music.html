@@ -92,7 +92,7 @@
 
         #currentSongName {
     position: absolute;
-    left: -30px; 
+    left: -35px; 
     top: 50%;
     writing-mode: vertical-rl;
     transform: rotate(180deg) translateY(50%);
@@ -105,7 +105,7 @@
     max-height: 280px;
     overflow: hidden;
     text-overflow: ellipsis;
-}
+        }
 
         #queueContainer {
             width: 250px;
@@ -217,6 +217,7 @@
                 <canvas id="volumeMeter"></canvas>
             </div>
             <div id="queueContainer">
+                <div id="songYear"></div>
                 <h3>UP NEXT:</h3>
                 <ul id="queueList"></ul>
             </div>
@@ -236,5 +237,7 @@
     </div>
 
     <script src="music.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.0.0/jsmediatags.min.js"></script>
+
 </body>
 </html>

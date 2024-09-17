@@ -56,7 +56,7 @@ function playPreviousSong() {
 }
 
 function playNextInQueue() {
-    if (queue.length === 0) {
+    if (queue.length === 1) {
         console.log("Queue is empty.");
         return;
     }
@@ -67,6 +67,7 @@ function playNextInQueue() {
     }
     updateQueueDisplay();
 }
+
 
 function addToQueue(song, index) {
     queue.push({ song, index });
@@ -174,7 +175,7 @@ function drawAlbumCover(imageSrc) {
     img.src = imageSrc;
 }
 
-let drawInterval = 100; 
+let drawInterval = 80; 
 let lastDrawTime = 0;
 
 function drawMeter() {

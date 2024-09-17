@@ -20,8 +20,6 @@ let songs = [];
 const queue = [];
 let currentSongIndex = -1;
 
-
-
 function loadSongs() {
     fetch('music_list.json')
         .then(response => response.json())
@@ -29,7 +27,7 @@ function loadSongs() {
             songs = data.map(item => ({
                 title: item.name.replace('.mp3', ''),
                 download_url: item.download_url,
-                cover_url: item.cover_url // Assuming cover_url is available
+                cover_url: item.cover_url
             }));
             console.log(songs);
         })
@@ -55,11 +53,12 @@ function playPreviousSong() {
     playSong(previousSong.song, previousSong.index);
     updateQueueDisplay();
 }
+
 function nextTrack() {
     if (track_index < track_list.length - 1) {
         track_index++;
     } else {
-        track_index = 0; // Loop to start
+        track_index = 0; 
     }
     const nextSong = track_list[track_index];
     playSong(nextSong, track_index);
@@ -132,18 +131,18 @@ function searchSongs() {
         const foundSong = matchingSongs[0];
 
         if (currentSongIndex !== -1) {
-            // song is already playing, so add song to queue
+            
             addToQueue(foundSong, songIndex);
             console.log(`Added "${foundSong.title}" to the queue`);
         } else {
-            // No song currently playing, so play found song
+            
             playSong(foundSong, songIndex);
-            addToQueue(foundSong, songIndex);
+            
         }
     } else {
-        alert("I couldn't find that song :(")};
+        alert("I couldn't find that song :(");
+    }
 }
-
 
 function playRandomSong() {
     if (songs.length === 0) return;
@@ -266,9 +265,15 @@ function playSong(song, index) {
         console.error("Error playing song:", error);
     });
 
+   
+    if (currentSongIndex === -1) {
+        queue.length = 0;
+    }
+
     currentSongIndex = index;
     updateQueueDisplay();
 }
+
 audioPlayer.addEventListener('ended', autoPlayNextInQueue);
 
 audioPlayer.onplay = function() {

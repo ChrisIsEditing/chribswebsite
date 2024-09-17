@@ -20,7 +20,7 @@ function loadSongs() {
 
 document.addEventListener('DOMContentLoaded', loadSongs);
 
-// Handle queue functionality
+
 function playNextInQueue() {
     if (queue.length === 0) {
         console.log("Queue is empty.");
@@ -38,6 +38,7 @@ function playNextInQueue() {
     }
 
     playSong(nextSong.song, nextSong.index);
+    updateQueueDisplay();
 }
 
 function addToQueue(song, index) {
@@ -71,7 +72,7 @@ function updateQueueDisplay() {
     });
 }
 
-// Search and play song
+
 function searchSongs() {
     const query = document.getElementById("searchInput").value.toLowerCase();
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
@@ -85,14 +86,14 @@ function searchSongs() {
     }
 }
 
-// Play random song
+
 function playRandomSong() {
     if (songs.length === 0) return; 
     const randomIndex = Math.floor(Math.random() * songs.length);
-    playSong(songs[randomIndex], -1);
+    playSong(songs[randomIndex], randomIndex);
 }
 
-// Play a test song
+
 function playTestSong() {
     const audioSource = document.getElementById("audioSource");
     audioSource.src = 'https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/japan.mp3'; 
@@ -103,7 +104,7 @@ function playTestSong() {
     });
 }
 
-// Easter egg function
+
 function easteregg1() {
     const audioSource = document.getElementById("audioSource");
     audioSource.src = '/Music/Never Gonna Give You Up.mp3';
@@ -199,8 +200,8 @@ function playSong(song, index) {
         console.error("Error playing song:", error);
     });
 
-    currentSongIndex = index; 
-    updateQueueDisplay(); 
+    currentSongIndex = index;
+    updateQueueDisplay();
 }
 
 audioPlayer.onplay = function() {
@@ -246,17 +247,25 @@ document.addEventListener('click', () => {
 
 function shuffleQueue() {
     shuffleMode = !shuffleMode;
+    const shuffleButton = document.getElementById('shuffleButton');
     if (shuffleMode) {
-        queue.sort(() => Math.random() - 0.5); 
+        shuffleButton.textContent = 'Shuffle: On';
+      
+        for (let i = queue.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [queue[i], queue[j]] = [queue[j], queue[i]];
+        }
+    } else {
+        shuffleButton.textContent = 'Shuffle: Off';
+        
     }
-    updateQueueDisplay(); 
+    updateQueueDisplay();
 }
 
 function playPreviousSong() {
     if (currentSongIndex > 0) {
-        playSong(songs[currentSongIndex - 1], currentSongIndex - 1);
-    } else if (queue.length > 0) {
-        playSong(queue[queue.length - 1].song, queue[queue.length - 1].index);
+        currentSongIndex--;
+        playSong(songs[currentSongIndex], currentSongIndex);
     } else {
         console.log("No previous song available.");
     }

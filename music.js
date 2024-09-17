@@ -20,6 +20,7 @@ function loadSongs() {
 
 document.addEventListener('DOMContentLoaded', loadSongs);
 
+// Handle queue functionality
 function playNextInQueue() {
     if (queue.length === 0) {
         console.log("Queue is empty.");
@@ -70,6 +71,7 @@ function updateQueueDisplay() {
     });
 }
 
+// Search and play song
 function searchSongs() {
     const query = document.getElementById("searchInput").value.toLowerCase();
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
@@ -83,12 +85,14 @@ function searchSongs() {
     }
 }
 
+// Play random song
 function playRandomSong() {
     if (songs.length === 0) return; 
     const randomIndex = Math.floor(Math.random() * songs.length);
     playSong(songs[randomIndex], -1);
 }
 
+// Play a test song
 function playTestSong() {
     const audioSource = document.getElementById("audioSource");
     audioSource.src = 'https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/japan.mp3'; 
@@ -99,6 +103,7 @@ function playTestSong() {
     });
 }
 
+// Easter egg function
 function easteregg1() {
     const audioSource = document.getElementById("audioSource");
     audioSource.src = '/Music/Never Gonna Give You Up.mp3';
@@ -110,6 +115,7 @@ function easteregg1() {
     });
 }
 
+// Visualize audio data
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 const analyser = audioContext.createAnalyser();
 const audioPlayer = document.getElementById('audioPlayer');
@@ -258,5 +264,16 @@ function playPreviousSong() {
 
 document.getElementById('prevButton').addEventListener('click', playPreviousSong);
 document.getElementById('nextButton').addEventListener('click', playNextInQueue);
+document.getElementById('shuffleButton').addEventListener('click', shuffleQueue);
+document.getElementById('downloadButton').addEventListener('click', () => {
+    if (currentSongIndex === -1) {
+        console.log("No song is currently playing.");
+        return;
+    }
+    const song = songs[currentSongIndex];
+    if (song && song.download_url) {
+        window.open(song.download_url, '_blank');
+    }
+});
 
 audioPlayer.addEventListener('ended', playNextInQueue);

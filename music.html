@@ -109,29 +109,34 @@
             margin: 0;
             color: white;
         }
+
         #controls {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    padding: 5px;
-    background-color: rgb(32, 32, 32);
-    border-radius: 10px;
-}
+            display: flex;
+            justify-content: center; 
+            margin-top: 10px;
+            background-color: rgba(19, 19, 19, 0);
+            border-radius: 10px;
+            padding: 3px;
+            margin-bottom: 10px;
+            width: 100%;
+            max-width: 400px; 
+            margin: 0 auto; 
+        }
 
-#controls button {
-    background-color: rgba(0, 0, 0, 0.37);
-    border: none;
-    padding: 10px;
-    border-radius: 10px;
-    color: salmon;
-    font-family: 'Courier New', Courier, monospace;
-    cursor: pointer;
-}
+        #controls button {
+            background-color: rgba(17, 17, 17, 0.726);
+            border: none;
+            padding: 8px;
+            border-radius: 10px;
+            color: salmon;
+            font-family: 'Courier New', Courier, monospace;
+            cursor: pointer;
+            margin: 0 5px; /* Space between buttons */
+        }
 
-#controls button:hover {
-    background-color: rgb(43, 43, 43);
-}
-
+        #controls button:hover {
+            background-color: rgb(43, 43, 43);
+        }
 
         #queueList li {
             padding: 5px;
@@ -143,6 +148,8 @@
             background-color: #000000;
             border-radius: 0 0 15px 15px;
             margin-top: 20px;
+            position: relative;
+            
         }
 
         audio {
@@ -151,7 +158,7 @@
             align-self: center;
         }
 
-        /* Mobile adjustments */
+        /* mobile adjustments */
         @media (max-width: 768px) {
             #container {
                 flex-direction: column;
@@ -187,18 +194,17 @@
             <div id="queueContainer">
                 <h3>NOW PLAYING</h3>
                 <ul id="queueList"></ul>
-                
-<div id="controls">
-    <button id="prevButton">Prev</button>
-    <button id="shuffleButton">Shuffle</button>
-    <button id="nextButton">Next</button>
-</div>
-
             </div>
         </div>
     </div>
 
     <div id="player-container">
+        <div id="controls">
+            <button id="prevButton">Prev</button>
+            <button id="nextButton">Next</button>
+            <button id="shuffleButton">Shuffle</button>
+            <button id="downloadButton">Download</button>
+        </div>
         <audio id="audioPlayer" controls crossorigin="anonymous">
             <source id="audioSource" type="audio/mpeg"></source>
             Your browser does not support the audio element.
@@ -207,6 +213,5 @@
 
     <script src="music.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jsmediatags@3.9.5/dist/jsmediatags.min.js"></script>
-
 </body>
 </html>

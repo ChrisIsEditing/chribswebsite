@@ -129,17 +129,19 @@ function searchSongs() {
 
     if (matchingSongs.length > 0) {
         const songIndex = songs.findIndex(song => song.title === matchingSongs[0].title);
-        
-        if (currentSongIndex === -1) {
-            // No song is currently playing, so play the first matching song
-            playSong(matchingSongs[0], songIndex);
+        const foundSong = matchingSongs[0];
+
+        if (currentSongIndex !== -1) {
+            // A song is already playing, so add the found song to the queue
+            addToQueue(foundSong, songIndex);
+            console.log(`Added "${foundSong.title}" to the queue`);
         } else {
-            // A song is currently playing, add the new song to the queue
-            addToQueue(matchingSongs[0], songIndex);
+            // No song is currently playing, so play the found song
+            playSong(foundSong, songIndex);
+            addToQueue(foundSong, songIndex);
         }
     } else {
-        alert("I couldn't find that song :(");
-    }
+        alert("I couldn't find that song :(")};
 }
 
 

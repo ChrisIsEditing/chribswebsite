@@ -129,12 +129,19 @@ function searchSongs() {
 
     if (matchingSongs.length > 0) {
         const songIndex = songs.findIndex(song => song.title === matchingSongs[0].title);
-        playSong(matchingSongs[0], songIndex);
-        addToQueue(matchingSongs[0], songIndex);
+        
+        if (currentSongIndex === -1) {
+            // No song is currently playing, so play the first matching song
+            playSong(matchingSongs[0], songIndex);
+        } else {
+            // A song is currently playing, add the new song to the queue
+            addToQueue(matchingSongs[0], songIndex);
+        }
     } else {
         alert("I couldn't find that song :(");
     }
 }
+
 
 function playRandomSong() {
     if (songs.length === 0) return;

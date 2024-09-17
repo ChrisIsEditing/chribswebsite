@@ -124,7 +124,7 @@ let drawInterval = 80;
 let lastDrawTime = 0;
 
 function drawMeter() {
-    requestAnimationFrame(drawMeter);
+    requestAnimationFrame(drawMeter); // Start the animation loop
     const now = performance.now();
     
     if (now - lastDrawTime > drawInterval) {
@@ -133,11 +133,9 @@ function drawMeter() {
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        
-        if (currentSongIndex !== -1 && songs[currentSongIndex]) {
+        if (currentSongIndex !== -1 && songs[currentSongIndex] && songs[currentSongIndex].cover_url) {
             const albumCoverUrl = songs[currentSongIndex].cover_url;
-                drawAlbumCover(albumCoverUrl);
-            }
+            drawAlbumCover(albumCoverUrl);
         }
 
         const barWidth = (canvas.width / bufferLength) * 2.5;
@@ -149,7 +147,7 @@ function drawMeter() {
 
             const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
             gradient.addColorStop(0, `rgb(31, 10, 255)`); // Start
-            gradient.addColorStop(1, `rgb(31, 10, 255)`); // End
+            gradient.addColorStop(1, `rgb(255, 0, 115)`); // End
 
             ctx.fillStyle = gradient;
             ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
@@ -157,6 +155,8 @@ function drawMeter() {
             x += barWidth + 1;
         }
     }
+}
+
 
 
 function playSong(song, index) {

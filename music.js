@@ -86,8 +86,15 @@ function playTestSong() {
 }
 
 
-function redirectToYouTube() {
-    window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'; 
+function easteregg1() {
+    const audioSource = document.getElementById("audioSource");
+    audioSource.src = '/Music/Never Gonna Give You Up.mp3';
+    const audioPlayer = document.getElementById("audioPlayer");
+
+    audioPlayer.load();
+    audioPlayer.play().catch(error => {
+        console.error("Error playing Easter egg 1:", error);
+    });
 }
 
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -126,9 +133,9 @@ function drawMeter() {
         barHeight = dataArray[i] / 2;
 
         const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-        const colorStop = (i / bufferLength) * 0.6; // 
-        gradient.addColorStop(0, `hsl(${colorStop * 240}, 70%, 60%)`); // Blue
-        gradient.addColorStop(1, `hsl(${colorStop * 340}, 70%, 80%)`); // Pink
+        const colorStop = (i / bufferLength) * 0.8; // Meter buffer
+        gradient.addColorStop(0, `rgb(31, 10, 255)`); // Primary (Start)
+        gradient.addColorStop(1, `rgb(255, 0, 115)`); // Secondary (End)
 
         ctx.fillStyle = gradient;
         ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
@@ -137,7 +144,7 @@ function drawMeter() {
     }
 }
 
-let drawInterval = 60; 
+let drawInterval = 80; 
 let lastDrawTime = 0;
 
 function drawMeter() {
@@ -165,7 +172,6 @@ function drawMeter() {
             barHeight = dataArray[i] / 2;
 
             const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-            const colorStop = (i / bufferLength) * 0.6; 
             gradient.addColorStop(0, `hsl(${colorStop * 240}, 70%, 60%)`); // Blue
             gradient.addColorStop(1, `hsl(${colorStop * 340}, 70%, 80%)`); // Pink
 
@@ -206,7 +212,7 @@ audioPlayer.onplay = function() {
     drawMeter();
 };
 
-// Event listeners
+
 document.getElementById("searchButton").addEventListener("click", searchSongs);
 document.addEventListener('keydown', function(event) {
     keysPressed.add(event.key.toLowerCase());
@@ -223,7 +229,7 @@ document.addEventListener('keydown', function(event) {
 
     if (keysPressed.has('r') && keysPressed.has('i') && keysPressed.has('c') && keysPressed.has('k')) {
         event.preventDefault();
-        redirectToYouTube();
+        easteregg1();
     }
 });
 

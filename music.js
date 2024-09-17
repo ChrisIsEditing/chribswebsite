@@ -19,8 +19,7 @@ const keysPressed = new Set();
 let songs = [];
 const queue = [];
 let currentSongIndex = -1;
-let track_list = [];
-let track_index = 0; // Default starting index
+
 
 
 function loadSongs() {
@@ -72,15 +71,12 @@ function playNextInQueue() {
         return;
     }
 
-    queue.shift(); 
-    if (queue.length > 0) {
-        nextTrack(); 
-    } else {
-        console.log("Queue is now empty.");
+    const nextSong = queue.shift();
+    if (nextSong) {
+        playSong(nextSong.song, nextSong.index);
     }
-    updateQueueDisplay(); 
+    updateQueueDisplay();
 }
-
 
 function addToQueue(song, index) {
     queue.push({ song, index });

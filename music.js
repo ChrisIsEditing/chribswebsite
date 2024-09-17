@@ -21,25 +21,53 @@ function loadSongs() {
 document.addEventListener('DOMContentLoaded', loadSongs);
 
 
-function playNextInQueue() {
+function playPreviousSong() {
     if (queue.length === 0) {
-        console.log("Queue is empty.");
-        return;
+      console.log("Queue is empty.");
+      return;
     }
-
+  
+    let previousSong;
+    if (shuffleMode) {
+      // Shuffle mode
+      const currentIndex = queue.findIndex(item => item.index === currentSongIndex);
+      if (currentIndex === 0) {
+        previousSong = queue[queue.length - 1];
+      } else {
+        previousSong = queue[currentIndex - 1];
+      }
+    } else {
+      // Normal mode
+      const currentIndex = queue.findIndex(item => item.index === currentSongIndex);
+      if (currentIndex === 0) {
+        previousSong = queue[queue.length - 1];
+      } else {
+        previousSong = queue[currentIndex - 1];
+      }
+    }
+  
+    playSong(previousSong.song, previousSong.index);
+    updateQueueDisplay();
+  }
+  function playNextInQueue() {
+    if (queue.length === 0) {
+      console.log("Queue is empty.");
+      return;
+    }
+  
     let nextSong;
     if (shuffleMode) {
-        // Shuffle mode
-        const randomIndex = Math.floor(Math.random() * queue.length);
-        nextSong = queue.splice(randomIndex, 1)[0];
+      // Shuffle mode
+      const randomIndex = Math.floor(Math.random() * queue.length);
+      nextSong = queue.splice(randomIndex, 1)[0];
     } else {
-        // Normal mode
-        nextSong = queue.shift();
+      // Normal mode
+      nextSong = queue.shift();
     }
-
+  
     playSong(nextSong.song, nextSong.index);
     updateQueueDisplay();
-}
+  }
 
 function addToQueue(song, index) {
     queue.push({ song, index });
@@ -71,8 +99,23 @@ function updateQueueDisplay() {
         queueList.appendChild(listItem);
     });
 }
-
-
+function downloadCurrentSong() {
+    if (currentSongIndex === -1) {
+      console.log("No song is currently playing.");
+      return;
+    }
+  
+    const song = songs[currentSongIndex];
+    const downloadUrl = song.download_url;
+    const a = document.createElement("a");
+    a.href = downloadUrl;
+    a.download = song.title + ".mp3";
+    a.click();
+  }
+  function toggleShuffleMode() {
+    shuffleMode = !shuffleMode;
+    document.getElementById("shuffleButton").textContent = shuffleMode ? "Shuffle On" : "Shuffle Off";
+  }
 function searchSongs() {
     const query = document.getElementById("searchInput").value.toLowerCase();
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));

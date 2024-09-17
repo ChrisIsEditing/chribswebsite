@@ -132,11 +132,11 @@ function searchSongs() {
         const foundSong = matchingSongs[0];
 
         if (currentSongIndex !== -1) {
-            // A song is already playing, so add the found song to the queue
+            // song is already playing, so add song to queue
             addToQueue(foundSong, songIndex);
             console.log(`Added "${foundSong.title}" to the queue`);
         } else {
-            // No song is currently playing, so play the found song
+            // No song currently playing, so play found song
             playSong(foundSong, songIndex);
             addToQueue(foundSong, songIndex);
         }

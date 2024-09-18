@@ -110,13 +110,13 @@ function searchSongs() {
     const query = document.getElementById("searchInput").value.toLowerCase();
 
     if (query === "/random") {
-        
-        const shuffledSongs = songs.sort(() => 0.5 - Math.random()).slice(0, 30);
-        
+        const shuffledSongs = songs
+            .filter(song => songs.indexOf(song) !== currentSongIndex) // Exclude the current song
+            .sort(() => 0.5 - Math.random())
+            .slice(0, 30);
         
         shuffledSongs.forEach((song, index) => addToQueue(song, songs.indexOf(song)));
 
-        
         if (shuffledSongs.length > 0) {
             playSong(shuffledSongs[0], songs.indexOf(shuffledSongs[0]));
         }
@@ -124,7 +124,6 @@ function searchSongs() {
     }
 
     if (query === "/fnaf") {
-        
         const fnafSongs = [
             "five nights at freddy's", 
             "you can't hide", 
@@ -138,29 +137,25 @@ function searchSongs() {
             "this comes from inside",
         ];
 
-        
         const matchingFnafSongs = songs.filter(song =>
-            fnafSongs.includes(song.title.toLowerCase())
+            fnafSongs.includes(song.title.toLowerCase()) &&
+            songs.indexOf(song) !== currentSongIndex // Exclude the current song
         );
 
-        
-        matchingFnafSongs.forEach((song, index) => addToQueue(song, songs.indexOf(song)));
-
-        
+        matchingFnafSongs.forEach(song => addToQueue(song, songs.indexOf(song)));
         if (matchingFnafSongs.length > 0) {
             playSong(matchingFnafSongs[0], songs.indexOf(matchingFnafSongs[0]));
         }
         return;
     }
 
-    
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
 
     if (matchingSongs.length > 0) {
         const songIndex = songs.findIndex(song => song.title === matchingSongs[0].title);
         const foundSong = matchingSongs[0];
 
-        if (currentSongIndex !== -1) {
+        if (currentSongIndex !== -1 && songIndex !== currentSongIndex) {
             addToQueue(foundSong, songIndex);
             console.log(`Added "${foundSong.title}" to the queue`);
         } else {
@@ -170,6 +165,7 @@ function searchSongs() {
         alert("I couldn't find that song :(");
     }
 }
+
 //I have no clue what i'm doing
 
 

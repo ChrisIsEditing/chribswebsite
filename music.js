@@ -132,20 +132,13 @@ function searchSongs() {
     const query = document.getElementById("searchInput").value.toLowerCase();
 
     if (query === "/random") {
-        
         const filteredSongs = songs.filter((song, index) => index !== currentSongIndex);
         const shuffledSongs = filteredSongs.sort(() => 0.5 - Math.random()).slice(0, 30);
 
-       
-        queue.length = 0;
-
         shuffledSongs.forEach(song => addToQueue(song, songs.indexOf(song)));
 
-        if (shuffledSongs.length > 0) {
-            
-            if (currentSongIndex === -1) {
-                playSong(shuffledSongs[0], songs.indexOf(shuffledSongs[0]));
-            }
+        if (shuffledSongs.length > 0 && currentSongIndex === -1) {
+            playSong(shuffledSongs[0], songs.indexOf(shuffledSongs[0]));
         }
         return;
     }
@@ -164,44 +157,31 @@ function searchSongs() {
             "this comes from inside",
         ];
 
-
         const matchingFnafSongs = songs
             .filter(song => fnafSongs.includes(song.title.toLowerCase()) &&
                             songs.indexOf(song) !== currentSongIndex);
 
-        queue.length = 0;
-
         matchingFnafSongs.forEach(song => addToQueue(song, songs.indexOf(song)));
 
-        if (matchingFnafSongs.length > 0) {
-           
-            if (currentSongIndex === -1) {
-                playSong(matchingFnafSongs[0], songs.indexOf(matchingFnafSongs[0]));
-            }
+        if (matchingFnafSongs.length > 0 && currentSongIndex === -1) {
+            playSong(matchingFnafSongs[0], songs.indexOf(matchingFnafSongs[0]));
         }
         return;
     }
 
     if (query === "/rickroll") {
         const rickroll = [
-            "Never Gonna Give You Up", 
-
+            "Never Gonna Give You Up",
         ];
-
 
         const matchingRickroll = songs
             .filter(song => rickroll.includes(song.title.toLowerCase()) &&
                             songs.indexOf(song) !== currentSongIndex);
 
-        queue.length = 0;
-
         matchingRickroll.forEach(song => addToQueue(song, songs.indexOf(song)));
 
-        if (matchingRickroll.length > 0) {
-           
-            if (currentSongIndex === -1) {
-                playSong(matchingRickroll[0], songs.indexOf(matchingRickroll[0]));
-            }
+        if (matchingRickroll.length > 0 && currentSongIndex === -1) {
+            playSong(matchingRickroll[0], songs.indexOf(matchingRickroll[0]));
         }
         return;
     }
@@ -209,18 +189,14 @@ function searchSongs() {
     if (query === "/all") {
         const filteredSongs = songs.filter((song, index) => index !== currentSongIndex);
 
-        queue.length = 0;
-
         filteredSongs.forEach(song => addToQueue(song, songs.indexOf(song)));
 
-        if (filteredSongs.length > 0) {
-            if (currentSongIndex === -1) {
-                playSong(filteredSongs[0], songs.indexOf(filteredSongs[0]));
-            }
+        if (filteredSongs.length > 0 && currentSongIndex === -1) {
+            playSong(filteredSongs[0], songs.indexOf(filteredSongs[0]));
         }
         return;
     }
-    
+
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
 
     if (matchingSongs.length > 0) {
@@ -237,6 +213,7 @@ function searchSongs() {
         alert("I couldn't find that song :(");
     }
 }
+
 
 //I have no clue what i'm doing
 

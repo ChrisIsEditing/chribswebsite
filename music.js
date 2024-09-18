@@ -110,16 +110,19 @@ function searchSongs() {
     const query = document.getElementById("searchInput").value.toLowerCase();
 
     if (query === "/random") {
-       
-        const shuffledSongs = songs.sort(() => 0.5 - Math.random());
         
-       
-        shuffledSongs.forEach((song, index) => addToQueue(song, index));
+        const shuffledSongs = songs.sort(() => 0.5 - Math.random()).slice(0, 30);
+        
+        
+        shuffledSongs.forEach((song, index) => addToQueue(song, songs.indexOf(song)));
 
-      
-        playNextInQueue();
+        
+        if (shuffledSongs.length > 0) {
+            playSong(shuffledSongs[0], songs.indexOf(shuffledSongs[0]));
+        }
         return;
     }
+
     if (query === "/fnaf") {
         
         const fnafSongs = [
@@ -127,25 +130,29 @@ function searchSongs() {
             "you can't hide", 
             "join us for a bite", 
             "i got no time",
-            "this comes from inside",
             "stay calm",
             "stuck inside",
             "it's me",
             "it's been so long",
             "they'll find you",
+            "this comes from inside",
+        ];
 
+        
+        const matchingFnafSongs = songs.filter(song =>
+            fnafSongs.includes(song.title.toLowerCase())
+        );
 
-        ]; 
+        
+        matchingFnafSongs.forEach((song, index) => addToQueue(song, songs.indexOf(song)));
 
-        const matchingFnafSongs = songs.filter(song => fnafSongs.includes(song.title.toLowerCase()));
-
-      
-        matchingFnafSongs.forEach((song, index) => addToQueue(song, index));
-
-      
-        playNextInQueue();
+        
+        if (matchingFnafSongs.length > 0) {
+            playSong(matchingFnafSongs[0], songs.indexOf(matchingFnafSongs[0]));
+        }
         return;
     }
+
     
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
 
@@ -163,6 +170,7 @@ function searchSongs() {
         alert("I couldn't find that song :(");
     }
 }
+//I have no clue what i'm doing
 
 
 function playSong(song, index) {

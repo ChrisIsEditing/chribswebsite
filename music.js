@@ -120,7 +120,32 @@ function searchSongs() {
         playNextInQueue();
         return;
     }
+    if (query === "/fnaf") {
+        
+        const fnafSongs = [
+            "five nights at freddy's", 
+            "you can't hide", 
+            "join us for a bite", 
+            "i got no time",
+            "this comes from inside",
+            "stay calm",
+            "stuck inside",
+            "it's me",
+            "it's been so long",
+            "they'll find you",
+            
 
+        ]; 
+
+        const matchingFnafSongs = songs.filter(song => fnafSongs.includes(song.title.toLowerCase()));
+
+      
+        matchingFnafSongs.forEach((song, index) => addToQueue(song, index));
+
+      
+        playNextInQueue();
+        return;
+    }
     
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
 

@@ -108,6 +108,20 @@ function downloadCurrentSong() {
 
 function searchSongs() {
     const query = document.getElementById("searchInput").value.toLowerCase();
+
+    if (query === "/random") {
+       
+        const shuffledSongs = songs.sort(() => 0.5 - Math.random());
+        
+       
+        shuffledSongs.forEach((song, index) => addToQueue(song, index));
+
+      
+        playNextInQueue();
+        return;
+    }
+
+    
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
 
     if (matchingSongs.length > 0) {
@@ -124,6 +138,7 @@ function searchSongs() {
         alert("I couldn't find that song :(");
     }
 }
+
 
 function playSong(song, index) {
     if (!song || !song.download_url) {

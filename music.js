@@ -133,7 +133,7 @@ function searchSongs() {
             "it's me",
             "it's been so long",
             "they'll find you",
-            
+
 
         ]; 
 
@@ -197,7 +197,7 @@ function playSong(song, index) {
         currentSongNameElement.textContent = song.title;
     }
 
-    fetchAlbumArt(song.download_url); // Fetch and display album art
+    fetchAlbumArt(song.download_url); 
 }
 
 function fetchAlbumArt(url) {

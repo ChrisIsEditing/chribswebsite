@@ -110,15 +110,19 @@ function searchSongs() {
     const query = document.getElementById("searchInput").value.toLowerCase();
 
     if (query === "/random") {
+        // Exclude current song from shuffle
         const shuffledSongs = songs
-            .filter(song => songs.indexOf(song) !== currentSongIndex) // Exclude the current song
+            .filter((song, index) => index !== currentSongIndex) // Exclude current song
             .sort(() => 0.5 - Math.random())
             .slice(0, 30);
-        
-        shuffledSongs.forEach((song, index) => addToQueue(song, songs.indexOf(song)));
+
+        shuffledSongs.forEach((song) => addToQueue(song, songs.indexOf(song)));
 
         if (shuffledSongs.length > 0) {
-            playSong(shuffledSongs[0], songs.indexOf(shuffledSongs[0]));
+            
+            if (currentSongIndex === -1 || shuffledSongs[0].title !== songs[currentSongIndex].title) {
+                playSong(shuffledSongs[0], songs.indexOf(shuffledSongs[0]));
+            }
         }
         return;
     }
@@ -137,18 +141,23 @@ function searchSongs() {
             "this comes from inside",
         ];
 
-        const matchingFnafSongs = songs.filter(song =>
-            fnafSongs.includes(song.title.toLowerCase()) &&
-            songs.indexOf(song) !== currentSongIndex // Exclude the current song
-        );
+        
+        const matchingFnafSongs = songs
+            .filter((song) => fnafSongs.includes(song.title.toLowerCase()) &&
+                             songs.indexOf(song) !== currentSongIndex); // Exclude current song
 
-        matchingFnafSongs.forEach(song => addToQueue(song, songs.indexOf(song)));
+        matchingFnafSongs.forEach((song) => addToQueue(song, songs.indexOf(song)));
+
         if (matchingFnafSongs.length > 0) {
-            playSong(matchingFnafSongs[0], songs.indexOf(matchingFnafSongs[0]));
+            // Edon't add the currently playing song ever again.
+            if (currentSongIndex === -1 || matchingFnafSongs[0].title !== songs[currentSongIndex].title) {
+                playSong(matchingFnafSongs[0], songs.indexOf(matchingFnafSongs[0]));
+            }
         }
         return;
     }
 
+    
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
 
     if (matchingSongs.length > 0) {

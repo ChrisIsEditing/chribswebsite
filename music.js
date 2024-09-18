@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
     const searchButton = document.getElementById("searchButton");
-    const prevButton = document.getElementById("prevButton");
+    const submitButton = document.getElementById("submitButton");
     const nextButton = document.getElementById("nextButton");
     const downloadButton = document.getElementById("downloadButton");
 
-    if (!searchButton || !prevButton || !nextButton || !downloadButton) {
+    if (!searchButton || !submitButton || !nextButton || !downloadButton) {
         console.error("One or more buttons are missing from the HTML.");
         return;
     }
 
     searchButton.addEventListener("click", searchSongs);
-    prevButton.addEventListener("click", playPreviousSong);
+    submitButton.addEventListener("click", submitSong);
     nextButton.addEventListener("click", playNextInQueue);
     downloadButton.addEventListener("click", downloadCurrentSong);
 });
@@ -36,22 +36,8 @@ function loadSongs() {
 
 document.addEventListener('DOMContentLoaded', loadSongs);
 
-function playPreviousSong() {
-    if (queue.length === 0) {
-        console.log("Queue is empty.");
-        return;
-    }
-
-    let previousSong;
-    const currentIndex = queue.findIndex(item => item.index === currentSongIndex);
-    if (currentIndex === 0) {
-        previousSong = queue[queue.length - 1];
-    } else {
-        previousSong = queue[currentIndex - 1];
-    }
-
-    playSong(previousSong.song, previousSong.index);
-    updateQueueDisplay();
+function submitSong() {
+    window.open('https://forms.gle/ufuFncQVN1HaQH1a6', '_blank');
 }
 
 function playNextInQueue() {

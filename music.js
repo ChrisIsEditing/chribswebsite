@@ -74,7 +74,7 @@ function updateQueueDisplay() {
         emptyMessage.style.color = "#888";
         queueList.appendChild(emptyMessage);
     } else {
-        queue.forEach(item => {
+        queue.forEach((item, index) => {
             const listItem = document.createElement("li");
             listItem.textContent = item.song.title;
 
@@ -85,12 +85,34 @@ function updateQueueDisplay() {
                 listItem.classList.add('current-song');
             } else {
                 listItem.classList.add('queue-song');
+                
+                listItem.addEventListener('click', () => {
+                    playSelectedSong(index);
+                });
             }
 
             queueList.appendChild(listItem);
         });
     }
 }
+
+function playSelectedSong(queueIndex) {
+    if (queueIndex < 0 || queueIndex >= queue.length) {
+        console.error("Invalid queue index");
+        return;
+    }
+
+    const song = queue[queueIndex].song;
+    const index = queue[queueIndex].index;
+
+    
+    playSong(song, index);
+
+    
+    queue.splice(queueIndex, 1);
+    updateQueueDisplay();
+}
+
 
 function downloadCurrentSong() {
     if (currentSongIndex === -1) {
@@ -160,6 +182,44 @@ function searchSongs() {
         return;
     }
 
+    if (query === "/rickroll") {
+        const rickroll = [
+            "Never Gonna Give You Up", 
+
+        ];
+
+
+        const matchingRickroll = songs
+            .filter(song => rickroll.includes(song.title.toLowerCase()) &&
+                            songs.indexOf(song) !== currentSongIndex);
+
+        queue.length = 0;
+
+        matchingRickroll.forEach(song => addToQueue(song, songs.indexOf(song)));
+
+        if (matchingRickroll.length > 0) {
+           
+            if (currentSongIndex === -1) {
+                playSong(matchingRickroll[0], songs.indexOf(matchingRickroll[0]));
+            }
+        }
+        return;
+    }
+
+    if (query === "/all") {
+        const filteredSongs = songs.filter((song, index) => index !== currentSongIndex);
+
+        queue.length = 0;
+
+        filteredSongs.forEach(song => addToQueue(song, songs.indexOf(song)));
+
+        if (filteredSongs.length > 0) {
+            if (currentSongIndex === -1) {
+                playSong(filteredSongs[0], songs.indexOf(filteredSongs[0]));
+            }
+        }
+        return;
+    }
     
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
 

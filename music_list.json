@@ -112,6 +112,22 @@
     }
   },
   {
+    "name": "Abismo.mp3",
+    "path": "Music/Abismo.mp3",
+    "sha": "43cb78142b146e880b618127e43e059a10e45419",
+    "size": 3761061,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Abismo.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Abismo.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/43cb78142b146e880b618127e43e059a10e45419",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Abismo.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Abismo.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/43cb78142b146e880b618127e43e059a10e45419",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Abismo.mp3"
+    }
+  },
+  {
     "name": "Addicted To Love (Edit).mp3",
     "path": "Music/Addicted To Love (Edit).mp3",
     "sha": "ebee1560f41e4ae32c232594dcbb28d6ae3ba1da",
@@ -256,6 +272,22 @@
     }
   },
   {
+    "name": "Angel.mp3",
+    "path": "Music/Angel.mp3",
+    "sha": "1aade9eae5135ed6fcb1b4823e0b996dcb86415d",
+    "size": 4793419,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Angel.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Angel.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/1aade9eae5135ed6fcb1b4823e0b996dcb86415d",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Angel.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Angel.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/1aade9eae5135ed6fcb1b4823e0b996dcb86415d",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Angel.mp3"
+    }
+  },
+  {
     "name": "Answer.mp3",
     "path": "Music/Answer.mp3",
     "sha": "445ec4aec1257311c4d7b1b042102fdd8bcd7cb1",
@@ -317,6 +349,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Around%20the%20World.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/447f7936692287c660581f2ecc64879ff20075e5",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Around%20the%20World.mp3"
+    }
+  },
+  {
+    "name": "Author Unknown.mp3",
+    "path": "Music/Author Unknown.mp3",
+    "sha": "8600c9398e35c27f41a9023a18c58480dfc00e70",
+    "size": 3781735,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Author%20Unknown.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Author%20Unknown.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/8600c9398e35c27f41a9023a18c58480dfc00e70",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Author%20Unknown.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Author%20Unknown.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/8600c9398e35c27f41a9023a18c58480dfc00e70",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Author%20Unknown.mp3"
     }
   },
   {
@@ -464,6 +512,22 @@
     }
   },
   {
+    "name": "Black Cathedral.mp3",
+    "path": "Music/Black Cathedral.mp3",
+    "sha": "2aabe60ac95dbffc750bbb4a9deff6144c116a97",
+    "size": 4220292,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Black%20Cathedral.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Black%20Cathedral.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/2aabe60ac95dbffc750bbb4a9deff6144c116a97",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Black%20Cathedral.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Black%20Cathedral.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/2aabe60ac95dbffc750bbb4a9deff6144c116a97",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Black%20Cathedral.mp3"
+    }
+  },
+  {
     "name": "Black Mambo.mp3",
     "path": "Music/Black Mambo.mp3",
     "sha": "e26ede5d5590f65f7ccdc9fdd12737b651bd867a",
@@ -493,6 +557,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Blacklight.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/c407b8d67ab0eb27f0fe57f13af9c2c22b5fc2e3",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Blacklight.mp3"
+    }
+  },
+  {
+    "name": "Bloodsucker.mp3",
+    "path": "Music/Bloodsucker.mp3",
+    "sha": "800845f52979ff32eec6830ea9b556c47d2470f7",
+    "size": 7005558,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Bloodsucker.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Bloodsucker.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/800845f52979ff32eec6830ea9b556c47d2470f7",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Bloodsucker.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Bloodsucker.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/800845f52979ff32eec6830ea9b556c47d2470f7",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Bloodsucker.mp3"
     }
   },
   {
@@ -592,6 +672,54 @@
     }
   },
   {
+    "name": "Born To Be Bad.mp3",
+    "path": "Music/Born To Be Bad.mp3",
+    "sha": "75d1fce45f78aeb8d1c76d7367432b919a809448",
+    "size": 6538930,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Born%20To%20Be%20Bad.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Born%20To%20Be%20Bad.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/75d1fce45f78aeb8d1c76d7367432b919a809448",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Born%20To%20Be%20Bad.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Born%20To%20Be%20Bad.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/75d1fce45f78aeb8d1c76d7367432b919a809448",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Born%20To%20Be%20Bad.mp3"
+    }
+  },
+  {
+    "name": "Boys Don't Cry.mp3",
+    "path": "Music/Boys Don't Cry.mp3",
+    "sha": "7272f6f480127cf69700fdae6d293c813b2bd8f6",
+    "size": 3770829,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Boys%20Don't%20Cry.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Boys%20Don't%20Cry.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/7272f6f480127cf69700fdae6d293c813b2bd8f6",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Boys%20Don't%20Cry.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Boys%20Don't%20Cry.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/7272f6f480127cf69700fdae6d293c813b2bd8f6",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Boys%20Don't%20Cry.mp3"
+    }
+  },
+  {
+    "name": "Brackish.mp3",
+    "path": "Music/Brackish.mp3",
+    "sha": "8a4399b9334e889fbcf798b442df45dc444150c5",
+    "size": 4586642,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Brackish.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Brackish.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/8a4399b9334e889fbcf798b442df45dc444150c5",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Brackish.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Brackish.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/8a4399b9334e889fbcf798b442df45dc444150c5",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Brackish.mp3"
+    }
+  },
+  {
     "name": "Breathe.mp3",
     "path": "Music/Breathe.mp3",
     "sha": "099d455750acd84a6cfacdcf45ea8a60fd7cbf0e",
@@ -640,6 +768,22 @@
     }
   },
   {
+    "name": "Bridezilla.mp3",
+    "path": "Music/Bridezilla.mp3",
+    "sha": "3bb27ea1e9506e786eeeed144311ac0b5fe69158",
+    "size": 4967207,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Bridezilla.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Bridezilla.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/3bb27ea1e9506e786eeeed144311ac0b5fe69158",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Bridezilla.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Bridezilla.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/3bb27ea1e9506e786eeeed144311ac0b5fe69158",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Bridezilla.mp3"
+    }
+  },
+  {
     "name": "Broad Spectrum.mp3",
     "path": "Music/Broad Spectrum.mp3",
     "sha": "8bb29ddc04bc00875d3c1fbadd888cfd3627cbae",
@@ -653,6 +797,38 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Broad%20Spectrum.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/8bb29ddc04bc00875d3c1fbadd888cfd3627cbae",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Broad%20Spectrum.mp3"
+    }
+  },
+  {
+    "name": "Broken Promises For Broken Hearts.mp3",
+    "path": "Music/Broken Promises For Broken Hearts.mp3",
+    "sha": "681ba4d615da73abdade2916c5eb3d2379653c64",
+    "size": 4765538,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Broken%20Promises%20For%20Broken%20Hearts.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Broken%20Promises%20For%20Broken%20Hearts.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/681ba4d615da73abdade2916c5eb3d2379653c64",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Broken%20Promises%20For%20Broken%20Hearts.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Broken%20Promises%20For%20Broken%20Hearts.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/681ba4d615da73abdade2916c5eb3d2379653c64",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Broken%20Promises%20For%20Broken%20Hearts.mp3"
+    }
+  },
+  {
+    "name": "Brutus.mp3",
+    "path": "Music/Brutus.mp3",
+    "sha": "7258e2c88cdbe4f78c9eed220d3234e836f6e439",
+    "size": 5624961,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Brutus.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Brutus.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/7258e2c88cdbe4f78c9eed220d3234e836f6e439",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Brutus.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Brutus.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/7258e2c88cdbe4f78c9eed220d3234e836f6e439",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Brutus.mp3"
     }
   },
   {
@@ -736,6 +912,22 @@
     }
   },
   {
+    "name": "Carnival.mp3",
+    "path": "Music/Carnival.mp3",
+    "sha": "a9cd18106b43ce91be1314f17f6c43382252c17a",
+    "size": 2188612,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Carnival.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Carnival.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/a9cd18106b43ce91be1314f17f6c43382252c17a",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Carnival.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Carnival.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/a9cd18106b43ce91be1314f17f6c43382252c17a",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Carnival.mp3"
+    }
+  },
+  {
     "name": "Catch Up.mp3",
     "path": "Music/Catch Up.mp3",
     "sha": "ac59b3262889827fb273b8d20e837d8ec8238a8d",
@@ -781,6 +973,54 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Chanel.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/5aeec026dd75416a5b228aaa03575c4cc35ecbd5",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Chanel.mp3"
+    }
+  },
+  {
+    "name": "Charlie.mp3",
+    "path": "Music/Charlie.mp3",
+    "sha": "5842425c6947889eee7e7b539e59278e91d67890",
+    "size": 4431932,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Charlie.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Charlie.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/5842425c6947889eee7e7b539e59278e91d67890",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Charlie.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Charlie.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/5842425c6947889eee7e7b539e59278e91d67890",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Charlie.mp3"
+    }
+  },
+  {
+    "name": "Charlotte.mp3",
+    "path": "Music/Charlotte.mp3",
+    "sha": "9e9ffc14150b46ea1d5988b79c8c05daaedf8f9b",
+    "size": 5771477,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Charlotte.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Charlotte.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/9e9ffc14150b46ea1d5988b79c8c05daaedf8f9b",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Charlotte.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Charlotte.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/9e9ffc14150b46ea1d5988b79c8c05daaedf8f9b",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Charlotte.mp3"
+    }
+  },
+  {
+    "name": "Cherry Bomb.mp3",
+    "path": "Music/Cherry Bomb.mp3",
+    "sha": "872058ac719656cead75013d49fa803b9e238357",
+    "size": 3365930,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Cherry%20Bomb.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Cherry%20Bomb.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/872058ac719656cead75013d49fa803b9e238357",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Cherry%20Bomb.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Cherry%20Bomb.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/872058ac719656cead75013d49fa803b9e238357",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Cherry%20Bomb.mp3"
     }
   },
   {
@@ -944,6 +1184,22 @@
     }
   },
   {
+    "name": "Cool Schmool.mp3",
+    "path": "Music/Cool Schmool.mp3",
+    "sha": "a38ec49d98038980404dced2b32f7af7e85dd16d",
+    "size": 2940764,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Cool%20Schmool.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Cool%20Schmool.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/a38ec49d98038980404dced2b32f7af7e85dd16d",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Cool%20Schmool.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Cool%20Schmool.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/a38ec49d98038980404dced2b32f7af7e85dd16d",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Cool%20Schmool.mp3"
+    }
+  },
+  {
     "name": "Count on Me.mp3",
     "path": "Music/Count on Me.mp3",
     "sha": "66d75d13b97e287bc83a343e7b0aba235b47fe6e",
@@ -1024,6 +1280,22 @@
     }
   },
   {
+    "name": "Crybaby.mp3",
+    "path": "Music/Crybaby.mp3",
+    "sha": "49d457965c64949c1a8ed1c02ac9c4dc91c8a36d",
+    "size": 4622801,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Crybaby.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Crybaby.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/49d457965c64949c1a8ed1c02ac9c4dc91c8a36d",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Crybaby.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Crybaby.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/49d457965c64949c1a8ed1c02ac9c4dc91c8a36d",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Crybaby.mp3"
+    }
+  },
+  {
     "name": "Dancing with Myself.mp3",
     "path": "Music/Dancing with Myself.mp3",
     "sha": "924e8b1ae4e0038cca1747012d3a490a370d412c",
@@ -1053,6 +1325,38 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Dark%20Red.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/3c433e902a80948231f7b7ca744d6d070f4b0e24",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Dark%20Red.mp3"
+    }
+  },
+  {
+    "name": "Darling.mp3",
+    "path": "Music/Darling.mp3",
+    "sha": "7d9cb19d7ef22228e06ebd00c2f610170094e579",
+    "size": 6374499,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Darling.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Darling.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/7d9cb19d7ef22228e06ebd00c2f610170094e579",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Darling.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Darling.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/7d9cb19d7ef22228e06ebd00c2f610170094e579",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Darling.mp3"
+    }
+  },
+  {
+    "name": "Dead End Justice.mp3",
+    "path": "Music/Dead End Justice.mp3",
+    "sha": "9b7ba75e86f9474e705c704d63c0ff7dd2cf7c26",
+    "size": 10120923,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Dead%20End%20Justice.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Dead%20End%20Justice.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/9b7ba75e86f9474e705c704d63c0ff7dd2cf7c26",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Dead%20End%20Justice.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Dead%20End%20Justice.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/9b7ba75e86f9474e705c704d63c0ff7dd2cf7c26",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Dead%20End%20Justice.mp3"
     }
   },
   {
@@ -1088,6 +1392,22 @@
     }
   },
   {
+    "name": "DemiRep.mp3",
+    "path": "Music/DemiRep.mp3",
+    "sha": "92c09f8ce3e2a2948b79bfd01e9d84c06409cf43",
+    "size": 4042432,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/DemiRep.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/DemiRep.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/92c09f8ce3e2a2948b79bfd01e9d84c06409cf43",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/DemiRep.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/DemiRep.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/92c09f8ce3e2a2948b79bfd01e9d84c06409cf43",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/DemiRep.mp3"
+    }
+  },
+  {
     "name": "Diggin' Your Scene.mp3",
     "path": "Music/Diggin' Your Scene.mp3",
     "sha": "66407eff3c08e24417f103e4c1392b9d34175bd2",
@@ -1101,6 +1421,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Diggin'%20Your%20Scene.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/66407eff3c08e24417f103e4c1392b9d34175bd2",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Diggin'%20Your%20Scene.mp3"
+    }
+  },
+  {
+    "name": "Disorder (2007 Remaster).mp3",
+    "path": "Music/Disorder (2007 Remaster).mp3",
+    "sha": "5039a5ede721454f9b1581c5bc1397ad2d274a79",
+    "size": 5046440,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Disorder%20(2007%20Remaster).mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Disorder%20(2007%20Remaster).mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/5039a5ede721454f9b1581c5bc1397ad2d274a79",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Disorder%20(2007%20Remaster).mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Disorder%20(2007%20Remaster).mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/5039a5ede721454f9b1581c5bc1397ad2d274a79",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Disorder%20(2007%20Remaster).mp3"
     }
   },
   {
@@ -1120,6 +1456,38 @@
     }
   },
   {
+    "name": "Do I Wanna Know？.mp3",
+    "path": "Music/Do I Wanna Know？.mp3",
+    "sha": "4882d6a6716c70a61c7a03ed674e61e513451f47",
+    "size": 6557366,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Do%20I%20Wanna%20Know%EF%BC%9F.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Do%20I%20Wanna%20Know%EF%BC%9F.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/4882d6a6716c70a61c7a03ed674e61e513451f47",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Do I Wanna Know？.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Do%20I%20Wanna%20Know%EF%BC%9F.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/4882d6a6716c70a61c7a03ed674e61e513451f47",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Do%20I%20Wanna%20Know%EF%BC%9F.mp3"
+    }
+  },
+  {
+    "name": "Do It.mp3",
+    "path": "Music/Do It.mp3",
+    "sha": "e0956676560fed8397f6509bda5cb04b9dd0e9b4",
+    "size": 4378816,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Do%20It.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Do%20It.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/e0956676560fed8397f6509bda5cb04b9dd0e9b4",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Do%20It.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Do%20It.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/e0956676560fed8397f6509bda5cb04b9dd0e9b4",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Do%20It.mp3"
+    }
+  },
+  {
     "name": "Don't Play Your Rock 'N' Roll to Me.mp3",
     "path": "Music/Don't Play Your Rock 'N' Roll to Me.mp3",
     "sha": "6760045d5d786a7f615bc3ab62c89e63ef920167",
@@ -1133,6 +1501,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Don't%20Play%20Your%20Rock%20'N'%20Roll%20to%20Me.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/6760045d5d786a7f615bc3ab62c89e63ef920167",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Don't%20Play%20Your%20Rock%20'N'%20Roll%20to%20Me.mp3"
+    }
+  },
+  {
+    "name": "Double Dare Ya.mp3",
+    "path": "Music/Double Dare Ya.mp3",
+    "sha": "656e7d2a01a5c2ee3480ed089b8c9a91e30b4f4f",
+    "size": 3658006,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Double%20Dare%20Ya.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Double%20Dare%20Ya.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/656e7d2a01a5c2ee3480ed089b8c9a91e30b4f4f",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Double%20Dare%20Ya.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Double%20Dare%20Ya.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/656e7d2a01a5c2ee3480ed089b8c9a91e30b4f4f",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Double%20Dare%20Ya.mp3"
     }
   },
   {
@@ -1184,6 +1568,22 @@
     }
   },
   {
+    "name": "Drink.mp3",
+    "path": "Music/Drink.mp3",
+    "sha": "6d775f788b8b1bb36c7a0e4a0be6e1593fdf461c",
+    "size": 5389213,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Drink.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Drink.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/6d775f788b8b1bb36c7a0e4a0be6e1593fdf461c",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Drink.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Drink.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/6d775f788b8b1bb36c7a0e4a0be6e1593fdf461c",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Drink.mp3"
+    }
+  },
+  {
     "name": "Drugs.mp3",
     "path": "Music/Drugs.mp3",
     "sha": "521db0fa7f1696f1ad58a68ba840c0933389edd7",
@@ -1197,6 +1597,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Drugs.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/521db0fa7f1696f1ad58a68ba840c0933389edd7",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Drugs.mp3"
+    }
+  },
+  {
+    "name": "Du Scrollst.mp3",
+    "path": "Music/Du Scrollst.mp3",
+    "sha": "908ee24520f68d9f13941dae974f1990301a2f57",
+    "size": 4488448,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Du%20Scrollst.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Du%20Scrollst.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/908ee24520f68d9f13941dae974f1990301a2f57",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Du%20Scrollst.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Du%20Scrollst.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/908ee24520f68d9f13941dae974f1990301a2f57",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Du%20Scrollst.mp3"
     }
   },
   {
@@ -1229,6 +1645,38 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Earrings.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/3ef339d6a6d973988714e8d147984ec7454ec6cd",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Earrings.mp3"
+    }
+  },
+  {
+    "name": "Eau D' Bedroom Dancing.mp3",
+    "path": "Music/Eau D' Bedroom Dancing.mp3",
+    "sha": "5ba8db675db346afcc75cf30598a93a6a6f39138",
+    "size": 4258996,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Eau%20D'%20Bedroom%20Dancing.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Eau%20D'%20Bedroom%20Dancing.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/5ba8db675db346afcc75cf30598a93a6a6f39138",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Eau%20D'%20Bedroom%20Dancing.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Eau%20D'%20Bedroom%20Dancing.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/5ba8db675db346afcc75cf30598a93a6a6f39138",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Eau%20D'%20Bedroom%20Dancing.mp3"
+    }
+  },
+  {
+    "name": "Ecstasy.mp3",
+    "path": "Music/Ecstasy.mp3",
+    "sha": "ae4f9e2c8ddbd150e9ef428eb0088bbb7559b075",
+    "size": 4449823,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Ecstasy.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Ecstasy.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/ae4f9e2c8ddbd150e9ef428eb0088bbb7559b075",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Ecstasy.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Ecstasy.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/ae4f9e2c8ddbd150e9ef428eb0088bbb7559b075",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Ecstasy.mp3"
     }
   },
   {
@@ -1296,6 +1744,22 @@
     }
   },
   {
+    "name": "Escape.mp3",
+    "path": "Music/Escape.mp3",
+    "sha": "013f92fc97ac086fbc03ecdf35ca25e20d37fc37",
+    "size": 4724709,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Escape.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Escape.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/013f92fc97ac086fbc03ecdf35ca25e20d37fc37",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Escape.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Escape.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/013f92fc97ac086fbc03ecdf35ca25e20d37fc37",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Escape.mp3"
+    }
+  },
+  {
     "name": "Every Little Step.mp3",
     "path": "Music/Every Little Step.mp3",
     "sha": "57554f75578e18ab3e9ab28135112976ca4af115",
@@ -1344,6 +1808,22 @@
     }
   },
   {
+    "name": "Everyone's A Loser.mp3",
+    "path": "Music/Everyone's A Loser.mp3",
+    "sha": "1b9be91221ed6e70bdcedd870185b3bf0b6f91bc",
+    "size": 4729020,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Everyone's%20A%20Loser.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Everyone's%20A%20Loser.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/1b9be91221ed6e70bdcedd870185b3bf0b6f91bc",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Everyone's%20A%20Loser.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Everyone's%20A%20Loser.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/1b9be91221ed6e70bdcedd870185b3bf0b6f91bc",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Everyone's%20A%20Loser.mp3"
+    }
+  },
+  {
     "name": "Everything I Am.mp3",
     "path": "Music/Everything I Am.mp3",
     "sha": "064986f4887819ee3fddcb6d10828261ef4c8dcd",
@@ -1376,6 +1856,22 @@
     }
   },
   {
+    "name": "Fall Away.mp3",
+    "path": "Music/Fall Away.mp3",
+    "sha": "48f7f5e5afef4afcfa852901be732dc60f80547d",
+    "size": 6353777,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Fall%20Away.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Fall%20Away.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/48f7f5e5afef4afcfa852901be732dc60f80547d",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Fall%20Away.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Fall%20Away.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/48f7f5e5afef4afcfa852901be732dc60f80547d",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Fall%20Away.mp3"
+    }
+  },
+  {
     "name": "Fallen Horses.mp3",
     "path": "Music/Fallen Horses.mp3",
     "sha": "dbc4d7a8daafeddf19a9a37fe47e18b5fc7bb604",
@@ -1389,6 +1885,38 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Fallen%20Horses.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/dbc4d7a8daafeddf19a9a37fe47e18b5fc7bb604",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Fallen%20Horses.mp3"
+    }
+  },
+  {
+    "name": "Fangs (Slowed Down).mp3",
+    "path": "Music/Fangs (Slowed Down).mp3",
+    "sha": "699c485c7ec086df2def3cc599dd528265570571",
+    "size": 4493049,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Fangs%20(Slowed%20Down).mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Fangs%20(Slowed%20Down).mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/699c485c7ec086df2def3cc599dd528265570571",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Fangs%20(Slowed%20Down).mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Fangs%20(Slowed%20Down).mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/699c485c7ec086df2def3cc599dd528265570571",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Fangs%20(Slowed%20Down).mp3"
+    }
+  },
+  {
+    "name": "Fear of Dying.mp3",
+    "path": "Music/Fear of Dying.mp3",
+    "sha": "8636ae3db80532bc4d4a259f84d44d4c8eee911b",
+    "size": 3995428,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Fear%20of%20Dying.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Fear%20of%20Dying.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/8636ae3db80532bc4d4a259f84d44d4c8eee911b",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Fear%20of%20Dying.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Fear%20of%20Dying.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/8636ae3db80532bc4d4a259f84d44d4c8eee911b",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Fear%20of%20Dying.mp3"
     }
   },
   {
@@ -1408,6 +1936,22 @@
     }
   },
   {
+    "name": "Feels Blind.mp3",
+    "path": "Music/Feels Blind.mp3",
+    "sha": "db513eef37b5795f9d0cb5b7011c25f5e5ff0272",
+    "size": 4881085,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Feels%20Blind.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Feels%20Blind.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/db513eef37b5795f9d0cb5b7011c25f5e5ff0272",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Feels%20Blind.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Feels%20Blind.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/db513eef37b5795f9d0cb5b7011c25f5e5ff0272",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Feels%20Blind.mp3"
+    }
+  },
+  {
     "name": "Feels Like Summer.mp3",
     "path": "Music/Feels Like Summer.mp3",
     "sha": "4333532bf56572cfe01fafa2e09f6536c030d57c",
@@ -1421,6 +1965,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Feels%20Like%20Summer.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/4333532bf56572cfe01fafa2e09f6536c030d57c",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Feels%20Like%20Summer.mp3"
+    }
+  },
+  {
+    "name": "Fences.mp3",
+    "path": "Music/Fences.mp3",
+    "sha": "269c6dea8b16ab76db4636d8d02af62e559dd766",
+    "size": 5761314,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Fences.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Fences.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/269c6dea8b16ab76db4636d8d02af62e559dd766",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Fences.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Fences.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/269c6dea8b16ab76db4636d8d02af62e559dd766",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Fences.mp3"
     }
   },
   {
@@ -1584,6 +2144,22 @@
     }
   },
   {
+    "name": "Gold Medal.mp3",
+    "path": "Music/Gold Medal.mp3",
+    "sha": "0c06b60f2c6947e1cd41b386f4e1130b3759a651",
+    "size": 5142938,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Gold%20Medal.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Gold%20Medal.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/0c06b60f2c6947e1cd41b386f4e1130b3759a651",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Gold%20Medal.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Gold%20Medal.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/0c06b60f2c6947e1cd41b386f4e1130b3759a651",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Gold%20Medal.mp3"
+    }
+  },
+  {
     "name": "Good Life.mp3",
     "path": "Music/Good Life.mp3",
     "sha": "1fbdad24c8106df7b4a09aa92d32839b5444c102",
@@ -1613,6 +2189,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Good%20News.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/c1f82b3eca7358359fec93be7c16fecdb624b36e",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Good%20News.mp3"
+    }
+  },
+  {
+    "name": "Goodbye Sun.mp3",
+    "path": "Music/Goodbye Sun.mp3",
+    "sha": "9947f4263803584f2b2bea7a263a35a1a2dc2761",
+    "size": 6134939,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Goodbye%20Sun.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Goodbye%20Sun.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/9947f4263803584f2b2bea7a263a35a1a2dc2761",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Goodbye%20Sun.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Goodbye%20Sun.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/9947f4263803584f2b2bea7a263a35a1a2dc2761",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Goodbye%20Sun.mp3"
     }
   },
   {
@@ -1648,6 +2240,22 @@
     }
   },
   {
+    "name": "Groan.mp3",
+    "path": "Music/Groan.mp3",
+    "sha": "072e0a2f400a79d76476011e414ab741b3f338f4",
+    "size": 4376473,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Groan.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Groan.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/072e0a2f400a79d76476011e414ab741b3f338f4",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Groan.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Groan.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/072e0a2f400a79d76476011e414ab741b3f338f4",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Groan.mp3"
+    }
+  },
+  {
     "name": "HONEST.mp3",
     "path": "Music/HONEST.mp3",
     "sha": "d274f5345fbc3a88e4e9aa26c4f5b4eb121035d0",
@@ -1677,6 +2285,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/HUMBLE..mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/d26c533bbc38559903fea5b0c8801b8236ba3c6f",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/HUMBLE..mp3"
+    }
+  },
+  {
+    "name": "Happy House.mp3",
+    "path": "Music/Happy House.mp3",
+    "sha": "ca4dc2becc6f87c93458cc076ad3a256086a94ab",
+    "size": 5607838,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Happy%20House.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Happy%20House.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/ca4dc2becc6f87c93458cc076ad3a256086a94ab",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Happy%20House.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Happy%20House.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/ca4dc2becc6f87c93458cc076ad3a256086a94ab",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Happy%20House.mp3"
     }
   },
   {
@@ -1744,6 +2368,22 @@
     }
   },
   {
+    "name": "Heaven Knows I'm Miserable Now (2011 Remaster).mp3",
+    "path": "Music/Heaven Knows I'm Miserable Now (2011 Remaster).mp3",
+    "sha": "6d2b18fc26922c972d6803987421ffd6f9a623bc",
+    "size": 5206699,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Heaven%20Knows%20I'm%20Miserable%20Now%20(2011%20Remaster).mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Heaven%20Knows%20I'm%20Miserable%20Now%20(2011%20Remaster).mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/6d2b18fc26922c972d6803987421ffd6f9a623bc",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Heaven%20Knows%20I'm%20Miserable%20Now%20(2011%20Remaster).mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Heaven%20Knows%20I'm%20Miserable%20Now%20(2011%20Remaster).mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/6d2b18fc26922c972d6803987421ffd6f9a623bc",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Heaven%20Knows%20I'm%20Miserable%20Now%20(2011%20Remaster).mp3"
+    }
+  },
+  {
     "name": "Hell N Back.mp3",
     "path": "Music/Hell N Back.mp3",
     "sha": "cf989004c9b7dc260a7c93bb85f97592d2532fcf",
@@ -1805,6 +2445,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Home.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/650befa616b06e2db9fe9f003e321deae925ad20",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Home.mp3"
+    }
+  },
+  {
+    "name": "Honey I'm Home.mp3",
+    "path": "Music/Honey I'm Home.mp3",
+    "sha": "a9a0bd6f94f81b920127a03660a8a1aa314f4d46",
+    "size": 4686463,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Honey%20I'm%20Home.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Honey%20I'm%20Home.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/a9a0bd6f94f81b920127a03660a8a1aa314f4d46",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Honey%20I'm%20Home.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Honey%20I'm%20Home.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/a9a0bd6f94f81b920127a03660a8a1aa314f4d46",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Honey%20I'm%20Home.mp3"
     }
   },
   {
@@ -1936,6 +2592,22 @@
     }
   },
   {
+    "name": "I Hate Myself for Loving You.mp3",
+    "path": "Music/I Hate Myself for Loving You.mp3",
+    "sha": "eeb2289c7fc0a971a96b472fd4a7c4fb66b0363b",
+    "size": 5957197,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/I%20Hate%20Myself%20for%20Loving%20You.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/I%20Hate%20Myself%20for%20Loving%20You.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/eeb2289c7fc0a971a96b472fd4a7c4fb66b0363b",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/I%20Hate%20Myself%20for%20Loving%20You.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/I%20Hate%20Myself%20for%20Loving%20You.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/eeb2289c7fc0a971a96b472fd4a7c4fb66b0363b",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/I%20Hate%20Myself%20for%20Loving%20You.mp3"
+    }
+  },
+  {
     "name": "I Just Wanna See.mp3",
     "path": "Music/I Just Wanna See.mp3",
     "sha": "8104985460d332bb1a68a678c4f9e941633ccf83",
@@ -1949,6 +2621,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/I%20Just%20Wanna%20See.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/8104985460d332bb1a68a678c4f9e941633ccf83",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/I%20Just%20Wanna%20See.mp3"
+    }
+  },
+  {
+    "name": "I Love Playin' With Fire.mp3",
+    "path": "Music/I Love Playin' With Fire.mp3",
+    "sha": "ff67c95f35e4db5882656d2adf1ac2123038af33",
+    "size": 4860956,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/I%20Love%20Playin'%20With%20Fire.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/I%20Love%20Playin'%20With%20Fire.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/ff67c95f35e4db5882656d2adf1ac2123038af33",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/I%20Love%20Playin'%20With%20Fire.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/I%20Love%20Playin'%20With%20Fire.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/ff67c95f35e4db5882656d2adf1ac2123038af33",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/I%20Love%20Playin'%20With%20Fire.mp3"
     }
   },
   {
@@ -1997,6 +2685,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/I%20Think%20We're%20Alone%20Now.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/073ee1ee63a4750f7e52769e30e2676551d7dab6",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/I%20Think%20We're%20Alone%20Now.mp3"
+    }
+  },
+  {
+    "name": "I Threw Glass at My Friend's Eyes and Now I'm on Probation.mp3",
+    "path": "Music/I Threw Glass at My Friend's Eyes and Now I'm on Probation.mp3",
+    "sha": "a567b8d5c4506107519761bc5772db8ce500db17",
+    "size": 3817286,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/I%20Threw%20Glass%20at%20My%20Friend's%20Eyes%20and%20Now%20I'm%20on%20Probation.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/I%20Threw%20Glass%20at%20My%20Friend's%20Eyes%20and%20Now%20I'm%20on%20Probation.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/a567b8d5c4506107519761bc5772db8ce500db17",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/I%20Threw%20Glass%20at%20My%20Friend's%20Eyes%20and%20Now%20I'm%20on%20Probation.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/I%20Threw%20Glass%20at%20My%20Friend's%20Eyes%20and%20Now%20I'm%20on%20Probation.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/a567b8d5c4506107519761bc5772db8ce500db17",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/I%20Threw%20Glass%20at%20My%20Friend's%20Eyes%20and%20Now%20I'm%20on%20Probation.mp3"
     }
   },
   {
@@ -2157,6 +2861,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/In%20Bloom.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/f607666ee7d417cd26fb37b904ac7046638fbf1f",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/In%20Bloom.mp3"
+    }
+  },
+  {
+    "name": "In The Room Where You Sleep.mp3",
+    "path": "Music/In The Room Where You Sleep.mp3",
+    "sha": "8e79d1803f3e13a0292ba3029b62251a4a271928",
+    "size": 5720977,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/In%20The%20Room%20Where%20You%20Sleep.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/In%20The%20Room%20Where%20You%20Sleep.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/8e79d1803f3e13a0292ba3029b62251a4a271928",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/In%20The%20Room%20Where%20You%20Sleep.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/In%20The%20Room%20Where%20You%20Sleep.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/8e79d1803f3e13a0292ba3029b62251a4a271928",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/In%20The%20Room%20Where%20You%20Sleep.mp3"
     }
   },
   {
@@ -2368,6 +3088,22 @@
     }
   },
   {
+    "name": "Keep Your Eyes Peeled.mp3",
+    "path": "Music/Keep Your Eyes Peeled.mp3",
+    "sha": "5815533a63853118ab63c710ec6d1e9d01d305fc",
+    "size": 5567929,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Keep%20Your%20Eyes%20Peeled.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Keep%20Your%20Eyes%20Peeled.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/5815533a63853118ab63c710ec6d1e9d01d305fc",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Keep%20Your%20Eyes%20Peeled.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Keep%20Your%20Eyes%20Peeled.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/5815533a63853118ab63c710ec6d1e9d01d305fc",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Keep%20Your%20Eyes%20Peeled.mp3"
+    }
+  },
+  {
     "name": "Kids.mp3",
     "path": "Music/Kids.mp3",
     "sha": "73be3828e05b2f99fce9ef1b14ba19b94dab3540",
@@ -2525,6 +3261,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Let%20It%20Happen.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/27aa2736ed9d4a0962beb484829fcf5c63cafe4b",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Let%20It%20Happen.mp3"
+    }
+  },
+  {
+    "name": "Ligea.mp3",
+    "path": "Music/Ligea.mp3",
+    "sha": "9c28cb1eae0d33d1926966d9e3d7c7e7084a8f89",
+    "size": 7588630,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Ligea.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Ligea.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/9c28cb1eae0d33d1926966d9e3d7c7e7084a8f89",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Ligea.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Ligea.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/9c28cb1eae0d33d1926966d9e3d7c7e7084a8f89",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Ligea.mp3"
     }
   },
   {
@@ -2752,6 +3504,22 @@
     }
   },
   {
+    "name": "Maggot.mp3",
+    "path": "Music/Maggot.mp3",
+    "sha": "bcbe51efa7e0254cb7155fd991f7f0c1697166db",
+    "size": 5820508,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Maggot.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Maggot.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/bcbe51efa7e0254cb7155fd991f7f0c1697166db",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Maggot.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Maggot.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/bcbe51efa7e0254cb7155fd991f7f0c1697166db",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Maggot.mp3"
+    }
+  },
+  {
     "name": "Marry You.mp3",
     "path": "Music/Marry You.mp3",
     "sha": "1a3ce21a157c77ba959ebeb000ff3fc968f848d2",
@@ -2781,6 +3549,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Maybe%20Man.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/fbc019403e26a0458aceb9b0e758872d04893126",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Maybe%20Man.mp3"
+    }
+  },
+  {
+    "name": "Me and the Devil.mp3",
+    "path": "Music/Me and the Devil.mp3",
+    "sha": "04121ba6cefe468fee13df2bc7eead01d8b517ae",
+    "size": 4522756,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Me%20and%20the%20Devil.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Me%20and%20the%20Devil.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/04121ba6cefe468fee13df2bc7eead01d8b517ae",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Me%20and%20the%20Devil.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Me%20and%20the%20Devil.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/04121ba6cefe468fee13df2bc7eead01d8b517ae",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Me%20and%20the%20Devil.mp3"
     }
   },
   {
@@ -2928,6 +3712,22 @@
     }
   },
   {
+    "name": "My Vampire.mp3",
+    "path": "Music/My Vampire.mp3",
+    "sha": "a1151d31923bb0aa4acd0da722c08c073869ad7e",
+    "size": 5258986,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/My%20Vampire.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/My%20Vampire.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/a1151d31923bb0aa4acd0da722c08c073869ad7e",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/My%20Vampire.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/My%20Vampire.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/a1151d31923bb0aa4acd0da722c08c073869ad7e",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/My%20Vampire.mp3"
+    }
+  },
+  {
     "name": "NEW MAGIC WAND.mp3",
     "path": "Music/NEW MAGIC WAND.mp3",
     "sha": "52c41d71fa332726428109d9c5ee2c73b9ceee04",
@@ -2957,6 +3757,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Nangs.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/a840e7807041195d3b9184a76ba7dc465c04f7c7",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Nangs.mp3"
+    }
+  },
+  {
+    "name": "Necromania.mp3",
+    "path": "Music/Necromania.mp3",
+    "sha": "cbdf79918cb47d2bde80ce9622a7a48d775d5705",
+    "size": 4540321,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Necromania.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Necromania.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/cbdf79918cb47d2bde80ce9622a7a48d775d5705",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Necromania.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Necromania.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/cbdf79918cb47d2bde80ce9622a7a48d775d5705",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Necromania.mp3"
     }
   },
   {
@@ -2992,6 +3808,22 @@
     }
   },
   {
+    "name": "New Flesh.mp3",
+    "path": "Music/New Flesh.mp3",
+    "sha": "dd21453283e1c9b070ffd4b9ee6c19c2c7161cfa",
+    "size": 4059596,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/New%20Flesh.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/New%20Flesh.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/dd21453283e1c9b070ffd4b9ee6c19c2c7161cfa",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/New%20Flesh.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/New%20Flesh.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/dd21453283e1c9b070ffd4b9ee6c19c2c7161cfa",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/New%20Flesh.mp3"
+    }
+  },
+  {
     "name": "New Person, Same Old Mistakes.mp3",
     "path": "Music/New Person, Same Old Mistakes.mp3",
     "sha": "72cdf810da5fc956f8167ad5c6be9937639f5304",
@@ -3005,6 +3837,38 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/New%20Person,%20Same%20Old%20Mistakes.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/72cdf810da5fc956f8167ad5c6be9937639f5304",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/New%20Person,%20Same%20Old%20Mistakes.mp3"
+    }
+  },
+  {
+    "name": "New Radio.mp3",
+    "path": "Music/New Radio.mp3",
+    "sha": "5c81e634eaec3e2c459746c85de1d2ad6fab1ab6",
+    "size": 2300023,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/New%20Radio.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/New%20Radio.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/5c81e634eaec3e2c459746c85de1d2ad6fab1ab6",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/New%20Radio.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/New%20Radio.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/5c81e634eaec3e2c459746c85de1d2ad6fab1ab6",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/New%20Radio.mp3"
+    }
+  },
+  {
+    "name": "Nice Nice.mp3",
+    "path": "Music/Nice Nice.mp3",
+    "sha": "d7ddd8df8c46cee0df60683bbbb1c636d7ce9fec",
+    "size": 4996307,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Nice%20Nice.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Nice%20Nice.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/d7ddd8df8c46cee0df60683bbbb1c636d7ce9fec",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Nice%20Nice.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Nice%20Nice.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/d7ddd8df8c46cee0df60683bbbb1c636d7ce9fec",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Nice%20Nice.mp3"
     }
   },
   {
@@ -3069,6 +3933,38 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Nothing%20Burns%20Like%20The%20Cold.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/febaf0edb10953971c0dd528128bf0ae2129b6ce",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Nothing%20Burns%20Like%20The%20Cold.mp3"
+    }
+  },
+  {
+    "name": "O Green World.mp3",
+    "path": "Music/O Green World.mp3",
+    "sha": "2a20fa7d14fecad7d4dca6c6c903efc67b1dae07",
+    "size": 6633040,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/O%20Green%20World.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/O%20Green%20World.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/2a20fa7d14fecad7d4dca6c6c903efc67b1dae07",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/O%20Green%20World.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/O%20Green%20World.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/2a20fa7d14fecad7d4dca6c6c903efc67b1dae07",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/O%20Green%20World.mp3"
+    }
+  },
+  {
+    "name": "Oh Bondage, Up Yours!.mp3",
+    "path": "Music/Oh Bondage, Up Yours!.mp3",
+    "sha": "f2f2daacdb407c0cc9fc7605ba5fcff44c9416cd",
+    "size": 4106375,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Oh%20Bondage,%20Up%20Yours!.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Oh%20Bondage,%20Up%20Yours!.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/f2f2daacdb407c0cc9fc7605ba5fcff44c9416cd",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Oh%20Bondage%2C%20Up%20Yours!.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Oh%20Bondage,%20Up%20Yours!.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/f2f2daacdb407c0cc9fc7605ba5fcff44c9416cd",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Oh%20Bondage,%20Up%20Yours!.mp3"
     }
   },
   {
@@ -3344,6 +4240,22 @@
     }
   },
   {
+    "name": "Pretend We're Dead.mp3",
+    "path": "Music/Pretend We're Dead.mp3",
+    "sha": "44f324ff0be3eb5e0d3989227824e8fb50349f72",
+    "size": 5682999,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Pretend%20We're%20Dead.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Pretend%20We're%20Dead.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/44f324ff0be3eb5e0d3989227824e8fb50349f72",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Pretend%20We're%20Dead.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Pretend%20We're%20Dead.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/44f324ff0be3eb5e0d3989227824e8fb50349f72",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Pretend%20We're%20Dead.mp3"
+    }
+  },
+  {
     "name": "Pumped Up Kicks.mp3",
     "path": "Music/Pumped Up Kicks.mp3",
     "sha": "4e8623ea43524d549962331e0789c2075368a1e6",
@@ -3360,6 +4272,22 @@
     }
   },
   {
+    "name": "Punk Mascuzinho.mp3",
+    "path": "Music/Punk Mascuzinho.mp3",
+    "sha": "0478db97560abc1f56179b0d87e1144a0210cb3b",
+    "size": 2205128,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Punk%20Mascuzinho.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Punk%20Mascuzinho.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/0478db97560abc1f56179b0d87e1144a0210cb3b",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Punk%20Mascuzinho.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Punk%20Mascuzinho.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/0478db97560abc1f56179b0d87e1144a0210cb3b",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Punk%20Mascuzinho.mp3"
+    }
+  },
+  {
     "name": "Pursuit Of Happiness (Nightmare).mp3",
     "path": "Music/Pursuit Of Happiness (Nightmare).mp3",
     "sha": "260691cc2e78266838f13db6c4943475402b18df",
@@ -3373,6 +4301,38 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Pursuit%20Of%20Happiness%20(Nightmare).mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/260691cc2e78266838f13db6c4943475402b18df",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Pursuit%20Of%20Happiness%20(Nightmare).mp3"
+    }
+  },
+  {
+    "name": "Queens Of Noise.mp3",
+    "path": "Music/Queens Of Noise.mp3",
+    "sha": "11104995588a4c5c1755ac1552cc959f66b9ea03",
+    "size": 5038343,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Queens%20Of%20Noise.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Queens%20Of%20Noise.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/11104995588a4c5c1755ac1552cc959f66b9ea03",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Queens%20Of%20Noise.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Queens%20Of%20Noise.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/11104995588a4c5c1755ac1552cc959f66b9ea03",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Queens%20Of%20Noise.mp3"
+    }
+  },
+  {
+    "name": "R.I.P..mp3",
+    "path": "Music/R.I.P..mp3",
+    "sha": "3e9aebd3b10e1f358d67d77b6a403eac5580ca99",
+    "size": 5258022,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/R.I.P..mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/R.I.P..mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/3e9aebd3b10e1f358d67d77b6a403eac5580ca99",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/R.I.P..mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/R.I.P..mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/3e9aebd3b10e1f358d67d77b6a403eac5580ca99",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/R.I.P..mp3"
     }
   },
   {
@@ -3453,6 +4413,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Ready%20To%20Let%20Go.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/9303907468a9ec5d15bb6a60484d6464372b4d89",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Ready%20To%20Let%20Go.mp3"
+    }
+  },
+  {
+    "name": "Rebel Girl.mp3",
+    "path": "Music/Rebel Girl.mp3",
+    "sha": "3b962874c21bb33d1e1accb438fe6ea2fa5f6379",
+    "size": 3817786,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Rebel%20Girl.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Rebel%20Girl.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/3b962874c21bb33d1e1accb438fe6ea2fa5f6379",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Rebel%20Girl.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Rebel%20Girl.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/3b962874c21bb33d1e1accb438fe6ea2fa5f6379",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Rebel%20Girl.mp3"
     }
   },
   {
@@ -3648,6 +4624,22 @@
     }
   },
   {
+    "name": "Sad Boys.mp3",
+    "path": "Music/Sad Boys.mp3",
+    "sha": "d49755c5813aad4a8694d3dd1e132476564e2dc2",
+    "size": 5989904,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Sad%20Boys.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Sad%20Boys.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/d49755c5813aad4a8694d3dd1e132476564e2dc2",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Sad%20Boys.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Sad%20Boys.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/d49755c5813aad4a8694d3dd1e132476564e2dc2",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Sad%20Boys.mp3"
+    }
+  },
+  {
     "name": "Satellite.mp3",
     "path": "Music/Satellite.mp3",
     "sha": "29d7ec3917dc1567ed44a8709afeedb6ff0cd12f",
@@ -3709,6 +4701,54 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Sex%20on%20Fire.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/5d91aa9d9ce4d150c99a9d5b0e18b405d58b337d",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Sex%20on%20Fire.mp3"
+    }
+  },
+  {
+    "name": "Shadow (I'm Breaking Down).mp3",
+    "path": "Music/Shadow (I'm Breaking Down).mp3",
+    "sha": "778e119359ebfc8f9121bbb57034eb7906a02a98",
+    "size": 5329894,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Shadow%20(I'm%20Breaking%20Down).mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Shadow%20(I'm%20Breaking%20Down).mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/778e119359ebfc8f9121bbb57034eb7906a02a98",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Shadow%20(I'm%20Breaking%20Down).mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Shadow%20(I'm%20Breaking%20Down).mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/778e119359ebfc8f9121bbb57034eb7906a02a98",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Shadow%20(I'm%20Breaking%20Down).mp3"
+    }
+  },
+  {
+    "name": "Shitlist.mp3",
+    "path": "Music/Shitlist.mp3",
+    "sha": "93d55c25a14e52200dadf624ed84b5995c49872d",
+    "size": 4247839,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Shitlist.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Shitlist.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/93d55c25a14e52200dadf624ed84b5995c49872d",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Shitlist.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Shitlist.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/93d55c25a14e52200dadf624ed84b5995c49872d",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Shitlist.mp3"
+    }
+  },
+  {
+    "name": "Should’ve Been Me.mp3",
+    "path": "Music/Should’ve Been Me.mp3",
+    "sha": "ee6c884ed5c566baab94fed05efd0e8a89e65e6d",
+    "size": 1574546,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Should%E2%80%99ve%20Been%20Me.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Should%E2%80%99ve%20Been%20Me.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/ee6c884ed5c566baab94fed05efd0e8a89e65e6d",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Should’ve Been Me.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Should%E2%80%99ve%20Been%20Me.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/ee6c884ed5c566baab94fed05efd0e8a89e65e6d",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Should%E2%80%99ve%20Been%20Me.mp3"
     }
   },
   {
@@ -3952,6 +4992,22 @@
     }
   },
   {
+    "name": "Sorority Girls.mp3",
+    "path": "Music/Sorority Girls.mp3",
+    "sha": "17e1fcda303e65a6245c1126ec1bf03ff4997b1f",
+    "size": 3635073,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Sorority%20Girls.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Sorority%20Girls.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/17e1fcda303e65a6245c1126ec1bf03ff4997b1f",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Sorority%20Girls.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Sorority%20Girls.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/17e1fcda303e65a6245c1126ec1bf03ff4997b1f",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Sorority%20Girls.mp3"
+    }
+  },
+  {
     "name": "Starboy.mp3",
     "path": "Music/Starboy.mp3",
     "sha": "baa5084ee9249d3994779585740a906e43578b0a",
@@ -4096,6 +5152,22 @@
     }
   },
   {
+    "name": "Strawberry Gashes.mp3",
+    "path": "Music/Strawberry Gashes.mp3",
+    "sha": "4c00025fb56566905cf4c8d1c378ce68e917ad63",
+    "size": 5411248,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Strawberry%20Gashes.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Strawberry%20Gashes.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/4c00025fb56566905cf4c8d1c378ce68e917ad63",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Strawberry%20Gashes.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Strawberry%20Gashes.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/4c00025fb56566905cf4c8d1c378ce68e917ad63",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Strawberry%20Gashes.mp3"
+    }
+  },
+  {
     "name": "Stuck Inside (feat. Kevin Foster).mp3",
     "path": "Music/Stuck Inside (feat. Kevin Foster).mp3",
     "sha": "f61f4b941883a9e8e2f561d8d072cd4e185bbad4",
@@ -4128,6 +5200,22 @@
     }
   },
   {
+    "name": "Suck My Left One.mp3",
+    "path": "Music/Suck My Left One.mp3",
+    "sha": "48eed1eb177f98a492e06b2c1710c84de48a18b9",
+    "size": 3599260,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Suck%20My%20Left%20One.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Suck%20My%20Left%20One.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/48eed1eb177f98a492e06b2c1710c84de48a18b9",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Suck%20My%20Left%20One.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Suck%20My%20Left%20One.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/48eed1eb177f98a492e06b2c1710c84de48a18b9",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Suck%20My%20Left%20One.mp3"
+    }
+  },
+  {
     "name": "Sugar Sugar.mp3",
     "path": "Music/Sugar Sugar.mp3",
     "sha": "a1117832a7eb6490f2d3549a3b65b131eba628fc",
@@ -4141,6 +5229,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Sugar%20Sugar.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/a1117832a7eb6490f2d3549a3b65b131eba628fc",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Sugar%20Sugar.mp3"
+    }
+  },
+  {
+    "name": "Summertime.mp3",
+    "path": "Music/Summertime.mp3",
+    "sha": "c9243439661adc96f6827362ef9273aeda06967d",
+    "size": 5261550,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Summertime.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Summertime.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/c9243439661adc96f6827362ef9273aeda06967d",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Summertime.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Summertime.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/c9243439661adc96f6827362ef9273aeda06967d",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Summertime.mp3"
     }
   },
   {
@@ -4205,6 +5309,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Sweater%20Weather.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/35ee067b08ed9a8edf3f16145da113fdee08b812",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Sweater%20Weather.mp3"
+    }
+  },
+  {
+    "name": "Sweet Cis Teen.mp3",
+    "path": "Music/Sweet Cis Teen.mp3",
+    "sha": "538d3a8be5a353bf03549a81df2c0ea8c7303ca8",
+    "size": 6524390,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Sweet%20Cis%20Teen.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Sweet%20Cis%20Teen.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/538d3a8be5a353bf03549a81df2c0ea8c7303ca8",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Sweet%20Cis%20Teen.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Sweet%20Cis%20Teen.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/538d3a8be5a353bf03549a81df2c0ea8c7303ca8",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Sweet%20Cis%20Teen.mp3"
     }
   },
   {
@@ -4544,6 +5664,22 @@
     }
   },
   {
+    "name": "The Unknowing.mp3",
+    "path": "Music/The Unknowing.mp3",
+    "sha": "c7fab438087aaa2f4960e8a3006d020bb685cc4e",
+    "size": 4791482,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/The%20Unknowing.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/The%20Unknowing.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/c7fab438087aaa2f4960e8a3006d020bb685cc4e",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/The%20Unknowing.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/The%20Unknowing.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/c7fab438087aaa2f4960e8a3006d020bb685cc4e",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/The%20Unknowing.mp3"
+    }
+  },
+  {
     "name": "The Walker.mp3",
     "path": "Music/The Walker.mp3",
     "sha": "d7f9fa4d0de555cc46e2a8864930b49f4bec512f",
@@ -4800,6 +5936,22 @@
     }
   },
   {
+    "name": "Vernissage.mp3",
+    "path": "Music/Vernissage.mp3",
+    "sha": "97ac19f4e91aaf5ef0d3d34cc757fc6212f33698",
+    "size": 4267783,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Vernissage.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Vernissage.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/97ac19f4e91aaf5ef0d3d34cc757fc6212f33698",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Vernissage.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Vernissage.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/97ac19f4e91aaf5ef0d3d34cc757fc6212f33698",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Vernissage.mp3"
+    }
+  },
+  {
     "name": "Video Killed The Radio Star.mp3",
     "path": "Music/Video Killed The Radio Star.mp3",
     "sha": "b917a5d25a40bfab2ae72f025d531f783ac686eb",
@@ -4813,6 +5965,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Video%20Killed%20The%20Radio%20Star.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/b917a5d25a40bfab2ae72f025d531f783ac686eb",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Video%20Killed%20The%20Radio%20Star.mp3"
+    }
+  },
+  {
+    "name": "Vixen.mp3",
+    "path": "Music/Vixen.mp3",
+    "sha": "35803f0bfb55f09fd8cd59bdb8f7e979a1efc90b",
+    "size": 3823883,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Vixen.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Vixen.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/35803f0bfb55f09fd8cd59bdb8f7e979a1efc90b",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Vixen.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Vixen.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/35803f0bfb55f09fd8cd59bdb8f7e979a1efc90b",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Vixen.mp3"
     }
   },
   {
@@ -4912,6 +6080,22 @@
     }
   },
   {
+    "name": "Wasted.mp3",
+    "path": "Music/Wasted.mp3",
+    "sha": "e01a75654936ed3a44be7fdeb7659ba1110e60c8",
+    "size": 4999949,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Wasted.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Wasted.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/e01a75654936ed3a44be7fdeb7659ba1110e60c8",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Wasted.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Wasted.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/e01a75654936ed3a44be7fdeb7659ba1110e60c8",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Wasted.mp3"
+    }
+  },
+  {
     "name": "We Are The People.mp3",
     "path": "Music/We Are The People.mp3",
     "sha": "78b6cabc42d3495c7a6226f50c67881a2388a40e",
@@ -4960,6 +6144,22 @@
     }
   },
   {
+    "name": "Weird Girl.mp3",
+    "path": "Music/Weird Girl.mp3",
+    "sha": "3e373af7b0982b04acaba36189f2884441930bf7",
+    "size": 3502561,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Weird%20Girl.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Weird%20Girl.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/3e373af7b0982b04acaba36189f2884441930bf7",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Weird%20Girl.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Weird%20Girl.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/3e373af7b0982b04acaba36189f2884441930bf7",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Weird%20Girl.mp3"
+    }
+  },
+  {
     "name": "Welcome to The Internet.mp3",
     "path": "Music/Welcome to The Internet.mp3",
     "sha": "c5aeaf2402425308ce7801a1f9f6dd15532df526",
@@ -4992,6 +6192,22 @@
     }
   },
   {
+    "name": "Wet.mp3",
+    "path": "Music/Wet.mp3",
+    "sha": "142731c92b16868d2f8d49c64900fda05309ece4",
+    "size": 4177747,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Wet.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Wet.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/142731c92b16868d2f8d49c64900fda05309ece4",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Wet.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Wet.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/142731c92b16868d2f8d49c64900fda05309ece4",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Wet.mp3"
+    }
+  },
+  {
     "name": "What the Hook Gon Be.mp3",
     "path": "Music/What the Hook Gon Be.mp3",
     "sha": "738eca1ce6dcdab6eeb44012097b225fa4d84307",
@@ -5021,6 +6237,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/What's%20the%20Use%EF%BC%9F.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/501333110a88b33ecc15edab8261507c31a1de39",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/What's%20the%20Use%EF%BC%9F.mp3"
+    }
+  },
+  {
+    "name": "White Boy.mp3",
+    "path": "Music/White Boy.mp3",
+    "sha": "6d363f0c87d329bf89e58525daf49e72907904a3",
+    "size": 3539678,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/White%20Boy.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/White%20Boy.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/6d363f0c87d329bf89e58525daf49e72907904a3",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/White%20Boy.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/White%20Boy.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/6d363f0c87d329bf89e58525daf49e72907904a3",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/White%20Boy.mp3"
     }
   },
   {
@@ -5200,6 +6432,38 @@
     }
   },
   {
+    "name": "biroliro.mp3",
+    "path": "Music/biroliro.mp3",
+    "sha": "91df987171f9aafaf98100b31efb896d6485b699",
+    "size": 2800542,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/biroliro.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/biroliro.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/91df987171f9aafaf98100b31efb896d6485b699",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/biroliro.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/biroliro.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/91df987171f9aafaf98100b31efb896d6485b699",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/biroliro.mp3"
+    }
+  },
+  {
+    "name": "capitalismo é um lixo.mp3",
+    "path": "Music/capitalismo é um lixo.mp3",
+    "sha": "b6917930aa682c72aa8f949524c330b670db2fb5",
+    "size": 2021256,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/capitalismo%20%C3%A9%20um%20lixo.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/capitalismo%20%C3%A9%20um%20lixo.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/b6917930aa682c72aa8f949524c330b670db2fb5",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/capitalismo é um lixo.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/capitalismo%20%C3%A9%20um%20lixo.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/b6917930aa682c72aa8f949524c330b670db2fb5",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/capitalismo%20%C3%A9%20um%20lixo.mp3"
+    }
+  },
+  {
     "name": "drive ME crazy!.mp3",
     "path": "Music/drive ME crazy!.mp3",
     "sha": "13709ba9671097d0003121d7da04d0bc91ba6057",
@@ -5229,6 +6493,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/euphoria.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/be2b066906e04034c8da911d096ac6e1d1dd483f",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/euphoria.mp3"
+    }
+  },
+  {
+    "name": "homens cis amam homens cis.mp3",
+    "path": "Music/homens cis amam homens cis.mp3",
+    "sha": "6dffdb2bc2bf23c022a98f49e818df9bd4f602c8",
+    "size": 4710071,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/homens%20cis%20amam%20homens%20cis.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/homens%20cis%20amam%20homens%20cis.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/6dffdb2bc2bf23c022a98f49e818df9bd4f602c8",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/homens%20cis%20amam%20homens%20cis.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/homens%20cis%20amam%20homens%20cis.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/6dffdb2bc2bf23c022a98f49e818df9bd4f602c8",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/homens%20cis%20amam%20homens%20cis.mp3"
     }
   },
   {
@@ -5293,6 +6573,38 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/m.A.A.d%20city.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/11c216c9dcaabc88687ecdece4b58a2ca84c409f",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/m.A.A.d%20city.mp3"
+    }
+  },
+  {
+    "name": "quem mandou matar jesus？.mp3",
+    "path": "Music/quem mandou matar jesus？.mp3",
+    "sha": "9d7be3605ca09cfce01e83811344b164ef5b5e34",
+    "size": 3473725,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/quem%20mandou%20matar%20jesus%EF%BC%9F.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/quem%20mandou%20matar%20jesus%EF%BC%9F.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/9d7be3605ca09cfce01e83811344b164ef5b5e34",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/quem mandou matar jesus？.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/quem%20mandou%20matar%20jesus%EF%BC%9F.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/9d7be3605ca09cfce01e83811344b164ef5b5e34",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/quem%20mandou%20matar%20jesus%EF%BC%9F.mp3"
+    }
+  },
+  {
+    "name": "satanás.mp3",
+    "path": "Music/satanás.mp3",
+    "sha": "bb3edbf3c48953402b371b0afd63bb5150b85080",
+    "size": 4024307,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/satan%C3%A1s.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/satan%C3%A1s.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/bb3edbf3c48953402b371b0afd63bb5150b85080",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/satanás.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/satan%C3%A1s.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/bb3edbf3c48953402b371b0afd63bb5150b85080",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/satan%C3%A1s.mp3"
     }
   },
   {

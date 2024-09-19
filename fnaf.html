@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 36vh;  
+        }
+        .fadetext {
+            opacity: 0;               
+            animation: fadeIn 7s forwards; 
+            animation-delay: 2s;
+            
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;           
+            }
+        }
+    </style>
+ <body style="background-color: black;">
+    <div class="container">
+ <p style="color: gray; text-align: center; font-size: medium; font-family: 'Courier New', Courier, monospace;"
+ class="fadetext">Some things are best left forgotten.</p>
+
+
+  <audio id="background-music" src="Assets/musicbox1.mp3" autoplay loop></audio>
+
+  <script>
+      const audio = document.getElementById('background-music');
+      audio.volume = 0;  // Start with volume at 0
+      let volume = 0;
+      const fadeDuration = 7000;  
+      const intervalTime = 600;   
+      const fadeStep = intervalTime / fadeDuration;  
+
+      function fadeIn() {
+          const fadeInterval = setInterval(() => {
+              if (volume < 0.5) {
+                  volume += fadeStep;  
+                  audio.volume = Math.min(volume, 0.4); 
+              } else {
+                  clearInterval(fadeInterval);  
+              }
+          }, intervalTime);
+      }
+
+      
+      audio.addEventListener('play', fadeIn);
+  </script>
+</script>
+</head>
+</div>
+</body> 
+</head>

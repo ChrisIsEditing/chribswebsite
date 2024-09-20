@@ -38,20 +38,25 @@
     <script>
         const gifContainer = document.getElementById('gif-container');
         
-       
+        const gifs = [
+            'Nyan cat.gif',
+            'spinning skulls.gif',
+            'grimreaper red.gif',
+            'frying skull egg head.gif',
+            'bub bub bounce.gif',
+            'me when mac and cheese.gif',
+            'burning freddy.gif'
+            
+        ];
+
         function loadGifs() {
-            fetch('/gifs')
-                .then(response => response.json())
-                .then(data => {
-                    data.forEach(gif => {
-                        const img = document.createElement('img');
-                        img.src = gif.url;
-                        img.alt = gif.filename;
-                        img.title = gif.filename; 
-                        gifContainer.appendChild(img);
-                    });
-                })
-                .catch(error => console.error('Error loading GIFs:', error));
+            gifs.forEach(gif => {
+                const img = document.createElement('img');
+                img.src = `GIFs/${gif}`;
+                img.alt = gif;
+                img.title = gif;
+                gifContainer.appendChild(img);
+            });
         }
 
         loadGifs();

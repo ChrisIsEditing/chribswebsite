@@ -576,6 +576,22 @@
     }
   },
   {
+    "name": "Bloody Mary.mp3",
+    "path": "Music/Bloody Mary.mp3",
+    "sha": "26e1b58bd03b583e718736f7c1569ebb95117135",
+    "size": 5916195,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Bloody%20Mary.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Bloody%20Mary.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/26e1b58bd03b583e718736f7c1569ebb95117135",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Bloody%20Mary.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Bloody%20Mary.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/26e1b58bd03b583e718736f7c1569ebb95117135",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Bloody%20Mary.mp3"
+    }
+  },
+  {
     "name": "Blue (Da Ba Dee) (DJ Ponte Ice Pop Radio).mp3",
     "path": "Music/Blue (Da Ba Dee) (DJ Ponte Ice Pop Radio).mp3",
     "sha": "43df5a804a666e6366233f087d0f78f54ced4471",
@@ -3008,6 +3024,22 @@
     }
   },
   {
+    "name": "Just Dance.mp3",
+    "path": "Music/Just Dance.mp3",
+    "sha": "98875c2021f121ddbd2f5510df69146829401f20",
+    "size": 5842085,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Just%20Dance.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Just%20Dance.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/98875c2021f121ddbd2f5510df69146829401f20",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Just%20Dance.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Just%20Dance.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/98875c2021f121ddbd2f5510df69146829401f20",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Just%20Dance.mp3"
+    }
+  },
+  {
     "name": "Just What I Am (Explicit).mp3",
     "path": "Music/Just What I Am (Explicit).mp3",
     "sha": "00b7bca8f1cd7d232853d1677e67eaa73cfcb0a1",
@@ -3789,6 +3821,22 @@
       "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Nice%20Nice.mp3?ref=main",
       "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/d7ddd8df8c46cee0df60683bbbb1c636d7ce9fec",
       "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Nice%20Nice.mp3"
+    }
+  },
+  {
+    "name": "Nightcall.mp3",
+    "path": "Music/Nightcall.mp3",
+    "sha": "bc5b120ef21a5cd2b8d45e3bb5457ee083d89b4c",
+    "size": 6203875,
+    "url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Nightcall.mp3?ref=main",
+    "html_url": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Nightcall.mp3",
+    "git_url": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/bc5b120ef21a5cd2b8d45e3bb5457ee083d89b4c",
+    "download_url": "https://raw.githubusercontent.com/ChrisIsEditing/chribswebsite/main/Music/Nightcall.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/contents/Music/Nightcall.mp3?ref=main",
+      "git": "https://api.github.com/repos/ChrisIsEditing/chribswebsite/git/blobs/bc5b120ef21a5cd2b8d45e3bb5457ee083d89b4c",
+      "html": "https://github.com/ChrisIsEditing/chribswebsite/blob/main/Music/Nightcall.mp3"
     }
   },
   {

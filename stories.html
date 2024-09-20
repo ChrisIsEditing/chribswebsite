@@ -5,49 +5,105 @@
     <link rel="icon" href="/Assets/book1.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stories</title>
+ 
+
+
+
     <style>
-        body {
-            background-color: #000;
-            color: #d8d8d8;
-            font-family: 'Courier New', Courier, monospace;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        .story {
-            margin-bottom: 20px;
-        }
-        .title {
-            color: salmon; 
-            /*As shaggy once said, "it wasn't me"*/
-            font-size: 24px;
-            margin-bottom: 10px;
-            text-decoration: underline;
-        }
-        .date {
-            color: #888;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-        .content {
-            margin-bottom: 10px;
-        }
-        .image-placeholder {
-            background-color: #333;
-            width: 300px;
-            height: 200px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #353535;
-        }
-        .separator {
-            border-bottom: 1px solid #585858;
-            margin: 20px 0;
-        }
+body {
+    background-color: #000;
+    color: #d8d8d8;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.error-message {
+    position: fixed;
+    left: 50%;
+    top: 30px; 
+    transform: translate(-50%, 0); 
+    background-color: rgba(22, 22, 22, 0.897);
+    color: rgb(252, 96, 96);
+    padding: 10px;
+    border-radius: 10px;
+    z-index: 1000;
+    display: none; 
+    justify-content: center; 
+    align-items: center; 
+    width: 85%; 
+    max-width: 400px;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translate(-50%, -100%); 
+    }
+    to {
+        transform: translate(-50%, 0); 
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translate(-50%, 0); 
+    }
+    to {
+        transform: translate(-50%, -100%); 
+    }
+}
+
+
+
+.slide-in {
+    animation: slideDown 0.5s forwards; 
+}
+
+.slide-out {
+    animation: slideOut 0.5s forwards; 
+}
+
+.story {
+    margin-bottom: 20px;
+}
+
+.title {
+    color: salmon; 
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+.date {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.content {
+    margin-bottom: 10px;
+}
+
+.image-placeholder {
+    background-color: #333;
+    width: 300px;
+    height: 200px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #353535;
+}
+
+.separator {
+    border-bottom: 1px solid #585858;
+    margin: 20px 0;
+}
+    
     </style>
 </head>
 <body>
+    <div id="errorMessage" class="error-message" style="display: none;"></div>
     <h1 style="position: sticky; font-family: 'Times New Roman', Times, serif; margin-bottom: 0; 
         color: darksalmon; font-weight: bold;">
         <b> STORIES </b></h1>
@@ -57,12 +113,19 @@
           <p style="color: rgba(255, 81, 81, 0.925); margin-top: 10; font-size: small; font-weight: 400;"
         ><i>ALL STORIES BELOW ARE RANDOM A.I. GENERATED SILLY STORIES!<BR>SOME CONTAIN DISTURBING IMAGERY!<BR>VIEW AT OWN RISK!<BR><br></i></p>
             
+            <div id="search-container" style="margin: 10px 0;">
+                <input type="text" id="searchInput" placeholder="Search for a story..." style="padding: 5px; border-radius: 10px; width: 30%; background-color: salmon; border: 1px solid black; margin-bottom: 10px;">
+                <button id="searchButton" style="margin-left: 4px; background-color: salmon; border: 1px solid salmon; padding: 5px; border-radius: 10px;">Search</button>
+            </div>
+            
+            <div class="separator"></div>
             <p style="color: rgba(185, 185, 185, 0.548); margin-top: 10; font-size: small;"
             ><i>Latest stories at the top:</i></p>
-          
+          <br>
+          <br>
 
 
- <div class="separator"></div>
+
  <div class="story">
      <div class="title">"Spookers"</div>
      <div class="date">19 September 2024</div>
@@ -75,7 +138,9 @@
      </div>
  <div class="separator"></div>
  <br>
- 
+ </div>
+
+
  <div class="story">
      <div class="title">"David's First Concert"</div>
      <div class="date">19 September 2024</div>
@@ -87,6 +152,8 @@
          
      </div>
  <div class="separator"></div>
+ <br>
+ </div>
 
     
     <div class="story">
@@ -99,6 +166,9 @@
 <p>One day, Katey had heard whispers about &ldquo;The Krackheads&rdquo; from the local kids at school, and curiosity had gotten the better of her. The rumors painted a picture of an unsettling group&mdash;dodgey, weird, and potentially dangerous. The Krackheads were known for their unannounced appearances and odd antics, which only fueled Katey&rsquo;s growing intrigue. Tonight, they were supposed to have a performance at a rundown community center on the edge of town, and she decided to check it out for herself.<br /><br />The community center was shrouded in an eerie atmosphere. The building looked decrepit, with peeling paint and broken windows that cast twisted shadows in the moonlight. Katey approached cautiously, her heart racing with a mix of excitement and trepidation. As she entered the building, she was greeted by a strange sight.<br /><br />The main hall was lit by flickering fluorescent lights that cast a sickly pallor over the room. In the center of the stage, a set of mismatched instruments and a tattered banner reading "Katey and the Krackheads" hung crookedly. The Krackheads themselves were a peculiar bunch: a motley crew of individuals clad in mismatched, brightly colored outfits that seemed to be made from discarded fabric. Their faces were obscured by bizarre masks with exaggerated features&mdash;big eyes, wide grins, and unsettlingly blank expressions.<br /><br />The band members moved erratically, their movements jerky and unpredictable. Their conversations, if they could be called that, were filled with disjointed, nonsensical phrases and unsettling laughter. The atmosphere was thick with a sense of foreboding as Katey watched from the shadows, her anxiety mounting.<br /><br />Just as the lights dimmed and the band members took their places, the Krackheads began their performance. The room filled with a cacophony of discordant notes and strange rhythms. The band members played their instruments with an unhinged energy, creating a jarring and unsettling sound that seemed to reverberate through Katey&rsquo;s bones. The lyrics they sang were bizarre, filled with disjointed phrases and disturbing imagery that only heightened the sense of unease.<br /><br />Katey&rsquo;s apprehension grew as the performance continued. The Krackheads&rsquo; antics became more erratic, with sudden, wild movements and strange, unsettling gestures. The crowd, a sparse group of equally strange individuals, cheered with an almost frenzied enthusiasm, their faces illuminated by the dim stage lights.<br /><br />Suddenly, in the midst of the chaos, something unexpected happened. The Krackheads&rsquo; lead singer, a tall figure in a grotesque mask with an oversized grin, began to sing a song with an oddly familiar tune. The lyrics were about washing hands&mdash;a simple, cheerful ditty about soap and water. The dissonant notes and strange rhythms suddenly transformed into a strangely catchy melody, and the mood of the performance shifted dramatically.<br /><br />As the song continued, the Krackheads began to sing about the Bible, their lyrics focusing on biblical stories and teachings. Katey&rsquo;s jaw dropped in disbelief. The unsettling and chaotic performance had taken a sudden, bizarre turn. The Krackheads, it turned out, were not some dangerous group but rather a children&rsquo;s music band. Their strange appearance and erratic behavior were all part of their act&mdash;a deliberate attempt to captivate and bewilder their audience with an unconventional style.<br /><br />The lead singer, his grotesque mask now removed to reveal a kind, smiling face, explained in a sing-song voice, &ldquo;We&rsquo;re the Krackheads, and our name comes from our commitment to crack open the fun of learning! We sing about the Bible, washing hands, and other important things in a way that&rsquo;s&hellip; well, unconventional!&rdquo;<br /><br />Before Katey could process this revelation, the building&rsquo;s front doors were suddenly flung open. A squad of police officers stormed into the room, their footsteps pounding against the floor. The atmosphere shifted once again, this time from bewildering to outright chaotic. The officers shouted commands, and the Krackheads&rsquo; performance came to an abrupt halt.<br /><br />Katey stood frozen, her mind reeling from the sudden turn of events. The officers began to corral the crowd, their presence adding a layer of confusion to the already chaotic scene. The Krackheads, now looking more bewildered than ever, were quickly surrounded by the police.<br /><br />In the midst of the commotion, the lead singer managed to shout, &ldquo;We&rsquo;re just here to spread joy!&rdquo; before being escorted away by the officers.<br /><br />The room erupted into a frenzy of noise and confusion as Katey watched, unable to make sense of the whirlwind of events. The once eerie, unsettling performance had transformed into a chaotic scene of law enforcement and bewildered band members.<br /><br />As the police continued their work, the Krackheads were finally led out of the building, never to be seen again.</p>
         </div>
     <div class="separator"></div>
+    <br>
+    </div>
+
 
     <div class="story">
         <div class="title">"Jason's Mishap"</div>
@@ -111,6 +181,9 @@
         </div>
     <div class="separator"></div>
     <br>
+    </div>
+
+
     <div class="story">
         <div class="title">"Dogg Dogg Man"</div>
         <div class="date">13 September 2024</div>
@@ -124,6 +197,9 @@
         </div>
     <div class="separator"></div>
     <br>
+    </div>
+
+
     <div class="story">
         <div class="title">"The Gorillaz Incident"</div>
         <div class="date">13 September 2024</div>
@@ -135,6 +211,8 @@
         </div>
     <div class="separator"></div>
     <br>
+    </div>
+
     <div class="story">
         <div class="title">"The Cheese Cutter"</div>
         <div class="date">13 September 2024</div>
@@ -146,6 +224,8 @@
         </div>
     <div class="separator"></div>
     <br>
+    </div>
+
     <div class="story">
         <div class="title">"Old Man Robert"</div>
         <div class="date">13 September 2024</div>
@@ -158,6 +238,9 @@
         </div>
     <div class="separator"></div>
     <br>
+    </div>
+
+
     <div class="story">
         <div class="title">"Scary House"</div>
         <div class="date">13 September 2024</div>
@@ -169,6 +252,9 @@
         </div>
     <div class="separator"></div>
     <br>
+    </div>
+
+
     <div class="story">
         <div class="title">"Damn Jason"</div>
         <div class="date">13 September 2024</div>
@@ -180,6 +266,9 @@
         </div>
     <div class="separator"></div>
     <br>
+    </div>
+
+
     <div class="story">
         <div class="title">"Rotators"</div>
         <div class="date">13 September 2024</div>
@@ -197,6 +286,9 @@
         </div>
     <div class="separator"></div>
     <br>
+    </div>
+
+
     <div class="story">
         <div class="title">"Hanna Montant: The Darkest Day"</div>
         <div class="date">10 September 2024</div>
@@ -214,6 +306,9 @@
         </div>
     <div class="separator"></div>
     <br>
+    </div>
+
+
     <div class="story">
         <div class="title">"Old Bessie"</div>
         <div class="date">1 September 2024</div>
@@ -225,10 +320,15 @@
         </div>
     <div class="separator"></div>
     <br>
+    </div>
+
+
+
     <div class="story">
         <div class="title">"The Clearwater Incident"</div>
         <div class="date">1 September 2024</div>
         <br>
+
         <div class="content">
     
     <p>In the small, unassuming town of Clearwater Springs, an event was about to unfold that would be remembered for generations. It was the day that Boy Boy Man&mdash;a local eccentric known for his bizarre antics&mdash;fell into a pit of sunscreen. What started as a peculiar accident quickly spiraled into a fiasco that would shut down the entire Summer Fun Fest, ultimately leading to the mayor declaring a statewide emergency.<br /><br />It all began on a sweltering summer afternoon. The town was hosting its annual Summer Fun Fest, and the local park was packed with families enjoying the festivities. Boy Boy Man, dressed in his usual outlandish outfit&mdash;a mismatched ensemble of neon colors and patterns&mdash;was wandering around, delighting kids with his silly antics. But no one could have anticipated what would happen next.<br /><br />In the middle of the park, a large pit had been dug as part of a promotional stunt by SunSafe Sunscreens, one of the event&rsquo;s sponsors. The pit, filled with gallons of sunscreen, was intended to demonstrate the product&rsquo;s effectiveness in a fun and engaging way. The idea was that volunteers would jump in, get covered in sunscreen, and emerge fully protected from the sun&rsquo;s harsh rays. It was supposed to be lighthearted and entertaining.<br /><br />But Boy Boy Man, always the unpredictable character, took things too far. With a wild grin on his face, he ran towards the pit and, without a moment&rsquo;s hesitation, leaped into the thick, white goo. The crowd gasped as he disappeared into the sunblock, his neon clothes vanishing beneath the surface.<br /><br />For a moment, there was silence. Then, Boy Boy Man emerged, dripping with sunscreen, a white, slippery figure that looked like something out of a surreal dream. But instead of laughter or applause, the crowd&rsquo;s reaction was anything but amused. They were furious.<br /><br />The first person to voice his anger was Jimmy, the manager of the local KFC. Known around town for his short temper and booming voice, Jimmy was already in a foul mood that day. The long lines at his food stand had worn him down, and the sweltering heat wasn&rsquo;t helping. When he saw Boy Boy Man rise from the pit, looking like a ghostly apparition, something in Jimmy snapped.<br /><br />Local news crews, covering the festival, quickly caught wind of the situation. A reporter from Channel 7 News rushed over to Jimmy, microphone in hand, eager to capture the town&rsquo;s reaction.<br /><br />&ldquo;Jimmy, can you tell us what&rsquo;s going through your mind right now?&rdquo; the reporter asked, shoving the mic in front of him.<br /><br />Jimmy&rsquo;s face turned beet red, his eyes bulging with rage. &ldquo;What&rsquo;s going through my mind? I&rsquo;ll tell you what&rsquo;s going through my mind! This is the dumbest, most idiotic thing I&rsquo;ve ever seen! We&rsquo;ve got people here trying to have a good time, enjoying the festival, and this&mdash;this clown&mdash;jumps into a pit of sunscreen like it&rsquo;s some kind of joke! Look at him! He&rsquo;s ruining the whole event!&rdquo;<br /><br />The camera zoomed in on Boy Boy Man, who was now trying&mdash;and failing&mdash;to climb out of the slippery pit. His every movement only made things worse, as he slipped and slid back into the muck, his once-bright clothes now a uniform shade of greasy white.<br /><br />&ldquo;He&rsquo;s a menace, that&rsquo;s what he is!&rdquo; Jimmy continued, his voice growing louder with each word. &ldquo;I&rsquo;ve got customers waiting for their chicken, and instead, they&rsquo;re watching this nonsense! Who does he think he is, coming in here and causing all this trouble? I swear, if he comes near my stand, I&rsquo;ll&mdash;&rdquo;<br /><br />Jimmy&rsquo;s tirade was cut short as the reporter, sensing the growing hostility in the crowd, turned the focus back to the camera.<br /><br />&ldquo;As you can see, tensions are high here at the Summer Fun Fest,&rdquo; the reporter said, her tone professional despite the chaos unfolding behind her. &ldquo;What was meant to be a fun and harmless demonstration has turned into a full-blown disaster, with many attendees visibly upset by Boy Boy Man&rsquo;s actions. We&rsquo;ll keep you updated as this story develops.&rdquo;<br /><br />But the situation was far from contained. As Boy Boy Man struggled to free himself from the pit, his antics only made things worse. The sunscreen splattered everywhere, covering nearby stalls, ruining clothes, and making the ground around the pit dangerously slippery. Panic began to spread through the crowd as people tried to avoid the spreading mess, but it was too late. The chaos that Boy Boy Man had unleashed was unstoppable.<br /><br />Within minutes, the entire fairground was in disarray. Food stands were toppled, rides were shut down as operators abandoned their posts, and children cried as their parents desperately tried to leave the scene. The atmosphere, once festive and lighthearted, had turned into one of anger and confusion.<br /><br />The fair organizers, overwhelmed by the escalating situation, tried to regain control, but their efforts were futile. The guests&rsquo; frustration boiled over, and soon, arguments and fights broke out among the crowd. The once-joyful event had turned into a chaotic battleground.<br /><br />Back at the KFC stand, Jimmy was livid. &ldquo;I knew this was a bad idea from the start!&rdquo; he yelled, his voice barely audible over the clamor. &ldquo;Who thought it was smart to have a pit of sunscreen in the middle of a crowded fair? And now look what&rsquo;s happened! The whole town&rsquo;s gone mad!&rdquo;<br /><br />As the situation worsened, the mayor of Clearwater Springs, who had been attending the event, was forced to step in. With the fairgrounds descending into chaos and the threat of further unrest looming, he had no choice but to make a drastic decision.<br /><br />&ldquo;I&rsquo;m declaring a state of emergency,&rdquo; the mayor announced, his voice shaky as he addressed the panicked crowd. &ldquo;For the safety of everyone here, we need to shut down the Summer Fun Fest immediately and evacuate the area. I urge everyone to remain calm and cooperate with law enforcement.&rdquo;<br /><br />The announcement sent shockwaves through the town. A statewide emergency declaration was unheard of for such a small, peaceful community, but the situation had spiraled so far out of control that there was no other option.<br /><br />Emergency services were called in to manage the evacuation, and the news quickly spread throughout the state. The once-celebrated Summer Fun Fest was now a symbol of chaos and disaster, all because of Boy Boy Man&rsquo;s ill-fated leap into the pit of sunscreen.<br /><br />As the fairgrounds were cleared and the last of the guests were escorted out, Boy Boy Man was finally pulled from the pit. Covered in sunscreen and looking more confused than remorseful, he was led away by security, leaving behind a trail of greasy footprints.</p>
@@ -236,6 +336,7 @@
         </div>
     <div class="separator"></div>
     <br>
+    </div>
 
 
 
@@ -251,18 +352,48 @@
 
 
 
-
-
-
-
-
-
-<div id="footer"></div>
     <script>
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('footer').innerHTML = data);
+document.getElementById("searchButton").addEventListener("click", function () {
+    const query = document.getElementById("searchInput").value.toLowerCase();
+    const stories = document.querySelectorAll(".story");
+    let found = false;
+
+    stories.forEach(story => {
+        const titleElement = story.querySelector(".title");
+        if (titleElement) {
+            const title = titleElement.textContent.toLowerCase();
+            if (title.includes(query)) {
+                story.scrollIntoView({ behavior: "smooth" });
+                found = true;
+            }
+        }
+    });
+
+    const errorMessage = document.getElementById("errorMessage");
+if (!found) {
+    errorMessage.textContent = "I could not find that story! :(";
+    errorMessage.style.display = "flex"; 
+    errorMessage.classList.remove("slide-out"); 
+    errorMessage.classList.add("slide-in"); 
+
+    setTimeout(() => {
+        errorMessage.classList.remove("slide-in"); 
+        errorMessage.classList.add("slide-out"); 
+    }, 3000); //
+
+    setTimeout(() => {
+        errorMessage.style.display = "none"; 
+        errorMessage.classList.remove("slide-out"); 
+    }, 3500); 
+}
+
+    
+});
+
     </script>
+
+
+
 
 </body>
 </html>

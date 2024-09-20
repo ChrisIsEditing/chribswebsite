@@ -204,7 +204,7 @@ function searchSongs() {
     if (matchingSongs.length > 0) {
         const songIndex = songs.findIndex(song => song.title === matchingSongs[0].title);
         const foundSong = matchingSongs[0];
-
+    
         if (currentSongIndex !== -1 && songIndex !== currentSongIndex) {
             addToQueue(foundSong, songIndex);
             console.log(`Added "${foundSong.title}" to the queue`);
@@ -212,9 +212,40 @@ function searchSongs() {
             playSong(foundSong, songIndex);
         }
     } else {
-        alert("I couldn't find that song :(");
+        const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
+
+        if (matchingSongs.length > 0) {
+            const songIndex = songs.findIndex(song => song.title === matchingSongs[0].title);
+            const foundSong = matchingSongs[0];
+        
+            if (currentSongIndex !== -1 && songIndex !== currentSongIndex) {
+                addToQueue(foundSong, songIndex);
+                console.log(`Added "${foundSong.title}" to the queue`);
+            } else {
+                playSong(foundSong, songIndex);
+            }
+        } else {
+            console.log("No matching songs found."); 
+            const errorMessage = document.getElementById("errorMessage");
+            errorMessage.textContent = "I couldn't find that song :(";
+            errorMessage.style.display = "flex"; 
+            errorMessage.classList.remove("slide-out"); 
+            errorMessage.classList.add("slide-in"); 
+        
+            setTimeout(() => {
+                errorMessage.classList.remove("slide-in"); 
+                errorMessage.classList.add("slide-out"); 
+            }, 3000); 
+        
+            setTimeout(() => {
+                errorMessage.style.display = "none"; 
+                errorMessage.classList.remove("slide-out"); 
+            }, 3500); 
+        }
     }
-}
+}           
+
+
 
 //I have no clue what i'm doing
 

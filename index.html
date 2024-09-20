@@ -1,60 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--Version 1.0-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9">
+    <title>Home</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            background-color: black; 
+        }
+
+        body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 0, 0, 0.20), rgba(0, 0, 255, 0.20));
+    opacity: 0; 
+    animation: breathe 10s ease-in-out infinite, fadeBackground 5s linear infinite; 
+    z-index: -2; 
+}
+
+    @keyframes breathe {
+        0%, 10% {
+            opacity: 0; 
+        }
+        30%, 100% {
+            opacity: 1; 
+        }
+        80%, 100% {
+            opacity: 0; 
+        }
+    }
+    @keyframes fadeBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 100% 50%; 
+    }
+    50% {
+        background-position: 0% 50%;
+    }
+}
 
 
-<title>Home</title>
-<head> 
-	<link rel="stylesheet" href="styles.css">
+        h1, h3 {
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
+        }
 
-	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-<body>
-	<style>body { background-color: black; font-family: 'Courier New', Courier, monospace; } </style>
-	
-
-    <h1 style="color: salmon; margin-bottom: 5px; text-decoration: underline;"> 
-		<b>Hello user!</b> </h1>
-	<h3 style="color: rgb(255, 244, 227); margin-top: 0px;"> How can I assist you today? </h3>
-	<hr style="border: 1px solid darksalmon; width: 30%;">
-	<br>
-	<br>
-	<h3 style="color: darksalmon; font-size: medium;"> I'd like to go to... </h3>
-	
-	<p> <a style="color: rgb(216, 157, 30);" href="blog.html">
-		> Blog <</a> /// <a style="color: rgb(216, 157, 30);" href="media.html">
-			> Gallery <</a></p>
-	
-	
-    <br> 
-	<p> <a style="color: rgb(216, 157, 30);" href="contact.html">
-		> Contact <</a> /// <a style="color: rgb(216, 157, 30);" href="comingsoon.html">
-			> Noodle <</a></p>
-	<br>
-	<p> <a style="color: rgb(216, 157, 30);" href="music.html">
-	> Music Player <</a> /// <a style="color: rgb(216, 157, 30);" href="stories.html">
-		> Stories <</a></p>
-    
-	
-	
-	
-	
-
-
-	
-<br>
-
-
-
-
-<div id="footer"></div>
-<script>
-    fetch('footer.html')
-        .then(response => response.text())
-        .then(data => document.getElementById('footer').innerHTML = data);
-</script>
-</body>
+        #hello-user {
+            color: salmon;
+            margin-bottom: 5px;
+            text-decoration: underline;
+        }
+        #how-can-i-assist-you-today {
+            color: rgb(255, 196, 182);
+            margin-top: 0px;
+        }
+        #buttonsep {
+            color: rgb(255, 169, 89);
+            font-size: medium;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px auto;
+            max-width: 600px; 
+        }
+        .nav-button {
+            background-color: #1b1b1b;
+            color: rgb(231, 131, 98);
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            border-radius: 8px; 
+            flex-basis: calc(25% - 10px);
+            min-width: 100px;
+        }
+        .nav-button:hover {
+            background-color: #303030;
+            color: #ff4f49;
+        }
+        @media (max-width: 600px) {
+            .nav-button {
+                flex-basis: calc(50% - 10px);
+            }
+        }
+    </style>
 </head>
-</html> 
+<body>
+    <h1 id="hello-user">Hello user!</h1>
+    <h3 id="how-can-i-assist-you-today">How can I assist you today?</h3>
+    <hr style="width: 42%; color: darksalmon;">
+    <br>
+    <h3 id="buttonsep">/// MAIN PAGES ///</h3>
+    <div class="button-container">
+        <a href="blog.html" class="nav-button">Blog</a>
+        <a href="media.html" class="nav-button">Gallery</a>
+        <a href="contact.html" class="nav-button">Contact</a>
+    </div>
+    
+    <br>
+    <h3 id="buttonsep">/// FUN PAGES ///</h3>
+    <div class="button-container">
+        <a href="gifs.html" class="nav-button">GIFs</a>
+        <a href="music.html" class="nav-button">Music Player</a>
+        <a href="stories.html" class="nav-button">Stories</a>
+    </div>
+
+    <div id="footer"></div>
+
+    <audio id="background-music" src="Assets/evolve.mp3" autoplay loop></audio>
+    <script>
+        const audio = document.getElementById('background-music');
+        audio.volume = 0;  
+        let volume = 0;
+        const fadeDuration = 7000;  
+        const intervalTime = 600;   
+        const fadeStep = intervalTime / fadeDuration;  
+
+        function fadeIn() {
+            const fadeInterval = setInterval(() => {
+                if (volume < 0.5) {
+                    volume += fadeStep;  
+                    audio.volume = Math.min(volume, 0.4); 
+                } else {
+                    clearInterval(fadeInterval);  
+                }
+            }, intervalTime);
+        }
+
+        audio.addEventListener('play', fadeIn);
+    </script>
+</body>
+</html>

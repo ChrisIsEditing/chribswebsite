@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="/Assets/systemplayericon.png">
+    <link rel="icon" href="/Assets/systemplayericon.png" type="image/png">
+
     
     <title>Music Player</title>
     <style>
@@ -17,6 +18,7 @@
             color: white;
             text-align: center;
             font-family: 'Courier New', Courier, monospace;
+            overflow-x: hidden;
         }
         
         #queueList li {
@@ -215,6 +217,10 @@
                 margin-top: 10px;
             }
         }
+               #container, #player-container, #controls, #search-container {
+            width: 100%;
+            max-width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -259,6 +265,8 @@
 
   
 
+
+    <div id="footer"></div>
 
    
 </body>

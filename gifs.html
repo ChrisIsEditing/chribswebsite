@@ -17,6 +17,14 @@ body, html {
     align-items: center;
 }
 
+@media (max-width: 768px) {
+    .gif-container img {
+        max-width: 100%; /* this. fuck it */
+        flex: 0 0 45%; /* 1-2 gifs p/row */
+        justify-content: center;
+    }
+}
+
 .gif-container {
             display: flex;
             flex-wrap: wrap;
@@ -25,7 +33,7 @@ body, html {
         .gif-container img {
             max-width: 500px;
             max-height: 250px;
-            min-width: 150px;
+            min-width: 150px; /*my beloved*/
             width: auto;
             height: auto;
 
@@ -39,11 +47,15 @@ body, html {
         const gifContainer = document.getElementById('gif-container');
         
         const gifs = [
+            'popgoes dance 8bit.gif',
+            'tux spin.gif',
             'Nyan cat.gif',
+            'maxwell spin.gif',
             'spinning skulls.gif',
             'grimreaper red.gif',
             'frying skull egg head.gif',
             'bub bub bounce.gif',
+            'maxwell rock.gif',
             'me when mac and cheese.gif',
             'burning freddy.gif',
             'husker whoops.gif',
@@ -72,6 +84,7 @@ body, html {
              'sam.gif',
             'walking ic chip.gif',
             'spin petscop.gif',
+            'min-width my beloved locket.gif',
             
             
 

@@ -149,6 +149,14 @@ function searchSongs() {
         }
         return;
     }
+    if (query === "/clear") {
+        
+        queue.length = 0;
+        console.log("Queue cleared.");
+        updateQueueDisplay();
+        return;
+    }
+
 
     if (query === "/fnaf") {
         const fnafSongs = [

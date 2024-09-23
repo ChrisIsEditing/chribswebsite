@@ -16,11 +16,13 @@
         }
         .warning {
             color: crimson;
+            text-align: center;
         }
         .title {
-            font-size: 0.9em;
+            font-size: 0.8em;
             margin-bottom: 20px;
             color: #e08700;
+            text-align: center;
         }
         .menu {
             font-size: small;
@@ -36,6 +38,7 @@
         .info {
             margin-top: 20px;
             color: gray;
+            text-align: center;
         }
     </style>
 </head>
@@ -59,11 +62,13 @@
     </div>
     <!--"I see trees of jank... fucked hacks too... something something... what a wonderful world"-->
     <div class="info">
-        Site Version: 1.1
+        Site Status: ONLINE
     <br>
-        Last upgrade: 13 September 2024
+        Last Update: September 2024
+        <BR>
+            Release Status: ALPHA
     </div>
-    <p style="color: gray;">_______________________________</p>
+    <p style="color: gray; text-align: center;">_______________________________</p>
     <div class="menu">
         <br>
         MAIN PAGES SELECTION:
@@ -107,8 +112,9 @@
 <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/upcomingfeatures">{Upcoming Features}</a> <span class="separator"> // </span>
 <br>
 <br>
-
-
+<a style="color: rgb(216, 157, 30);" href="books.html" class="nav-button">{Books}</a><span class="separator"> // </span>
+<br>
+<br>
 
 </div>
 <div class="menu">
@@ -137,11 +143,7 @@
     <br>
     <br>
 <div id="footer"></div>
-<script>
-    fetch('footer.html')
-        .then(response => response.text())
-        .then(data => document.getElementById('footer').innerHTML = data);
-</script>
+
 <!--work piece of shit-->
 </body>
 </html>

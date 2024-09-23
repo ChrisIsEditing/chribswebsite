@@ -157,6 +157,38 @@ function searchSongs() {
         return;
     }
 
+    if (query === "/chribs") {
+        const ChribsSongs = [
+            "onions", 
+            "elephant", 
+            "", 
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+        ];
+
+
+        const matchingChribsSongs = songs
+            .filter(song => ChribsSongs.includes(song.title.toLowerCase()) &&
+                            songs.indexOf(song) !== currentSongIndex);
+
+        queue.length = 0;
+
+        matchingChribsSongs.forEach(song => addToQueue(song, songs.indexOf(song)));
+
+        if (matchingChribsSongs.length > 0) {
+           
+            if (currentSongIndex === -1) {
+                playSong(matchingChribsSongs[0], songs.indexOf(matchingChribsSongs[0]));
+            }
+        }
+        return;
+    }
+
 
     if (query === "/fnaf") {
         const fnafSongs = [
@@ -190,7 +222,32 @@ function searchSongs() {
         return;
     }
 
-
+    function showLoadingGif() {
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        loadingOverlay.style.display = 'flex';
+    
+        
+        setTimeout(() => {
+          loadingOverlay.style.display = 'none';
+        }, 4000);
+      }
+    
+      if (query === "/all") {
+        showLoadingGif();
+    
+        const filteredSongs = songs.filter((song, index) => index !== currentSongIndex);
+    
+        queue.length = 0;
+    
+        filteredSongs.forEach(song => addToQueue(song, songs.indexOf(song)));
+    
+        if (filteredSongs.length > 0) {
+          if (currentSongIndex === -1) {
+            playSong(filteredSongs[0], songs.indexOf(filteredSongs[0]));
+          }
+        }
+        return;
+      }
     
     if (query === "/all") {
         const filteredSongs = songs.filter((song, index) => index !== currentSongIndex);

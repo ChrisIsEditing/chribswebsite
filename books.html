@@ -174,8 +174,8 @@ font-size: 11px;
     </div>
     
 
-    <h1 style="color: rgb(231, 75, 75); margin-bottom: 0%; margin-top: 0%; font-size: 40px;"> R.   E.   A.   D.  </h1>
-    <h3 class="subtitle"> Retrieval. Engine. (for) Archived. Documents.</h3>
+    <h1 style="color: rgb(231, 75, 75); margin-bottom: 0%; margin-top: 0%; font-size: 40px;"> R.   E.   A.   D.  R. </h1>
+    <h3 class="subtitle"> Retrieval. Engine. (for) Archived. Documents. R-CLASS</h3>
  
     <hr class="breakline2"></hr>
 
@@ -284,68 +284,81 @@ function loadBooks() {
         }, 1000); 
     });
 }
-
+function sortBooksByOriginalOrder(foundBooks) {
+    return books.filter(book => foundBooks.some(foundBook => foundBook.path === book.path));
+}
 document.getElementById("searchButton").addEventListener("click", function () {
     const query = document.getElementById("searchInput").value.trim().toLowerCase();
 
     if (query === '') {
         errorMessage.textContent = "Please enter a search term.";
-        errorMessage.style.display = "flex"; 
+        errorMessage.style.display = "flex";
         setTimeout(() => {
             errorMessage.style.display = "none";
         }, 3000);
-        return; 
+        return;
     }
 
+    // Show loading overlay
+    document.getElementById('overlay').style.display = 'flex';
+
     if (query === '/all') {
-        bookContainer.innerHTML = ''; 
-        loadBooks(); 
+        bookContainer.innerHTML = '';
+        loadBooks(); // This will load all books
     } else {
         const foundBooks = books.filter(book => book.path.split('/').pop().toLowerCase().includes(query));
         
-        bookContainer.innerHTML = ''; 
+        bookContainer.innerHTML = '';
 
         if (foundBooks.length > 0) {
-            foundBooks.forEach(book => {
-                const bookDiv = document.createElement('div');
-                bookDiv.className = 'book';
-                const img = document.createElement('img');
-                img.alt = book.path.split('/').pop(); 
-                img.title = img.alt;
+            const bookPromises = foundBooks.map(book => {
+                return new Promise((resolve) => {
+                    const bookDiv = document.createElement('div');
+                    bookDiv.className = 'book';
+                    const img = document.createElement('img');
+                    img.alt = book.path.split('/').pop();
+                    img.title = img.alt;
 
-                const link = document.createElement('a');
-                link.href = book.path;
-                link.target = '_blank';
+                    const link = document.createElement('a');
+                    link.href = book.path;
+                    link.target = '_blank';
 
-                pdfjsLib.getDocument(book.path).promise.then(pdf => {
-                    return pdf.getPage(1).then(page => {
-                        const canvas = document.createElement('canvas');
-                        const context = canvas.getContext('2d');
-                        const viewport = page.getViewport({ scale: 1 });
+                    pdfjsLib.getDocument(book.path).promise.then(pdf => {
+                        return pdf.getPage(1).then(page => {
+                            const canvas = document.createElement('canvas');
+                            const context = canvas.getContext('2d');
+                            const viewport = page.getViewport({ scale: 1 });
 
-                        canvas.height = viewport.height;
-                        canvas.width = viewport.width;
+                            canvas.height = viewport.height;
+                            canvas.width = viewport.width;
 
-                        return page.render({ canvasContext: context, viewport: viewport }).promise.then(() => {
-                            img.src = canvas.toDataURL();
-                            link.appendChild(img); 
-                            bookDiv.appendChild(link); 
+                            return page.render({ canvasContext: context, viewport: viewport }).promise.then(() => {
+                                img.src = canvas.toDataURL();
+                                link.appendChild(img);
+                                bookDiv.appendChild(link);
+                                const title = document.createElement('p');
+                                title.textContent = img.alt.replace('.pdf', '');
+                                link.appendChild(title);
+                                bookContainer.appendChild(bookDiv);
+                                resolve();
+                            });
                         });
                     });
                 });
-                const title = document.createElement('p');
-                title.textContent = img.alt.replace('.pdf', ''); 
-                link.appendChild(title);
+            });
 
-                bookDiv.appendChild(link); 
-                bookContainer.appendChild(bookDiv);
+            Promise.all(bookPromises).then(() => {
+                // Hide loading overlay after all books are loaded
+                document.getElementById('overlay').style.display = 'none';
             });
         } else {
             errorMessage.textContent = "I couldn't find that book! :(";
-            errorMessage.style.display = "flex"; 
+            errorMessage.style.display = "flex";
             setTimeout(() => {
                 errorMessage.style.display = "none";
             }, 3000);
+            // Hide loading overlay if no books found
+            document.getElementById('overlay').style.display = 'none';
         }
     }
 });

@@ -1,0 +1,52 @@
+CHRIBSWEBSITE LICENSE AND CODE USE AGREEMENT
+
+
+
+"S.Y.S.T.E.M", "S.Y.S.T.E.M's", "Chribs Website", "Chribswebsite", "Chribs - 2024", "Chribs", "ChrisIsEditing"
+"Chrib's Website", "Chrib Chrib", "Chrib's", "R.E.A.D", "Retrieval. Engine. (for) Archived. Documents.",
+"T.A.P.E", "Terminal. Audio. PLayback. Engine.", "SAIS-GO", "Shitty. Artifical. Intelegence. Story. Generator. Outputs"
+"S.U.B‐S.Y.S.T.E.M", Smaller. Underpowered. Build. (of) - Stupid. Yet. Simple. Task. Executions. Manager.", 
+"Stupid. Yet. Simple. Task. Executions. Manager."; 
+
+is property of ChrisIsEditing/Chribs and may not be used unless you have recieved 
+full written permission from ChrisIsEditing/Chribs. Once you recieve this, you are required to place it 
+alongside any distribution of your project/work. Said written notice is Non-Transferable,
+and may not be handed to, or used by anyone else, other than yourself.
+
+
+
+For S.Y.S.T.E.M's code, permission is hereby granted, free of charge, to any person obtaining a copy
+of this code and associated documentation files, to deal
+in the website's code without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, copies of the code, and to permit persons to whom the code is
+furnished to do so, subject to the following conditions:
+
+1. This permission notice shall be included in all
+   copies or substantial portions of the code.
+
+2. The Code, its Assets, and/or its Documentation; shall not be used for any illegal purposes, 
+   including but not limited to infringement of intellectual property rights or 
+   distribution of malicious/copyrighted/illegal software, code, programs, apps, and/or websites.
+
+3. The names of the authors and contributers shall not be used to endorse or promote
+   products derived from this code without prior written permission.
+
+4. This code's documentation and licenses may not be modified for any reason.
+   If you wish to make a change to the documentation, please open an Issue
+   on the GitHub.
+
+5. Chribs/ChrisIsEditing reserves the right to remove/revoke, any/all permission, granted to you
+   in regards to this Code, its Assets and/or its Documentation. 
+
+Please note that you agree to ALL of these above conditions by using, modifying, copying, 
+distributing, publishing and/or merging; this Code, its Assets and/or its Documentation.
+With that being said, don't fuck with my code. It'll fuck you back.
+
+
+
+THE WEBSITE CODE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION 
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE CODE 
+OR THE USE OR OTHER DEALINGS IN THE CODE.

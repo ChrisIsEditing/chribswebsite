@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="https://chrisisediting.github.io/chribswebsite/Assets/8ball.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O.R.A.C.L.E</title>
+    <style>
+        body {
+            background-color: rgb(10, 10, 10);
+            color: #d8d8d8;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            margin: 0;
+        }
+
+        h1 {
+            color: rgb(231, 75, 75);
+            font-size: 40px;
+            margin: 20px 0;
+        }
+
+        .subtitle2 {
+            font-size: 1.2em;
+            color: #d8d8d8;
+            margin: 10px 0;
+            margin-top: 100px;
+        }
+
+        .answer {
+            background-color: black;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.5em;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 400px;
+            display: none;
+            color: darkorange; 
+            white-space: pre-wrap; 
+        }
+
+        .input-container {
+            margin-top: 20px;
+        }
+
+        .question-input {
+            padding: 8px;
+            width: 300px;
+            border: 2px solid salmon;
+            border-radius: 15px;
+            background-color: #222;
+            color: #d8d8d8;
+        }
+
+        .ask-button {
+            padding: 8px 15px;
+            font-weight: 600;
+            margin-left: 5px;
+            background-color: rgb(250, 114, 114);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #000;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        #loadingGif {
+            width: 100px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .subtitle2 {
+                font-size: 1em;
+            }
+
+            .question-input {
+                width: 80%;
+            }
+
+            .answer {
+                font-size: 1.2em;
+            }
+
+            .ask-button {
+                padding: 8px 15px;
+                margin-top: 5px;
+                background-color: rgb(250, 114, 114);
+                border: none;
+                width: 80%;
+                border-radius: 10px;
+                cursor: pointer;
+                color: #000;
+            }
+
+            #loadingGif {
+                width: 80px;
+            }
+        }
+    </style>
+<script>
+
+let lastAnswerIndex = -1; 
+
+function getAnswer() {
+    const answers = [
+        "Yes, definitely.",
+        "Danger detected ahead.",
+        "ESTIMATED: 23% chance Yes.",
+        "Syntax error. Try again.",
+        "Don't count on it.",
+        "It is certain.",
+        "ESTIMATED: 58% chance Yes.",
+        "Are you sure that is the question you should be asking, user?",
+        "Uncertain. Try again.",
+        "Unknown.",
+        "Unable to calculate it. Try again.",
+        "Not likely.",
+        "It is possible.",
+        "The odds are in your favour, user.",
+        "I too, wonder that...",
+        "ESTIMATED: 46% chance No.",
+        "Advise caution.",
+        "Yes, in due time.",
+        "Outlook not so good.",
+        "Odds are 50/50.",
+        "The answer is: ę̴̻̥̱̍͊̽̍̉r̸̨̰̲̉̿̈́̅̉̅͂͆̾̚r̶̨̩̓ö̵̢̪̲̮̤̖̈́ͅŗ̵̠̫̫̥͍̤͚͐ͅ",
+        "Yes, absolutely!",
+        "Perhaps. The odds are slightly in favour.",
+        "The answer is: Very Possible",
+        "Definitely not.",
+        "I'd say yes.",
+        "There's a chance.",
+        "The future is unclear."
+    ];
+
+    const question = document.getElementById("questionInput").value.trim().toLowerCase();
+    let answerText = "";
+
+    if (["heads or tails", "head's or tails", "flip a coin", "flip coin", "coin flip"].includes(question)) {
+        answerText = Math.random() < 0.5 ? "Heads!" : "Tails!";
+    } else if (question === "open the doors" || question === "open the pod bay doors" || question === "hal, open the doors") {
+        answerText = "I'm sorry, Dave. I'm afraid I can't do that.";
+    } else if (question === "hello" || question === "hi" || question === "hey") {
+        answerText = "Hello user! Please ask a question.";
+    } else if (question.includes("who caused bite of 87") || question.includes("who did bite of 87") || question.includes("who caused the bite of 87")) {
+        answerText = "I am not permitted to talk about that.";
+    } else if (question.includes("what's obama's last name") || question.includes("what is obama's last name")) {
+        answerText = "I am not permitted to talk about that.";
+    } else {
+        let randomIndex;
+
+       
+        do {
+            randomIndex = Math.floor(Math.random() * answers.length);
+        } while (randomIndex === lastAnswerIndex);
+
+        lastAnswerIndex = randomIndex;
+        answerText = answers[randomIndex];
+    }
+
+    const overlay = document.getElementById("overlay");
+    const audio = document.getElementById("loadingSound");
+    overlay.style.display = "flex";
+    audio.volume = 0.2; 
+    audio.currentTime = 0; 
+    audio.play(); 
+
+    const answerDiv = document.getElementById("answer");
+    answerDiv.style.display = "none";
+
+    setTimeout(() => {
+        overlay.style.display = "none"; 
+        typeOutAnswer(answerText); 
+    }, 3000); 
+}
+
+
+    
+    function typeOutAnswer(text) {
+        const answerDiv = document.getElementById("answer");
+        answerDiv.style.display = "block"; 
+        answerDiv.textContent = ""; 
+        let index = 0;
+
+        function type() {
+            if (index < text.length) {
+                answerDiv.textContent += text.charAt(index);
+                index++;
+                setTimeout(type, 100); 
+            }
+        }
+
+        type(); 
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const input = document.getElementById("questionInput");
+        input.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                getAnswer();
+            }
+        });
+    
+});
+
+
+</script>
+
+</head>
+<body>
+    <h1 style="position: sticky; font-family: 'Times New Roman', Times, serif; margin-bottom: 0; 
+        color: darksalmon; font-weight: bold;">
+        <b style="color: rgb(255, 104, 104); font-size: 40px;"> O. R. A. C. L. E. </b>
+    </h1>
+    <h3 style="color: rgb(255, 187, 166); margin-top: 0%; font-size: small;">
+        Optimized. Resource. (for) Advice. (on) Celestial. Logic. 
+        <a class="subtitle" style="text-decoration: none; color: rgb(255, 187, 166);" href="system-classes.html">E-CLASS</a>
+    </h3>
+    
+    <h3 class="subtitle2">Ask a question about your future!</h3>
+
+    <div class="input-container">
+        <input id="questionInput" class="question-input" type="text" placeholder="Ask your question...">
+        <button class="ask-button" onclick="getAnswer()">ASK</button>
+    </div>
+
+    <div id="overlay">
+        <img id="loadingGif" src="https://github.com/ChrisIsEditing/chribswebsite/GIFs/loading.gif" alt="Loading...">
+    </div>
+
+    <div id="answer" class="answer"></div>
+
+    <audio id="loadingSound" src="https://github.com/ChrisIsEditing/chribswebsite/Assets/loadingsound.mp3" preload="auto"></audio>
+</body>
+</html>

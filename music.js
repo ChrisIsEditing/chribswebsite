@@ -309,7 +309,11 @@ function searchSongs() {
         }
     }
 }           
-
+document.getElementById("searchInput").addEventListener("keydown", function(event) {
+    if (event.key === 'Enter') {
+        document.getElementById("searchButton").click();
+    }
+});
 
 
 //I have no clue what i'm doing
@@ -454,7 +458,7 @@ audioPlayer.onplay = function() {
 };
 
 audioPlayer.onpause = function() {
-    // Optional: Pause meter animation
+    
 };
 
 audioPlayer.onloadeddata = function() {

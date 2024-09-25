@@ -655,27 +655,32 @@ document.getElementById("searchButton").addEventListener("click", function () {
     });
 
     const errorMessage = document.getElementById("errorMessage");
-if (!found) {
-    errorMessage.textContent = "I couldn't find that story! :(";
-    errorMessage.style.display = "flex"; 
-    errorMessage.classList.remove("slide-out"); 
-    errorMessage.classList.add("slide-in"); 
-
-    setTimeout(() => {
-        errorMessage.classList.remove("slide-in"); 
-        errorMessage.classList.add("slide-out"); 
-    }, 3000); //
-
-    setTimeout(() => {
-        errorMessage.style.display = "none"; 
+    if (!found) {
+        errorMessage.textContent = "I couldn't find that story! :(";
+        errorMessage.style.display = "flex"; 
         errorMessage.classList.remove("slide-out"); 
-    }, 3500); 
-}
+        errorMessage.classList.add("slide-in"); 
 
-    
+        setTimeout(() => {
+            errorMessage.classList.remove("slide-in"); 
+            errorMessage.classList.add("slide-out"); 
+        }, 3000);
+
+        setTimeout(() => {
+            errorMessage.style.display = "none"; 
+            errorMessage.classList.remove("slide-out"); 
+        }, 3500); 
+    }
 });
 
-    </script>
+
+document.getElementById("searchInput").addEventListener("keydown", function(event) {
+    if (event.key === 'Enter') {
+        document.getElementById("searchButton").click();
+    }
+});
+
+</script>
 
 
 <div id="ratingPopup" class="popup">

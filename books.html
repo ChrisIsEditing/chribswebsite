@@ -303,12 +303,12 @@ document.getElementById("searchButton").addEventListener("click", function () {
         return;
     }
 
-    // Show loading overlay
+    
     document.getElementById('overlay').style.display = 'flex';
 
     if (query === '/all') {
         bookContainer.innerHTML = '';
-        loadBooks(); // This will load all books
+        loadBooks(); 
     } else {
         const foundBooks = books.filter(book => book.path.split('/').pop().toLowerCase().includes(query));
         
@@ -352,7 +352,7 @@ document.getElementById("searchButton").addEventListener("click", function () {
             });
 
             Promise.all(bookPromises).then(() => {
-                // Hide loading overlay after all books are loaded
+                
                 document.getElementById('overlay').style.display = 'none';
             });
         } else {
@@ -361,12 +361,16 @@ document.getElementById("searchButton").addEventListener("click", function () {
             setTimeout(() => {
                 errorMessage.style.display = "none";
             }, 3000);
-            // Hide loading overlay if no books found
+            
             document.getElementById('overlay').style.display = 'none';
         }
     }
 });
-
+document.getElementById("searchInput").addEventListener("keydown", function(event) {
+    if (event.key === 'Enter') {
+        document.getElementById("searchButton").click();
+    }
+});
     </script>
 
 

@@ -42,24 +42,92 @@
             font-size: 0.8em;
             color: #e08700;
             text-align: center;
+
         }
         .info {
             margin-top: 20px;
             color: gray;
             text-align: center;
         }
+
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.952); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000; 
+        }
+
+        .login-container {
+            background-color: rgba(22, 22, 22, 0.897);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            width: 300px; 
+        }
+
+        h1 {
+            color: rgb(255, 84, 84);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        input[type="password"] {
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgb(255, 120, 120);
+            width: 92%;
+            margin-bottom: 10px;
+            background-color: rgb(22, 22, 22);
+            color: aliceblue;
+        }
+
+        button {
+            padding: 10px;
+            border-radius: 10px;
+            background-color: rgb(253, 126, 112);
+            border: 1px solid rgb(255, 106, 89);
+            color: #000000;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 599;
+        }
+
+        button:hover {
+            background-color: #ff7f7f;
+        }
+
+        #error-message {
+            color: rgb(252, 96, 96);
+            margin-top: 10px;
+            text-align: center; 
+            display: none; 
+        }
     </style>
 </head>
 <body>
+    <div class="overlay" id="loginOverlay">
+        <div class="login-container">
+            <h1>ADMIN LOGIN</h1>
+            <input type="password" id="password" placeholder="Enter Passcode..." required>
+            <button onclick="checkLogin()">Login</button>
+            <div id="error-message"></div>
+        </div>
+    </div>
 
     <div class="ascii-art">
-
-    ___ __   __ ____ _____ _____  __  __
-    / ___\ \ / / ___|_   _| ____| |  \/  |
-    \___ \\ V /\___ \ | | |  _|   | |\/| |
-     ___) || |_ ___) || |_| |____ | |  | |
-    |____(_)_(_)____(_)_(_)_____(_)_|  |_|
-    <i>2024 - Chribs</i> /////////////// Ver: 1.0
+ ___ __   __ ____ _____ _____  __  __
+/ ___\ \ / / ___|_   _| ____| |  \/  |
+\___ \\ V /\___ \ | | |  _|   | |\/| |
+ ___) || |_ ___) || |_| |____ | |  | |
+|____(_)_(_)____(_)_(_)_____(_)_|  |_|
+<i>2024 - Chribs</i> /////////////// Ver: 1.0
 
     </div>
 
@@ -142,6 +210,8 @@
 <a style="color: rgb(216, 157, 30);" href="oldmanrobert.html" class="nav-button">{EE4-Robert}</a><span class="separator"> // </span>
 <br>
 <br>
+<a style="color: rgb(216, 157, 30);" href="sandbox.html" class="nav-button">{EE4-Robert}</a><span class="separator"> // </span>
+
 
 </div>
 <div class="menu">
@@ -172,6 +242,24 @@
 <div id="footer"></div>
 
 <!--work piece of shit-->
+
+<script>
+    function checkLogin() {
+        const password = document.getElementById('password').value;
+        const errorMessage = document.getElementById('error-message');
+        const loginOverlay = document.getElementById('loginOverlay');
+
+        if (password === '1234') { //lololololol
+            
+            loginOverlay.style.display = 'none';
+            document.body.style.overflow = 'auto'; 
+        } else {
+            errorMessage.textContent = 'Incorrect password.';
+            errorMessage.style.display = 'block';
+        }
+    }
+</script>
+
 </body>
 
 

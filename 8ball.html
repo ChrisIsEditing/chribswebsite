@@ -116,7 +116,8 @@
     </style>
 <script>
 
-let lastAnswerIndex = -1; 
+let lastAnswerIndex = -1;
+let askedQuestions = []; 
 
 function getAnswer() {
     const answers = [
@@ -150,31 +151,38 @@ function getAnswer() {
         "The future is unclear."
     ];
 
-    const question = document.getElementById("questionInput").value.trim().toLowerCase();
+    const questionInput = document.getElementById("questionInput");
+    const question = questionInput.value.trim().toLowerCase();
     let answerText = "";
 
-    if (["heads or tails", "head's or tails", "flip a coin", "flip coin", "coin flip"].includes(question)) {
-        answerText = Math.random() < 0.5 ? "Heads!" : "Tails!";
-    } else if (question === "open the doors" || question === "open the pod bay doors" || question === "hal, open the doors") {
-        answerText = "I'm sorry, Dave. I'm afraid I can't do that.";
-    } else if (question === "hello" || question === "hi" || question === "hey") {
-        answerText = "Hello user! Please ask a question.";
-    } else if (question.includes("who caused bite of 87") || question.includes("who did bite of 87") || question.includes("who caused the bite of 87")) {
-        answerText = "I am not permitted to talk about that.";
-    } else if (question.includes("what's obama's last name") || question.includes("what is obama's last name")) {
-        answerText = "I am not permitted to talk about that.";
-    } else if (question === "") {
+    if (question === "") {
         answerText = "I can't predict when you have no question, user.";
+    } else if (askedQuestions.includes(question)) {
+        answerText = "You already asked that, user. Your answer was final.";
     } else {
-        let randomIndex;
+        askedQuestions.push(question); 
 
-       
-        do {
-            randomIndex = Math.floor(Math.random() * answers.length);
-        } while (randomIndex === lastAnswerIndex);
+        if (["heads or tails", "head's or tails", "flip a coin", "flip coin", "coin flip"].includes(question)) {
+            answerText = Math.random() < 0.5 ? "Heads!" : "Tails!";
+        } else if (question === "open the doors" || question === "open the pod bay doors" || question === "hal, open the doors") {
+            answerText = "I'm sorry, Dave. I'm afraid I can't do that.";
+        } else if (question === "hello" || question === "hi" || question === "hey") {
+            answerText = "Hello user! Please ask a question.";
+        } else if (question.includes("who caused bite of 87") || question.includes("who did bite of 87") || question.includes("who caused the bite of 87")) {
+            answerText = "I am not permitted to talk about that.";
+        } else if (question.includes("what's obama's last name") || question.includes("what is obama's last name")) {
+            answerText = "I am not permitted to talk about that.";
+        } else {
+            let randomIndex;
 
-        lastAnswerIndex = randomIndex;
-        answerText = answers[randomIndex];
+            
+            do {
+                randomIndex = Math.floor(Math.random() * answers.length);
+            } while (randomIndex === lastAnswerIndex);
+
+            lastAnswerIndex = randomIndex;
+            answerText = answers[randomIndex];
+        }
     }
 
     const overlay = document.getElementById("overlay");
@@ -193,35 +201,31 @@ function getAnswer() {
     }, 3000); 
 }
 
+function typeOutAnswer(text) {
+    const answerDiv = document.getElementById("answer");
+    answerDiv.style.display = "block"; 
+    answerDiv.textContent = ""; 
+    let index = 0;
 
-    
-    function typeOutAnswer(text) {
-        const answerDiv = document.getElementById("answer");
-        answerDiv.style.display = "block"; 
-        answerDiv.textContent = ""; 
-        let index = 0;
-
-        function type() {
-            if (index < text.length) {
-                answerDiv.textContent += text.charAt(index);
-                index++;
-                setTimeout(type, 100); 
-            }
+    function type() {
+        if (index < text.length) {
+            answerDiv.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, 100); 
         }
-
-        type(); 
     }
 
-    document.addEventListener("DOMContentLoaded", function() {
-        const input = document.getElementById("questionInput");
-        input.addEventListener("keydown", function(event) {
-            if (event.key === "Enter") {
-                getAnswer();
-            }
-        });
-    
-});
+    type(); 
+}
 
+document.addEventListener("DOMContentLoaded", function() {
+    const input = document.getElementById("questionInput");
+    input.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            getAnswer();
+        }
+    });
+});
 
 </script>
 
@@ -240,15 +244,14 @@ function getAnswer() {
 
     <div class="input-container">
         <input id="questionInput" class="question-input" type="text" placeholder="Ask your question...">
-        <button class="ask-button" onclick="getAnswer()">ASK</button>
+        <button class="ask-button" onclick="getAnswer()">Ask</button>
     </div>
 
     <div id="overlay">
-        <img id="loadingGif" src="https://chrisisediting.github.io/chribswebsite/GIFs/loading.gif" alt="Loading...">
+        <img id="loadingGif" src="https://media.giphy.com/media/13GIgrGdslqDi8/giphy.gif" alt="Loading">
     </div>
 
-    <div id="answer" class="answer"></div>
-
-    <audio id="loadingSound" src="https://github.com/ChrisIsEditing/chribswebsite/Assets/loadingsound.mp3" preload="auto"></audio>
+    <div class="answer" id="answer"></div>
+    <audio id="loadingSound" src="https://chrisisediting.github.io/chribswebsite/Assets/loading-sound.mp3"></audio>
 </body>
 </html>

@@ -163,6 +163,8 @@ function getAnswer() {
         answerText = "I am not permitted to talk about that.";
     } else if (question.includes("what's obama's last name") || question.includes("what is obama's last name")) {
         answerText = "I am not permitted to talk about that.";
+    } else if (question === "") {
+        answerText = "I can't predict when you have no question, user.";
     } else {
         let randomIndex;
 

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://chrisisediting.github.io/chribswebsite/Assets/casset.png" type="image/png">
+    <title>Support Ticket System</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #000000;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: hidden;
+        }
+        
+        h2 {
+            color: rgb(248, 161, 0);
+            margin: 20px 0;
+        }
+
+        #ticketForm {
+            width: 90%;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(19, 19, 19);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #ticketForm label {
+            color: salmon;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        #ticketForm input, #ticketForm textarea {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            border: 2px solid rgb(255, 110, 110);
+            background-color: #080808;
+            color: white;
+        }
+
+        #ticketForm button {
+            background-color: rgb(20, 20, 20);
+            border: 1px;
+            text-shadow: orangered;
+            padding: 10px;
+            border-radius: 10px;
+            color: rgb(255, 153, 0);
+            cursor: pointer;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #ticketForm button:hover {
+            background-color: rgb(46, 46, 46);
+        }
+
+        .success-message, .error-message {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .success-message {
+            background-color: rgba(22, 150, 22, 0.8);
+        }
+
+        .error-message {
+            background-color: rgba(150, 22, 22, 0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <h2>CONTACT SITE ADMINISTRATOR</h2>
+    <div id="ticketForm">
+        <label for="name">USER'S NAME:</label>
+        <input type="text" id="name" required>
+
+        <label for="email">EMAIL ADDRESS:</label>
+        <input type="email" id="email" required>
+
+        <label for="issue">MESSAGE:</label>
+        <textarea id="issue" rows="5" required></textarea>
+
+        <button id="submitTicket">SUBMIT TO SYSADMIN</button>
+
+        <div class="success-message" id="successMessage">SUBMITTED.</div>
+        <div class="error-message" id="errorMessage">FAILED. TRY AGAIN.</div>
+    </div>
+
+    <script>
+        document.getElementById('submitTicket').addEventListener('click', function() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const issue = document.getElementById('issue').value;
+
+            if (name && email && issue) {
+                
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('errorMessage').style.display = 'none';
+
+                
+                document.getElementById('ticketForm').reset();
+            } else {
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('successMessage').style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>

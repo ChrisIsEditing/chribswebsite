@@ -1,285 +1,204 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href="https://chrisisediting.github.io/chribswebsite/Assets/admin.png" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Menu</title>
+    <link rel="icon" href="https://chrisisediting.github.io/chribswebsite/Assets/admin.png" type="image/png">
+    <title>SYSMENU</title>
     <style>
         body {
-            background-color: black;
-            color: #dddddd;
-            font-family: monospace;
-            font-size:larger;
-            
+            background-color: #000;
+            color: #fff;
+            font-family:'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
         }
-        .warning {
-            color: crimson;
+        h1 {
             text-align: center;
-        }
-        .title {
-            font-size: 0.8em;
-            margin-bottom: 20px;
-            color: #e08700;
-            text-align: center;
-        }
-        .menu {
-            font-size: small;
-            color: #439103;
-            font-family: monospace;
-            text-align: center;
-        }
-        .menu-row {
+            color: #FFA500;
+            font-family: 'Courier New', Courier, monospace, narrow;
+            font-style: italic;
+            text-decoration: underline;
 
-            text-align: center;
+           
         }
-            
-    
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+        .button {
+            background-color: #131313;
+ 
+            border-radius: 5px;
+            text-align: center;
+            text-shadow: 0 0 10px #fffd9a9c;
+            border-color: #FFA500;
+            color: #ffffff;
+            padding: 8px 20px;
+            margin: 10px;
+            cursor: pointer;
+            font-family: 'Courier New', Courier, monospace;
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(255, 187, 0, 0.774);
+        }
+        .button:hover {
+            box-shadow: 0 0 15px rgb(255, 174, 0);
+            transform: translateY(-2px);
+        }
+        .content {
+            display: none;
+            padding: 20px;
+            margin-top: 20px;
+            border: 2px solid #FFA500;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 165, 0, 0.5);
+        }
 
+        .glow {
+            text-shadow: 0 0 10px rgba(255, 196, 0, 0.705);
+        }
         .ascii-art {
             white-space: pre;
             font-size: 0.8em;
-            color: #e08700;
+            color: rgb(0, 255, 0);
             text-align: center;
-
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
         }
-        .info {
-            margin-top: 20px;
-            color: gray;
-            text-align: center;
-        }
-
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.952); 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000; 
-        }
-
-        .login-container {
-            background-color: rgba(22, 22, 22, 0.897);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-            width: 300px; 
-        }
-
-        h1 {
-            color: rgb(255, 84, 84);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        input[type="password"] {
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid rgb(255, 120, 120);
-            width: 92%;
-            margin-bottom: 10px;
-            background-color: rgb(22, 22, 22);
-            color: aliceblue;
-        }
-
-        button {
-            padding: 10px;
-            border-radius: 10px;
-            background-color: rgb(253, 126, 112);
-            border: 1px solid rgb(255, 106, 89);
-            color: #000000;
-            cursor: pointer;
-            width: 100%;
-            font-weight: 599;
-        }
-
-        button:hover {
-            background-color: #ff7f7f;
-        }
-
-        #error-message {
-            color: rgb(252, 96, 96);
-            margin-top: 10px;
-            text-align: center; 
-            display: none; 
+        .secondary {
+            color: #ffa826;
+            font-style: italic;
+            font-family: monospace;
+            font-size: 30px;
+            text-decoration: underline;
+            text-shadow: 0 0 5px #ff5e00;
         }
     </style>
 </head>
 <body>
-    <div class="overlay" id="loginOverlay">
-        <div class="login-container">
-            <h1>ADMIN LOGIN</h1>
-            <input type="password" id="password" placeholder="Enter Passcode..." required>
-            <button onclick="checkLogin()">Login</button>
-            <div id="error-message"></div>
+    <div class="container">
+        <h1 style="text-shadow: 0 0 19px #FFA500;">S.Y.S.T.E.M</h1>
+  
+        <button class="button" onclick="showContent('home')">HOME</button>
+        <button class="button" onclick="showContent('settings')">SETTINGS</button>
+        <button class="button" onclick="showContent('links')">PAGES</button>
+        <button class="button" onclick="showContent('help')">INFO</button>
+
+        
+        
+        
+        <div id="home" class="content">
+            <h2 class="secondary">MASTER CONTROL</h2>
+
+            <p style="color: 000;">Welcome to the admin panel! More is to come, but for now: Use the buttons above to navigate.</p>
+        </div>
+        <div id="settings" class="content">
+            <h2 class="secondary">SETTINGS</h2>
+            <p>COIMG SOON</p>
+        </div>
+       
+       
+       
+       
+        <div id="links" class="content">
+            <h2 class="secondary">PAGES</h2>
+    
+    <ul>                
+    <p><strong>Main Pages</strong></p>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/index">Index</a><br>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/blog">Blog</a><br>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/contact">Contact</a><br>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/media">Media</a><br>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/comingsoon">Coming Soon</a><br>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/music">Music</a><br>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/gifs">GIFs</a><br>
+    <a style="color: rgb(216, 157, 30);" href="books.html" class="nav-button">Books</a><br>
+
+    <a style="color: rgb(216, 157, 30);" href="sandbox.html" class="nav-button">Sandbox</a><br>
+    <a style="color: rgb(216, 157, 30);" href="8ball.html" class="nav-button">8 Ball</a><br><br>
+    
+    
+    <p><strong>Easter Egg Pages</strong></p>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/feet">EE1 (Feet)</a><br>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/fnaf">EE2 (Fnaf)</a><br>
+
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/ps1">EE3-PS1</a><br>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/ps2">EE4-PS2</a><br>
+    <a style="color: rgb(216, 157, 30);" href="oldmanrobert.html" class="nav-button">EE5 (Robert)</a><br>
+    <a style="color: rgb(216, 157, 30);" href="RichardRichRichardsRichardRichard&Associates.html" class="nav-button">EE6 (Richard)</a><br><br>
+    
+    
+    <p><strong>OTHER</strong></p>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/upcomingfeatures">Upcoming Features</a><br>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/indextest">Index Test</a><br><br>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/template1">Template 1</a><br>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/noodle">Noodle</a><br>
+    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/footer">Footer</a><br>
+    
+    <p><strong>400 Err Pages</strong></p>
+    
+    <p><strong>500 Err Pages</strong></p>
+    
+    </ul>
+                
+        </div>
+        <div id="help" class="content">
+            <h2 class="secondary">INFORMATION</h2>
+
+            <div><span style="color: #cdd6f4;" data-darkreader-inline-color="">STATUS: Online &amp;&amp; Operational</span></div>
+            <div><span style="color: #cdd6f4;" data-darkreader-inline-color="">LAST UPDATE: September 2024</span></div>
+            <div><span style="color: #cdd6f4;" data-darkreader-inline-color="">RELEASE STATUS: Alpha 1</span></div>
+            <div><span style="color: #cdd6f4;" data-darkreader-inline-color="">SRVR-1: No Connection Found.</span></div>
+            <div><span style="color: #cdd6f4;" data-darkreader-inline-color="">REPO: No Connection Found.</span></div>
+            <br />
+            <div><span style="color: #cdd6f4;" data-darkreader-inline-color="">A-CLASS SUBSYSTEMS: Operational</span></div>
+            <div><span style="color: #cdd6f4;" data-darkreader-inline-color="">E-CLASS SUBSYSTEMS: Operational</span></div>
+            <div><span style="color: #cdd6f4;" data-darkreader-inline-color="">R-CLASS SUBSYSTEMS: Operational </span></div>
+            </div>
+            
         </div>
     </div>
 
-    <div class="ascii-art">
- ___ __   __ ____ _____ _____  __  __
-/ ___\ \ / / ___|_   _| ____| |  \/  |
-\___ \\ V /\___ \ | | |  _|   | |\/| |
- ___) || |_ ___) || |_| |____ | |  | |
-|____(_)_(_)____(_)_(_)_____(_)_|  |_|
-<i>2024 - Chribs</i> /////////////// Ver: 1.0
+    <script>
+        function showContent(contentId) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => {
+                content.style.display = 'none';
+            });
+            document.getElementById(contentId).style.display = 'block';
+        }
 
-    </div>
-
-
-    <div class="title">
-        "Stupid. Yet. Simple. Task. Executions. Manager."
-    </div>
-    <!--"I see trees of jank... fucked hacks too... something something... what a wonderful world"-->
-    <p style="color: gray; text-align: center;">_______________________________</p>
-    
-    <div class="warning">
-        S.Y.S.T.E.M IS CURRENTLY IN MANUAL MODE
-        <br>
-        INFORMATION MAY BE OUTDATED
-       </div>
-    
-    <div class="info">
-        STATUS: Online && Operational
-    <br>
-        LAST UPDATE: September 2024
-        <BR>
-            RELEASE STATUS: Alpha 1
-            <br>
-            SRVR-1: No Connection Found.
-            <br>
-            REPO: No Connection Found.
-            <br>
-            <br>
-            A-CLASS SUBSYSTEMS: Operational
-            <br>
-            E-CLASS SUBSYSTEMS: Operational
-            <br>
-            R-CLASS SUBSYSTEMS: Operational
-    </div>
-    <p style="color: gray; text-align: center;">_______________________________</p>
-    <div class="menu">
-        <br>
-        MAIN PAGES SELECTION:
-    </div>
-<br>
-<!--Ignore the following bullshit-->
-<div class="menu-row">
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/blog">{Blog}</a> <span class="separator"> // </span>
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/contact">{Contact}</a> <span class="separator"> // </span>
-    <br>
-    <br>
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/media">{Media}</a> <span class="separator"> // </span>
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/comingsoon">{Coming Soon}</a> <span class="separator"> // </span>
-    <br>
-    <br>
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/music">{Music}</a> <span class="separator"> // </span>
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/gifs">{GIFs}</a> <span class="separator"> // </span>
-    <br>
-    <br>
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/feet">{EE1-Feet}</a> <span class="separator"> // </span>
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/fnaf">{Fnaf}</a> <span class="separator"> // </span>
-    <br>
-    <br>
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/stories">{Stories}</a> <span class="separator"> // </span>
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/index">{Index}</a> <span class="separator"> // </span>
-    <br>
-    <br>
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/ps1">{EE2-PS1}</a> <span class="separator"> // </span>
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/ps2">{EE3-PS2}</a> <span class="separator"> // </span>
-    <br>
-    <br>
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/noodle">{Noodle}</a> <span class="separator"> // </span>
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/footer">{Footer}</a> <span class="separator"> // </span>
-    <br>
-    <br>
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/template1">{Template 1}</a> <span class="separator"> // </span>
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/indextest">{Index Test}</a> <span class="separator"> // </span>
-<br>
-<br>
-<a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/user">{User Page}</a> <span class="separator"> // </span>
-<a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/upcomingfeatures">{Upcoming Features}</a> <span class="separator"> // </span>
-<br>
-<br>
-<a style="color: rgb(216, 157, 30);" href="books.html" class="nav-button">{Books}</a><span class="separator"> // </span>
-<a style="color: rgb(216, 157, 30);" href="oldmanrobert.html" class="nav-button">{EE4-Robert}</a><span class="separator"> // </span>
-<br>
-<br>
-<a style="color: rgb(216, 157, 30);" href="sandbox.html" class="nav-button">{EE4-Robert}</a><span class="separator"> // </span>
-<a style="color: rgb(216, 157, 30);" href="8ball.html" class="nav-button">{8 Ball}</a><span class="separator"> // </span>
-
-<br>
-<br>
-
-</div>
-<div class="menu">
-    <br>
-    400 CLASS - ERROR PAGES SELECTION:
-</div>
-<br>
-<div class="menu-row">
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/400">{400}</a> <span class="separator"> // </span>
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/403">{403}</a> <span class="separator"> // </span>
-    <br>
-    <br>
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/404">{404}</a> <span class="separator"> // </span>
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/418">{418}</a> <span class="separator"> // </span>
-</div>
-<div class="menu">
-    <br>
-    500 CLASS - ERROR PAGES SELECTION:
-</div>
-<br>
-<div class="menu-row">
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/500">{500}</a> <span class="separator"> // </span>
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/503">{503}</a> <span class="separator"> // </span>
-
-    <a style="color: rgb(216, 157, 30);" href="https://chrisisediting.github.io/chribswebsite/505">{505}</a> <span class="separator"> // </span>
-    <br>
-    <br>
-<div id="footer"></div>
-
-<!--work piece of shit-->
+        
+        showContent('home');
+    </script>
 
 <script>
 
-document.getElementById('password').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        checkLogin(); 
-    }
-});
-
-    function checkLogin() {
-        const password = document.getElementById('password').value;
-        const errorMessage = document.getElementById('error-message');
-        const loginOverlay = document.getElementById('loginOverlay');
-
-        if (password === '1234') { //lololololol
-            
-            loginOverlay.style.display = 'none';
-            document.body.style.overflow = 'auto'; 
-        } else {
-            errorMessage.textContent = 'Incorrect password.';
-            errorMessage.style.display = 'block';
+    document.getElementById('password').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            checkLogin(); 
         }
-    }
-</script>
-
+    });
+    
+        function checkLogin() {
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+            const loginOverlay = document.getElementById('loginOverlay');
+    
+            if (password === '1234') { //lololololol
+                
+                loginOverlay.style.display = 'none';
+                document.body.style.overflow = 'auto'; 
+            } else {
+                errorMessage.textContent = 'Incorrect password.';
+                errorMessage.style.display = 'block';
+            }
+        }
+    </script>
+    
 </body>
-<hr>
-
-<div style="display: flex; flex-direction: column; min-height: 0.5vh; margin: 0; padding: 0; margin-bottom: 1px;">
-</div>
-    <div style="flex-grow: 1;"></div>
-    <footer style="padding: 10px; text-align: center; color: #ffbe82; font-size: 0.8em; width: 100%; box-sizing: border-box; margin-bottom: 0px;">
-        <p>2024 Chribs - All Rights Reserved.</p>
-        <p><a href="privacy.html" style="color: rgb(250, 114, 114); text-decoration: none; margin-top: 0px;">PRIVACY POLICY</a> | <a href="index.html" style="color: rgb(250, 114, 114); text-decoration: none;">HOME</a></p>
-    </footer>
-
-
-</html>
+</html> 

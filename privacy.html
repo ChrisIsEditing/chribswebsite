@@ -1,34 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<body>
 <head>
     <link rel="icon" href="https://chrisisediting.github.io/chribswebsite/Assets/privacy.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy</title>
+    <style>
+        body {
+            background-color: black;
+            color: darksalmon; /* Main text color */
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0; /* Remove default margins */
+            padding: 0; /* Remove default padding */
+            display: flex; /* Use flexbox for layout */
+            flex-direction: column; /* Vertical layout */
+            min-height: 100vh; /* Full viewport height */
+        }
 
-<style>body { background-color: black; font-family: 'Courier New', Courier, monospace; } </style>  
-<title>Privacy Policy</title>
+        h3 {
+            color: beige; /* Title color */
+            text-align: center; /* Center the title */
+            margin-top: 30px; /* Space above title */
+        }
 
-<div id="footer"></div>
-<br>
-<br>
-                       <h3 style="color: beige;">WEBSITE PRIVACY POLICY</h3>
-<p style="color: darksalmon;">______________________________</p>
-<br>
-<p style="color: darksalmon;">Attention user.<br>This website does not collect any data, 
-    nor does it use any trackers, or collect any cookies.</p>
+        p {
+            color: burlywood; /* Paragraph color */
+            text-align: center; /* Center paragraphs */
+            margin: 10px; /* Space around paragraphs */
+        }
+
+        a {
+            color: burlywood; /* Link color */
+            font-size: small;
+            text-decoration: none; /* Remove underline from links */
+        }
+
+        footer {
+            padding: 10px;
+            text-align: center;
+            color: #ffbe82;
+            font-size: 0.8em;
+            width: 100%;
+            box-sizing: border-box; /* Include padding in width */
+            margin-top: auto; /* Push footer to the bottom */
+            background-color: rgba(22, 22, 22, 0.7); /* Slight background color for footer */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="banner" style="background-color: rgba(32, 32, 32, 0.781); color: rgb(255, 128, 78); padding: 10px; 
+    text-align: center; position: fixed; justify-content: center; top: 10px; left: 50%; transform: translateX(-50%); 
+    width: 50%; max-width: 100%; z-index: 1000; border-radius: 10px;"
+    >Down for Maintenance.</div>
     <br>
-    <br>
-<p style="color: burlywood; font-family: 'Courier New', Courier, monospace;">
-    Stalkers welcome! If you'd like, 
-    you can even see this site's shitty code for yourself!</p>
-<a style="color: burlywood; font-size: small; font-family: 'Courier New', Courier, monospace;" 
- href="https://github.com/ChrisIsEditing/chribswebsite">Github Page</a>
-</p>
-<script>
-    fetch('footer.html')
-        .then(response => response.text())
-        .then(data => document.getElementById('footer').innerHTML = data);
-</script>
+  
 
 </body>
 </html>

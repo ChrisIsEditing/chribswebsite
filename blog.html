@@ -87,15 +87,16 @@
             Whoops.
         </div>
     <div class="separator"></div>
-<br>
+
     
 
-<div id="footer"></div>
-    <script>
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('footer').innerHTML = data);
-    </script>
+<div style="display: flex; flex-direction: column; min-height: 0.5vh; margin: 0; padding: 0; margin-bottom: 1px;">
+    <div style="flex-grow: 1;"></div>
+    <footer style="padding: 10px; text-align: center; color: #ffbe82; font-size: 0.8em; width: 100%; box-sizing: border-box;">
+        <p>2024 Chribs - All Rights Reserved.</p>
+        <p><a href="privacy.html" style="color: rgb(85, 85, 85); text-decoration: none;">Privacy Policy</a> | <a href="index.html" style="color: salmon; text-decoration: none;">Home</a></p>
+    </footer>
+</div>
 
 </body>
 </html>

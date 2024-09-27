@@ -157,7 +157,7 @@
 
         @media (max-width: 700px) {
     .categories {
-        display: grid; 
+        display: grid;
     }
 
     .search-input {
@@ -173,8 +173,18 @@
         width: 280px; 
         height: 250px;
     }
+
+    .hide-on-search {
+    display: none !important;
 }
 
+}
+@media (min-width: 701px) {
+    .categories {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+}
 
         
 </style>
@@ -194,10 +204,13 @@
         <input id="searchInput" class="search-input" type="text" placeholder="Search for images...">
         <button class="search-button" onclick="searchImages()">SEARCH!</button>
     </div>
+   
+   
+    <p id="message" style="color: #ff6969; display: none;"></p>
 
     <hr style="color: #222; width: 90%;">
 
-<p style="color: #ff6969; text-decoration: underline; font-size: 20px;">Latest Images:</p>
+<p id="latestImagesText" style="color: #ff6969; text-decoration: underline; font-size: 20px;">Latest Images:</p>
    
     <div id="categories" class="categories">
         <div class="category-box" data-category="memes" onclick="searchCategory('memes')">
@@ -239,7 +252,14 @@
     <div id="imageOverlay" class="overlay" onclick="closeOverlay()">
         <img id="enlargedImage" src="" alt="">
     </div>
+    
+    
+    
+    <div id="loading" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.5);">
+        <img src="/GIFs/loading.gif" alt="Loading...">
+    </div>
 
+    
     <script>
         const images = [
             'skeleton garlic bread meme dope ace.webp',
@@ -262,8 +282,11 @@
             'shitpost bible rejection no thanks enternal life book.jpg',
             'no skeleton blob shitpost human.jpg',
             'drowing fish water breathe shitpost lowres.jpg',
-            '',
-            '',
+            'ps2 controller memory card photograph photo y2k transparent red casset.jpg',
+            'scott fnaf movie shaggy william cawthon afton yellow shitpost.png',
+            'doulingo bear shitpost cheese ten kilos.png',
+            'sudo apt get install estrogen shitpost tumblr trans ally.png',
+            'triangle meme mrmaker police.jpg',
         ];
 
         const categories = {
@@ -308,39 +331,114 @@
             }
         }
 
-        function searchImages() {
-    const query = document.getElementById('searchInput').value.toLowerCase();
+function searchImages() {
+    const query = document.getElementById('searchInput').value.toLowerCase().trim();
     const resultsContainer = document.getElementById('results');
     const categoriesContainer = document.getElementById('categories');
-    const latestImagesText = document.querySelector('p[style*="color: #ff6969"]'); 
-    
-    resultsContainer.innerHTML = ''; 
+    const latestImagesText = document.querySelector('p[style*="color: #ff6969"]');
+    const message = document.getElementById('message');
+    const loadingOverlay = document.getElementById('loading');
 
-    const filteredImages = images.filter(img => img.toLowerCase().includes(query)).reverse(); 
+    resultsContainer.innerHTML = '';
+    message.style.display = 'none';
+    loadingOverlay.style.display = 'flex';
+
+    const isMobile = window.innerWidth <= 700;
+
     
-    if (filteredImages.length > 0) {
-        categoriesContainer.style.display = 'none';
-        latestImagesText.style.display = 'none'; 
+    if (isMobile && query !== '') {
+        categoriesContainer.classList.add('mobile-hide-on-search');
+        latestImagesText.classList.add('mobile-hide-on-search');
     } else {
-        categoriesContainer.style.display = 'grid'; 
-        latestImagesText.style.display = 'block'; 
+        categoriesContainer.classList.remove('mobile-hide-on-search');
+        latestImagesText.classList.remove('mobile-hide-on-search');
     }
 
-    filteredImages.forEach(img => {
+    if (isMobile && query !== '') {
+
+    categoriesContainer.classList.add('hide-on-search');
+    latestImagesText.classList.add('hide-on-search');
+    
+} else {
+
+    categoriesContainer.classList.remove('hide-on-search');
+    latestImagesText.classList.remove('hide-on-search');
+    
+
+    }
+
+    
+    if (query === '') {
+        message.innerText = 'Please enter image Tag/s';
+        message.style.display = 'block';
+        loadingOverlay.style.display = 'none';
+        return;
+    }
+
+    let imagesToLoad = 0;
+    let imagesLoaded = 0;
+
+    function checkAllImagesLoaded() {
+        if (imagesLoaded === imagesToLoad) {
+            setTimeout(() => {
+                loadingOverlay.style.display = 'none';
+            }, 1); 
+        }
+    }
+
+    function createImageElement(img) {
         const imgBox = document.createElement('div');
         imgBox.className = 'image-box';
         const imgElement = document.createElement('img');
         imgElement.src = `Media/${encodeURIComponent(img)}`;
         imgElement.alt = img;
         imgElement.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
+        imgElement.onload = () => {
+            imagesLoaded++;
+            checkAllImagesLoaded();
+        };
+        imgElement.onerror = () => {
+            imagesLoaded++;
+            checkAllImagesLoaded();
+        };
         imgBox.appendChild(imgElement);
         resultsContainer.appendChild(imgBox);
-    });
+        imagesToLoad++;
+    }
 
-    if (filteredImages.length === 0) {
-        resultsContainer.innerHTML = '<p>No images found.</p>';
+    
+    function matchTags(img, searchTags) {
+        const tags = extractTags(img);
+        return searchTags.every(tag => tags.includes(tag));
+    }
+
+    const searchTags = query.split(' ');
+
+    if (query === '/all') {
+        const allImages = images.slice().reverse();
+        allImages.forEach(createImageElement);
+        
+        if (allImages.length === 0) {
+            resultsContainer.innerHTML = '<p>No images found! :(</p>';
+            loadingOverlay.style.display = 'none';
+        }
+    } else {
+        const filteredImages = images.filter(img => matchTags(img, searchTags)).reverse();
+
+        filteredImages.forEach(createImageElement);
+
+        if (filteredImages.length === 0) {
+            resultsContainer.innerHTML = '<p>No images found! :(</p>';
+            loadingOverlay.style.display = 'none';
+        }
+    }
+
+    if (imagesToLoad === 0) {
+        loadingOverlay.style.display = 'none';
     }
 }
+
+
 
 
 
@@ -378,9 +476,9 @@
         }
 
         
-        window.onload = () => {
+        window.onload = function() {
             populateCategories();
-        };
+        }
     </script>
 </body>
 </html>

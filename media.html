@@ -1,18 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
-    <link rel="icon" href="https://chrisisediting.github.io/chribswebsite/Assets/media.png" type="image/png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
-   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://chrisisediting.github.io/chribswebsite/Assets/media.png" type="image/png">
+    <title>Media</title>
+    <style>
+        body {
+            background-color: #0c0c0c;
+            color: #d8d8d8;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            color: rgb(231, 75, 75);
+            margin-bottom: 10px;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search-input {
+            padding: 10px;
+            width: 70%;
+            max-width: 300px;
+            border: 2px solid salmon;
+            border-radius: 10px 0 0 10px;
+            background-color: #222;
+            color: #d8d8d8;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .search-button {
+            padding: 10px 20px;
+            border: 2px solid rgb(250, 114, 114);
+            border-left: none;
+            border-radius: 0 10px 10px 0;
+            background-color: rgb(250, 114, 114);
+            color: #000;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .search-button:hover {
+            background-color: #ff6969;
+        }
+
+       
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+
+        .category-box {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            transition: transform 0.3s, background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .category-box:hover {
+            transform: scale(1.05);
+            background-color: #333;
+        }
+
+        .category-box h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.3rem;
+            color: rgb(250, 114, 114);
+        }
+
+        .category-images {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .category-images img {
+            width: 60px;
+            height: 60px;
+            border-radius: 5px;
+            object-fit: cover;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .category-images img:hover {
+            transform: scale(1.1);
+        }
+
+        
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .image-box {
+            width: 310px;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #222;
+            cursor: pointer;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .overlay img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        @media (max-width: 700px) {
+    .categories {
+        display: grid; 
+    }
+
+    .search-input {
+        width: 60%;
+    }
+
+    .category-images img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .image-box {
+        width: 280px; 
+        height: 250px;
+    }
+}
+
+
+        
+</style>
+</head>
 <body>
-<style>body { background-color: black; font-family: 'Courier New', Courier, monospace; } </style>  
-<title>Media</title>
-<!--TODO: This.-->
-<br>
-<br>
-<p style="color: darkorange; text-align: center;"> Coming sooner than you think! </p>
+    <h1 style="position: sticky; font-family: 'Times New Roman', Times, serif; margin-bottom: 0; 
+    color: darksalmon; font-weight: bold;">
+    <b style="color: rgb(255, 104, 104); font-size: 40px;"> I.M.A.G.E </b>
+</h1>
+    
+<h3 style="color: rgb(255, 187, 166); margin-top: 0%; font-size: small;">
+    Interactive. Media. Archive. Gallery.
+    <a class="subtitle" style="text-decoration: none; color: rgb(255, 187, 166);" href="system-classes.html">E-CLASS</a>
+</h3>
+    
+    <div class="search-container">
+        <input id="searchInput" class="search-input" type="text" placeholder="Search for images...">
+        <button class="search-button" onclick="searchImages()">SEARCH!</button>
+    </div>
 
-<div style="display: flex; flex-direction: column; min-height: 0.5vh; margin: 0; padding: 0; margin-bottom: 1px;">
+    <hr style="color: #222; width: 90%;">
 
+<p style="color: #ff6969; text-decoration: underline; font-size: 20px;">Latest Images:</p>
+   
+    <div id="categories" class="categories">
+        <div class="category-box" data-category="memes" onclick="searchCategory('memes')">
+            <h2>#Meme</h2>
+            <div class="category-images" id="memes-images">
+              
+            </div>
+        </div>
+        <div class="category-box" data-category="photography" onclick="searchCategory('photography')">
+            <h2>#Photography</h2>
+            <div class="category-images" id="photography-images">
+              
+            </div>
+        </div>
+        <div class="category-box" data-category="art" onclick="searchCategory('art')">
+            <h2>#Art</h2>
+            <div class="category-images" id="art-images">
+              
+            </div>
+        </div>
+        <div class="category-box" data-category="wallpapers" onclick="searchCategory('wallpapers')">
+            <h2>#Wallpaper</h2>
+            <div class="category-images" id="wallpapers-images">
+               
+            </div>
+        </div>
+        <div class="category-box" data-category="chrib's-picks" onclick="searchCategory('chribs-picks')">
+            <h2>#Shitpost</h2>
+            <div class="category-images" id="chribs-picks-images">
+           
+            </div>
+        </div>
+    </div>
+
+  
+    <div id="results" class="image-container"></div>
+
+   
+    <div id="imageOverlay" class="overlay" onclick="closeOverlay()">
+        <img id="enlargedImage" src="" alt="">
+    </div>
+
+    <script>
+        const images = [
+            'skeleton garlic bread meme dope ace.webp',
+            'ace man smoke meme upset sigh asexual flag.webp',
+            'art wallpaper abstract colourful.png',
+            'ace meme uno asexual sex.webp',
+            'ace meme ass assurance asexual.webp',
+            'ace meme eat mom food at home asexual.webp',
+            'ace meme fuck nudes send therapist asexual.webp',
+            'japan wallpaper art dark.webp',
+            'art mountain abstract colourful red vivid wallpaper.webp',
+            'vanilla extract meme powerpuff girls.jpg',
+            'miku hatsun pitbull worldwide shitpost.jpg',
+            'no context shrimp chef rice wok fry shitpost.jpeg',
+            'greed greedy cat sleepy apples shitpost.jpg',
+            'ace no cuphead dice shitpost.png',
+            'shitpost tumblr sink me_irl innocent punch.jpg',
+            'meme cat shop shoplifters.jpg',
+            'sleepy man meme me_irl tired art monochrome.jpg',
+            'shitpost bible rejection no thanks enternal life book.jpg',
+            'no skeleton blob shitpost human.jpg',
+            'drowing fish water breathe shitpost lowres.jpg',
+            '',
+            '',
+        ];
+
+        const categories = {
+            'memes': 'meme',
+            'photography': 'photography',
+            'art': 'art',
+            'wallpapers': 'wallpaper',
+            'chribs-picks': 'shitpost'
+        };
+
+        
+        function extractTags(filename) {
+            const nameWithoutExt = filename.substring(0, filename.lastIndexOf('.')) || filename;
+            return nameWithoutExt.toLowerCase().split(' ');
+        }
+
+        function getLatestImagesByTag(tag, limit = 3) {
+            const taggedImages = images.filter(img => {
+                const tags = extractTags(img);
+                return tags.includes(tag);
+            });
+
+            return taggedImages.slice(-limit).reverse();
+        }
+
+        function populateCategories() {
+            for (const [categoryId, tag] of Object.entries(categories)) {
+                const imageContainer = document.getElementById(`${categoryId}-images`);
+                const latestImages = getLatestImagesByTag(tag, 3);
+                if (latestImages.length === 0) {
+                    imageContainer.innerHTML = '<p>Images coming soon.</p>';
+                    continue;
+                }
+                latestImages.forEach(img => {
+                    const imgElement = document.createElement('img');
+                    imgElement.src = `Media/${encodeURIComponent(img)}`;
+                    imgElement.alt = img;
+                    imgElement.loading = 'lazy';
+                    imgElement.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
+                    imageContainer.appendChild(imgElement);
+                });
+            }
+        }
+
+        function searchImages() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const resultsContainer = document.getElementById('results');
+    const categoriesContainer = document.getElementById('categories');
+    const latestImagesText = document.querySelector('p[style*="color: #ff6969"]'); 
+    
+    resultsContainer.innerHTML = ''; 
+
+    const filteredImages = images.filter(img => img.toLowerCase().includes(query)).reverse(); 
+    
+    if (filteredImages.length > 0) {
+        categoriesContainer.style.display = 'none';
+        latestImagesText.style.display = 'none'; 
+    } else {
+        categoriesContainer.style.display = 'grid'; 
+        latestImagesText.style.display = 'block'; 
+    }
+
+    filteredImages.forEach(img => {
+        const imgBox = document.createElement('div');
+        imgBox.className = 'image-box';
+        const imgElement = document.createElement('img');
+        imgElement.src = `Media/${encodeURIComponent(img)}`;
+        imgElement.alt = img;
+        imgElement.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
+        imgBox.appendChild(imgElement);
+        resultsContainer.appendChild(imgBox);
+    });
+
+    if (filteredImages.length === 0) {
+        resultsContainer.innerHTML = '<p>No images found.</p>';
+    }
+}
+
+
+
+        function searchCategory(category) {
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';
+
+            const latestImages = getLatestImagesByTag(categories[category]);
+            latestImages.forEach(img => {
+                const imgBox = document.createElement('div');
+                imgBox.className = 'image-box';
+                const imgElement = document.createElement('img');
+                imgElement.src = `Media/${encodeURIComponent(img)}`;
+                imgElement.alt = img;
+                imgElement.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
+                imgBox.appendChild(imgElement);
+                resultsContainer.appendChild(imgBox);
+            });
+
+            if (latestImages.length === 0) {
+                resultsContainer.innerHTML = '<p>No images in this catergory :(.</p>';
+            }
+        }
+
+        function openOverlay(imageSrc) {
+            const overlay = document.getElementById('imageOverlay');
+            const enlargedImage = document.getElementById('enlargedImage');
+            enlargedImage.src = imageSrc;
+            overlay.style.display = 'flex';
+        }
+
+        function closeOverlay() {
+            const overlay = document.getElementById('imageOverlay');
+            overlay.style.display = 'none';
+        }
+
+        
+        window.onload = () => {
+            populateCategories();
+        };
+    </script>
 </body>
-</html> 
+</html>

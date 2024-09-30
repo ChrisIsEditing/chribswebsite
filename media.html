@@ -288,6 +288,54 @@
             'sudo apt get install estrogen shitpost tumblr trans ally.png',
             'triangle meme mrmaker police.jpg',
             'moon smoking asthetic spakle high 420 art.jpg',
+            'thinking drawing artist meme wish dream.jpg',
+            'water shitbird shit bird shitpost german discord.jpg',
+            'potty trained parrot shitpost photo nocontext.jpg',
+            'fnaf freddy security breach shitpost poster wash want balls edit.jpg',
+            'nocontext photo liminal plush weird creepy.jpg',
+            'ace meme asexual too aromantic aro.jpg',
+            'Arcade joytick.gif',
+            'popgoes dance 8bit.gif',
+            'tux spin.gif',
+            'Nyan cat.gif',
+            'maxwell spin.gif',
+            'spinning skulls.gif',
+            'grimreaper red.gif',
+            'frying skull egg head.gif',
+            'bub bub bounce.gif',
+            'maxwell rock.gif',
+            'me when mac and cheese.gif',
+            'burning freddy.gif',
+            'husker whoops.gif',
+            'hehe rotates your plane.gif',
+            'jojo text.gif',
+            'rambley idle.gif',  
+            'rambley plush spin.gif',
+            'chica vhs stare.gif',
+            'alastor lovely.gif',
+            'mike nolan smoking.gif',
+            'helpy thinking.gif',
+            'helpy dance.gif',
+            'sips hot chocolate.gif',
+            'helpy fall.gif',
+            'helpy jump.gif',
+            'jojo is typing.gif',
+            'powerpuff girls ace.gif',
+            'sips noodle juice.gif',
+            'dancing cockroach.gif',
+            'lolbit 8bit.gif',
+            'king harkinian gun.gif',
+            'mangle paddle.gif',
+            'backrooms dance.gif',
+            'creepy.gif',
+            'waving ace flag.gif',
+            'furro.gif',
+            'pomni stare.gif',
+            'sam.gif',
+            'walking ic chip.gif',
+            'spin petscop.gif',
+            'min-width my beloved locket.gif',
+            
 
         ];
 
@@ -481,6 +529,16 @@ function searchImages() {
         window.onload = function() {
             populateCategories();
         }
-    </script>
+
+
+        
+        document.querySelector('.search-input').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+        event.preventDefault(); 
+        searchImages(); 
+       }
+    });
+
+</script>
 </body>
 </html>

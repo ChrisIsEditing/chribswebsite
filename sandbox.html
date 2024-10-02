@@ -1,17 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
     <link rel="icon" href="https://chrisisediting.github.io/chribswebsite/Assets/sandbox.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<head>
-   
+    <title>Sandbox</title>
+ 
+    <style>
+        body {
+            background-color: #000;
+            color: #d8d8d8;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .error-message {
+            position: fixed;
+            left: 50%;
+            top: 30px; 
+            transform: translate(-50%, 0); 
+            background-color: rgba(22, 22, 22, 0.897);
+            color: rgb(252, 96, 96);
+            padding: 10px;
+            border-radius: 10px;
+            z-index: 1000;
+            display: none; 
+            justify-content: center; 
+            align-items: center; 
+            width: 85%; 
+            max-width: 400px;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translate(-50%, -100%); 
+            }
+            to {
+                transform: translate(-50%, 0); 
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translate(-50%, 0); 
+            }
+            to {
+                transform: translate(-50%, -100%); 
+            }
+        }
+
+        .slide-in {
+            animation: slideDown 0.5s forwards; 
+        }
+
+        .slide-out {
+            animation: slideOut 0.5s forwards; 
+        }
+
+        .story {
+            margin-bottom: 20px;
+        }
+
+        .title {
+            color: salmon; 
+            font-size: 26px;
+            margin-bottom: 10px;
+            text-decoration: underline;
+        }
+
+        .date {
+            color: #bbbbbb;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .rating {
+            color: #757575;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            margin-bottom: 10px;
+        }
+
+        .image-placeholder {
+            background-color: #333;
+            width: 100%;
+            max-width: 300px;
+            height: 200px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #353535;
+        }
+
+        .sep-1 {
+            color: salmon;
+            width: 40%;
+            margin: 0;
+        }
+
+        .separator {
+            border-bottom: 1px solid #585858;
+            margin: 20px 0;
+        }
+
+        .popup {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(17, 17, 17, 0.938);
+            color: #d8d8d8;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 2000;
+            display: none;
+        }
+
+        .close-popup {
+            cursor: pointer;
+            color: rgb(252, 96, 96);
+            margin-top: 10px;
+            text-decoration: underline;
+        }
+        .prompt {
+            color: #757575;
+
+        }
+        .promptname {
+            color: #c78d37;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            #searchInput {
+                width: 10%;
+                margin-bottom: 5px;
+            }
+
+            #searchButton {
+                width: 18%;
+                margin-left: 1px;
+            }
+
+            .title {
+                font-size: 20px;
+            }
+
+            .date {
+                font-size: 12px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 25px;
+            }
+
+            .date {
+                font-size: 15px;
+            }
+
+            p {
+                font-size: 15px;
+            }
+
+            .sep-1 {
+                color: salmon;
+                width: 75%;
+                margin: 0;
+            }
+
+            .image-placeholder {
+                height: 150px;
+            }
+            .content {
+
+                font-size: larger;
+
+            }
+        }
+    </style>
+</head>
 <body>
-<style>body { background-color: black; font-family: 'Courier New', Courier, monospace; } </style>  
-<title>Media</title>
-<!--TODO: This.-->
-<br>
-<br>
-<p style="color: rgb(170, 2, 2); text-align: center;"> TEST TEST 123 CAN YOU SEE ME? </p>
+    <div id="errorMessage" class="error-message" style="display: none;"></div>
+    <h1 style="position: sticky; font-family: 'Times New Roman', Times, serif; margin-bottom: 0; 
+        color: darksalmon; font-weight: bold;">
+        <b style="color: rgb(255, 104, 104); font-size: 40px;"> S.A.I.G.O.R. EXPERIMENTAL </b>
+    </h1>
+    
+    
+    <h3 style="color: rgb(255, 187, 166); margin-top: 0%; font-size: small;">
+        Shitty. Artificial. Intelligence. Generated. Outputs. 
+        <a class="subtitle" style="text-decoration: none; color: rgb(255, 187, 166);" 
+        href="system-classes.html">R-CLASS</a>
+         
+    </h3>
+    <h3 style="color: rgb(255, 187, 166); margin-top: 0%; font-size: small;"
+    >Do I really need to explain the experimental part?</h3>
+    
+    
+    
+    <hr class="sep-1"></hr>
+
+    <div id="search-container" style="margin: 10px 0;">
+        <input type="text" id="searchInput" placeholder="Search for a story..." 
+        style="padding: 7px; border-radius: 10px; width: 30%; background-color: rgb(22, 22, 22); 
+        border: 1px solid rgb(255, 130, 130); margin-bottom: 10px; color: aliceblue;">
+
+</div>
+    <p style="color: rgba(255, 81, 81, 0.925); margin-top: 10; font-size: small; font-weight: 400;">
+        <i>EVERYTHING BELOW IS SUBJECT TO CHANGE!<br>MAY CONTAIN SHIT CODE!<br>VIEW AT OWN RISK!<br><br></i>
+    </p>
+                
+    <div class="separator"></div>
+    <p style="color: rgba(185, 185, 185, 0.548); margin-top: 10; font-size: small;">
+        <i>Latest stories at the top:</i>
+    </p>
+    <br>
+    <br>
 
 
+    <div class="story">
+        <div class="title">TEST - "industrial blenders"</div>
+        <div class="date">2 October 2024</div>
+        <div class="rating" onclick="showPopup()">Rated: NONE</div>
+        <br>
+        <div class="content">
+    
+<p>The industrial blenders roared to life in the kitchen, their massive blades whirring with an intensity that shook the walls. David's eyes lit up as the sound filled the room, drowning out any remaining silence. These weren&rsquo;t ordinary blenders; these were machines designed for massive destruction, the kind of power that could turn anything into pulp in mere seconds.<br /><br />David, standing over the switchboard like a conductor of chaos, grinned maniacally as he surveyed the room. The counters were covered in various remains of his culinary experiments&mdash;bits of sauce, chunks of dough, and splatters of something far more sinister. The floor was slick with a mixture of oil, flour, and... other substances.<br /><br />In the middle of the room, Sherall's pizza-covered remains were now being prepped for the final stage&mdash;the blending. The dough, the toppings, everything, was about to meet the unforgiving blades of the industrial blender.<br /><br />"More than just a pizza now, aren&rsquo;t you?" David sneered as he wheeled the tray closer to the towering machine. <br /><br />The blenders loomed over him, their stainless steel exteriors gleaming under the fluorescent lights. With one push, the tray slid into the open maw of the largest blender, and David wasted no time. He slammed the lid shut, locking it into place.<br /><br />Sherall's muffled screams echoed inside the enclosed chamber, but they were no match for the deafening hum of the blender as David cranked it up to its highest setting.<br /><br />The blades spun furiously, a whirlwind of metal and destruction. The dough and toppings began to disintegrate, merging with the thick sauce that had once been Sherall&rsquo;s last protest. A grotesque mixture swirled inside, splattering the walls of the blender, turning into a horrific slurry of cheese, flesh, and tomato sauce.<br /><br />David stood back, admiring the chaos. He was no longer just a cook&mdash;he was the master of industrial carnage, the blenders his instrument of doom. The noise was deafening, but to him, it was the sound of triumph.</p>
+    
+        </div>
+        <br>
+        <br>
+        <div class="promptname">PROMPT:</div>
+        <div class="prompt">
+
+            INDUSTDRIAL BLENDERS!! CHATGPT LISTEN CAREFULLY PLEASE. THE BLENDERS!
+
+        </div>
+        <br>
+        <div class="separator"></div>
+        <br>
+        </div>
+    
+    
+
+
+
+    <script>
+document.getElementById("searchButton").addEventListener("click", function () {
+    const query = document.getElementById("searchInput").value.toLowerCase();
+    const stories = document.querySelectorAll(".story");
+    let found = false;
+
+    stories.forEach(story => {
+        const titleElement = story.querySelector(".title");
+        if (titleElement) {
+            const title = titleElement.textContent.toLowerCase();
+            if (title.includes(query)) {
+                story.scrollIntoView({ behavior: "smooth" });
+                found = true;
+            }
+        }
+    });
+
+    const errorMessage = document.getElementById("errorMessage");
+    if (!found) {
+        errorMessage.textContent = "I couldn't find that story! :(";
+        errorMessage.style.display = "flex"; 
+        errorMessage.classList.remove("slide-out"); 
+        errorMessage.classList.add("slide-in"); 
+
+        setTimeout(() => {
+            errorMessage.classList.remove("slide-in"); 
+            errorMessage.classList.add("slide-out"); 
+        }, 3000);
+
+        setTimeout(() => {
+            errorMessage.style.display = "none"; 
+            errorMessage.classList.remove("slide-out"); 
+        }, 3500); 
+    }
+});
+
+
+document.getElementById("searchInput").addEventListener("keydown", function(event) {
+    if (event.key === 'Enter') {
+        document.getElementById("searchButton").click();
+    }
+});
+
+</script>
+
+
+<div id="ratingPopup" class="popup">
+    <h3 style="font-size: larger; color: rgb(255, 100, 110);">Ratings:</h3>
+    <p>
+        
+        <strong>PG:</strong> Parents are strongly cautioned.<br><br>
+        <strong>M:</strong> Mature content.<br><br>
+        <strong>R:</strong> Restricted - 16+<br><br>
+        <strong>A:</strong> Adult - 18+
+    </p>
+    <div class="close-popup" onclick="closePopup()">Close</div>
+</div>
+<script>
+    function showPopup() {
+        document.getElementById('ratingPopup').style.display = 'block';
+    }
+
+    function closePopup() {
+        document.getElementById('ratingPopup').style.display = 'none';
+    }
+</script>
+
+<div style="display: flex; flex-direction: column; min-height: 0.5vh; margin: 0; padding: 0; margin-bottom: 1px;">
+</div>
+    <div style="flex-grow: 1;"></div>
+    <footer style="padding: 10px; text-align: center; color: #ffbe82; font-size: 0.8em; width: 100%; box-sizing: border-box; margin-bottom: 0px;">
+        <p>2024 Chribs - All Rights Reserved.</p>
+        <p><a href="privacy.html" style="color: rgb(250, 114, 114); text-decoration: none; margin-top: 0px;">PRIVACY POLICY</a> | <a href="index.html" style="color: rgb(250, 114, 114); text-decoration: none;">HOME</a></p>
+    </footer>
+
+</div>
 </body>
-</html> 
+</html>
+

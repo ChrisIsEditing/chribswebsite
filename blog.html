@@ -12,90 +12,41 @@
             font-family: 'Courier New', Courier, monospace;
             padding: 20px;
             line-height: 1.6;
+            margin: 0; 
         }
-        .news-item {
+        .iframe-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%; 
             margin-bottom: 20px;
         }
-        .title {
-            color: salmon; 
-            font-size: 24px;
-            margin-bottom: 10px;
-            font-weight: bold;
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0; 
         }
-        .date {
-            color: #888;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-        .content {
-            margin-bottom: 10px;
-        }
-        .image-placeholder {
-            background-color: #333;
-            width: 300px;
-            height: 200px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #353535;
-        }
-        .separator {
-            border-bottom: 1px solid #585858;
-            margin: 20px 0;
+        @media (max-width: 768px) {
+            body {
+                padding: 5px; 
+            }
+            .iframe-container {
+                padding-top: 75%;
+                min-height: 500px; 
+            }
+            .iframe-container iframe {
+                min-height: 400px; 
+            }
         }
     </style>
 </head>
 <body>
-    <h1 style="position: sticky; font-family: 'Times New Roman', Times, serif; margin-bottom: 5; 
-        color: darksalmon;">
-        <b> The Chribs Blog </b></h1>
-    
-        <p style="color: rgb(226, 226, 226); margin-top: 0;"
-          >___________________________</p>
- <br>
-    <div class="news-item">
-        <div class="title">New website! Please stand by!</div>
-        <div class="date">13 September 2024</div>
-        <br>
-        <div class="image-placeholder"><img src="https://chrisisediting.github.io/chribswebsite/Assets/test.jpg" 
-             crossorigin="anonymous" style="max-width: 100%; height: auto;">
-        </div>
-        <div class="content">
-            Ladies and gentle people, we have a custom website!
-            Let's hope it works...
 
-            For now, please excuse all horrible text placements, broken urls, weird html bullshit, and more.
-        </div>
+    <div class="iframe-container">
+        <iframe src="https://chrisisediting.tumblr.com"></iframe>
     </div>
-    <div class="separator"></div>
-    <br>
-    
-    <div class="news-item">
-        <div class="title">Poor user makes wrong donation.</div>
-        <div class="date">11 September 2024</div>
-        <br>
-        <div class="image-placeholder"><img src="https://chrisisediting.github.io/chribswebsite/Assets/blogpic1.png" 
-              crossorigin="anonymous" style="max-width: 100%; height: auto;">
-            </div>
-             
-            <div class="content">
-            Today I noticed this poor user trying to donate to Revanced, but
-            they donated to scam website instead of the official website. When
-            I tried clicking on the post, it was deleted.
-            Whoops.
-        </div>
-    <div class="separator"></div>
-
-    
-
-<div style="display: flex; flex-direction: column; min-height: 0.5vh; margin: 0; padding: 0; margin-bottom: 1px;">
-    <div style="flex-grow: 1;"></div>
-    <footer style="padding: 10px; text-align: center; color: #ffbe82; font-size: 0.8em; width: 100%; box-sizing: border-box;">
-        <p>2024 Chribs - All Rights Reserved.</p>
-        <p><a href="privacy.html" style="color: rgb(85, 85, 85); text-decoration: none;">Privacy Policy</a> | <a href="index.html" style="color: salmon; text-decoration: none;">Home</a></p>
-    </footer>
-</div>
 
 </body>
 </html>

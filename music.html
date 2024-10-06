@@ -77,6 +77,25 @@
             align-items: stretch;
             margin: 10px 0;
         }
+        .popup {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(17, 17, 17, 0.938);
+            color: #d8d8d8;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 2000;
+            display: none;
+        }
+
+        .close-popup {
+            cursor: pointer;
+            color: rgb(252, 96, 96);
+            margin-top: 10px;
+            text-decoration: underline;
+        }
 
         #volumeMeterContainer {
             display: flex;
@@ -315,7 +334,7 @@
     <div id="player-container">
         <div id="controls">
             
-            <button id="submitButton">Submit</button>
+            <button id="commandsButton">Commands</button>
             <button id="downloadButton">Download</button>
             <button id="nextButton">Next</button>
         </div>
@@ -354,6 +373,30 @@
         <img src="/GIFs/loading.gif" id="loadingGif" alt="Loading">
       </div>
       
+      <div id="commandsPopup" class="popup">
+        <h3 style="font-size: larger; color: rgb(255, 100, 110);">Commands:</h3>
+        <p style="color: antiquewhite;">
+            
+            <strong style="color: aqua;">/Clear -</strong> Clears the queue<br><br>
+            <strong style="color: aqua;">/Fnaf -</strong> Adds all FNaF songs<br><br>
+            <strong style="color: aqua;">/Random -</strong> Adds 30 Random Songs<br><br>
+            <strong style="color: aqua;">/Party -</strong> Adds 60 Random Songs<br>
+        </p>
+        <div class="close-popup" onclick="closePopup()">Close</div>
+    </div>
+    
+    <script>
+   
+        document.getElementById('commandsButton').addEventListener('click', function() {
+            document.getElementById('commandsPopup').style.display = 'block';
+        });
+    
+      
+        function closePopup() {
+            document.getElementById('commandsPopup').style.display = 'none';
+        }
+    </script>
+    
 
     <div style="display: flex; flex-direction: column; min-height: 0.5vh; margin: 0; padding: 0; margin-bottom: 1px;">
     </div>

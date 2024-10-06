@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
     const searchButton = document.getElementById("searchButton");
-    const submitButton = document.getElementById("submitButton");
+    const commandsButton = document.getElementById("commandsButton");
     const nextButton = document.getElementById("nextButton");
     const downloadButton = document.getElementById("downloadButton");
 
-    if (!searchButton || !submitButton || !nextButton || !downloadButton) {
+    if (!searchButton || !commandsButton || !nextButton || !downloadButton) {
         console.error("One or more buttons are missing from the HTML.");
         return;
     }
 
     searchButton.addEventListener("click", searchSongs);
-    submitButton.addEventListener("click", submitSong);
+    commandsButton.addEventListener("click", commandsButton);
     nextButton.addEventListener("click", playNextInQueue);
     downloadButton.addEventListener("click", downloadCurrentSong);
 });
@@ -36,8 +36,14 @@ function loadSongs() {
 
 document.addEventListener('DOMContentLoaded', loadSongs);
 
-function submitSong() {
-    window.open('https://forms.gle/ufuFncQVN1HaQH1a6', '_blank');
+function commandsButton() {
+    function showPopup() {
+        document.getElementById('commandsPopup').style.display = 'block';
+    }
+
+    function closePopup() {
+        document.getElementById('commandsPopup').style.display = 'none';
+    }
 }
 
 function playNextInQueue() {
@@ -134,7 +140,7 @@ function searchSongs() {
     if (query === "/random") {
         
         const filteredSongs = songs.filter((song, index) => index !== currentSongIndex);
-        const shuffledSongs = filteredSongs.sort(() => 0.5 - Math.random()).slice(0, 30);
+        const shuffledSongs = filteredSongs.sort(() => 0.4 - Math.random()).slice(0, 30);
 
        
         queue.length = 0;
@@ -149,6 +155,8 @@ function searchSongs() {
         }
         return;
     }
+
+
     if (query === "/clear") {
         
         queue.length = 0;
@@ -157,18 +165,30 @@ function searchSongs() {
         return;
     }
 
+    if (query === "/party") {
+        
+        const filteredSongs = songs.filter((song, index) => index !== currentSongIndex);
+        const shuffledSongs = filteredSongs.sort(() => 0.4 - Math.random()).slice(0, 60);
+
+       
+        queue.length = 0;
+
+        shuffledSongs.forEach(song => addToQueue(song, songs.indexOf(song)));
+
+        if (shuffledSongs.length > 0) {
+            
+            if (currentSongIndex === -1) {
+                playSong(shuffledSongs[0], songs.indexOf(shuffledSongs[0]));
+            }
+        }
+        return;
+    }
+
     if (query === "/chribs") {
         const ChribsSongs = [
             "onions", 
             "elephant", 
-            "", 
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
+
         ];
 
 

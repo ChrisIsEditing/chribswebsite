@@ -51,11 +51,11 @@
             let nextX = x + vx;
             let nextY = y + vy;
 
-            // Reset wall hit flags
+
             hitVerticalWall = false;
             hitHorizontalWall = false;
 
-            // Check for collisions (adjusting by the margin)
+
             if (nextX + logoWidth >= screenWidth - margin || nextX <= margin) {
                 vx = -vx;
                 hitVerticalWall = true;
@@ -68,12 +68,12 @@
                 nextY = y + vy; 
             }
 
-            // Flash if it hits both vertical and horizontal walls
+
             if (hitVerticalWall && hitHorizontalWall) {
                 triggerFlash();
             }
 
-            // Update the logo's position
+
             x = nextX;
             y = nextY;
             logo.style.left = x + 'px';
@@ -82,19 +82,19 @@
 
         function triggerFlash() {
             logo.classList.remove('flash');
-            void logo.offsetWidth; // Force reflow to restart the animation
+            void logo.offsetWidth;
             logo.classList.add('flash');
         }
 
-        // Move the logo at a fixed interval
+
         setInterval(moveLogo, 20);
 
-        // Redirect on click
+
         logo.addEventListener('click', function() {
             window.location.href = 'bubbubsbounce.html';
         });
 
-        // Key event listener for 'Escape' and 'T' key functions
+     
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 window.location.href = 'https://chrisisediting.github.io/chribswebsite/index.html';

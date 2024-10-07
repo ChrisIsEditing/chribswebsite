@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://chrisisediting.github.io/chribswebsite/Assets/casset.png" type="image/png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+
 
     
     <title>T.A.P.E</title>
@@ -58,7 +60,7 @@
         #searchInput {
             width: 30%;
             color: aliceblue;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             border: 2px solid rgb(255, 110, 110);
             border-radius: 15px;
             background-color: #222;
@@ -120,31 +122,14 @@
         }
 
         #currentSongName {
-    position: absolute;
-    left: -35px; 
-    top: 50%;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg) translateY(50%);
-    text-orientation: mixed;
-    color: rgb(255, 110, 110);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 14px;
-    z-index: 10;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-    max-height: 280px;
-    overflow: normal;
-    align-items: center;
-    flex-direction: column;
-    text-overflow: ellipsis;
-    white-space: nowrap; 
-    overflow: hidden;    
-    text-overflow: ellipsis; 
-    width: 100%; 
-    text-align: center;
+            margin-bottom: 5px; 
+            margin-top: 0%;
+            font-size: 16px; 
+            color: rgb(255, 212, 177); 
+            font-weight: 800;
 
-    display: block;
-       
-}
+        }
+
 
         #queueContainer {
             width: 250px;
@@ -320,11 +305,11 @@
     <div id="container">
         <div id="volumeMeterContainer">
             <div id="visualizerWrapper">
-                <div id="currentSongName"></div>
+
                 <canvas id="volumeMeter"></canvas>
             </div>
             <div id="queueContainer">
-                <div id="songYear"></div>
+          
                 <h3>UP NEXT:</h3>
                 <ul id="queueList"></ul>
             </div>
@@ -332,6 +317,7 @@
     </div>
 
     <div id="player-container">
+        <div id="currentSongName"></div>
         <div id="controls">
             
             <button id="commandsButton">Commands</button>
@@ -406,5 +392,16 @@
             <p><a href="privacy.html" style="color: rgb(250, 114, 114); text-decoration: none; margin-top: 0px;">PRIVACY POLICY</a> | <a href="index.html" style="color: rgb(250, 114, 114); text-decoration: none;">HOME</a></p>
         </footer>
         
+
+<div id="metadataPopup" class="popup" style="display: none;">
+    <h3 style="color: rgb(255, 100, 110);">Song Info:</h3>
+    <p id="popupName"></p>
+    <p id="popupArtist"></p>
+    <p id="popupAlbum"></p>
+    <p id="popupYear"></p>
+    <div class="close-popup" onclick="closeMetadataPopup()" style="cursor: pointer; color: rgb(252, 96, 96); text-decoration: underline;">Close</div>
+</div>
+
+
 </body>
 </html>

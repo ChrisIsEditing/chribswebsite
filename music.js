@@ -484,3 +484,4 @@ audioPlayer.onpause = function() {
 audioPlayer.onloadeddata = function() {
     console.log('Audio data loaded');
 };
+

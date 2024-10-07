@@ -11,26 +11,36 @@
             overflow: hidden;
             background-color: black;
         }
-
         #logo {
             position: absolute;
-            width: 140px; 
+            width: 140px;
             height: 90px;
             background-image: url('https://chrisisediting.github.io/chribswebsite/Assets/dvdlogo.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            cursor: pointer; 
+            cursor: pointer;
+        }
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .flash {
+            animation: flash 0.2s 5;
         }
     </style>
 </head>
 <body>
     <div id="logo"></div>
-
+    
+    
     <script>
         const logo = document.getElementById('logo');
         let x = 100, y = 100;
-        let vx = 2, vy = 2; 
+        let vx = 2, vy = 2;
+        let hitVerticalWall = false;
+        let hitHorizontalWall = false;
+        const margin = -16; 
 
         function moveLogo() {
             const logoWidth = logo.offsetWidth;
@@ -38,33 +48,58 @@
             const screenWidth = window.innerWidth;
             const screenHeight = window.innerHeight;
 
-            x += vx;
-            y += vy;
+            let nextX = x + vx;
+            let nextY = y + vy;
 
-            // Bounce off the walls, allowing the logo to move closer to the edges
-            if (x + logoWidth >= screenWidth - 1 || x <= 1) {
+            // Reset wall hit flags
+            hitVerticalWall = false;
+            hitHorizontalWall = false;
+
+            // Check for collisions (adjusting by the margin)
+            if (nextX + logoWidth >= screenWidth - margin || nextX <= margin) {
                 vx = -vx;
+                hitVerticalWall = true;
+                nextX = x + vx; 
             }
 
-            if (y + logoHeight >= screenHeight - 1 || y <= 1) {
+            if (nextY + logoHeight >= screenHeight - margin || nextY <= margin) {
                 vy = -vy;
+                hitHorizontalWall = true;
+                nextY = y + vy; 
             }
 
+            // Flash if it hits both vertical and horizontal walls
+            if (hitVerticalWall && hitHorizontalWall) {
+                triggerFlash();
+            }
+
+            // Update the logo's position
+            x = nextX;
+            y = nextY;
             logo.style.left = x + 'px';
             logo.style.top = y + 'px';
         }
 
-        setInterval(moveLogo, 20); // Slightly slower update interval
+        function triggerFlash() {
+            logo.classList.remove('flash');
+            void logo.offsetWidth; // Force reflow to restart the animation
+            logo.classList.add('flash');
+        }
 
-        // Click event to go to another page
+        // Move the logo at a fixed interval
+        setInterval(moveLogo, 20);
+
+        // Redirect on click
         logo.addEventListener('click', function() {
             window.location.href = 'bubbubsbounce.html';
         });
 
-        // Escape key event to go back to the homepage
+        // Key event listener for 'Escape' and 'T' key functions
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 window.location.href = 'https://chrisisediting.github.io/chribswebsite/index.html';
+            } else if (event.key.toLowerCase() === 't') {
+                triggerFlash();
             }
         });
     </script>

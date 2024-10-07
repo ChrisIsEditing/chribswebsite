@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://chrisisediting.github.io/chribswebsite/Assets/dvdlogo.png" type="image/png">
+    <title>Screensaver</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+        }
+
+        #logo {
+            position: absolute;
+            width: 140px; 
+            height: 90px;
+            background-image: url('/Assets/dvdlogo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer; 
+        }
+    </style>
+</head>
+<body>
+    <div id="logo"></div>
+
+    <script>
+        const logo = document.getElementById('logo');
+        let x = 100, y = 100;
+        let vx = 2, vy = 2; 
+
+        function moveLogo() {
+            const logoWidth = logo.offsetWidth;
+            const logoHeight = logo.offsetHeight;
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+
+            x += vx;
+            y += vy;
+
+            // Bounce off the walls, allowing the logo to move closer to the edges
+            if (x + logoWidth >= screenWidth - 1 || x <= 1) {
+                vx = -vx;
+            }
+
+            if (y + logoHeight >= screenHeight - 1 || y <= 1) {
+                vy = -vy;
+            }
+
+            logo.style.left = x + 'px';
+            logo.style.top = y + 'px';
+        }
+
+        setInterval(moveLogo, 20); // Slightly slower update interval
+
+        // Click event to go to another page
+        logo.addEventListener('click', function() {
+            window.location.href = 'bubbubsbounce.html';
+        });
+
+        // Escape key event to go back to the homepage
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>

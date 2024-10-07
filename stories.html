@@ -898,6 +898,17 @@ document.getElementById("searchInput").addEventListener("keydown", function(even
         <p><a href="privacy.html" style="color: rgb(250, 114, 114); text-decoration: none; margin-top: 0px;">PRIVACY POLICY</a> | <a href="index.html" style="color: rgb(250, 114, 114); text-decoration: none;">HOME</a></p>
     </footer>
 
+
+    <script>
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+    
+
+
 </div>
 </body>
 </html>

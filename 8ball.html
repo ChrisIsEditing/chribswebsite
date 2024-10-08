@@ -164,18 +164,22 @@ function getAnswer() {
 
         if (["heads or tails", "head's or tails", "flip a coin", "flip coin", "coin flip"].includes(question)) {
             answerText = Math.random() < 0.5 ? "Heads!" : "Tails!";
+       
         } else if (question === "open the doors" || question === "open the pod bay doors" || question === "hal, open the doors") {
             answerText = "I'm sorry, Dave. I'm afraid I can't do that.";
+        
         } else if (question === "hello" || question === "hi" || question === "hey") {
-            answerText = "Hello user! Please ask a question.";
-        } else if (question.includes("who caused bite of 87") || question.includes("who did bite of 87") || question.includes("who caused the bite of 87")) {
-            answerText = "I am not permitted to talk about that.";
-        } else if (question.includes("what's obama's last name") || question.includes("what is obama's last name")) {
-            answerText = "I am not permitted to talk about that.";
+            answerText = "Hello user! Please ask a question. :D";
+
+        } else if (question.includes("should i smoke") || question.includes("should i smoke?") || question.includes("should i go smoke") || question.includes("should i go smoke?")
+        || question.includes("should i light up?") || question.includes("should i light up")
+        || question.includes("should i blaze?") || question.includes("should i blaze")) {
+        answerText = "Hell yeah brother, go get smashed!";
+    
+
+
         } else {
             let randomIndex;
-
-            
             do {
                 randomIndex = Math.floor(Math.random() * answers.length);
             } while (randomIndex === lastAnswerIndex);

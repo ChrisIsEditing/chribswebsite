@@ -110,6 +110,51 @@
             transform: scale(1.1);
         }
 
+        .video-box {
+    position: relative;
+    width: 310px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: #222;
+    cursor: pointer;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.play-button::after {
+    content: '';
+    border-style: solid;
+    border-width: 15px 0 15px 25px;
+    border-color: transparent transparent transparent #222;
+}
+
+video {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+}
+
+@media (max-width: 700px) {
+    .video-box {
+        width: 280px;
+        height: 250px;
+    }
+}
+
         
         .image-container {
             display: flex;
@@ -150,11 +195,13 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            cursor: pointer;
         }
 
         .overlay img {
             max-width: 90%;
             max-height: 90%;
+            object-fit: contain;
         }
 
         @media (max-width: 700px) {
@@ -252,8 +299,10 @@
 
    
     <div id="imageOverlay" class="overlay" onclick="closeOverlay()">
-        <img id="enlargedImage" src="" alt="">
+        <img id="enlargedImage" src="" alt="" style="display: none;">
+        <video id="enlargedVideo" controls style="display: none; max-width: 90%; max-height: 90%;"></video>
     </div>
+    
     
     
     
@@ -390,12 +439,36 @@
             '4chan who is whois news silly goofy meme gif facepalm.gif',
             'walten files waltenfiles walter breakingbad meme.jpeg',
             'shitpost joker choker dc spirit halloween spooky photo nocontext.jpeg',
-            
+            'bubbubsbounce.webm',
+            'spooky gif jackolantern jackolanterns ghosts halloween spirits.webp',
+            'creepy lowres cult 2000s nocontext photo spooky.jpg',
+            'pink pumpkin jackolantern slay halloween pretty photo spooky.jpg',
+            'nocontext shitpost shittyart cross arms jesus christianity beans threw evil.jpg',
+            'halloween aesthetic spooky pumpkins jackolantern night bats art fullmoon creepy.jpg',
+            'mac miller macmiller smoking selfcare self-care self care photo vibe smoke be alright photo.jpg',
+            'milf halloween meme pumpkin spooky skeleton tshirt.jpg',
+            'gay cum photo shitpost wyoming.jpg',
+            'computer control room monitors old photo retro computing.jpg',
+            'spooky vintage poster halloween jackolantern ghost witch blackcat aesthetic art.jpg',
+            'spooky chillin chilling scream chill photo shitpost call killin killing doritos watching tv.jpg',
+            'spongebob joint j 420 meme photo holding doodlebob doodle bob.jpg',
+            'black cat evil art blackcat vintage halloween shitpost eat shit eatshit knife.jpg',
+            'pomni digital circus gate door nocontext gif.webp',
+            'tree photo wallpaper vertical tree reflection water autum misty.jpg',
+            'art skeleton vivid halloween spooky.jpg',
+            'mariguana lizzard weed smoke shitpost art.jpg',
+            'ps1 playstation logo boot start startup vhs lowres aesthetic 90s.webp',
+            'driving drive 80s aesthetic neon anime japan retro gif.webp',
+            'spooky jackolanterns halloween photo dark.jpg',
+            'fairlyoddparents fairly odd parent timmy weed 420 joint shitpost j.jpg',
+            'blow trannies screenshot tumblr meme trans youtube shrug youtuber.png',
+            'smoking misty photo aesthetic vibe smoke depressed sad person.jpg',
+            'fnaf freddy fazbear pizza mood moodboard board images collection photo movie aesthetic.jpg',
+            ''
 
-            
 
-            
-                        
+
+
 
 
         ];
@@ -407,6 +480,7 @@
             'wallpapers': 'wallpaper',
             'chribs-picks': 'shitpost'
         };
+
 
         
         function extractTags(filename) {
@@ -423,24 +497,27 @@
             return taggedImages.slice(-limit).reverse();
         }
 
+
         function populateCategories() {
-            for (const [categoryId, tag] of Object.entries(categories)) {
-                const imageContainer = document.getElementById(`${categoryId}-images`);
-                const latestImages = getLatestImagesByTag(tag, 3);
-                if (latestImages.length === 0) {
-                    imageContainer.innerHTML = '<p>Images coming soon.</p>';
-                    continue;
-                }
-                latestImages.forEach(img => {
-                    const imgElement = document.createElement('img');
-                    imgElement.src = `Media/${encodeURIComponent(img)}`;
-                    imgElement.alt = img;
-                    imgElement.loading = 'lazy';
-                    imgElement.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
-                    imageContainer.appendChild(imgElement);
-                });
-            }
+        for (const [categoryId, tag] of Object.entries(categories)) {
+        const imageContainer = document.getElementById(`${categoryId}-images`);
+        const latestImages = getLatestImagesByTag(tag, 3);
+        if (latestImages.length === 0) {
+            imageContainer.innerHTML = '<p>Images coming soon.</p>';
+            continue;
         }
+        latestImages.forEach(img => {
+            const imgElement = document.createElement('img');
+            imgElement.src = `Media/${encodeURIComponent(img)}`;
+            imgElement.alt = img;
+            imgElement.loading = 'lazy';
+         
+            imgElement.ondblclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
+            imageContainer.appendChild(imgElement);
+        });
+    }
+}
+
 
 function searchImages() {
     const query = document.getElementById('searchInput').value.toLowerCase().trim();
@@ -549,6 +626,48 @@ function searchImages() {
     }
 }
 
+function createImageElement(img) {
+    const imgBox = document.createElement('div');
+    imgBox.className = 'image-box';
+
+    if (isVideo(img)) {
+        const videoElement = document.createElement('video');
+        videoElement.src = `Media/${encodeURIComponent(img)}`;
+        videoElement.preload = 'metadata'; 
+        
+        console.log("Video has loaded:", videoElement.src); //log video
+
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+
+        videoElement.addEventListener('loadeddata', () => {
+            videoElement.currentTime = 1; // thumbnail
+        });
+
+        videoElement.addEventListener('seeked', () => {
+            canvas.width = videoElement.videoWidth;
+            canvas.height = videoElement.videoHeight;
+            context.drawImage(videoElement, 0, 0);
+            const imgElement = document.createElement('img');
+            imgElement.src = canvas.toDataURL(); // Convert canvas to image
+            imgElement.alt = img; // Set alt text for accessibility
+            imgElement.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
+            imgBox.appendChild(imgElement);
+        });
+
+        videoElement.load(); // Start loading the video
+    } else {
+        const imgElement = document.createElement('img');
+        imgElement.src = `Media/${encodeURIComponent(img)}`;
+        imgElement.alt = img;
+        imgElement.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
+        imgBox.appendChild(imgElement);
+    }
+
+    return imgBox;
+}
+
+
 
 
 
@@ -574,31 +693,58 @@ function searchImages() {
             }
         }
 
-        function openOverlay(imageSrc) {
-            const overlay = document.getElementById('imageOverlay');
-            const enlargedImage = document.getElementById('enlargedImage');
-            enlargedImage.src = imageSrc;
-            overlay.style.display = 'flex';
+
+        function isVideo(filename) {
+        return /\.(mp4|webm|ogg)$/i.test(filename);
         }
+
+        function openOverlay(mediaSrc) {
+        const overlay = document.getElementById('imageOverlay');
+        const enlargedImage = document.getElementById('enlargedImage');
+        const enlargedVideo = document.getElementById('enlargedVideo');
+
+        if (isVideo(mediaSrc)) {
+            enlargedVideo.src = mediaSrc;
+            enlargedVideo.style.display = 'block';
+            enlargedImage.style.display = 'none';
+        } else {
+            enlargedImage.src = mediaSrc;
+            enlargedImage.style.display = 'block';
+            enlargedVideo.style.display = 'none';
+        }
+
+        overlay.style.display = 'flex';
+    }
+
 
         function closeOverlay() {
             const overlay = document.getElementById('imageOverlay');
+            const enlargedVideo = document.getElementById('enlargedVideo');
+            
             overlay.style.display = 'none';
+            
+            // Stop video playback when closing the overlay
+            if (enlargedVideo) {
+                enlargedVideo.pause();
+                enlargedVideo.currentTime = 0;
+            }
         }
 
-        
+
+
         window.onload = function() {
-            populateCategories();
+    populateCategories();
+    document.querySelector('.search-input').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            searchImages();
         }
+    });
+};
 
 
         
-        document.querySelector('.search-input').addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-        event.preventDefault(); 
-        searchImages(); 
-       }
-    });
+
 
 </script>
 
@@ -615,6 +761,9 @@ function searchImages() {
 
 
 
+
+
+
 <div style="display: flex; flex-direction: column; min-height: 0.5vh; margin: 0; padding: 0; margin-bottom: 1px;">
 </div>
     
@@ -623,13 +772,14 @@ function searchImages() {
 <footer style="padding: 10px; text-align: center; color: #ffbe82; font-size: 0.8em; 
 width: 100%; box-sizing: border-box; margin-bottom: 0px; margin-top: 90px;">
 
-<hr style="width: 280px; margin-bottom: 10px; color: #333;"
+<hr style="width: 280px; margin-bottom: 10px; color: #333;">
 
 <p style="text-align: center; color: #ffbe82; margin-bottom: 0%;">2024 Chribs - All Rights Reserved.</p>
 
 <p><a href="privacy.html" style="color: rgb(250, 114, 114); text-decoration: none; margin-top: 0px;">PRIVACY POLICY</a> | <a href="index.html" style="color: rgb(250, 114, 114); text-decoration: none;">HOME</a></p>
     
 </footer>
+
 
 
 

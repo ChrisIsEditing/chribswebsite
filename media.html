@@ -20,6 +20,10 @@
             color: rgb(231, 75, 75);
             margin-bottom: 10px;
         }
+        .categories.hidden,
+            p[style*="color: #ff6969"].hidden {
+            display: none !important;
+        }
 
         .search-container {
             margin-bottom: 30px;
@@ -60,7 +64,18 @@
             background-color: #ff6969;
         }
 
-       
+
+.image-type-overlay {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
         .categories {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -83,6 +98,7 @@
             background-color: #333;
         }
 
+
         .category-box h2 {
             margin: 0 0 10px 0;
             font-size: 1.3rem;
@@ -95,6 +111,12 @@
             gap: 10px;
             flex-wrap: wrap;
         }
+
+
+
+
+
+
 
         .category-images img {
             width: 60px;
@@ -110,16 +132,8 @@
             transform: scale(1.1);
         }
 
-        .video-box {
-    position: relative;
-    width: 310px;
-    height: 300px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    background-color: #222;
-    cursor: pointer;
-}
+ 
+
 
 .play-button {
     position: absolute;
@@ -165,17 +179,32 @@ video {
         }
 
         .image-box {
-            width: 310px;
-            height: 300px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #222;
-            cursor: pointer;
-        }
+    width: 310px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #222;
+    cursor: pointer;
+    position: relative;
+}
+
+.image-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.overlay video {
+    max-width: 90%;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
 
         .image-box img {
             width: 100%;
@@ -185,24 +214,63 @@ video {
 
         
         .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            cursor: pointer;
-        }
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
 
-        .overlay img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-        }
+.close-button {
+    position: absolute; 
+    top: 10px;
+    right: 10px; 
+    background-color: #070707c4; 
+    color: #ffffff; 
+    border: none; 
+    font-size: 24px; 
+    cursor: pointer; 
+    padding: 5px 5px; 
+    border-radius: 5px 5px; 
+    transition: background-color 0.2s; 
+    transition: color 0.2s;
+    z-index: 1001; 
+}
+
+/*FORGIVE ME FORGIVE ME FORGIVE ME FOR MY SINS DEAR FATHER I ACCEPT MY FATE AS THE RESULT OF MY OWN NEGLEGENT ACTIONS*/
+
+.close-button:hover {
+    background-color: #141414; 
+    color: rgb(165, 33, 33);
+}
+
+.overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.overlay video {
+    max-width: none;
+    max-height: none;
+    width: auto;
+    height: 90vh;
+    object-fit: contain;
+}
+
+@media (max-width: 700px) {
+    .overlay video {
+        width: 100%;
+        height: auto;
+        max-height: none;
+    }
+}
+
 
         @media (max-width: 700px) {
     .categories {
@@ -235,7 +303,37 @@ video {
     }
 }
 
-        
+@media (max-width: 700px) {
+    .categories {
+        display: grid;
+    }
+
+    .search-input {
+        width: 60%;
+    }
+
+    .category-images img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .image-box {
+        width: 280px; 
+        height: 250px;
+    }
+
+    .hide-on-search {
+        display: none !important;
+    }
+
+  
+    .mobile-hidden {
+        display: none !important;
+    }
+}     
+
+
+
 </style>
 </head>
 <body>
@@ -281,7 +379,7 @@ video {
             </div>
         </div>
         <div class="category-box" data-category="wallpapers" onclick="searchCategory('wallpapers')">
-            <h2>#Wallpaper</h2>
+            <h2>#Photo</h2>
             <div class="category-images" id="wallpapers-images">
                
             </div>
@@ -304,6 +402,9 @@ video {
     </div>
     
     
+
+    
+
     
     
     <div id="loading" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.5);">
@@ -492,11 +593,35 @@ video {
             'mike fnaf fnafmovie movie headphone earphones loud ear rape earape earrape screech noise five nights gif.webp',
             'fnaf move gif boy hide hiding dark creepy spooky scary curtain kid ghost.gif',
             'fnaf fnaf1 freddy fazbear fazbears pizza trailer animatronics gif performance showtime.webp',
+            'Rambley Sad Origin Story Indigo Park Horror Skunx video shitpost.mp4',
+            'chribs dodo spinny spin tap water sink garlic crusher funkytown funky shitpost town lowres video.mp4',
+            'whats up good evening shit 10 49 video meme.webm',
+            'ppap pineapple apple pen music video meme nocontext.webm',
+            'bubbubsbounce bub bubs bounce video shitpost adult swim nocontext dance.webm',
+            'meme pet that dawg dog silly video.webm',
+            'time to kick gum chew ass dick kickem duke nukem video shitpost.webm',
+            'Slinky Treadmill walking walk Stayin Alive shitpost video.webm',
+            'Drink Your Milkshake video nocontext.mp4',
+            'Stampy stampycat minecraft lowres shitpost video Oh my God fucking creeper.mp4',
+            'The tank fps robotrock robot rock battlefield 4 battlefield4 meme video.webm',
+            'dog cement ad cold ones coldones dogcement video shitpost.webm',
+            'put cd up ass lego legoisland island video shitpost lowres.webm',
+            'begin audio prompt chica withered gangnam style gangnamstyle shitpost lowres vhs creepy video.webm',
+            'interview ohshit Oh Shit table leaving nocontext shitpost video nope outta here.webm',
+            'And I’m im Kanye West nocontext shitpost earth little dicky ye video music animation.webm',
+            'Chills parody funny Number 15 number15 creepy shitpost video voiceover.webm',
+            'richard rich richardsons video cold ones funny video shitpost dick removal incident vhs ad.webm',
+            'dr Eggman robotnik forklift certified sonic shitpost video.webm',
+            'Chris is that a weed mary police 911 microwave meme video vine.webm',
+            'All our food keeps blowing up video nocontext arbys shitpost lowres.webm',
+            'FNAF SFM afton glitchtrap vanny lazy town lazytown robbie rotten window ball Would you like to video shitpost five nights.webm',
+            'corned beef cornedbeef nicole waterson gumball world video shitpost nocontext video.webm',
+            'Imagine someone coming kitchen taking grandmother detonating moon shitpost kurtzgesagt nutshell shitpost ytp video.webm',
+            'Head on headon headache ache pain Spoof Disaster Movie video clip shitpost nocontext.mp4',
+            'magentasnail neon kinger wife moster art magestic glow love beautiful vivid digital circus digitalcircus.jpg',
+            'pomni vhs video tape 80s animation retro evil digital circus digitalcircus stare possesed demon.mp4',
+            'fnaf freddy fazbear 80s pizza pizzaria arcade fun retro mood moodboard board images collection photo aesthetic.jpg',
             
-
-
-
-
 
 
 
@@ -508,12 +633,15 @@ video {
             'memes': 'meme',
             'photography': 'gif',
             'art': 'art',
-            'wallpapers': 'wallpaper',
+            'wallpapers': 'photo',
             'chribs-picks': 'shitpost'
         };
 
+        document.querySelectorAll('.video-box video').forEach(video => {
+        video.style.width = '100%';
+        video.style.height = 'auto'; 
+        });
 
-        
         function extractTags(filename) {
             const nameWithoutExt = filename.substring(0, filename.lastIndexOf('.')) || filename;
             return nameWithoutExt.toLowerCase().split(' ');
@@ -530,21 +658,46 @@ video {
 
 
         function populateCategories() {
-        for (const [categoryId, tag] of Object.entries(categories)) {
+    for (const [categoryId, tag] of Object.entries(categories)) {
         const imageContainer = document.getElementById(`${categoryId}-images`);
-        const latestImages = getLatestImagesByTag(tag, 3);
-        if (latestImages.length === 0) {
+        const latestMedia = getLatestImagesByTag(tag, 3);
+        
+        if (latestMedia.length === 0) {
             imageContainer.innerHTML = '<p>Images coming soon.</p>';
             continue;
         }
-        latestImages.forEach(img => {
-            const imgElement = document.createElement('img');
-            imgElement.src = `Media/${encodeURIComponent(img)}`;
-            imgElement.alt = img;
-            imgElement.loading = 'lazy';
-         
-            imgElement.ondblclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
-            imageContainer.appendChild(imgElement);
+
+        latestMedia.forEach(media => {
+            if (isVideo(media)) {
+                const videoElement = document.createElement('video');
+                videoElement.src = `Media/${encodeURIComponent(media)}`;
+                videoElement.preload = 'metadata';
+
+                const thumbnailImg = document.createElement('img');
+                thumbnailImg.alt = media;
+                thumbnailImg.ondblclick = () => openOverlay(`Media/${encodeURIComponent(media)}`);
+                
+                videoElement.addEventListener('loadeddata', () => {
+                    videoElement.currentTime = 3;
+                    const canvas = document.createElement('canvas');
+                    canvas.width = videoElement.videoWidth;
+                    canvas.height = videoElement.videoHeight;
+                    
+                    const context = canvas.getContext('2d');
+                    context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+                    
+                    thumbnailImg.src = canvas.toDataURL();
+                });
+
+                imageContainer.appendChild(thumbnailImg);
+            } else {
+                const imgElement = document.createElement('img');
+                imgElement.src = `Media/${encodeURIComponent(media)}`;
+                imgElement.alt = media;
+                imgElement.loading = 'lazy';
+                imgElement.ondblclick = () => openOverlay(`Media/${encodeURIComponent(media)}`);
+                imageContainer.appendChild(imgElement);
+            }
         });
     }
 }
@@ -564,29 +717,14 @@ function searchImages() {
 
     const isMobile = window.innerWidth <= 700;
 
-    
-    if (isMobile && query !== '') {
-        categoriesContainer.classList.add('mobile-hide-on-search');
-        latestImagesText.classList.add('mobile-hide-on-search');
+    if (query !== '') {
+        categoriesContainer.style.display = 'none';
+        latestImagesText.style.display = 'none';
     } else {
-        categoriesContainer.classList.remove('mobile-hide-on-search');
-        latestImagesText.classList.remove('mobile-hide-on-search');
+        categoriesContainer.style.display = 'grid';
+        latestImagesText.style.display = 'block';
     }
 
-    if (isMobile && query !== '') {
-
-    categoriesContainer.classList.add('hide-on-search');
-    latestImagesText.classList.add('hide-on-search');
-    
-} else {
-
-    categoriesContainer.classList.remove('hide-on-search');
-    latestImagesText.classList.remove('hide-on-search');
-    
-
-    }
-
-    
     if (query === '') {
         message.innerText = 'Please enter image Tag/s';
         message.style.display = 'block';
@@ -598,101 +736,116 @@ function searchImages() {
     let imagesLoaded = 0;
 
     function checkAllImagesLoaded() {
+        imagesLoaded++;
         if (imagesLoaded === imagesToLoad) {
-            setTimeout(() => {
-                loadingOverlay.style.display = 'none';
-            }, 1); 
+            loadingOverlay.style.display = 'none';
         }
     }
 
-    function createImageElement(img) {
-        const imgBox = document.createElement('div');
-        imgBox.className = 'image-box';
-        const imgElement = document.createElement('img');
-        imgElement.src = `Media/${encodeURIComponent(img)}`;
-        imgElement.alt = img;
-        imgElement.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
-        imgElement.onload = () => {
-            imagesLoaded++;
-            checkAllImagesLoaded();
-        };
-        imgElement.onerror = () => {
-            imagesLoaded++;
-            checkAllImagesLoaded();
-        };
-        imgBox.appendChild(imgElement);
-        resultsContainer.appendChild(imgBox);
-        imagesToLoad++;
-    }
 
-    
     function matchTags(img, searchTags) {
         const tags = extractTags(img);
         return searchTags.every(tag => tags.includes(tag));
     }
 
     const searchTags = query.split(' ');
+    let mediaToShow = [];
 
     if (query === '/all') {
-        const allImages = images.slice().reverse();
-        allImages.forEach(createImageElement);
-        
-        if (allImages.length === 0) {
-            resultsContainer.innerHTML = '<p>No images found! :(</p>';
-            loadingOverlay.style.display = 'none';
-        }
+        mediaToShow = images.slice().reverse();
     } else {
-        const filteredImages = images.filter(img => matchTags(img, searchTags)).reverse();
-
-        filteredImages.forEach(createImageElement);
-
-        if (filteredImages.length === 0) {
-            resultsContainer.innerHTML = '<p>No images found! :(</p>';
-            loadingOverlay.style.display = 'none';
-        }
+        mediaToShow = images.filter(img => matchTags(img, searchTags)).reverse();
     }
 
-    if (imagesToLoad === 0) {
+    if (mediaToShow.length === 0) {
+        resultsContainer.innerHTML = '<p>No images found! :(</p>';
         loadingOverlay.style.display = 'none';
+        return;
     }
+
+    imagesToLoad = mediaToShow.length;
+    mediaToShow.forEach(media => {
+        const mediaBox = createImageElement(media);
+        
+        if (isVideo(media)) {
+            const thumbnailImg = mediaBox.querySelector('img');
+            if (thumbnailImg) {
+                const videoElement = document.createElement('video');
+                videoElement.src = `Media/${encodeURIComponent(media)}`;
+                videoElement.preload = 'metadata';
+                
+                videoElement.addEventListener('loadeddata', checkAllImagesLoaded);
+                videoElement.addEventListener('error', checkAllImagesLoaded);
+            } else {
+                checkAllImagesLoaded(); 
+            }
+        } else {
+            const img = mediaBox.querySelector('img');
+            if (img) {
+                if (img.complete) {
+                    checkAllImagesLoaded();
+                } else {
+                    img.onload = checkAllImagesLoaded;
+                    img.onerror = checkAllImagesLoaded;
+                }
+            } else {
+                checkAllImagesLoaded(); 
+            }
+        }
+        
+        resultsContainer.appendChild(mediaBox);
+    });
+
+   
+    window.onload = () => {
+    loadingOverlay.style.display = 'none'; 
+};
+
 }
 
 function createImageElement(img) {
     const imgBox = document.createElement('div');
     imgBox.className = 'image-box';
+    imgBox.style.position = 'relative'; 
 
     if (isVideo(img)) {
         const videoElement = document.createElement('video');
         videoElement.src = `Media/${encodeURIComponent(img)}`;
-        videoElement.preload = 'metadata'; 
-        
-        console.log("Video has loaded:", videoElement.src); //log video
+        videoElement.preload = 'metadata';
+        videoElement.style.width = 'auto'; 
+        videoElement.style.height = 'auto';
+        videoElement.style.maxWidth = '100%';
+        videoElement.style.maxHeight = '100%'; 
+        videoElement.style.objectFit = 'contain'; 
 
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
+        videoElement.style.minHeight = '608px';
+
+        const thumbnailImg = document.createElement('img');
+        thumbnailImg.alt = img;
+        thumbnailImg.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
 
         videoElement.addEventListener('loadeddata', () => {
-            videoElement.currentTime = 1; // thumbnail
-        });
-
-        videoElement.addEventListener('seeked', () => {
+            videoElement.currentTime = 3;
+            const canvas = document.createElement('canvas');
             canvas.width = videoElement.videoWidth;
             canvas.height = videoElement.videoHeight;
-            context.drawImage(videoElement, 0, 0);
-            const imgElement = document.createElement('img');
-            imgElement.src = canvas.toDataURL(); // Convert canvas to image
-            imgElement.alt = img; // Set alt text for accessibility
-            imgElement.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
-            imgBox.appendChild(imgElement);
+            
+            const context = canvas.getContext('2d');
+            context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+            
+            thumbnailImg.src = canvas.toDataURL();
+            imgBox.appendChild(thumbnailImg);
+            imgBox.appendChild(createImageTypeOverlay(img));
         });
 
-        videoElement.load(); // Start loading the video
+        imgBox.appendChild(videoElement);
     } else {
         const imgElement = document.createElement('img');
         imgElement.src = `Media/${encodeURIComponent(img)}`;
         imgElement.alt = img;
         imgElement.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
         imgBox.appendChild(imgElement);
+        imgBox.appendChild(createImageTypeOverlay(img));
     }
 
     return imgBox;
@@ -703,26 +856,37 @@ function createImageElement(img) {
 
 
 
-        function searchCategory(category) {
-            const resultsContainer = document.getElementById('results');
-            resultsContainer.innerHTML = '';
+function showFormatOverlay(videoFile) {
+    const formatOverlay = document.querySelector('.format-overlay');
+    
+    const extension = videoFile.split('.').pop().toUpperCase();
+    if (['MP4', 'GIF', 'WEBM', 'WEBP'].includes(extension)) {
+        formatOverlay.textContent = extension; 
+        formatOverlay.style.display = 'block'; 
+    } else {
+        formatOverlay.style.display = 'none'; 
+    }
+}
 
-            const latestImages = getLatestImagesByTag(categories[category]);
-            latestImages.forEach(img => {
-                const imgBox = document.createElement('div');
-                imgBox.className = 'image-box';
-                const imgElement = document.createElement('img');
-                imgElement.src = `Media/${encodeURIComponent(img)}`;
-                imgElement.alt = img;
-                imgElement.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
-                imgBox.appendChild(imgElement);
-                resultsContainer.appendChild(imgBox);
-            });
 
-            if (latestImages.length === 0) {
-                resultsContainer.innerHTML = '<p>No images in this catergory :(.</p>';
-            }
-        }
+
+function searchCategory(category) {
+    const resultsContainer = document.getElementById('results');
+    resultsContainer.innerHTML = '';
+
+    const latestMedia = getLatestImagesByTag(categories[category]);
+    
+    if (latestMedia.length === 0) {
+        resultsContainer.innerHTML = '<p>No media in this category :(</p>';
+        return;
+    }
+
+    latestMedia.forEach(media => {
+        const mediaBox = createImageElement(media);
+        resultsContainer.appendChild(mediaBox);
+    });
+}
+
 
 
         function isVideo(filename) {
@@ -730,36 +894,57 @@ function createImageElement(img) {
         }
 
         function openOverlay(mediaSrc) {
-        const overlay = document.getElementById('imageOverlay');
-        const enlargedImage = document.getElementById('enlargedImage');
-        const enlargedVideo = document.getElementById('enlargedVideo');
+    const overlay = document.getElementById('imageOverlay');
+    const enlargedImage = document.getElementById('enlargedImage');
+    const enlargedVideo = document.getElementById('enlargedVideo');
 
-        if (isVideo(mediaSrc)) {
-            enlargedVideo.src = mediaSrc;
-            enlargedVideo.style.display = 'block';
-            enlargedImage.style.display = 'none';
-        } else {
-            enlargedImage.src = mediaSrc;
-            enlargedImage.style.display = 'block';
-            enlargedVideo.style.display = 'none';
-        }
 
-        overlay.style.display = 'flex';
+    let closeButton = document.createElement('button');
+    closeButton.innerText = 'X';
+    closeButton.className = 'close-button'; 
+    
+    overlay.appendChild(closeButton);
+
+
+    if (isVideo(mediaSrc)) {
+        enlargedVideo.src = mediaSrc;
+        enlargedVideo.style.display = 'block';
+        enlargedImage.style.display = 'none';
+    } else {
+        enlargedImage.src = mediaSrc;
+        enlargedImage.style.display = 'block';
+        enlargedVideo.style.display = 'none';
+    }
+
+    overlay.style.display = 'flex';
+
+
+    closeButton.style.display = 'block';
+
+    closeButton.onclick = function() {
+        closeOverlay();
+    };
+}
+
+
+function closeOverlay() {
+    const overlay = document.getElementById('imageOverlay');
+    const enlargedVideo = document.getElementById('enlargedVideo');
+    const closeButton = overlay.querySelector('button');
+
+    overlay.style.display = 'none';
+
+    if (enlargedVideo) {
+        enlargedVideo.pause();
+        enlargedVideo.currentTime = 0;
     }
 
 
-        function closeOverlay() {
-            const overlay = document.getElementById('imageOverlay');
-            const enlargedVideo = document.getElementById('enlargedVideo');
-            
-            overlay.style.display = 'none';
-            
-            // Stop video playback when closing the overlay
-            if (enlargedVideo) {
-                enlargedVideo.pause();
-                enlargedVideo.currentTime = 0;
-            }
-        }
+    if (closeButton) {
+        overlay.removeChild(closeButton);
+    }
+}
+
 
 
 
@@ -773,8 +958,76 @@ function createImageElement(img) {
     });
 };
 
+window.addEventListener('resize', function() {
+    const query = document.getElementById('searchInput').value.toLowerCase().trim();
+    const isMobile = window.innerWidth <= 700;
+    const categoriesContainer = document.getElementById('categories');
+    const latestImagesText = document.querySelector('p[style*="color: #ff6969"]');
 
+    if (query !== '' && isMobile) {
+        categoriesContainer.style.display = 'none';
+        latestImagesText.style.display = 'none';
+    } else if (!isMobile) {
+        categoriesContainer.style.display = 'grid';
+        latestImagesText.style.display = 'block';
+    }
+});
+
+function createImageTypeOverlay(img) {
+    const overlay = document.createElement('div');
+    overlay.className = 'image-type-overlay';
+    const extension = img.split('.').pop().toUpperCase();
+    overlay.textContent = extension; 
+    overlay.style.position = 'absolute'; 
+    overlay.style.bottom = '5px'; 
+    overlay.style.right = '5px'; 
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+    overlay.style.color = '#fff';
+    overlay.style.padding = '5px'; 
+    overlay.style.borderRadius = '5px'; 
+
+    return overlay;
+}
+
+function createImageElement(img) {
+    const imgBox = document.createElement('div');
+    imgBox.className = 'image-box';
+    imgBox.style.position = 'relative'; 
+
+    if (isVideo(img)) {
+        const videoElement = document.createElement('video');
+        videoElement.src = `Media/${encodeURIComponent(img)}`;
+        videoElement.preload = 'metadata';
+
+        const thumbnailImg = document.createElement('img');
+        thumbnailImg.alt = img;
+        thumbnailImg.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
         
+        videoElement.addEventListener('loadeddata', () => {
+            videoElement.currentTime = 3;
+            const canvas = document.createElement('canvas');
+            canvas.width = videoElement.videoWidth;
+            canvas.height = videoElement.videoHeight;
+            
+            const context = canvas.getContext('2d');
+            context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+            
+            thumbnailImg.src = canvas.toDataURL();
+            imgBox.appendChild(thumbnailImg);
+            imgBox.appendChild(createImageTypeOverlay(img));
+        });
+    } else {
+        const imgElement = document.createElement('img');
+        imgElement.src = `Media/${encodeURIComponent(img)}`;
+        imgElement.alt = img;
+        imgElement.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
+        imgBox.appendChild(imgElement);
+        imgBox.appendChild(createImageTypeOverlay(img));
+    }
+
+    return imgBox;
+}
+    
 
 
 </script>
@@ -810,7 +1063,6 @@ width: 100%; box-sizing: border-box; margin-bottom: 0px; margin-top: 90px;">
 <p><a href="privacy.html" style="color: rgb(250, 114, 114); text-decoration: none; margin-top: 0px;">PRIVACY POLICY</a> | <a href="index.html" style="color: rgb(250, 114, 114); text-decoration: none;">HOME</a></p>
     
 </footer>
-
 
 
 

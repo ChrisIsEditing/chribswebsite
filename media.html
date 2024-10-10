@@ -660,7 +660,7 @@ video {
 
 
         function populateCategories() {
-    for (const [categoryId, tag] of Object.entries(categories)) {
+        for (const [categoryId, tag] of Object.entries(categories)) {
         const imageContainer = document.getElementById(`${categoryId}-images`);
         const latestMedia = getLatestImagesByTag(tag, 3);
         
@@ -668,50 +668,107 @@ video {
             imageContainer.innerHTML = '<p>Images coming soon.</p>';
             continue;
         }
+        imageContainer.innerHTML = ''; 
 
         latestMedia.forEach(media => {
+            const mediaUrl = `https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(media)}`;
+            
             if (isVideo(media)) {
+                const thumbnailContainer = document.createElement('div');
+                thumbnailContainer.style.position = 'relative';
+                thumbnailContainer.style.width = '60px';
+                thumbnailContainer.style.height = '60px';
+                thumbnailContainer.style.overflow = 'hidden';
+                thumbnailContainer.style.borderRadius = '5px';
+                thumbnailContainer.style.backgroundColor = '#333';
+
+                const loadingPlaceholder = document.createElement('div');
+                loadingPlaceholder.textContent = 'Loading';
+                loadingPlaceholder.style.fontSize = '10px';
+                loadingPlaceholder.style.color = '#fff';
+                loadingPlaceholder.style.display = 'flex';
+                loadingPlaceholder.style.justifyContent = 'center';
+                loadingPlaceholder.style.alignItems = 'center';
+                loadingPlaceholder.style.width = '100%';
+                loadingPlaceholder.style.height = '100%';
+                thumbnailContainer.appendChild(loadingPlaceholder);
+
                 const videoElement = document.createElement('video');
-    videoElement.src = `https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(media)}`;
-    videoElement.preload = 'metadata';
-    videoElement.crossOrigin = 'anonymous'; // CORS
-    videoElement.muted = true; 
-    videoElement.playsInline = true;
+                videoElement.src = mediaUrl;
+                videoElement.crossOrigin = 'anonymous';
+                videoElement.preload = 'metadata';
 
-                
-
-                const thumbnailImg = document.createElement('img');
-                thumbnailImg.alt = media;
-                thumbnailImg.ondblclick = () => openOverlay(`https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(media)}`);
-                
                 videoElement.addEventListener('loadeddata', () => {
                     try {
-                        videoElement.currentTime = 0.1;
-                        const canvas = document.createElement('canvas');
-                        canvas.width = videoElement.videoWidth;
-                        canvas.height = videoElement.videoHeight;
+                        videoElement.currentTime = 2.0; // VIDEO THUMBNAIL FOR LATEST IMAGES
                         
-                        const context = canvas.getContext('2d');
-                        context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-                        
-                        thumbnailImg.src = canvas.toDataURL('image/jpeg', 0.5);
+                        setTimeout(() => {
+                            const canvas = document.createElement('canvas');
+                            canvas.width = 60;
+                            canvas.height = 60;
+                            
+                            const context = canvas.getContext('2d');
+                            context.fillStyle = '#000000';
+                            context.fillRect(0, 0, canvas.width, canvas.height);
+                            
+                       
+                            const aspectRatio = videoElement.videoWidth / videoElement.videoHeight;
+                            let drawWidth = canvas.width;
+                            let drawHeight = canvas.height;
+                            
+                            if (aspectRatio > 1) {
+                                drawWidth = canvas.height * aspectRatio;
+                            } else {
+                                drawHeight = canvas.width / aspectRatio;
+                            }
+                            
+                            const x = (canvas.width - drawWidth) / 2;
+                            const y = (canvas.height - drawHeight) / 2;
+                            
+                            context.drawImage(videoElement, x, y, drawWidth, drawHeight);
+                            
+                            const thumbnailImg = document.createElement('img');
+                            thumbnailImg.src = canvas.toDataURL('image/jpeg', 0.7);
+                            thumbnailImg.alt = media;
+                            thumbnailImg.style.width = '100%';
+                            thumbnailImg.style.height = '100%';
+                            thumbnailImg.style.objectFit = 'cover';
+                            
+                            thumbnailContainer.innerHTML = ''; 
+                            thumbnailContainer.appendChild(thumbnailImg);
+                        }, 100);
                     } catch (e) {
-                        console.error('Thumbnail generation failed:', e);
+                        console.error('Error generating category thumbnail:', e);
+                        loadingPlaceholder.textContent = '!';
                     }
-                    imageContainer.appendChild(thumbnailImg);
                 });
+
+                videoElement.addEventListener('error', () => {
+                    loadingPlaceholder.textContent = '!';
+                });
+
+                thumbnailContainer.ondblclick = () => openOverlay(mediaUrl);
+                imageContainer.appendChild(thumbnailContainer);
             } else {
                 const imgElement = document.createElement('img');
-                imgElement.src = `https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(media)}`;
+                imgElement.src = mediaUrl;
                 imgElement.alt = media;
                 imgElement.loading = 'lazy';
-                imgElement.ondblclick = () => openOverlay(`https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(media)}`);
+                imgElement.ondblclick = () => openOverlay(mediaUrl);
                 imageContainer.appendChild(imgElement);
             }
         });
     }
 }
 
+function checkImageExists(url) {
+    return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = url;
+    });
+}
 
 function searchImages() {
     const query = document.getElementById('searchInput').value.toLowerCase().trim();
@@ -956,63 +1013,109 @@ function createImageElement(img) {
     const imgBox = document.createElement('div');
     imgBox.className = 'image-box';
     imgBox.style.position = 'relative';
-    imgBox.style.cursor = 'pointer'; 
+    imgBox.style.cursor = 'pointer';
+
+    const loadingPlaceholder = document.createElement('div');
+    loadingPlaceholder.textContent = 'Loading...';
+    loadingPlaceholder.style.display = 'flex';
+    loadingPlaceholder.style.justifyContent = 'center';
+    loadingPlaceholder.style.alignItems = 'center';
+    loadingPlaceholder.style.width = '100%';
+    loadingPlaceholder.style.height = '100%';
+    loadingPlaceholder.style.backgroundColor = '#333';
+    loadingPlaceholder.style.color = '#fff';
+    imgBox.appendChild(loadingPlaceholder);
+
+    const mediaUrl = `https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(img)}`;
 
     if (isVideo(img)) {
-    const videoElement = document.createElement('video');
-    videoElement.src = `https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(img)}`;
-    videoElement.preload = 'metadata';
-    videoElement.crossOrigin = 'anonymous'; // CORS
-    videoElement.load();
+        const videoElement = document.createElement('video');
+        videoElement.crossOrigin = 'anonymous';
+        videoElement.preload = 'metadata';
 
-    const thumbnailImg = document.createElement('img');
-    thumbnailImg.alt = img;
-
-    videoElement.addEventListener('loadeddata', () => {
-        const canvas = document.createElement('canvas');
-        const scaleFactor = Math.min(160 / videoElement.videoWidth, 90 / videoElement.videoHeight);
-        canvas.width = videoElement.videoWidth * scaleFactor;
-        canvas.height = videoElement.videoHeight * scaleFactor;
-
-        const context = canvas.getContext('2d');
-        context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-        thumbnailImg.src = canvas.toDataURL('image/jpeg', 0.5);
-        imgBox.appendChild(thumbnailImg);
-        imgBox.appendChild(createImageTypeOverlay(img));
-    });
-
-    imgBox.onclick = () => openOverlay(`https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(img)}`);
+        let retryCount = 0;
+        const maxRetries = 5;
+        const thumbnailCaptureTime = 2.0; // Adjust this value (in seconds)
 
 
-        videoElement.addEventListener('loadeddata', () => {
-    const canvas = document.createElement('canvas');
-    const scaleFactor = Math.min(160 / videoElement.videoWidth, 90 / videoElement.videoHeight);
-    canvas.width = videoElement.videoWidth * scaleFactor;
-    canvas.height = videoElement.videoHeight * scaleFactor;
 
-    const context = canvas.getContext('2d');
-    context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-    thumbnailImg.src = canvas.toDataURL();
-    imgBox.appendChild(thumbnailImg);
-    imgBox.appendChild(createImageTypeOverlay(img));
-       });
+        function generateThumbnail() {
+            return new Promise((resolve, reject) => {
+                try {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = videoElement.videoWidth || 160;
+                    canvas.height = videoElement.videoHeight || 90;
+                    
+                    const context = canvas.getContext('2d');
+                    context.fillStyle = '#000000';
+                    context.fillRect(0, 0, canvas.width, canvas.height);
+                    context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+                    
+                    const thumbnailUrl = canvas.toDataURL('image/jpeg', 0.7);
+                    resolve(thumbnailUrl);
+                } catch (error) {
+                    reject(error);
+                }
+            });
+        }
 
+        function tryGenerateThumbnail() {
+            if (retryCount >= maxRetries) {
+                loadingPlaceholder.textContent = 'Failed to load video thumbnail';
+                return;
+            }
 
-        videoElement.load(); 
+            videoElement.currentTime = 0.1;
+            
+            setTimeout(() => {
+                generateThumbnail()
+                    .then(thumbnailUrl => {
+                        const thumbnailImg = new Image();
+                        thumbnailImg.src = thumbnailUrl;
+                        thumbnailImg.alt = img;
+                        
+                        thumbnailImg.onload = () => {
+                            imgBox.removeChild(loadingPlaceholder);
+                            imgBox.appendChild(thumbnailImg);
+                            imgBox.appendChild(createImageTypeOverlay(img));
+                        };
+                    })
+                    .catch(error => {
+                        console.error('Error generating thumbnail:', error);
+                        retryCount++;
+                        setTimeout(tryGenerateThumbnail, 1000);
+                    });
+            }, 100);
+        }
+
+        videoElement.addEventListener('loadeddata', tryGenerateThumbnail);
+        videoElement.addEventListener('error', (e) => {
+            console.error('Video loading error:', e);
+            loadingPlaceholder.textContent = 'Error loading video';
+        });
+        
+        videoElement.src = mediaUrl;
     } else {
-        const imgElement = document.createElement('img');
-        imgElement.src = `https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(img)}`;
-        imgElement.alt = img;
+        // Image handling remains the same
+        const imgElement = new Image();
         imgElement.crossOrigin = 'anonymous';
-        imgBox.onclick = () => openOverlay(`https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(img)}`);
-
-        imgBox.appendChild(imgElement);
-        imgBox.appendChild(createImageTypeOverlay(img));
+        
+        imgElement.onload = () => {
+            imgBox.removeChild(loadingPlaceholder);
+            imgBox.appendChild(imgElement);
+            imgBox.appendChild(createImageTypeOverlay(img));
+        };
+        
+        imgElement.onerror = () => {
+            loadingPlaceholder.textContent = 'Failed to load image';
+        };
+        
+        imgElement.src = mediaUrl;
     }
 
+    imgBox.onclick = () => openOverlay(mediaUrl);
     return imgBox;
 }
-
 </script>
 
 

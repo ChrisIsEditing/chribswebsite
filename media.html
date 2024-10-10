@@ -112,12 +112,6 @@
             flex-wrap: wrap;
         }
 
-
-
-
-
-
-
         .category-images img {
             width: 60px;
             height: 60px;
@@ -132,18 +126,15 @@
             transform: scale(1.1);
         }
 
- 
-
-
-.play-button {
+        .play-button {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    border-radius: 30%;
+    width: 50px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -942,8 +933,6 @@ function searchCategory(category) {
     closeButton.onclick = closeOverlay;
 }
 
-
-
 function closeOverlay() {
     const overlay = document.getElementById('imageOverlay');
     const enlargedVideo = document.getElementById('enlargedVideo');
@@ -961,9 +950,6 @@ function closeOverlay() {
         overlay.removeChild(closeButton);
     }
 }
-
-
-
 
         window.onload = function() {
     populateCategories();
@@ -1006,6 +992,7 @@ function createImageTypeOverlay(img) {
     return overlay;
 }
 
+
 function createImageElement(img) {
     const imgBox = document.createElement('div');
     imgBox.className = 'image-box';
@@ -1026,83 +1013,28 @@ function createImageElement(img) {
     const mediaUrl = `https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(img)}`;
 
     if (isVideo(img)) {
-        const videoElement = document.createElement('video');
-        videoElement.crossOrigin = 'anonymous';
-        videoElement.preload = 'metadata';
+        generateVideoThumbnail(mediaUrl)
+            .then(thumbnailUrl => {
+                const thumbnailImg = new Image();
+                thumbnailImg.src = thumbnailUrl;
+                thumbnailImg.alt = img;
 
-        let retryCount = 0;
-        const maxRetries = 5;
-        const thumbnailCaptureTime = 2.0;
-
-        function generateThumbnail() {
-            return new Promise((resolve, reject) => {
-                try {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = videoElement.videoWidth || 160;
-                    canvas.height = videoElement.videoHeight || 90;
-     
-                    const context = canvas.getContext('2d');
-                    context.fillStyle = '#000000';
-                    context.fillRect(0, 0, canvas.width, canvas.height);
-                    context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-
-                    const thumbnailUrl = canvas.toDataURL('image/jpeg', 0.7);
-                    resolve(thumbnailUrl);
-                } catch (error) {
-                    reject(error);
-                }
+                thumbnailImg.onload = () => {
+                    imgBox.innerHTML = '';
+                    imgBox.appendChild(thumbnailImg);
+                    imgBox.appendChild(createImageTypeOverlay(img));
+                };
+            })
+            .catch(error => {
+                console.error('Thumbnail generation failed:', error);
+                createFallbackThumbnail(imgBox, img);
             });
-        }
-
-        function tryGenerateThumbnail() {
-    if (videoElement.readyState >= 2) { // ReadyState metadata 
-        videoElement.currentTime = 0.1; // Thumbnail timestamp
-
-        // Wait for video to seek to specified time
-        videoElement.addEventListener('seeked', () => {
-            generateThumbnail()
-                .then(thumbnailUrl => {
-                    const thumbnailImg = new Image();
-                    thumbnailImg.src = thumbnailUrl;
-                    thumbnailImg.alt = img;
-
-                    thumbnailImg.onload = () => {
-                        imgBox.removeChild(loadingPlaceholder);
-                        imgBox.appendChild(thumbnailImg);
-                        imgBox.appendChild(createImageTypeOverlay(img));
-                    };
-
-                    thumbnailImg.onerror = () => {
-                        loadingPlaceholder.textContent = 'Failed to load thumbnail image';
-                    };
-                })
-                .catch(error => {
-                    console.error('Error generating thumbnail:', error);
-                    loadingPlaceholder.textContent = 'Error generating thumbnail';
-                });
-        });
     } else {
-        loadingPlaceholder.textContent = 'Video is not ready yet';
-    }
-}
-
-
-// Start the process
-videoElement.addEventListener('loadeddata', tryGenerateThumbnail);
-videoElement.addEventListener('error', (e) => {
-    console.error('Video loading error:', e);
-    loadingPlaceholder.textContent = 'Error loading video';
-});
-
-   
-        videoElement.src = mediaUrl;
-    } else {
-
         const imgElement = new Image();
         imgElement.crossOrigin = 'anonymous';
         
         imgElement.onload = () => {
-            imgBox.removeChild(loadingPlaceholder);
+            imgBox.innerHTML = ''; 
             imgBox.appendChild(imgElement);
             imgBox.appendChild(createImageTypeOverlay(img));
         };
@@ -1117,9 +1049,80 @@ videoElement.addEventListener('error', (e) => {
     imgBox.onclick = () => openOverlay(mediaUrl);
     return imgBox;
 }
+
+
+function generateVideoThumbnail(videoUrl) {
+    return new Promise((resolve, reject) => {
+        const thumbnailTimeout = setTimeout(() => {
+            reject(new Error('Thumbnail generation timed out'));
+        }, 5000);
+
+        const tempVideo = document.createElement('video');
+        tempVideo.crossOrigin = 'anonymous';
+        tempVideo.preload = 'metadata';
+        
+        tempVideo.onloadeddata = () => {
+            clearTimeout(thumbnailTimeout);
+            tempVideo.currentTime = 1.2;
+            
+            tempVideo.onseeked = () => {
+                try {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = 160;
+                    canvas.height = 90;
+                    
+                    const ctx = canvas.getContext('2d');
+                    ctx.fillStyle = '#000000';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    
+                    const aspectRatio = tempVideo.videoWidth / tempVideo.videoHeight;
+                    let drawWidth = canvas.width;
+                    let drawHeight = canvas.height;
+                    
+                    if (aspectRatio > canvas.width / canvas.height) {
+                        drawHeight = canvas.width / aspectRatio;
+                    } else {
+                        drawWidth = canvas.height * aspectRatio;
+                    }
+                    
+                    const x = (canvas.width - drawWidth) / 2;
+                    const y = (canvas.height - drawHeight) / 2;
+                    
+                    ctx.drawImage(tempVideo, x, y, drawWidth, drawHeight);
+                    
+                    resolve(canvas.toDataURL('image/jpeg', 1));
+                } catch (error) {
+                    reject(error);
+                }
+            };
+        };
+        
+        tempVideo.onerror = () => {
+            clearTimeout(thumbnailTimeout);
+            reject(new Error('Video loading failed'));
+        };
+        
+        tempVideo.src = videoUrl;
+    });
+}
+
+function createFallbackThumbnail(imgBox, img) {
+    const fallbackDiv = document.createElement('div');
+    fallbackDiv.style.width = '100%';
+    fallbackDiv.style.height = '100%';
+    fallbackDiv.style.backgroundColor = '#333';
+    fallbackDiv.style.display = 'flex';
+    fallbackDiv.style.justifyContent = 'center';
+    fallbackDiv.style.alignItems = 'center';
+    fallbackDiv.style.color = '#fff';
+    fallbackDiv.textContent = 'Video';
+    
+    imgBox.innerHTML = ''; 
+    imgBox.appendChild(fallbackDiv);
+    imgBox.appendChild(createImageTypeOverlay(img));
+}
+
 </script>
-
-
 
 <script>
     document.addEventListener('keydown', function(event) {
@@ -1128,12 +1131,6 @@ videoElement.addEventListener('error', (e) => {
         }
     });
 </script>
-
-
-
-
-
-
 
 <div style="display: flex; flex-direction: column; min-height: 0.5vh; margin: 0; padding: 0; margin-bottom: 1px;">
 </div>
@@ -1150,8 +1147,6 @@ width: 100%; box-sizing: border-box; margin-bottom: 0px; margin-top: 90px;">
 <p><a href="privacy.html" style="color: rgb(250, 114, 114); text-decoration: none; margin-top: 0px;">PRIVACY POLICY</a> | <a href="index.html" style="color: rgb(250, 114, 114); text-decoration: none;">HOME</a></p>
     
 </footer>
-
-
 
 </body>
 </html>

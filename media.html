@@ -1010,118 +1010,118 @@ function createImageElement(img) {
     imgBox.appendChild(loadingPlaceholder);
 
     const mediaUrl = `https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(img)}`;
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     if (isVideo(img)) {
-        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        const videoElement = document.createElement('video');
+        videoElement.crossOrigin = 'anonymous';
+        videoElement.preload = 'metadata';
         
-        if (isMobile) {
-            // For mobile devices, create a simpler thumbnail
-            const thumbnailImg = document.createElement('img');
-            thumbnailImg.alt = img;
-            thumbnailImg.style.width = '100%';
-            thumbnailImg.style.height = '100%';
-            thumbnailImg.style.objectFit = 'cover';
+        let thumbnailAttempted = false;
+        const attemptThumbnail = () => {
+            if (thumbnailAttempted) return;
+            thumbnailAttempted = true;
             
-            // Create a temporary video element to get the first frame
-            const tempVideo = document.createElement('video');
-            tempVideo.crossOrigin = 'anonymous';
-            tempVideo.preload = 'metadata';
-            
-            tempVideo.onloadedmetadata = () => {
-                // Create a low-resolution canvas for mobile
+            try {
                 const canvas = document.createElement('canvas');
-                canvas.width = 150;  // Lower resolution for mobile
-                canvas.height = 150;
-                
                 const ctx = canvas.getContext('2d');
-                ctx.fillStyle = '#333';
+                
+               
+                if (isMobile) {
+                    canvas.width = 150;  // size for mobile
+                    canvas.height = 150;
+                } else {
+                    canvas.width = 310;
+                    canvas.height = 300;
+                }
+                
+                ctx.fillStyle = '#000000';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
                 
-                // Draw a play button or icon to indicate it's a video
-                ctx.fillStyle = '#fff';
+                const aspectRatio = videoElement.videoWidth / videoElement.videoHeight;
+                let drawWidth = canvas.width;
+                let drawHeight = canvas.height;
+                
+                if (aspectRatio > canvas.width / canvas.height) {
+                    drawHeight = canvas.width / aspectRatio;
+                } else {
+                    drawWidth = canvas.height * aspectRatio;
+                }
+                
+                const x = (canvas.width - drawWidth) / 2;
+                const y = (canvas.height - drawHeight) / 2;
+                
+                ctx.drawImage(videoElement, x, y, drawWidth, drawHeight);
+                
+                // play button overlay
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                const triangleSize = isMobile ? 5 : 20;
+                
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
                 ctx.beginPath();
-                ctx.moveTo(60, 45);
-                ctx.lineTo(60, 105);
-                ctx.lineTo(105, 75);
+                ctx.arc(centerX, centerY, triangleSize + 10, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.moveTo(centerX - triangleSize/2, centerY - triangleSize);
+                ctx.lineTo(centerX - triangleSize/2, centerY + triangleSize);
+                ctx.lineTo(centerX + triangleSize, centerY);
                 ctx.closePath();
                 ctx.fill();
                 
-                thumbnailImg.src = canvas.toDataURL('image/jpeg', 0.5);
+                const thumbnailImg = new Image();
+                thumbnailImg.src = canvas.toDataURL('image/jpeg', isMobile ? 0.6 : 0.8);
+                thumbnailImg.alt = img;
+                thumbnailImg.style.width = '100%';
+                thumbnailImg.style.height = '100%';
+                thumbnailImg.style.objectFit = 'cover';
                 
                 imgBox.innerHTML = '';
                 imgBox.appendChild(thumbnailImg);
                 imgBox.appendChild(createImageTypeOverlay(img));
-            };
-            
-            tempVideo.onerror = () => {
-                createFallbackThumbnail(imgBox, img);
-            };
-            
-            tempVideo.src = mediaUrl;
-        } else {
-            // Existing desktop logic
-            const videoElement = document.createElement('video');
-            videoElement.crossOrigin = 'anonymous';
-            videoElement.preload = 'metadata';
-            
-            videoElement.onloadeddata = () => {
-                videoElement.currentTime = 1.2;
-            };
-            
-            videoElement.onseeked = () => {
-                try {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = 310;
-                    canvas.height = 300;
-                    
-                    const ctx = canvas.getContext('2d');
-                    ctx.fillStyle = '#000000';
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    
-                    const aspectRatio = videoElement.videoWidth / videoElement.videoHeight;
-                    let drawWidth = canvas.width;
-                    let drawHeight = canvas.height;
-                    
-                    if (aspectRatio > canvas.width / canvas.height) {
-                        drawHeight = canvas.width / aspectRatio;
-                    } else {
-                        drawWidth = canvas.height * aspectRatio;
-                    }
-                    
-                    const x = (canvas.width - drawWidth) / 2;
-                    const y = (canvas.height - drawHeight) / 2;
-                    
-                    ctx.drawImage(videoElement, x, y, drawWidth, drawHeight);
-                    
-                    const thumbnailImg = new Image();
-                    thumbnailImg.src = canvas.toDataURL('image/jpeg', 0.8);
-                    thumbnailImg.alt = img;
-                    
-                    imgBox.innerHTML = '';
-                    imgBox.appendChild(thumbnailImg);
-                    imgBox.appendChild(createImageTypeOverlay(img));
-                } catch (error) {
-                    console.error('Thumbnail generation failed:', error);
-                    createFallbackThumbnail(imgBox, img);
-                }
-            };
-            
-            videoElement.onerror = () => {
-                console.error('Video loading failed');
-                createFallbackThumbnail(imgBox, img);
-            };
-            
-            videoElement.src = mediaUrl;
-        }
+                
+                return true;
+            } catch (error) {
+                console.error('Thumbnail generation failed:', error);
+                return false;
+            }
+        };
+
+        videoElement.onloadeddata = () => {
+            videoElement.currentTime = 1.2;
+        };
         
-        // Common timeout for both mobile and desktop
-        setTimeout(() => {
-            if (imgBox.contains(loadingPlaceholder)) {
+        videoElement.onseeked = () => {
+            if (!attemptThumbnail() && isMobile) {
+                createMobileFallback(imgBox, img);
+            }
+        };
+        
+        videoElement.onerror = () => {
+            console.error('Video loading failed');
+            if (isMobile) {
+                createMobileFallback(imgBox, img);
+            } else {
                 createFallbackThumbnail(imgBox, img);
             }
-        }, 9000);
+        };
+        
+        videoElement.src = mediaUrl;
+        
+        // Timeout for thumbnail generation
+        setTimeout(() => {
+            if (imgBox.contains(loadingPlaceholder)) {
+                if (isMobile) {
+                    createMobileFallback(imgBox, img);
+                } else {
+                    createFallbackThumbnail(imgBox, img);
+                }
+            }
+        }, isMobile ? 6000 : 9000); 
     } else {
-        // Existing image handling logic
+       
         const imgElement = new Image();
         imgElement.crossOrigin = 'anonymous';
         
@@ -1140,6 +1140,36 @@ function createImageElement(img) {
 
     imgBox.onclick = () => openOverlay(mediaUrl);
     return imgBox;
+}
+
+function createMobileFallback(imgBox, img) {
+    const canvas = document.createElement('canvas');
+    canvas.width = 150;
+    canvas.height = 150;
+    
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#333';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+ 
+    ctx.fillStyle = '#fff';
+    ctx.beginPath();
+    ctx.moveTo(60, 45);
+    ctx.lineTo(60, 105);
+    ctx.lineTo(105, 75);
+    ctx.closePath();
+    ctx.fill();
+    
+    const thumbnailImg = new Image();
+    thumbnailImg.src = canvas.toDataURL('image/jpeg', 0.5);
+    thumbnailImg.alt = img;
+    thumbnailImg.style.width = '100%';
+    thumbnailImg.style.height = '100%';
+    thumbnailImg.style.objectFit = 'cover';
+    
+    imgBox.innerHTML = '';
+    imgBox.appendChild(thumbnailImg);
+    imgBox.appendChild(createImageTypeOverlay(img));
 }
 
 

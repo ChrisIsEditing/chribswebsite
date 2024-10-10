@@ -644,108 +644,113 @@ video {
             return taggedImages.slice(-limit).reverse();
         }
 
-
         function populateCategories() {
-        for (const [categoryId, tag] of Object.entries(categories)) {
+    for (const [categoryId, tag] of Object.entries(categories)) {
         const imageContainer = document.getElementById(`${categoryId}-images`);
-        const latestMedia = getLatestImagesByTag(tag, 3);
-        
+        const latestMedia = getLatestImagesByTag(tag, 6);
+
         if (latestMedia.length === 0) {
             imageContainer.innerHTML = '<p>Images coming soon.</p>';
             continue;
         }
+
         imageContainer.innerHTML = ''; 
 
         latestMedia.forEach(media => {
             const mediaUrl = `https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(media)}`;
-            
+            console.log(`Loading media: ${mediaUrl}`); // Debug log
+
+            const thumbnailContainer = document.createElement('div');
+            thumbnailContainer.style.position = 'relative';
+            thumbnailContainer.style.width = '60px';
+            thumbnailContainer.style.height = '60px';
+            thumbnailContainer.style.overflow = 'hidden';
+            thumbnailContainer.style.borderRadius = '5px';
+            thumbnailContainer.style.backgroundColor = '#333';
+
+            const loadingPlaceholder = document.createElement('div');
+            loadingPlaceholder.textContent = 'Loading...';
+            loadingPlaceholder.style.fontSize = '10px';
+            loadingPlaceholder.style.color = '#fff';
+            loadingPlaceholder.style.display = 'flex';
+            loadingPlaceholder.style.justifyContent = 'center';
+            loadingPlaceholder.style.alignItems = 'center';
+            loadingPlaceholder.style.width = '100%';
+            loadingPlaceholder.style.height = '100%';
+            thumbnailContainer.appendChild(loadingPlaceholder);
+
             if (isVideo(media)) {
-                const thumbnailContainer = document.createElement('div');
-                thumbnailContainer.style.position = 'relative';
-                thumbnailContainer.style.width = '60px';
-                thumbnailContainer.style.height = '60px';
-                thumbnailContainer.style.overflow = 'hidden';
-                thumbnailContainer.style.borderRadius = '5px';
-                thumbnailContainer.style.backgroundColor = '#333';
-
-                const loadingPlaceholder = document.createElement('div');
-                loadingPlaceholder.textContent = 'Loading';
-                loadingPlaceholder.style.fontSize = '10px';
-                loadingPlaceholder.style.color = '#fff';
-                loadingPlaceholder.style.display = 'flex';
-                loadingPlaceholder.style.justifyContent = 'center';
-                loadingPlaceholder.style.alignItems = 'center';
-                loadingPlaceholder.style.width = '100%';
-                loadingPlaceholder.style.height = '100%';
-                thumbnailContainer.appendChild(loadingPlaceholder);
-
                 const videoElement = document.createElement('video');
                 videoElement.src = mediaUrl;
                 videoElement.crossOrigin = 'anonymous';
                 videoElement.preload = 'metadata';
 
-                videoElement.addEventListener('loadeddata', () => {
-                    try {
-                        videoElement.currentTime = 2; // VIDEO THUMBNAIL FOR LATEST IMAGES
-                        
-                        setTimeout(() => {
-                            const canvas = document.createElement('canvas');
-                            canvas.width = 60;
-                            canvas.height = 60;
-                            
-                            const context = canvas.getContext('2d');
-                            context.fillStyle = '#000000';
-                            context.fillRect(0, 0, canvas.width, canvas.height);
-                            
-                       
-                            const aspectRatio = videoElement.videoWidth / videoElement.videoHeight;
-                            let drawWidth = canvas.width;
-                            let drawHeight = canvas.height;
-                            
-                            if (aspectRatio > 1) {
-                                drawWidth = canvas.height * aspectRatio;
-                            } else {
-                                drawHeight = canvas.width / aspectRatio;
-                            }
-                            
-                            const x = (canvas.width - drawWidth) / 2;
-                            const y = (canvas.height - drawHeight) / 2;
-                            
-                            context.drawImage(videoElement, x, y, drawWidth, drawHeight);
-                            
-                            const thumbnailImg = document.createElement('img');
-                            thumbnailImg.src = canvas.toDataURL('image/jpeg', 0.7);
-                            thumbnailImg.alt = media;
-                            thumbnailImg.style.width = '100%';
-                            thumbnailImg.style.height = '100%';
-                            thumbnailImg.style.objectFit = 'cover';
-                            
-                            thumbnailContainer.innerHTML = ''; 
-                            thumbnailContainer.appendChild(thumbnailImg);
-                        }, 100);
-                    } catch (e) {
-                        console.error('Error generating category thumbnail:', e);
-                        loadingPlaceholder.textContent = '!';
-                    }
-                });
+                videoElement.addEventListener('canplay', () => {
+    if (videoElement.duration > 0) { // Ensure the video has a valid duration
+        videoElement.currentTime = 2; // Set to 2 seconds for the thumbnail
+        
+        const canvas = document.createElement('canvas');
+        canvas.width = 60;
+        canvas.height = 60;
 
-                videoElement.addEventListener('error', () => {
-                    loadingPlaceholder.textContent = '!';
-                });
+        const context = canvas.getContext('2d');
+        context.fillStyle = '#000000';
+        context.fillRect(0, 0, canvas.width, canvas.height);
 
-                thumbnailContainer.ondblclick = () => openOverlay(mediaUrl);
-                imageContainer.appendChild(thumbnailContainer);
+        const aspectRatio = videoElement.videoWidth / videoElement.videoHeight;
+        let drawWidth = canvas.width;
+        let drawHeight = canvas.height;
+
+        if (aspectRatio > 1) {
+            drawWidth = canvas.height * aspectRatio;
+        } else {
+            drawHeight = canvas.width / aspectRatio;
+        }
+
+        const x = (canvas.width - drawWidth) / 2;
+        const y = (canvas.height - drawHeight) / 2;
+
+        context.drawImage(videoElement, x, y, drawWidth, drawHeight);
+
+        const thumbnailImg = document.createElement('img');
+        thumbnailImg.src = canvas.toDataURL('image/jpeg', 0.9);
+        thumbnailImg.alt = media;
+        thumbnailImg.style.width = '100%';
+        thumbnailImg.style.height = '100%';
+        thumbnailImg.style.objectFit = 'cover';
+
+        thumbnailContainer.innerHTML = ''; 
+        thumbnailContainer.appendChild(thumbnailImg);
+    }
+});
+
             } else {
                 const imgElement = document.createElement('img');
                 imgElement.src = mediaUrl;
                 imgElement.alt = media;
                 imgElement.loading = 'lazy';
-                imgElement.ondblclick = () => openOverlay(mediaUrl);
-                imageContainer.appendChild(imgElement);
+                imgElement.style.width = '100%';
+                imgElement.style.height = '100%';
+                imgElement.style.objectFit = 'cover';
+
+                imgElement.onload = () => {
+                    loadingPlaceholder.style.display = 'none'; // Hide loading placeholder
+                };
+
+                imgElement.onerror = () => {
+                    console.error(`Error loading image for: ${mediaUrl}`);
+                    loadingPlaceholder.textContent = '!';
+                };
+
+                thumbnailContainer.appendChild(imgElement);
             }
+
+            thumbnailContainer.ondblclick = () => openOverlay(mediaUrl);
+            imageContainer.appendChild(thumbnailContainer);
         });
     }
 }
+
 
 function checkImageExists(url) {
     return new Promise((resolve) => {
@@ -1072,7 +1077,7 @@ function createImageElement(img) {
                 ctx.fill();
                 
                 const thumbnailImg = new Image();
-                thumbnailImg.src = canvas.toDataURL('image/jpeg', isMobile ? 0.6 : 0.8);
+                thumbnailImg.src = canvas.toDataURL('image/jpeg', isMobile ? 0.8 : 0.9);
                 thumbnailImg.alt = img;
                 thumbnailImg.style.width = '100%';
                 thumbnailImg.style.height = '100%';
@@ -1110,16 +1115,25 @@ function createImageElement(img) {
         
         videoElement.src = mediaUrl;
         
-        // Timeout for thumbnail generation
-        setTimeout(() => {
-            if (imgBox.contains(loadingPlaceholder)) {
-                if (isMobile) {
-                    createMobileFallback(imgBox, img);
-                } else {
-                    createFallbackThumbnail(imgBox, img);
-                }
-            }
-        }, isMobile ? 6000 : 9000); 
+  
+let thumbnailGenerated = false;
+
+videoElement.onseeked = () => {
+    if (!thumbnailGenerated && attemptThumbnail()) {
+        thumbnailGenerated = true;
+    }
+};
+
+setTimeout(() => {
+    if (!thumbnailGenerated && imgBox.contains(loadingPlaceholder)) {
+        if (isMobile) {
+            createMobileFallback(imgBox, img);
+        } else {
+            createFallbackThumbnail(imgBox, img);
+        }
+    }
+}, isMobile ? 15000 : 10000);
+
     } else {
        
         const imgElement = new Image();
@@ -1161,7 +1175,7 @@ function createMobileFallback(imgBox, img) {
     ctx.fill();
     
     const thumbnailImg = new Image();
-    thumbnailImg.src = canvas.toDataURL('image/jpeg', 0.5);
+    thumbnailImg.src = canvas.toDataURL('image/jpeg', 0.9);
     thumbnailImg.alt = img;
     thumbnailImg.style.width = '100%';
     thumbnailImg.style.height = '100%';

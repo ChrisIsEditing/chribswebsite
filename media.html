@@ -413,6 +413,8 @@ video {
 
     
     <script>
+
+        
         const images = [
             'skeleton garlic bread meme dope ace.webp',
             'ace man smoke meme upset sigh asexual flag.webp',
@@ -670,32 +672,40 @@ video {
         latestMedia.forEach(media => {
             if (isVideo(media)) {
                 const videoElement = document.createElement('video');
-                videoElement.src = `Media/${encodeURIComponent(media)}`;
-                videoElement.preload = 'metadata';
+    videoElement.src = `https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(media)}`;
+    videoElement.preload = 'metadata';
+    videoElement.crossOrigin = 'anonymous'; // CORS
+    videoElement.muted = true; 
+    videoElement.playsInline = true;
+
+                
 
                 const thumbnailImg = document.createElement('img');
                 thumbnailImg.alt = media;
-                thumbnailImg.ondblclick = () => openOverlay(`Media/${encodeURIComponent(media)}`);
+                thumbnailImg.ondblclick = () => openOverlay(`https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(media)}`);
                 
                 videoElement.addEventListener('loadeddata', () => {
-                    videoElement.currentTime = 3;
-                    const canvas = document.createElement('canvas');
-                    canvas.width = videoElement.videoWidth;
-                    canvas.height = videoElement.videoHeight;
-                    
-                    const context = canvas.getContext('2d');
-                    context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-                    
-                    thumbnailImg.src = canvas.toDataURL();
+                    try {
+                        videoElement.currentTime = 0.1;
+                        const canvas = document.createElement('canvas');
+                        canvas.width = videoElement.videoWidth;
+                        canvas.height = videoElement.videoHeight;
+                        
+                        const context = canvas.getContext('2d');
+                        context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+                        
+                        thumbnailImg.src = canvas.toDataURL('image/jpeg', 0.5);
+                    } catch (e) {
+                        console.error('Thumbnail generation failed:', e);
+                    }
+                    imageContainer.appendChild(thumbnailImg);
                 });
-
-                imageContainer.appendChild(thumbnailImg);
             } else {
                 const imgElement = document.createElement('img');
-                imgElement.src = `Media/${encodeURIComponent(media)}`;
+                imgElement.src = `https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(media)}`;
                 imgElement.alt = media;
                 imgElement.loading = 'lazy';
-                imgElement.ondblclick = () => openOverlay(`Media/${encodeURIComponent(media)}`);
+                imgElement.ondblclick = () => openOverlay(`https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(media)}`);
                 imageContainer.appendChild(imgElement);
             }
         });
@@ -771,7 +781,7 @@ function searchImages() {
             const thumbnailImg = mediaBox.querySelector('img');
             if (thumbnailImg) {
                 const videoElement = document.createElement('video');
-                videoElement.src = `Media/${encodeURIComponent(media)}`;
+                videoElement.src = `https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(media)}`;
                 videoElement.preload = 'metadata';
                 
                 videoElement.addEventListener('loadeddata', checkAllImagesLoaded);
@@ -803,54 +813,9 @@ function searchImages() {
 
 }
 
-function createImageElement(img) {
-    const imgBox = document.createElement('div');
-    imgBox.className = 'image-box';
-    imgBox.style.position = 'relative'; 
-
-    if (isVideo(img)) {
-        const videoElement = document.createElement('video');
-        videoElement.src = `Media/${encodeURIComponent(img)}`;
-        videoElement.preload = 'metadata';
-        videoElement.style.width = 'auto'; 
-        videoElement.style.height = 'auto';
-        videoElement.style.maxWidth = '100%';
-        videoElement.style.maxHeight = '100%'; 
-        videoElement.style.objectFit = 'contain'; 
-
-        videoElement.style.minHeight = '608px';
-
-        const thumbnailImg = document.createElement('img');
-        thumbnailImg.alt = img;
-        thumbnailImg.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
-
-        videoElement.addEventListener('loadeddata', () => {
-            videoElement.currentTime = 3;
-            const canvas = document.createElement('canvas');
-            canvas.width = videoElement.videoWidth;
-            canvas.height = videoElement.videoHeight;
-            
-            const context = canvas.getContext('2d');
-            context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-            
-            thumbnailImg.src = canvas.toDataURL();
-            imgBox.appendChild(thumbnailImg);
-            imgBox.appendChild(createImageTypeOverlay(img));
-        });
-
-        imgBox.appendChild(videoElement);
-    } else {
-        const imgElement = document.createElement('img');
-        imgElement.src = `Media/${encodeURIComponent(img)}`;
-        imgElement.alt = img;
-        imgElement.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
-        imgBox.appendChild(imgElement);
-        imgBox.appendChild(createImageTypeOverlay(img));
-    }
-
-    return imgBox;
+function isVideo(filename) {
+    return /\.(mp4|webm|ogg)$/i.test(filename);
 }
-
 
 
 
@@ -898,18 +863,21 @@ function searchCategory(category) {
     const enlargedImage = document.getElementById('enlargedImage');
     const enlargedVideo = document.getElementById('enlargedVideo');
 
-
     let closeButton = document.createElement('button');
     closeButton.innerText = 'X';
-    closeButton.className = 'close-button'; 
-    
-    overlay.appendChild(closeButton);
+    closeButton.className = 'close-button';
 
+    overlay.appendChild(closeButton);
 
     if (isVideo(mediaSrc)) {
         enlargedVideo.src = mediaSrc;
         enlargedVideo.style.display = 'block';
         enlargedImage.style.display = 'none';
+        enlargedVideo.controls = true;
+
+        enlargedVideo.onclick = (event) => {
+            event.stopPropagation();
+        };
     } else {
         enlargedImage.src = mediaSrc;
         enlargedImage.style.display = 'block';
@@ -917,14 +885,9 @@ function searchCategory(category) {
     }
 
     overlay.style.display = 'flex';
-
-
-    closeButton.style.display = 'block';
-
-    closeButton.onclick = function() {
-        closeOverlay();
-    };
+    closeButton.onclick = closeOverlay;
 }
+
 
 
 function closeOverlay() {
@@ -992,43 +955,63 @@ function createImageTypeOverlay(img) {
 function createImageElement(img) {
     const imgBox = document.createElement('div');
     imgBox.className = 'image-box';
-    imgBox.style.position = 'relative'; 
+    imgBox.style.position = 'relative';
+    imgBox.style.cursor = 'pointer'; 
 
     if (isVideo(img)) {
-        const videoElement = document.createElement('video');
-        videoElement.src = `Media/${encodeURIComponent(img)}`;
-        videoElement.preload = 'metadata';
+    const videoElement = document.createElement('video');
+    videoElement.src = `https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(img)}`;
+    videoElement.preload = 'metadata';
+    videoElement.crossOrigin = 'anonymous'; // CORS
+    videoElement.load();
 
-        const thumbnailImg = document.createElement('img');
-        thumbnailImg.alt = img;
-        thumbnailImg.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
-        
+    const thumbnailImg = document.createElement('img');
+    thumbnailImg.alt = img;
+
+    videoElement.addEventListener('loadeddata', () => {
+        const canvas = document.createElement('canvas');
+        const scaleFactor = Math.min(160 / videoElement.videoWidth, 90 / videoElement.videoHeight);
+        canvas.width = videoElement.videoWidth * scaleFactor;
+        canvas.height = videoElement.videoHeight * scaleFactor;
+
+        const context = canvas.getContext('2d');
+        context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+        thumbnailImg.src = canvas.toDataURL('image/jpeg', 0.5);
+        imgBox.appendChild(thumbnailImg);
+        imgBox.appendChild(createImageTypeOverlay(img));
+    });
+
+    imgBox.onclick = () => openOverlay(`https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(img)}`);
+
+
         videoElement.addEventListener('loadeddata', () => {
-            videoElement.currentTime = 3;
-            const canvas = document.createElement('canvas');
-            canvas.width = videoElement.videoWidth;
-            canvas.height = videoElement.videoHeight;
-            
-            const context = canvas.getContext('2d');
-            context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-            
-            thumbnailImg.src = canvas.toDataURL();
-            imgBox.appendChild(thumbnailImg);
-            imgBox.appendChild(createImageTypeOverlay(img));
-        });
+    const canvas = document.createElement('canvas');
+    const scaleFactor = Math.min(160 / videoElement.videoWidth, 90 / videoElement.videoHeight);
+    canvas.width = videoElement.videoWidth * scaleFactor;
+    canvas.height = videoElement.videoHeight * scaleFactor;
+
+    const context = canvas.getContext('2d');
+    context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+    thumbnailImg.src = canvas.toDataURL();
+    imgBox.appendChild(thumbnailImg);
+    imgBox.appendChild(createImageTypeOverlay(img));
+       });
+
+
+        videoElement.load(); 
     } else {
         const imgElement = document.createElement('img');
-        imgElement.src = `Media/${encodeURIComponent(img)}`;
+        imgElement.src = `https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(img)}`;
         imgElement.alt = img;
-        imgElement.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
+        imgElement.crossOrigin = 'anonymous';
+        imgBox.onclick = () => openOverlay(`https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(img)}`);
+
         imgBox.appendChild(imgElement);
         imgBox.appendChild(createImageTypeOverlay(img));
     }
 
     return imgBox;
 }
-    
-
 
 </script>
 

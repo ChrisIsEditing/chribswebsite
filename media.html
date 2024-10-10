@@ -533,7 +533,6 @@ video {
             '4chan who is whois news silly goofy meme gif facepalm.gif',
             'walten files waltenfiles walter breakingbad meme.jpeg',
             'shitpost joker choker dc spirit halloween spooky photo nocontext.jpeg',
-            'bubbubsbounce.webm',
             'spooky gif jackolantern jackolanterns ghosts halloween spirits.webp',
             'creepy lowres cult 2000s nocontext photo spooky.jpg',
             'pink pumpkin jackolantern slay halloween pretty photo spooky.jpg',
@@ -1013,28 +1012,71 @@ function createImageElement(img) {
     const mediaUrl = `https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(img)}`;
 
     if (isVideo(img)) {
-        generateVideoThumbnail(mediaUrl)
-            .then(thumbnailUrl => {
+        const videoElement = document.createElement('video');
+        videoElement.crossOrigin = 'anonymous';
+        videoElement.preload = 'metadata';
+        
+        videoElement.onloadeddata = () => {
+            videoElement.currentTime = 1.2; 
+        };
+        
+        videoElement.onseeked = () => {
+            try {
+                const canvas = document.createElement('canvas');
+                canvas.width = 310; 
+                canvas.height = 300; 
+                
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#000000';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                const aspectRatio = videoElement.videoWidth / videoElement.videoHeight;
+                let drawWidth = canvas.width;
+                let drawHeight = canvas.height;
+                
+                if (aspectRatio > canvas.width / canvas.height) {
+                    drawHeight = canvas.width / aspectRatio;
+                } else {
+                    drawWidth = canvas.height * aspectRatio;
+                }
+                
+                const x = (canvas.width - drawWidth) / 2;
+                const y = (canvas.height - drawHeight) / 2;
+                
+                ctx.drawImage(videoElement, x, y, drawWidth, drawHeight);
+                
                 const thumbnailImg = new Image();
-                thumbnailImg.src = thumbnailUrl;
+                thumbnailImg.src = canvas.toDataURL('image/jpeg', 0.8);
                 thumbnailImg.alt = img;
-
-                thumbnailImg.onload = () => {
-                    imgBox.innerHTML = '';
-                    imgBox.appendChild(thumbnailImg);
-                    imgBox.appendChild(createImageTypeOverlay(img));
-                };
-            })
-            .catch(error => {
+                
+                imgBox.innerHTML = '';
+                imgBox.appendChild(thumbnailImg);
+                imgBox.appendChild(createImageTypeOverlay(img));
+            } catch (error) {
                 console.error('Thumbnail generation failed:', error);
                 createFallbackThumbnail(imgBox, img);
-            });
+            }
+        };
+        
+        videoElement.onerror = () => {
+            console.error('Video loading failed');
+            createFallbackThumbnail(imgBox, img);
+        };
+        
+        videoElement.src = mediaUrl;
+        
+        // timeout for video thumbnail
+        setTimeout(() => {
+            if (imgBox.contains(loadingPlaceholder)) {
+                createFallbackThumbnail(imgBox, img);
+            }
+        }, 9000);
     } else {
         const imgElement = new Image();
         imgElement.crossOrigin = 'anonymous';
         
         imgElement.onload = () => {
-            imgBox.innerHTML = ''; 
+            imgBox.innerHTML = '';
             imgBox.appendChild(imgElement);
             imgBox.appendChild(createImageTypeOverlay(img));
         };
@@ -1063,7 +1105,7 @@ function generateVideoThumbnail(videoUrl) {
         
         tempVideo.onloadeddata = () => {
             clearTimeout(thumbnailTimeout);
-            tempVideo.currentTime = 1.2;
+            tempVideo.currentTime = 1.2; //THUMBNAIL TIME
             
             tempVideo.onseeked = () => {
                 try {
@@ -1115,7 +1157,7 @@ function createFallbackThumbnail(imgBox, img) {
     fallbackDiv.style.justifyContent = 'center';
     fallbackDiv.style.alignItems = 'center';
     fallbackDiv.style.color = '#fff';
-    fallbackDiv.textContent = 'Video';
+    fallbackDiv.textContent = 'Load Time Extended! Video Thumbnail still loading.';
     
     imgBox.innerHTML = ''; 
     imgBox.appendChild(fallbackDiv);
@@ -1147,6 +1189,7 @@ width: 100%; box-sizing: border-box; margin-bottom: 0px; margin-top: 90px;">
 <p><a href="privacy.html" style="color: rgb(250, 114, 114); text-decoration: none; margin-top: 0px;">PRIVACY POLICY</a> | <a href="index.html" style="color: rgb(250, 114, 114); text-decoration: none;">HOME</a></p>
     
 </footer>
+
 
 </body>
 </html>

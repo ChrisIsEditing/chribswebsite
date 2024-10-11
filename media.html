@@ -211,7 +211,7 @@ video {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -247,12 +247,13 @@ video {
 }
 
 .overlay video {
-    max-width: none;
-    max-height: none;
-    width: auto;
-    height: 90vh;
-    object-fit: contain;
+    width: auto; 
+    height: auto; 
+    max-width: 90%; 
+    max-height: 90vh; 
+    object-fit: contain; 
 }
+
 
 @media (max-width: 700px) {
     .overlay video {
@@ -392,17 +393,7 @@ video {
         <video id="enlargedVideo" controls style="display: none; max-width: 90%; max-height: 90%;"></video>
     </div>
     
-    
 
-    
-
-    
-    
-    <div id="loading" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.5);">
-        <img src="https://chrisisediting.github.io/chribswebsite/Assets/loading.gif" alt="Loading...">
-    </div>
-
-    
     <script>
 
         
@@ -613,7 +604,10 @@ video {
             'magentasnail neon kinger wife moster art magestic glow love beautiful vivid digital circus digitalcircus.jpg',
             'pomni vhs video tape 80s animation retro evil digital circus digitalcircus stare possesed demon.mp4',
             'fnaf freddy fazbear 80s pizza pizzaria arcade fun retro mood moodboard board images collection photo aesthetic.jpg',
-            
+            'jackolantern weed 420 j joint joints pumpkin spooky halloween tick or treat sweets.jpg',
+            'twitter post vacuum screenshot irobot sucking suck roomba freak reaky kinky.jpg',
+            'cunt cake photo nocontext.jpg',
+
 
         ];
 
@@ -687,7 +681,7 @@ video {
 
                 videoElement.addEventListener('canplay', () => {
     if (videoElement.duration > 0) { // Ensure the video has a valid duration
-        videoElement.currentTime = 2; // Set to 2 seconds for the thumbnail
+        videoElement.currentTime = 1.2; // video thumbnail
         
         const canvas = document.createElement('canvas');
         canvas.width = 60;
@@ -734,7 +728,7 @@ video {
                 imgElement.style.objectFit = 'cover';
 
                 imgElement.onload = () => {
-                    loadingPlaceholder.style.display = 'none'; // Hide loading placeholder
+                    loadingPlaceholder.style.display = 'none'; // loading placeholder remove
                 };
 
                 imgElement.onerror = () => {
@@ -767,11 +761,11 @@ function searchImages() {
     const categoriesContainer = document.getElementById('categories');
     const latestImagesText = document.querySelector('p[style*="color: #ff6969"]');
     const message = document.getElementById('message');
-    const loadingOverlay = document.getElementById('loading');
+
 
     resultsContainer.innerHTML = '';
     message.style.display = 'none';
-    loadingOverlay.style.display = 'flex';
+
 
     const isMobile = window.innerWidth <= 700;
 
@@ -780,14 +774,14 @@ function searchImages() {
         categoriesContainer.style.display = 'none';
         latestImagesText.style.display = 'none';
     } else {
-        categoriesContainer.style.display = 'grid'; // Keep categories visible
+        categoriesContainer.style.display = 'grid'; 
         latestImagesText.style.display = 'block';
     }
 
     if (query === '') {
         message.innerText = 'Please enter image Tag/s';
         message.style.display = 'block';
-        loadingOverlay.style.display = 'none';
+
         return;
     }
 
@@ -797,7 +791,7 @@ function searchImages() {
     function checkAllImagesLoaded() {
         imagesLoaded++;
         if (imagesLoaded === imagesToLoad) {
-            loadingOverlay.style.display = 'none';
+
         }
     }
 
@@ -817,7 +811,7 @@ function searchImages() {
 
     if (mediaToShow.length === 0) {
         resultsContainer.innerHTML = '<p>No images found! :(</p>';
-        loadingOverlay.style.display = 'none';
+
         return;
     }
 
@@ -855,18 +849,7 @@ function searchImages() {
         resultsContainer.appendChild(mediaBox);
     });
 
-    window.onload = () => {
-        loadingOverlay.style.display = 'none'; 
     };
-}
-
-
-
-function isVideo(filename) {
-    return /\.(mp4|webm|ogg)$/i.test(filename);
-}
-
-
 
 
 
@@ -946,7 +929,7 @@ function closeOverlay() {
 
     if (enlargedVideo) {
         enlargedVideo.pause();
-        enlargedVideo.currentTime = 0;// large video timing
+        enlargedVideo.currentTime = 0;
     }
 
 
@@ -1003,147 +986,144 @@ function createImageElement(img) {
     imgBox.style.position = 'relative';
     imgBox.style.cursor = 'pointer';
 
-    const loadingPlaceholder = document.createElement('div');
-    loadingPlaceholder.textContent = 'Loading...';
-    loadingPlaceholder.style.display = 'flex';
-    loadingPlaceholder.style.justifyContent = 'center';
-    loadingPlaceholder.style.alignItems = 'center';
-    loadingPlaceholder.style.width = '100%';
-    loadingPlaceholder.style.height = '100%';
-    loadingPlaceholder.style.backgroundColor = '#333';
-    loadingPlaceholder.style.color = '#fff';
-    imgBox.appendChild(loadingPlaceholder);
-
     const mediaUrl = `https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(img)}`;
+    const isFirefoxMobile = navigator.userAgent.includes('Firefox') && navigator.userAgent.includes('Mobile');
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     if (isVideo(img)) {
-        const videoElement = document.createElement('video');
-        videoElement.crossOrigin = 'anonymous';
-        videoElement.preload = 'metadata';
-        
-        let thumbnailAttempted = false;
-        const attemptThumbnail = () => {
-            if (thumbnailAttempted) return;
-            thumbnailAttempted = true;
-            
-            try {
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                
-               
-                if (isMobile) {
-                    canvas.width = 150;  // size for mobile
-                    canvas.height = 150;
-                } else {
-                    canvas.width = 310;
-                    canvas.height = 300;
-                }
-                
-                ctx.fillStyle = '#000000';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                
-                const aspectRatio = videoElement.videoWidth / videoElement.videoHeight;
-                let drawWidth = canvas.width;
-                let drawHeight = canvas.height;
-                
-                if (aspectRatio > canvas.width / canvas.height) {
-                    drawHeight = canvas.width / aspectRatio;
-                } else {
-                    drawWidth = canvas.height * aspectRatio;
-                }
-                
-                const x = (canvas.width - drawWidth) / 2;
-                const y = (canvas.height - drawHeight) / 2;
-                
-                ctx.drawImage(videoElement, x, y, drawWidth, drawHeight);
-                
-                // play button overlay
-                const centerX = canvas.width / 2;
-                const centerY = canvas.height / 2;
-                const triangleSize = isMobile ? 5 : 20;
-                
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-                ctx.beginPath();
-                ctx.arc(centerX, centerY, triangleSize + 10, 0, 2 * Math.PI);
-                ctx.fill();
-                
-                ctx.fillStyle = '#ffffff';
-                ctx.beginPath();
-                ctx.moveTo(centerX - triangleSize/2, centerY - triangleSize);
-                ctx.lineTo(centerX - triangleSize/2, centerY + triangleSize);
-                ctx.lineTo(centerX + triangleSize, centerY);
-                ctx.closePath();
-                ctx.fill();
-                
-                const thumbnailImg = new Image();
-                thumbnailImg.src = canvas.toDataURL('image/jpeg', isMobile ? 0.8 : 0.9);
-                thumbnailImg.alt = img;
-                thumbnailImg.style.width = '100%';
-                thumbnailImg.style.height = '100%';
-                thumbnailImg.style.objectFit = 'cover';
-                
-                imgBox.innerHTML = '';
-                imgBox.appendChild(thumbnailImg);
-                imgBox.appendChild(createImageTypeOverlay(img));
-                
-                return true;
-            } catch (error) {
-                console.error('Thumbnail generation failed:', error);
-                return false;
-            }
-        };
 
-        videoElement.onloadeddata = () => {
-            videoElement.currentTime = 1.2;
-        };
-        
-        videoElement.onseeked = () => {
-            if (!attemptThumbnail() && isMobile) {
-                createMobileFallback(imgBox, img);
-            }
-        };
-        
-        videoElement.onerror = () => {
-            console.error('Video loading failed');
-            if (isMobile) {
-                createMobileFallback(imgBox, img);
-            } else {
-                createFallbackThumbnail(imgBox, img);
-            }
-        };
-        
-        videoElement.src = mediaUrl;
-        
-  
-let thumbnailGenerated = false;
+        const loadingPlaceholder = document.createElement('div');
+        loadingPlaceholder.textContent = 'Loading...';
+        loadingPlaceholder.style.display = 'flex';
+        loadingPlaceholder.style.justifyContent = 'center';
+        loadingPlaceholder.style.alignItems = 'center';
+        loadingPlaceholder.style.width = '100%';
+        loadingPlaceholder.style.height = '100%';
+        loadingPlaceholder.style.backgroundColor = '#333';
+        loadingPlaceholder.style.color = '#fff';
+        imgBox.appendChild(loadingPlaceholder);
 
-videoElement.onseeked = () => {
-    if (!thumbnailGenerated && attemptThumbnail()) {
-        thumbnailGenerated = true;
-    }
-};
-
-setTimeout(() => {
-    if (!thumbnailGenerated && imgBox.contains(loadingPlaceholder)) {
-        if (isMobile) {
+        if (isFirefoxMobile) {
             createMobileFallback(imgBox, img);
         } else {
-            createFallbackThumbnail(imgBox, img);
-        }
-    }
-}, isMobile ? 15000 : 10000);
 
+            const videoElement = document.createElement('video');
+            videoElement.crossOrigin = 'anonymous';
+            videoElement.preload = 'metadata';
+            
+            let thumbnailAttempted = false;
+            const attemptThumbnail = () => {
+                if (thumbnailAttempted) return;
+                thumbnailAttempted = true;
+                
+                try {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                  
+                    if (isMobile) {
+                        canvas.width = 200;  
+                        canvas.height = 200; 
+                    } else {
+                        canvas.width = 310;
+                        canvas.height = 300;
+                    }
+                    
+                    ctx.fillStyle = '#000000';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    
+                    const aspectRatio = videoElement.videoWidth / videoElement.videoHeight;
+                    let drawWidth = canvas.width;
+                    let drawHeight = canvas.height;
+                    
+                    if (aspectRatio > canvas.width / canvas.height) {
+                        drawHeight = canvas.width / aspectRatio;
+                    } else {
+                        drawWidth = canvas.height * aspectRatio;
+                    }
+                    
+                    const x = (canvas.width - drawWidth) / 2;
+                    const y = (canvas.height - drawHeight) / 2;
+                    
+                    ctx.drawImage(videoElement, x, y, drawWidth, drawHeight);
+     
+                    const centerX = canvas.width / 2;
+                    const centerY = canvas.height / 2;
+                    const triangleSize = isMobile ? 15 : 20;
+                    
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.7)'; 
+                    ctx.beginPath();
+                    ctx.arc(centerX, centerY, triangleSize + 15, 0, 2 * Math.PI);
+                    ctx.fill();
+                    
+                    ctx.fillStyle = '#ffffff';
+                    ctx.beginPath();
+                    ctx.moveTo(centerX - triangleSize/2, centerY - triangleSize);
+                    ctx.lineTo(centerX - triangleSize/2, centerY + triangleSize);
+                    ctx.lineTo(centerX + triangleSize, centerY);
+                    ctx.closePath();
+                    ctx.fill();
+                    
+                    const thumbnailImg = new Image();
+                    thumbnailImg.src = canvas.toDataURL('image/jpeg', isMobile ? 0.9 : 0.9); 
+                    thumbnailImg.alt = img;
+                    thumbnailImg.style.width = '100%';
+                    thumbnailImg.style.height = '100%';
+                    thumbnailImg.style.objectFit = 'cover';
+                    
+                    imgBox.innerHTML = '';
+                    imgBox.appendChild(thumbnailImg);
+                    imgBox.appendChild(createImageTypeOverlay(img));
+                    
+                    return true;
+                } catch (error) {
+                    console.error('Thumbnail generation failed:', error);
+                    return false;
+                }
+            };
+
+
+            const timeoutDuration = isMobile ? 17000 : 10000; // timeout for mobile
+
+            videoElement.onloadeddata = () => {
+                videoElement.currentTime = 1.2;
+            };
+            
+            videoElement.onseeked = () => {
+                if (!attemptThumbnail() && isMobile) {
+                    createMobileFallback(imgBox, img);
+                }
+            };
+            
+            videoElement.onerror = () => {
+                console.error('Video loading failed');
+                if (isMobile) {
+                    createMobileFallback(imgBox, img);
+                } else {
+                    createFallbackThumbnail(imgBox, img);
+                }
+            };
+            
+            videoElement.src = mediaUrl;
+            
+            if (isMobile) {
+                setTimeout(() => {
+                    if (imgBox.contains(loadingPlaceholder)) {
+                        createMobileFallback(imgBox, img);
+                    }
+                }, timeoutDuration);
+            }
+        }
     } else {
-       
         const imgElement = new Image();
         imgElement.crossOrigin = 'anonymous';
+        imgElement.src = mediaUrl;
+        imgElement.style.width = '100%';
+        imgElement.style.height = '100%';
+        imgElement.style.objectFit = 'cover';
         
-        imgElement.onload = () => {
-            imgBox.innerHTML = '';
-            imgBox.appendChild(imgElement);
-            imgBox.appendChild(createImageTypeOverlay(img));
-        };
+        imgBox.appendChild(imgElement);
+        imgBox.appendChild(createImageTypeOverlay(img));
         
         imgElement.onerror = () => {
             loadingPlaceholder.textContent = 'Failed to load image';
@@ -1156,21 +1136,27 @@ setTimeout(() => {
     return imgBox;
 }
 
+
 function createMobileFallback(imgBox, img) {
     const canvas = document.createElement('canvas');
-    canvas.width = 150;
-    canvas.height = 150;
+    canvas.width = 200;  
+    canvas.height = 200; 
     
     const ctx = canvas.getContext('2d');
     ctx.fillStyle = '#333';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
- 
-    ctx.fillStyle = '#fff';
+
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
     ctx.beginPath();
-    ctx.moveTo(60, 45);
-    ctx.lineTo(60, 105);
-    ctx.lineTo(105, 75);
+    ctx.arc(canvas.width/2, canvas.height/2, 15, 0, 2 * Math.PI);
+    ctx.fill();
+    
+    ctx.fillStyle = '#333';
+    ctx.beginPath();
+    ctx.moveTo(90, 85);
+    ctx.lineTo(90, 115);
+    ctx.lineTo(120, 100);
     ctx.closePath();
     ctx.fill();
     
@@ -1179,13 +1165,12 @@ function createMobileFallback(imgBox, img) {
     thumbnailImg.alt = img;
     thumbnailImg.style.width = '100%';
     thumbnailImg.style.height = '100%';
-    thumbnailImg.style.objectFit = 'cover';
+    thumbnailImg.style.objectFit = 'fit';
     
     imgBox.innerHTML = '';
     imgBox.appendChild(thumbnailImg);
     imgBox.appendChild(createImageTypeOverlay(img));
 }
-
 
 function generateVideoThumbnail(videoUrl) {
     return new Promise((resolve, reject) => {
@@ -1267,6 +1252,30 @@ function createFallbackThumbnail(imgBox, img) {
         }
     });
 </script>
+
+<style>
+
+    video::-webkit-media-controls-timeline { display: none !important; }
+    video::-webkit-media-controls-play-button { display: none !important; }
+    video::-webkit-media-controls-volume-slider { display: none !important; }
+    video::-webkit-media-controls-mute-button { display: none !important; }
+    video::-webkit-media-controls-current-time-display { display: none !important; }
+    video::-webkit-media-controls-time-remaining-display { display: none !important; }
+    video::-webkit-media-controls-fullscreen-button { display: none !important; }
+    video::-webkit-media-controls-rewind-button { display: none !important; }
+    video::-webkit-media-controls-return-to-realtime-button { display: none !important; }
+    video::-webkit-media-controls-toggle-closed-captions-button { display: none !important; }
+    video::-webkit-media-controls-enclosure { display: none !important; }
+
+    @-moz-document url-prefix() {
+        video {
+            outline: none;
+        }
+    }
+
+    #enlargedVideo::-webkit-media-controls-enclosure { display: flex !important; }
+    #enlargedVideo::-webkit-media-controls-panel { display: flex !important; }
+</style>
 
 <div style="display: flex; flex-direction: column; min-height: 0.5vh; margin: 0; padding: 0; margin-bottom: 1px;">
 </div>

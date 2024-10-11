@@ -193,6 +193,7 @@ video {
     max-width: 90%;
     max-height: 90vh;
     width: auto;
+    display: none;
     height: auto;
     object-fit: contain;
 }
@@ -206,6 +207,7 @@ video {
         
         .overlay {
     position: fixed;
+    display: none;
     top: 0;
     left: 0;
     width: 100%;
@@ -244,6 +246,7 @@ video {
     max-width: 90%;
     max-height: 90%;
     object-fit: contain;
+    display: none;
 }
 
 .overlay video {
@@ -252,6 +255,7 @@ video {
     max-width: 90%; 
     max-height: 90vh; 
     object-fit: contain; 
+    display: none;
 }
 
 
@@ -260,6 +264,7 @@ video {
         width: 100%;
         height: auto;
         max-height: none;
+        display: none;
     }
 }
 
@@ -607,7 +612,17 @@ video {
             'jackolantern weed 420 j joint joints pumpkin spooky halloween tick or treat sweets.jpg',
             'twitter post vacuum screenshot irobot sucking suck roomba freak reaky kinky.jpg',
             'cunt cake photo nocontext.jpg',
-
+            'tom bob you won giant tungsten cube shitpost prize win shitpost nocontext.jpg',
+            'pink html js webpage code nocontext aesthetic.jpg',
+            'aesthetic guitar lowres 2000s photo music mixer grain band grainy.jpg',
+            'fnaf five nights freddys movie fnafmovie animatronics bonnie chica freddy stare creepy grain horror photo.jpg',
+            'girlblogging girl blogging blog tactical web tumblr silly.jpg',
+            'j joint smoke smoking night cloudy dark arm reach weed 420 photo.jpg',
+            'shitpost fnaf pizzeria simulator sim five nights tweet trans person screenshot fnaf6.jpg',
+            'scream love heart beach spooky halloween monochrome.jpg',
+            'shitpost spongebob car pov bikini bottom drive driving underwater bmw.jpg',
+            'into the pit intothepit fnaf five nights yellowrabbit yellow rabbit oswald car run over runover driving shitpost video.mp4',
+            
 
         ];
 
@@ -987,23 +1002,22 @@ function createImageElement(img) {
     imgBox.style.cursor = 'pointer';
 
     const mediaUrl = `https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(img)}`;
-    const isFirefoxMobile = navigator.userAgent.includes('Firefox') && navigator.userAgent.includes('Mobile');
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const isFirefoxMobile = navigator.userAgent.includes('Firefox') && navigator.userAgent.includes('Mobile');
+    const loadingPlaceholder = document.createElement('div');
+    loadingPlaceholder.textContent = 'Loading...';
+    loadingPlaceholder.style.display = 'flex';
+    loadingPlaceholder.style.justifyContent = 'center';
+    loadingPlaceholder.style.alignItems = 'center';
+    loadingPlaceholder.style.width = '100%';
+    loadingPlaceholder.style.height = '100%';
+    loadingPlaceholder.style.backgroundColor = '#333';
+    loadingPlaceholder.style.color = '#fff';
+    imgBox.appendChild(loadingPlaceholder);
 
     if (isVideo(img)) {
 
-        const loadingPlaceholder = document.createElement('div');
-        loadingPlaceholder.textContent = 'Loading...';
-        loadingPlaceholder.style.display = 'flex';
-        loadingPlaceholder.style.justifyContent = 'center';
-        loadingPlaceholder.style.alignItems = 'center';
-        loadingPlaceholder.style.width = '100%';
-        loadingPlaceholder.style.height = '100%';
-        loadingPlaceholder.style.backgroundColor = '#333';
-        loadingPlaceholder.style.color = '#fff';
-        imgBox.appendChild(loadingPlaceholder);
-
-        if (isFirefoxMobile) {
+        if (isMobile || isFirefoxMobile) {
             createMobileFallback(imgBox, img);
         } else {
 
@@ -1114,44 +1128,48 @@ function createImageElement(img) {
                 }, timeoutDuration);
             }
         }
+    
     } else {
+       
         const imgElement = new Image();
+        if (isMobile) {
+            imgElement.width = 200;
+            imgElement.height = 200;
+        }
         imgElement.crossOrigin = 'anonymous';
         imgElement.src = mediaUrl;
         imgElement.style.width = '100%';
         imgElement.style.height = '100%';
         imgElement.style.objectFit = 'cover';
         
-        imgBox.appendChild(imgElement);
-        imgBox.appendChild(createImageTypeOverlay(img));
+        imgElement.onload = () => {
+            imgBox.innerHTML = '';
+            imgBox.appendChild(imgElement);
+            imgBox.appendChild(createImageTypeOverlay(img));
+        };
         
         imgElement.onerror = () => {
             loadingPlaceholder.textContent = 'Failed to load image';
         };
-        
-        imgElement.src = mediaUrl;
     }
-
     imgBox.onclick = () => openOverlay(mediaUrl);
     return imgBox;
 }
 
 
+
 function createMobileFallback(imgBox, img) {
     const canvas = document.createElement('canvas');
-    canvas.width = 200;  
-    canvas.height = 200; 
+    canvas.width = 200; 
+    canvas.height = 200;
     
     const ctx = canvas.getContext('2d');
     ctx.fillStyle = '#333';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-
     ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
     ctx.beginPath();
     ctx.arc(canvas.width/2, canvas.height/2, 15, 0, 2 * Math.PI);
-    ctx.fill();
-    
+    ctx.fill(); 
     ctx.fillStyle = '#333';
     ctx.beginPath();
     ctx.moveTo(90, 85);
@@ -1161,17 +1179,16 @@ function createMobileFallback(imgBox, img) {
     ctx.fill();
     
     const thumbnailImg = new Image();
-    thumbnailImg.src = canvas.toDataURL('image/jpeg', 0.9);
+    thumbnailImg.src = canvas.toDataURL('image/jpeg', 0.8);
     thumbnailImg.alt = img;
     thumbnailImg.style.width = '100%';
     thumbnailImg.style.height = '100%';
-    thumbnailImg.style.objectFit = 'fit';
+    thumbnailImg.style.objectFit = 'cover';
     
     imgBox.innerHTML = '';
     imgBox.appendChild(thumbnailImg);
     imgBox.appendChild(createImageTypeOverlay(img));
 }
-
 function generateVideoThumbnail(videoUrl) {
     return new Promise((resolve, reject) => {
         const thumbnailTimeout = setTimeout(() => {
@@ -1250,6 +1267,12 @@ function createFallbackThumbnail(imgBox, img) {
         if (event.key === 'Escape') {
             window.location.href = 'index.html';
         }
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const overlay = document.getElementById('imageOverlay');
+        overlay.style.display = 'none';
     });
 </script>
 

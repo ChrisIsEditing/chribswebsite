@@ -168,7 +168,7 @@ function searchSongs() {
     if (query === "/party") {
         
         const filteredSongs = songs.filter((song, index) => index !== currentSongIndex);
-        const shuffledSongs = filteredSongs.sort(() => 0.4 - Math.random()).slice(0, 60);
+        const shuffledSongs = filteredSongs.sort(() => 0.4 - Math.random()).slice(0, 90);
 
        
         queue.length = 0;
@@ -269,21 +269,6 @@ function searchSongs() {
         return;
       }
     
-    if (query === "/all") {
-        const filteredSongs = songs.filter((song, index) => index !== currentSongIndex);
-
-        queue.length = 0;
-
-        filteredSongs.forEach(song => addToQueue(song, songs.indexOf(song)));
-
-        if (filteredSongs.length > 0) {
-            if (currentSongIndex === -1) {
-                playSong(filteredSongs[0], songs.indexOf(filteredSongs[0]));
-            }
-        }
-        return;
-    }
-    
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
 
     if (matchingSongs.length > 0) {
@@ -334,10 +319,6 @@ document.getElementById("searchInput").addEventListener("keydown", function(even
         document.getElementById("searchButton").click();
     }
 });
-
-
-//I have no clue what i'm doing
-
 
 function playSong(song, index) {
     if (!song || !song.download_url) {

@@ -39,6 +39,27 @@
             margin: 0;
         }
 
+        @keyframes flicker {
+    0% { opacity: 1; }
+    10% { opacity: 1; }
+    20% { opacity: 0.9; }
+    30% { opacity: 1; }
+    40% { opacity: 1; }
+    50% { opacity: 0.8; }
+    60% { opacity: 0.9; }
+    70% { opacity: 1; }
+    80% { opacity: 0.9; }
+    90% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+        .tape {
+            color: #fd5f5f; 
+            text-shadow: 0 0 20px #fd5f5f, 0 0 30px #fd5f5f, 0 0 40px #fd5f5f;
+            animation: flicker 1s infinite; 
+            margin-top: 20px;
+        }
+
         #search-container {
             margin: 10px 0;
         }
@@ -62,14 +83,19 @@
             color: aliceblue;
             margin-bottom: 10px;
             border: 2px solid rgb(255, 110, 110);
-            border-radius: 15px;
+            border-radius: 10px;
             background-color: #222;
         }
 
         #searchButton {
-            margin-left: 4px;
+            margin-left: 1px;
             background-color:rgb(255, 110, 110);
             border: 1px solid rgb(255, 110, 110);
+            font-weight: 600;
+        }
+        .searchButton:hover {
+            background-color: hotpink;
+            border-color: hotpink;
         }
 
         #container {
@@ -85,7 +111,7 @@
             top: 50%;
             transform: translate(-50%, -50%);
             background-color: rgba(17, 17, 17, 0.938);
-            color: #d8d8d8;
+            color: #fd5f5f;
             padding: 20px;
             border-radius: 10px;
             z-index: 2000;
@@ -129,7 +155,6 @@
             font-weight: 800;
 
         }
-
 
         #queueContainer {
             width: 250px;
@@ -231,7 +256,17 @@
             color: rgb(255, 110, 110);
             width: 38%;
         }
-
+        #searchButton {
+            margin-left: 1px;
+            background-color:rgb(255, 110, 110);
+            border: 1px solid rgb(255, 110, 110);
+            font-weight: 600;
+        }
+        .searchButton:hover {
+            background-color: hotpink;
+            border-color: hotpink;
+        }
+        
         .error-message {
     display: none; 
     position: fixed;
@@ -282,16 +317,22 @@
             color: rgb(255, 110, 110);
             width: 80%;
         }
-
+        #searchInput {
+            width: 50%;
+            color: aliceblue;
+            margin-bottom: 10px;
+            border: 2px solid rgb(255, 110, 110);
+            border-radius: 10px;
+            background-color: #222;
+        }
 }
-
 
 </style>
 </head>
-<body>
+<body style="margin-top: 10px;">
     <div id="errorMessage" class="error-message" style="display: none;"></div>
 
-    <h1 style="color: rgb(231, 75, 75); margin-bottom: 0%; margin-top: 0.8%;"> T.   A.   P.  E.  </h1>
+    <h1 style="color: rgb(231, 75, 75); margin-bottom: 0%; margin-top: 0.8%;" class="tape"> T.   A.   P.  E.  </h1>
     <h3 style="color: rgb(255, 187, 166); margin-top: 0%; font-size: small;">Terminal. Audio. Player. 
     <a class="subtitle" style="text-decoration: none; color: rgb(255, 187, 166);" href="system-classes.html">E-CLASS</a></h3>
  
@@ -299,7 +340,7 @@
 
     <div id="search-container">
         <input type="text" id="searchInput" placeholder="Search for a song...">
-        <button id="searchButton">Search</button>
+        <button id="searchButton">SEARCH</button>
     </div>
 
     <div id="container">
@@ -360,14 +401,15 @@
       </div>
       
       <div id="commandsPopup" class="popup">
-        <h3 style="font-size: larger; color: rgb(255, 100, 110);">Commands:</h3>
+        <h3 style="font-size: larger; color: rgb(255, 100, 110);">COMMANDS:</h3>
         <p style="color: antiquewhite;">
             
             <strong style="color: aqua;">/Clear -</strong> Clears the queue<br><br>
             <strong style="color: aqua;">/Fnaf -</strong> Adds all FNaF songs<br><br>
             <strong style="color: aqua;">/Random -</strong> Adds 30 Random Songs<br><br>
-            <strong style="color: aqua;">/Party -</strong> Adds 60 Random Songs<br>
+            <strong style="color: aqua;">/Party -</strong> Adds 90 Random Songs<br>
         </p>
+        <br>
         <div class="close-popup" onclick="closePopup()">Close</div>
     </div>
     
@@ -402,6 +444,16 @@
     <div class="close-popup" onclick="closeMetadataPopup()" style="cursor: pointer; color: rgb(252, 96, 96); text-decoration: underline;">Close</div>
 </div>
 
-
+<script>
+function randomFlicker(element) {
+    const flickerInterval = Math.random() * (12000 - 5000) + 5000; 
+    element.style.animation = `flicker ${flickerInterval}ms infinite`;
+}
+document.addEventListener("DOMContentLoaded", function() {
+    const neonText = document.querySelector('.tape');
+    randomFlicker(neonText);
+});
+</script>
+    
 </body>
 </html>

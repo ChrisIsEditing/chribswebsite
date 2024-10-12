@@ -51,15 +51,17 @@
             background-color: rgb(250, 114, 114);
             color: #000;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.2s;
             font-style: italic;
             font-weight: bold;
             font-size: 1rem;
         }
 
         .search-button:hover {
-            background-color: #fd5353;
+            background-color: hotpink;
+            border-color: hotpink;
         }
+        
         .image-type-overlay {
             position: absolute;
             bottom: 5px;
@@ -379,6 +381,7 @@ video {
             resultsContainer.innerHTML = '';
             message.style.display = 'none';
             loadingOverlay.style.display = 'flex';
+            loadingOverlay.style.overflow = 'hidden'; 
     
             const isMobile = window.innerWidth <= 700;
     
@@ -402,6 +405,7 @@ video {
                 message.innerText = 'Please enter image Tag/s';
                 message.style.display = 'block';
                 loadingOverlay.style.display = 'none';
+                loadingOverlay.style.overflow = 'hidden'; 
                 return;
             }
     
@@ -576,7 +580,7 @@ function showCategories() {
 <div style="flex-grow: 1;"></div>
 
 <footer style="padding: 10px; text-align: center; color: #ffbe82; font-size: 0.8em; 
-width: 100%; box-sizing: border-box; margin-bottom: 0px; margin-top: 90px;">
+width: 100%; box-sizing: border-box; margin-bottom: 0px; margin-top: 10px;">
 
 <hr style="width: 280px; margin-bottom: 10px; color: #333;">
 

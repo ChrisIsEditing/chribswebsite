@@ -19,6 +19,7 @@
         h1 {
             color: rgb(231, 75, 75);
             margin-bottom: 10px;
+            margin-top: 5px;
         }
 
         .search-container {
@@ -30,7 +31,7 @@
 
         .search-input {
             padding: 8px;
-            width: 70%;
+            width: 60%;
             margin-top: 5px;
             max-width: 300px;
             border: 2px solid salmon;
@@ -42,7 +43,7 @@
         }
 
         .search-button {
-            padding: 8px 20px;
+            padding: 8px 10px;
             margin-top: 5px;
             border: 2px solid rgb(250, 114, 114);
             border-left: none;
@@ -57,7 +58,7 @@
         }
 
         .search-button:hover {
-            background-color: #ff6969;
+            background-color: #fd5353;
         }
         .image-type-overlay {
             position: absolute;
@@ -79,6 +80,10 @@
             gap: 30px;
             padding: 0 20px;
             margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center;
+            align-items: flex-start;
         }
 
         .category-box {
@@ -254,7 +259,7 @@ video {
 <body>
     <h1 style="position: sticky; font-family: 'Times New Roman', Times, serif; margin-bottom: 0; 
     color: darksalmon; font-weight: bold;">
-    <b style="color: rgb(255, 104, 104); font-size: 40px;"> I.M.A.G.E </b>
+    <a href="index.html" style="color: rgb(255, 104, 104); font-size: 40px; text-decoration: none; ">I.M.A.G.E</a>
 </h1>
 
 <h3 style="color: rgb(255, 187, 166); margin-top: 0%; font-size: small;">
@@ -334,7 +339,7 @@ video {
             return nameWithoutExt.toLowerCase().split(' ');
         }
     
-        function getLatestImagesByTag(tag, limit = 3) {
+        function getLatestImagesByTag(tag, limit = 12) {
             const taggedImages = images.filter(img => {
                 const tags = extractTags(img);
                 return tags.includes(tag);
@@ -346,7 +351,7 @@ video {
         function populateCategories() {
             for (const [categoryId, tag] of Object.entries(categories)) {
                 const imageContainer = document.getElementById(`${categoryId}-images`);
-                const latestImages = getLatestImagesByTag(tag, 3);
+                const latestImages = getLatestImagesByTag(tag, 6);
                 if (latestImages.length === 0) {
                     imageContainer.innerHTML = '<p>Images coming soon.</p>';
                     continue;
@@ -472,7 +477,13 @@ video {
     
         function searchCategory(category) {
     const resultsContainer = document.getElementById('results');
+    const categoriesContainer = document.getElementById('categories');
+    const latestImagesText = document.getElementById('latestImagesText');
+    
     resultsContainer.innerHTML = '';
+    
+    categoriesContainer.style.display = 'none';
+    latestImagesText.style.display = 'none';
 
     const latestImages = getLatestImagesByTag(categories[category]);
     latestImages.forEach(img => {
@@ -491,9 +502,19 @@ video {
     if (latestImages.length === 0) {
         resultsContainer.innerHTML = '<p>No images in this category :(.</p>';
     }
+
 }
 
+function showCategories() {
+    const resultsContainer = document.getElementById('results');
+    const categoriesContainer = document.getElementById('categories');
+    const latestImagesText = document.getElementById('latestImagesText');
     
+    resultsContainer.innerHTML = '';
+    categoriesContainer.style.display = 'flex';
+    latestImagesText.style.display = 'block';
+}
+   
         function isVideo(filename) {
             return /\.(mp4|webm|ogg)$/i.test(filename);
         }
@@ -514,6 +535,7 @@ video {
             }
     
             overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
     
         function closeOverlay() {
@@ -526,6 +548,7 @@ video {
                 enlargedVideo.pause();
                 enlargedVideo.currentTime = 0;
             }
+            document.body.style.overflow = '';
         }
     
         window.onload = function() {

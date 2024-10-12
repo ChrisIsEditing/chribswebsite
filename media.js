@@ -203,5 +203,8 @@ const images = [
     'wednesday adams hair backwards meme silly bald.jpg',
     'pumpkin jackolantern art halloween spooky vintage poster.jpg',
     'skull 80s creepy vhs gif graphics.gif',
+    'cats cat gif pixelart pixel art halloween autum vertical animated.webp',
+    '8ball png transparent 8 ball.png',
+    'initiald intial d supra toyota rx7 drift drive driving race racing anime gif closeup.webp',
 
 ];

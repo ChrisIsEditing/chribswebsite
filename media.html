@@ -20,10 +20,6 @@
             color: rgb(231, 75, 75);
             margin-bottom: 10px;
         }
-        .categories.hidden,
-            p[style*="color: #ff6969"].hidden {
-            display: none !important;
-        }
 
         .search-container {
             margin-bottom: 30px;
@@ -63,18 +59,19 @@
         .search-button:hover {
             background-color: #ff6969;
         }
-
-
-.image-type-overlay {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 5px;
-    border-radius: 5px;
-}
-
+        .image-type-overlay {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            font-weight: 600;
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            z-index: 10; 
+            pointer-events: none; 
+        }
 
         .categories {
             display: grid;
@@ -97,7 +94,6 @@
             transform: scale(1.05);
             background-color: #333;
         }
-
 
         .category-box h2 {
             margin: 0 0 10px 0;
@@ -126,15 +122,26 @@
             transform: scale(1.1);
         }
 
-        .play-button {
+        .video-box {
+    position: relative;
+    width: 310px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: #222;
+    cursor: pointer;
+}
+
+.play-button {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 30%;
-    width: 50px;
-    height: 50px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -160,7 +167,7 @@ video {
     }
 }
 
-        
+
         .image-container {
             display: flex;
             flex-wrap: wrap;
@@ -170,33 +177,18 @@ video {
         }
 
         .image-box {
-    width: 310px;
-    height: 300px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #222;
-    cursor: pointer;
-    position: relative;
-}
-
-.image-box img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
-
-.overlay video {
-    max-width: 90%;
-    max-height: 90vh;
-    width: auto;
-    display: none;
-    height: auto;
-    object-fit: contain;
-}
+            width: 310px;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #222;
+            cursor: pointer;
+        }
 
         .image-box img {
             width: 100%;
@@ -204,70 +196,26 @@ video {
             object-fit: cover;
         }
 
-        
+
         .overlay {
-    position: fixed;
-    display: none;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            cursor: pointer;
+        }
 
-.close-button {
-    position: absolute; 
-    top: 10px;
-    right: 10px; 
-    background-color: #070707c4; 
-    color: #ffffff; 
-    border: none; 
-    font-size: 24px; 
-    cursor: pointer; 
-    padding: 5px 5px; 
-    border-radius: 5px 5px; 
-    transition: background-color 0.2s; 
-    transition: color 0.2s;
-    z-index: 1001; 
-}
-
-/*FORGIVE ME FORGIVE ME FORGIVE ME FOR MY SINS DEAR FATHER I ACCEPT MY FATE AS THE RESULT OF MY OWN NEGLEGENT ACTIONS*/
-
-.close-button:hover {
-    background-color: #141414; 
-    color: rgb(165, 33, 33);
-}
-
-.overlay img {
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: contain;
-    display: none;
-}
-
-.overlay video {
-    width: auto; 
-    height: auto; 
-    max-width: 90%; 
-    max-height: 90vh; 
-    object-fit: contain; 
-    display: none;
-}
-
-
-@media (max-width: 700px) {
-    .overlay video {
-        width: 100%;
-        height: auto;
-        max-height: none;
-        display: none;
-    }
-}
-
+        .overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
 
         @media (max-width: 700px) {
     .categories {
@@ -300,36 +248,6 @@ video {
     }
 }
 
-@media (max-width: 700px) {
-    .categories {
-        display: grid;
-    }
-
-    .search-input {
-        width: 60%;
-    }
-
-    .category-images img {
-        width: 50px;
-        height: 50px;
-    }
-
-    .image-box {
-        width: 280px; 
-        height: 250px;
-    }
-
-    .hide-on-search {
-        display: none !important;
-    }
-
-  
-    .mobile-hidden {
-        display: none !important;
-    }
-}     
-
-
 
 </style>
 </head>
@@ -338,294 +256,71 @@ video {
     color: darksalmon; font-weight: bold;">
     <b style="color: rgb(255, 104, 104); font-size: 40px;"> I.M.A.G.E </b>
 </h1>
-    
+
 <h3 style="color: rgb(255, 187, 166); margin-top: 0%; font-size: small;">
     Interactive. Media. Archive. Gallery.
     <a class="subtitle" style="text-decoration: none; color: rgb(255, 187, 166);" href="system-classes.html">E-CLASS</a>
 </h3>
-    
+
     <div class="search-container">
         <input id="searchInput" class="search-input" type="text" placeholder="Search for images...">
         <button class="search-button" onclick="searchImages()">SEARCH!</button>
     </div>
-   
-   
+
+
     <p id="message" style="color: #ff6969; display: none;"></p>
 
     <hr style="color: #222; width: 90%;">
 
 <p id="latestImagesText" style="color: #ff6969; text-decoration: underline; font-size: 20px;">Latest Images:</p>
-   
+
     <div id="categories" class="categories">
         <div class="category-box" data-category="memes" onclick="searchCategory('memes')">
             <h2>#Meme</h2>
             <div class="category-images" id="memes-images">
-              
+
             </div>
         </div>
         <div class="category-box" data-category="photography" onclick="searchCategory('photography')">
             <h2>#GIFs</h2>
             <div class="category-images" id="photography-images">
-              
+
             </div>
         </div>
         <div class="category-box" data-category="art" onclick="searchCategory('art')">
             <h2>#Art</h2>
             <div class="category-images" id="art-images">
-              
+
             </div>
         </div>
         <div class="category-box" data-category="wallpapers" onclick="searchCategory('wallpapers')">
             <h2>#Photo</h2>
             <div class="category-images" id="wallpapers-images">
-               
+
             </div>
         </div>
         <div class="category-box" data-category="chrib's-picks" onclick="searchCategory('chribs-picks')">
             <h2>#Shitpost</h2>
             <div class="category-images" id="chribs-picks-images">
-           
+
             </div>
         </div>
     </div>
 
-  
     <div id="results" class="image-container"></div>
 
-   
     <div id="imageOverlay" class="overlay" onclick="closeOverlay()">
         <img id="enlargedImage" src="" alt="" style="display: none;">
         <video id="enlargedVideo" controls style="display: none; max-width: 90%; max-height: 90%;"></video>
     </div>
-    
 
+    <div id="loading" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.5);">
+        <img src="https://chrisisediting.github.io/chribswebsite/Assets/loading.gif" alt="Loading...">
+    </div>
+
+
+    <script src="media.js"></script>
     <script>
-
-        
-        const images = [
-            'skeleton garlic bread meme dope ace.webp',
-            'ace man smoke meme upset sigh asexual flag.webp',
-            'art wallpaper abstract colourful.png',
-            'ace meme uno asexual sex.webp',
-            'ace meme ass assurance asexual.webp',
-            'ace meme eat mom food at home asexual.webp',
-            'ace meme fuck nudes send therapist asexual.webp',
-            'japan wallpaper art dark.webp',
-            'art mountain abstract colourful red vivid wallpaper.webp',
-            'vanilla extract meme powerpuff girls.jpg',
-            'miku hatsun pitbull worldwide shitpost.jpg',
-            'no context shrimp chef rice wok fry shitpost.jpeg',
-            'greed greedy cat sleepy apples shitpost.jpg',
-            'ace no cuphead dice shitpost.png',
-            'shitpost tumblr sink me_irl innocent punch.jpg',
-            'meme cat shop shoplifters.jpg',
-            'sleepy man meme me_irl tired art monochrome.jpg',
-            'shitpost bible rejection no thanks enternal life book.jpg',
-            'no skeleton blob shitpost human.jpg',
-            'drowing fish water breathe shitpost lowres.jpg',
-            'ps2 controller memory card photograph photo y2k transparent red casset.jpg',
-            'scott fnaf movie shaggy william cawthon afton yellow shitpost.png',
-            'doulingo bear shitpost cheese ten kilos.png',
-            'sudo apt get install estrogen shitpost tumblr trans ally.png',
-            'triangle meme mrmaker police.jpg',
-            'moon smoking asthetic spakle high 420 art.jpg',
-            'thinking drawing artist meme wish dream.jpg',
-            'water shitbird shit bird shitpost german discord.jpg',
-            'potty trained parrot shitpost photo nocontext.jpg',
-            'fnaf freddy security breach shitpost poster wash want balls edit.jpg',
-            'nocontext photo liminal plush weird creepy.jpg',
-            'ace meme asexual too aromantic aro.jpg',
-            'arcade joystick gif retro.gif',
-            'popgoes dance 8bit gif sticker.gif',
-            'tux spin gif sticker lowpoly.gif',
-            'Nyan cat gif sticker.gif',
-            'maxwell spin gif sticker.gif',
-            'spinning skulls gif art abstract pixel.gif',
-            'grimreaper red pixel art blood grim reaper.gif',
-            'frying pan skull egg head pixel art.gif',
-            'bubbub bub bounce gif dance groove.gif',
-            'maxwell rock gif sticker.gif',
-            'meirl macandcheese mac&cheese mac and cheese eating eat big spoon.gif',
-            'burning freddy sticker fnaf gif.gif',
-            'husker whoops gif hazbin hotel.gif',
-            'rotating spin plane lowres shitpost.gif',
-            'jojo text gif purple sticker.gif',
-            'rambley idle animation gif cute train indigo park.gif',  
-            'rambley plush spin gif sticker silly indigo park.gif',
-            'chica vhs stare creepy fnaf.gif',
-            'alastor gif lovely.gif',
-            'mike nolan smoking gif biglez.gif',
-            'helpy thinking gif sticker fnaf.gif',
-            'helpy dance gif sticker fnaf.gif',
-            'sips hot chocolate cup tea gif anime.gif',
-            'helpy fall gif sticker fnaf.gif',
-            'helpy jump gif sticker fnaf.gif',
-            'jojo typing gif.gif',
-            'powerpuff girls ace animation background asexual heart.gif',
-            'sip noodle juice anime gif tea drink.gif',
-            'dancing cockroach gif sticker rainbow dance.gif',
-            'lolbit 8bit gif icon sticker.gif',
-            'king harkinian gun smoking weed gif.gif',
-            'mangle paddle gif cute waiting.gif',
-            'backrooms dance gif footage vhs.gif',
-            'creepy man lean out gif weird.gif',
-            'waving ace flag gif sticker asexual pride.gif',
-            'pomni stare gif shocked confused.gif',
-            'sam calling wrote write eminem.gif',
-            'walking ic chip microchip vhs shitpost.gif',
-            'spin petscop gif sticker.gif',
-            'min-width my beloved locket gif.gif',
-            'wallpaper neon 80s asthetic purple puddle palm trees water.jpg',
-            'chica fnaf water render gif shitpost.gif',
-            'cow asexual meme perhaps ace flag barnyard.jpg',
-            'cave bathroom rock ceiling odd underground photo.jpeg',
-            'fnaf actors movie doug hank nocontext photo.jpeg',
-            "fnaf house gameplay halloween purple music video it's me abstract weird house fnaf2 gif.webp",
-            'beettweek synth purple lights computer neon lights dials buttons instrument gif.webp',
-            'tv liminal gif neon crt purple 80s asthetic.webp',
-            'fnaf william afton suit springlocked movie yellow rabbit nocontext shitpost photo.jpg',
-            'blackhole hole purple black wallpaper.webp',
-            'blackhole black hole cream beige wallpaper.webp',
-            'blackhole black hole orange wallpaper.webp',
-            'blackhole black hole amber brown wallpaper.webp',
-            'chribs photo fish dead flash.jpg',
-            'chribs photo window reflection door orange sun sunset dark mood moody.jpg',
-            'halloween poster trick or treat vintage art.jpg',
-            'halloween vintage spooky trick or treat art vintage.jpg',
-            'time to get spooky hallowen windows skeleton skull october.jpg',
-            'spooky neon lights wall halloween.jpg',
-            'monster house spooky halloween neon purple photo movie.jpg',
-            'coraline pink palace house movie stopmotion pretty.jpg',
-            'meme skeleton store shop christmas october halloween.jpg',
-            '3d render skeleton bath bathroom 90s graphics.webp',
-            'dancing spooky skeleton gif.webp',
-            'warm scrambled eggs child hand one handful shitpost halloween spooky photo nocontext.jpg',
-            'check candy halloween spooky stanley parable ending chocolate shitpost.jpg',
-            'gif dyslexic dessert desert restaurant.webp',
-            'circle triangle factory polygons machine.webp',
-            'shitpost fnaf freddy biden america statue nocontext.jpg',
-            'abandoned waterpark photo warm autum urbex.webp',
-            'amogus shitpost nocontext screenshot amongus.jpg',
-            'skeleton skull lowpoly trumpet gif doot.gif',
-            'tron image concept art conceptart movie grid 80s.jpg',
-            'shrimp miku lowpoly render 3d nocontext.jpg',
-            'princess quest fnaf yellow dance 8bit gif.GIF',
-            'horrors confused megamind meme metroman dont get.jpg',
-            'shitpost look at deer lookatthisdeer game.jpg',
-            'mangle witch art pixel pixelart khari kharidoodles spooky halloween.png',
-            'silent hill 2 art game render 3d silenthill.png',
-            'freddy glamrock fazbear fnaf look rock what ayo huh boom gif.gif',
-            'boing cat gif boioi.gif',
-            'car silly bounce boing gif.gif',
-            'youarewhatyoueat you eat duck bread meme.jpeg',
-            'gif the shining smoke smoking lady movie theshining spooky.webp',
-            'welcome home gif coraline cake candles.webp',
-            'coraline looking through window gif peek.webp',
-            'boo you whore anime cartoon sparkle shitpost.jpg',
-            'bat cat halloween art spooky halloween fly flying painting.jpg',
-            'cat water bottle stare son meme silly.jpg',
-            'fnaf freddy fazbear enchanto nocontext lowres shitpost.jpg',
-            'cat weed jat photo cute 420 kitty.jpg',
-            '4chan who is whois news silly goofy meme gif facepalm.gif',
-            'walten files waltenfiles walter breakingbad meme.jpeg',
-            'shitpost joker choker dc spirit halloween spooky photo nocontext.jpeg',
-            'spooky gif jackolantern jackolanterns ghosts halloween spirits.webp',
-            'creepy lowres cult 2000s nocontext photo spooky.jpg',
-            'pink pumpkin jackolantern slay halloween pretty photo spooky.jpg',
-            'nocontext shitpost shittyart cross arms jesus christianity beans threw evil.jpg',
-            'halloween aesthetic spooky pumpkins jackolantern night bats art fullmoon creepy.jpg',
-            'mac miller macmiller smoking selfcare self-care self care photo vibe smoke be alright photo.jpg',
-            'milf halloween meme pumpkin spooky skeleton tshirt.jpg',
-            'gay cum photo shitpost wyoming.jpg',
-            'computer control room monitors old photo retro computing.jpg',
-            'spooky vintage poster halloween jackolantern ghost witch blackcat aesthetic art.jpg',
-            'spooky chillin chilling scream chill photo shitpost call killin killing doritos watching tv.jpg',
-            'spongebob joint j 420 meme photo holding doodlebob doodle bob.jpg',
-            'black cat evil art blackcat vintage halloween shitpost eat shit eatshit knife.jpg',
-            'pomni digital circus gate door nocontext gif.webp',
-            'tree photo wallpaper vertical tree reflection water autum misty.jpg',
-            'art skeleton vivid halloween spooky.jpg',
-            'mariguana lizzard weed smoke shitpost art.jpg',
-            'ps1 playstation logo boot start startup vhs lowres aesthetic 90s.webp',
-            'driving drive 80s aesthetic neon anime japan retro gif.webp',
-            'spooky jackolanterns halloween photo dark.jpg',
-            'fairlyoddparents fairly odd parent timmy weed 420 joint shitpost j.jpg',
-            'blow trannies screenshot tumblr meme trans youtube shrug youtuber.png',
-            'smoking misty photo aesthetic vibe smoke depressed sad person.jpg',
-            'fnaf freddy fazbear pizza mood moodboard board images collection photo movie aesthetic.jpg',
-            'so chill skeleton meme livelaughlove disconnected reality.jpg',
-            'wtf huh balbbering confused reaction gif ramble philomena cunk.gif',
-            'philomena cunk philomenacunk roll fall hill slip trip gif silly sand desert.gif',
-            'rambley racoon helpy fnaf indigo park art neon purple oldweb old web windows xp 90s.jpg',
-            'repost chain isopod meme touch pet.jpg',
-            'matpat fnaf movie five nights game theory lunch most important meal gif highres.webp',
-            'matpat fnaf movie five nights game theory just theory gif highres.webp.webp',
-            'william afton yellow rabbit knife pull kill murder scary slice fnaf movie fnafmovie fight nights gif.webp',
-            'look fnaf fnafmovie fight nights gif highres golden freddy abby smile look eachother stare.webp',
-            'fnaf fnafmovie movie its me it flashing light mirror spooky scary creepy gif higres.webp',
-            'cory fnaf fnafmovie taxi car driving weird weirdo why annoyed gif highres five nights.webp',
-            'blender face grinder blades saw face fnaf fnafmovie gruesome danger gif highres five nights mike.webp',
-            'fnaf movie fnafmovie five nights william afton yellow rabbit steve come back gif highres spinglock spring lock srpinglocked.webp',
-            'fnafmovie fnaf movie pizza freddy fazbears pizzeria sign five night gif highres mike.webp',
-            'fnaf fnafmovie movie cameras camera cctv five nights animatronics creepy gif higres.webp',
-            'steve william afton fnafmovie gif highres five nights annoyed guilty reaction fnaf movie.webp',
-            'steve william afton fnafmovie gif highres five nights stare looking wait waiting reaction fnaf movie.webp',
-            'mike fnaf fnafmovie movie reaction disapointed sad letdown upset damn five nights gif.webp',
-            'mike fnaf fnafmovie movie reaction look around confused huh what wtf  five nights gif.webp',
-            'abby fnaf fnafmovie movie reaction sad of course yeah five nights gif.webp',
-            'steve william afton fnafmovie gif five nights huh what confused closer reaction fnaf movie.webp',
-            'mike fnaf fnafmovie movie reaction look behind back glance peek five nights gif.webp',
-            'mike fnaf fnafmovie movie run running sprint chase five nights gif.webp',
-            'mike fnaf fnafmovie movie sleep sleepy sleeping nap security five nights gif.webp',
-            'mike fnaf fnafmovie movie push up ups pushup pushups workout gains five nights gif.webp',
-            'mike fnaf fnafmovie movie headphone earphones loud ear rape earape earrape screech noise five nights gif.webp',
-            'fnaf move gif boy hide hiding dark creepy spooky scary curtain kid ghost.gif',
-            'fnaf fnaf1 freddy fazbear fazbears pizza trailer animatronics gif performance showtime.webp',
-            'Rambley Sad Origin Story Indigo Park Horror Skunx video shitpost.mp4',
-            'chribs dodo spinny spin tap water sink garlic crusher funkytown funky shitpost town lowres video.mp4',
-            'whats up good evening shit 10 49 video meme.webm',
-            'ppap pineapple apple pen music video meme nocontext.webm',
-            'bubbubsbounce bub bubs bounce video shitpost adult swim nocontext dance.webm',
-            'meme pet that dawg dog silly video.webm',
-            'time to kick gum chew ass dick kickem duke nukem video shitpost.webm',
-            'Slinky Treadmill walking walk Stayin Alive shitpost video.webm',
-            'Drink Your Milkshake video nocontext.mp4',
-            'Stampy stampycat minecraft lowres shitpost video Oh my God fucking creeper.mp4',
-            'The tank fps robotrock robot rock battlefield 4 battlefield4 meme video.webm',
-            'dog cement ad cold ones coldones dogcement video shitpost.webm',
-            'put cd up ass lego legoisland island video shitpost lowres.webm',
-            'begin audio prompt chica withered gangnam style gangnamstyle shitpost lowres vhs creepy video.webm',
-            'interview ohshit Oh Shit table leaving nocontext shitpost video nope outta here.webm',
-            'And I’m im Kanye West nocontext shitpost earth little dicky ye video music animation.webm',
-            'Chills parody funny Number 15 number15 creepy shitpost video voiceover.webm',
-            'richard rich richardsons video cold ones funny video shitpost dick removal incident vhs ad.webm',
-            'dr Eggman robotnik forklift certified sonic shitpost video.webm',
-            'Chris is that a weed mary police 911 microwave meme video vine.webm',
-            'All our food keeps blowing up video nocontext arbys shitpost lowres.webm',
-            'FNAF SFM afton glitchtrap vanny lazy town lazytown robbie rotten window ball Would you like to video shitpost five nights.webm',
-            'corned beef cornedbeef nicole waterson gumball world video shitpost nocontext video.webm',
-            'Imagine someone coming kitchen taking grandmother detonating moon shitpost kurtzgesagt nutshell shitpost ytp video.webm',
-            'Head on headon headache ache pain Spoof Disaster Movie video clip shitpost nocontext.mp4',
-            'magentasnail neon kinger wife moster art magestic glow love beautiful vivid digital circus digitalcircus.jpg',
-            'pomni vhs video tape 80s animation retro evil digital circus digitalcircus stare possesed demon.mp4',
-            'fnaf freddy fazbear 80s pizza pizzaria arcade fun retro mood moodboard board images collection photo aesthetic.jpg',
-            'jackolantern weed 420 j joint joints pumpkin spooky halloween tick or treat sweets.jpg',
-            'twitter post vacuum screenshot irobot sucking suck roomba freak reaky kinky.jpg',
-            'cunt cake photo nocontext.jpg',
-            'tom bob you won giant tungsten cube shitpost prize win shitpost nocontext.jpg',
-            'pink html js webpage code nocontext aesthetic.jpg',
-            'aesthetic guitar lowres 2000s photo music mixer grain band grainy.jpg',
-            'fnaf five nights freddys movie fnafmovie animatronics bonnie chica freddy stare creepy grain horror photo.jpg',
-            'girlblogging girl blogging blog tactical web tumblr silly.jpg',
-            'j joint smoke smoking night cloudy dark arm reach weed 420 photo.jpg',
-            'shitpost fnaf pizzeria simulator sim five nights tweet trans person screenshot fnaf6.jpg',
-            'scream love heart beach spooky halloween monochrome.jpg',
-            'shitpost spongebob car pov bikini bottom drive driving underwater bmw.jpg',
-            'into the pit intothepit fnaf five nights yellowrabbit yellow rabbit oswald car run over runover driving shitpost video.mp4',
-
-
-        ];
-
         const categories = {
             'memes': 'meme',
             'photography': 'gif',
@@ -633,630 +328,230 @@ video {
             'wallpapers': 'photo',
             'chribs-picks': 'shitpost'
         };
-
-        document.querySelectorAll('.video-box video').forEach(video => {
-        video.style.width = '100%';
-        video.style.height = 'auto'; 
-        });
-
+    
         function extractTags(filename) {
             const nameWithoutExt = filename.substring(0, filename.lastIndexOf('.')) || filename;
             return nameWithoutExt.toLowerCase().split(' ');
         }
-
+    
         function getLatestImagesByTag(tag, limit = 3) {
             const taggedImages = images.filter(img => {
                 const tags = extractTags(img);
                 return tags.includes(tag);
             });
-
+    
             return taggedImages.slice(-limit).reverse();
         }
-
+    
         function populateCategories() {
-    for (const [categoryId, tag] of Object.entries(categories)) {
-        const imageContainer = document.getElementById(`${categoryId}-images`);
-        const latestMedia = getLatestImagesByTag(tag, 6);
-
-        if (latestMedia.length === 0) {
-            imageContainer.innerHTML = '<p>Images coming soon.</p>';
-            continue;
-        }
-
-        imageContainer.innerHTML = ''; 
-
-        latestMedia.forEach(media => {
-            const mediaUrl = `https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(media)}`;
-            console.log(`Loading media: ${mediaUrl}`); // Debug log
-
-            const thumbnailContainer = document.createElement('div');
-            thumbnailContainer.style.position = 'relative';
-            thumbnailContainer.style.width = '60px';
-            thumbnailContainer.style.height = '60px';
-            thumbnailContainer.style.overflow = 'hidden';
-            thumbnailContainer.style.borderRadius = '5px';
-            thumbnailContainer.style.backgroundColor = '#333';
-
-            const loadingPlaceholder = document.createElement('div');
-            loadingPlaceholder.textContent = 'Loading...';
-            loadingPlaceholder.style.fontSize = '10px';
-            loadingPlaceholder.style.color = '#fff';
-            loadingPlaceholder.style.display = 'flex';
-            loadingPlaceholder.style.justifyContent = 'center';
-            loadingPlaceholder.style.alignItems = 'center';
-            loadingPlaceholder.style.width = '100%';
-            loadingPlaceholder.style.height = '100%';
-            thumbnailContainer.appendChild(loadingPlaceholder);
-
-            if (isVideo(media)) {
-                const videoElement = document.createElement('video');
-                videoElement.src = mediaUrl;
-                videoElement.crossOrigin = 'anonymous';
-                videoElement.preload = 'metadata';
-
-                videoElement.addEventListener('canplay', () => {
-    if (videoElement.duration > 0) { //  video valid duration
-        videoElement.currentTime = 1.2; // video thumbnail
-        
-        const canvas = document.createElement('canvas');
-        canvas.width = 60;
-        canvas.height = 60;
-
-        const context = canvas.getContext('2d');
-        context.fillStyle = '#000000';
-        context.fillRect(0, 0, canvas.width, canvas.height);
-
-        const aspectRatio = videoElement.videoWidth / videoElement.videoHeight;
-        let drawWidth = canvas.width;
-        let drawHeight = canvas.height;
-
-        if (aspectRatio > 1) {
-            drawWidth = canvas.height * aspectRatio;
-        } else {
-            drawHeight = canvas.width / aspectRatio;
-        }
-
-        const x = (canvas.width - drawWidth) / 2;
-        const y = (canvas.height - drawHeight) / 2;
-
-        context.drawImage(videoElement, x, y, drawWidth, drawHeight);
-
-        const thumbnailImg = document.createElement('img');
-        thumbnailImg.src = canvas.toDataURL('image/jpeg', 0.9);
-        thumbnailImg.alt = media;
-        thumbnailImg.style.width = '100%';
-        thumbnailImg.style.height = '100%';
-        thumbnailImg.style.objectFit = 'cover';
-
-        thumbnailContainer.innerHTML = ''; 
-        thumbnailContainer.appendChild(thumbnailImg);
-    }
-});
-
-            } else {
-                const imgElement = document.createElement('img');
-                imgElement.src = mediaUrl;
-                imgElement.alt = media;
-                imgElement.loading = 'lazy'; // lazy load
-                imgElement.style.width = '100%';
-                imgElement.style.height = '100%';
-                imgElement.style.objectFit = 'cover';
-
-                imgElement.onload = () => {
-                    loadingPlaceholder.style.display = 'none'; // loading placeholder remove
-                };
-
-                imgElement.onerror = () => {
-                    console.error(`Error loading image for: ${mediaUrl}`);
-                    loadingPlaceholder.textContent = '!';
-                };
-
-                thumbnailContainer.appendChild(imgElement);
+            for (const [categoryId, tag] of Object.entries(categories)) {
+                const imageContainer = document.getElementById(`${categoryId}-images`);
+                const latestImages = getLatestImagesByTag(tag, 3);
+                if (latestImages.length === 0) {
+                    imageContainer.innerHTML = '<p>Images coming soon.</p>';
+                    continue;
+                }
+                latestImages.forEach(img => {
+                    const imgElement = document.createElement('img');
+                    imgElement.src = `Media/${encodeURIComponent(img)}`;
+                    imgElement.alt = img;
+                    imgElement.loading = 'lazy';
+    
+                    imgElement.ondblclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
+                    imageContainer.appendChild(imgElement);
+                });
             }
-
-            thumbnailContainer.ondblclick = () => openOverlay(mediaUrl);
-            imageContainer.appendChild(thumbnailContainer);
-        });
-    }
-}
-
-
-function checkImageExists(url) {
-    return new Promise((resolve) => {
-        const img = new Image();
-        img.onload = () => resolve(true);
-        img.onerror = () => resolve(false);
-        img.src = url;
-    });
-}
-
-function searchImages() {
-    const query = document.getElementById('searchInput').value.toLowerCase().trim();
-    const resultsContainer = document.getElementById('results');
-    const categoriesContainer = document.getElementById('categories');
-    const latestImagesText = document.querySelector('p[style*="color: #ff6969"]');
-    const message = document.getElementById('message');
-
-
-    resultsContainer.innerHTML = '';
-    message.style.display = 'none';
-
-
-    const isMobile = window.innerWidth <= 700;
-
- 
-    if (query !== '') {
-        categoriesContainer.style.display = 'none';
-        latestImagesText.style.display = 'none';
-    } else {
-        categoriesContainer.style.display = 'grid'; 
-        latestImagesText.style.display = 'block';
-    }
-
-    if (query === '') {
-        message.innerText = 'Please enter image Tag/s';
-        message.style.display = 'block';
-
-        return;
-    }
-
-    let imagesToLoad = 0;
-    let imagesLoaded = 0;
-
-    function checkAllImagesLoaded() {
+        }
+    
+        function searchImages() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const resultsContainer = document.getElementById('results');
+            const categoriesContainer = document.getElementById('categories');
+            const latestImagesText = document.querySelector('p[style*="color: #ff6969"]');
+            const message = document.getElementById('message');
+            const loadingOverlay = document.getElementById('loading');
+    
+            resultsContainer.innerHTML = '';
+            message.style.display = 'none';
+            loadingOverlay.style.display = 'flex';
+    
+            const isMobile = window.innerWidth <= 700;
+    
+            if (isMobile && query !== '') {
+                categoriesContainer.classList.add('mobile-hide-on-search');
+                latestImagesText.classList.add('mobile-hide-on-search');
+            } else {
+                categoriesContainer.classList.remove('mobile-hide-on-search');
+                latestImagesText.classList.remove('mobile-hide-on-search');
+            }
+    
+            if (isMobile && query !== '') {
+                categoriesContainer.classList.add('hide-on-search');
+                latestImagesText.classList.add('hide-on-search');
+            } else {
+                categoriesContainer.classList.remove('hide-on-search');
+                latestImagesText.classList.remove('hide-on-search');
+            }
+    
+            if (query === '') {
+                message.innerText = 'Please enter image Tag/s';
+                message.style.display = 'block';
+                loadingOverlay.style.display = 'none';
+                return;
+            }
+    
+            let imagesToLoad = 0;
+            let imagesLoaded = 0;
+    
+            function checkAllImagesLoaded() {
+                if (imagesLoaded === imagesToLoad) {
+                    setTimeout(() => {
+                        loadingOverlay.style.display = 'none';
+                    }, 1); 
+                }
+            }
+    
+            function createImageElement(img) {
+    const imgBox = document.createElement('div');
+    imgBox.className = 'image-box';
+    
+    const imgElement = document.createElement('img');
+    imgElement.src = `Media/${encodeURIComponent(img)}`;
+    imgElement.alt = img;
+    imgElement.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
+    imgElement.onload = () => {
         imagesLoaded++;
-        if (imagesLoaded === imagesToLoad) {
-
-        }
-    }
-
-    function matchTags(img, searchTags) {
-        const tags = extractTags(img);
-        return searchTags.every(tag => tags.includes(tag));
-    }
-
-    const searchTags = query.split(' ');
-    let mediaToShow = [];
-
-    if (query === '/all') {
-        mediaToShow = images.slice().reverse();
-    } else {
-        mediaToShow = images.filter(img => matchTags(img, searchTags)).reverse();
-    }
-
-    if (mediaToShow.length === 0) {
-        resultsContainer.innerHTML = '<p>No images found! :(</p>';
-
-        return;
-    }
-
-    imagesToLoad = mediaToShow.length;
-mediaToShow.forEach(media => {
-    const mediaBox = createImageElement(media);
+        checkAllImagesLoaded();
+    };
+    imgElement.onerror = () => {
+        imagesLoaded++;
+        checkAllImagesLoaded();
+    };
     
-      if (isVideo(media)) {
-        const thumbnailImg = mediaBox.querySelector('img');
-        if (thumbnailImg) {
-            const videoElement = document.createElement('video');
-            videoElement.src = `https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(media)}`;
-            videoElement.preload = 'metadata';
-            videoElement.crossOrigin = 'anonymous';
-            videoElement.addEventListener('loadeddata', checkAllImagesLoaded);// loaded data - canplay not functioning
-            videoElement.addEventListener('error', checkAllImagesLoaded);
-        } else {
-            checkAllImagesLoaded(); 
-        }
-    } else {
-        const img = mediaBox.querySelector('img');
-        if (img) {
-            if (img.complete) {
-                checkAllImagesLoaded();
-            } else {
-                img.onload = checkAllImagesLoaded;
-                img.onerror = checkAllImagesLoaded;
-            }
-        } else {
-            checkAllImagesLoaded(); 
-        }
-    }
+    imgBox.appendChild(imgElement);
+  
+    const overlay = createImageTypeOverlay(img);
+    imgBox.appendChild(overlay);
     
-    resultsContainer.appendChild(mediaBox);
-});
-};
-
-
-
-function showFormatOverlay(videoFile) {
-    const formatOverlay = document.querySelector('.format-overlay');
-    
-    const extension = videoFile.split('.').pop().toUpperCase();
-    if (['MP4', 'GIF', 'WEBM', 'WEBP'].includes(extension)) {
-        formatOverlay.textContent = extension; 
-        formatOverlay.style.display = 'block'; 
-    } else {
-        formatOverlay.style.display = 'none'; 
-    }
+    resultsContainer.appendChild(imgBox);
+    imagesToLoad++;
 }
 
+            function matchTags(img, searchTags) {
+                const tags = extractTags(img);
+                return searchTags.every(tag => tags.includes(tag));
+            }
+    
+            const searchTags = query.split(' ');
+    
+            if (query === '/all') {
+                const allImages = images.slice().reverse();
+                allImages.forEach(createImageElement);
+    
+                if (allImages.length === 0) {
+                    resultsContainer.innerHTML = '<p>No images found! :(</p>';
+                    loadingOverlay.style.display = 'none';
+                }
+            } else {
+                const filteredImages = images.filter(img => matchTags(img, searchTags)).reverse();
+    
+                filteredImages.forEach(createImageElement);
+    
+                if (filteredImages.length === 0) {
+                    resultsContainer.innerHTML = '<p>No images found! :(</p>';
+                    loadingOverlay.style.display = 'none';
+                }
+            }
+    
+            if (imagesToLoad === 0) {
+                loadingOverlay.style.display = 'none';
+            }
 
-
-function searchCategory(category) {
+            return imgBox;
+        }
+    
+        function searchCategory(category) {
     const resultsContainer = document.getElementById('results');
     resultsContainer.innerHTML = '';
 
-    const latestMedia = getLatestImagesByTag(categories[category]);
+    const latestImages = getLatestImagesByTag(categories[category]);
+    latestImages.forEach(img => {
+        const imgBox = document.createElement('div');
+        imgBox.className = 'image-box';
+        const imgElement = document.createElement('img');
+        imgElement.src = `Media/${encodeURIComponent(img)}`;
+        imgElement.alt = img;
+        imgElement.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
+        imgBox.appendChild(imgElement);
+        const overlay = createImageTypeOverlay(img);
+        imgBox.appendChild(overlay);
+        resultsContainer.appendChild(imgBox);
+    });
+
+    if (latestImages.length === 0) {
+        resultsContainer.innerHTML = '<p>No images in this category :(.</p>';
+    }
+}
+
     
-    if (latestMedia.length === 0) {
-        resultsContainer.innerHTML = '<p>No media in this category :(</p>';
-        return;
-    }
-
-    latestMedia.forEach(media => {
-        const mediaBox = createImageElement(media);
-        resultsContainer.appendChild(mediaBox);
-    });
-}
-
-
-
         function isVideo(filename) {
-        return /\.(mp4|webm|ogg)$/i.test(filename);
+            return /\.(mp4|webm|ogg)$/i.test(filename);
         }
-
+    
         function openOverlay(mediaSrc) {
-    const overlay = document.getElementById('imageOverlay');
-    const enlargedImage = document.getElementById('enlargedImage');
-    const enlargedVideo = document.getElementById('enlargedVideo');
-
-    let closeButton = document.createElement('button');
-    closeButton.innerText = 'X';
-    closeButton.className = 'close-button';
-
-    overlay.appendChild(closeButton);
-
-    if (isVideo(mediaSrc)) {
-        enlargedVideo.src = mediaSrc;
-        enlargedVideo.style.display = 'block';
-        enlargedImage.style.display = 'none';
-        enlargedVideo.controls = true;
-
-        enlargedVideo.onclick = (event) => {
-            event.stopPropagation();
-        };
-    } else {
-        enlargedImage.src = mediaSrc;
-        enlargedImage.style.display = 'block';
-        enlargedVideo.style.display = 'none';
-    }
-
-    overlay.style.display = 'flex';
-    closeButton.onclick = closeOverlay;
-}
-
-function closeOverlay() {
-    const overlay = document.getElementById('imageOverlay');
-    const enlargedVideo = document.getElementById('enlargedVideo');
-    const closeButton = overlay.querySelector('button');
-
-    overlay.style.display = 'none';
-
-    if (enlargedVideo) {
-        enlargedVideo.pause();
-        enlargedVideo.currentTime = 0;
-    }
-
-
-    if (closeButton) {
-        overlay.removeChild(closeButton);
-    }
-}
-
-        window.onload = function() {
-    populateCategories();
-    document.querySelector('.search-input').addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            searchImages();
+            const overlay = document.getElementById('imageOverlay');
+            const enlargedImage = document.getElementById('enlargedImage');
+            const enlargedVideo = document.getElementById('enlargedVideo');
+    
+            if (isVideo(mediaSrc)) {
+                enlargedVideo.src = mediaSrc;
+                enlargedVideo.style.display = 'block';
+                enlargedImage.style.display = 'none';
+            } else {
+                enlargedImage.src = mediaSrc;
+                enlargedImage.style.display = 'block';
+                enlargedVideo.style.display = 'none';
+            }
+    
+            overlay.style.display = 'flex';
         }
-    });
-};
+    
+        function closeOverlay() {
+            const overlay = document.getElementById('imageOverlay');
+            const enlargedVideo = document.getElementById('enlargedVideo');
+    
+            overlay.style.display = 'none';
+    
+            if (enlargedVideo) {
+                enlargedVideo.pause();
+                enlargedVideo.currentTime = 0;
+            }
+        }
+    
+        window.onload = function() {
+            populateCategories();
+            document.querySelector('.search-input').addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    searchImages();
+                }
+            });
+        };
 
-window.addEventListener('resize', function() {
-    const query = document.getElementById('searchInput').value.toLowerCase().trim();
-    const isMobile = window.innerWidth <= 700;
-    const categoriesContainer = document.getElementById('categories');
-    const latestImagesText = document.querySelector('p[style*="color: #ff6969"]');
-
-    if (query !== '' && isMobile) {
-        categoriesContainer.style.display = 'none';
-        latestImagesText.style.display = 'none';
-    } else if (!isMobile) {
-        categoriesContainer.style.display = 'grid';
-        latestImagesText.style.display = 'block';
-    }
-});
-
-function createImageTypeOverlay(img) {
+        function createImageTypeOverlay(img) {
     const overlay = document.createElement('div');
     overlay.className = 'image-type-overlay';
     const extension = img.split('.').pop().toUpperCase();
     overlay.textContent = extension; 
-    overlay.style.position = 'absolute'; 
-    overlay.style.bottom = '5px'; 
-    overlay.style.right = '5px'; 
-    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-    overlay.style.color = '#fff';
-    overlay.style.padding = '5px'; 
-    overlay.style.borderRadius = '5px'; 
-
     return overlay;
 }
-
-
-function createImageElement(img) {
-    const imgBox = document.createElement('div');
-    imgBox.className = 'image-box';
-    imgBox.style.position = 'relative';
-    imgBox.style.cursor = 'pointer';
-
-    const mediaUrl = `https://chrisisediting.github.io/chribswebsite/Media/${encodeURIComponent(img)}`;
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const loadingPlaceholder = document.createElement('div');
-    loadingPlaceholder.textContent = 'Loading...';
-    loadingPlaceholder.style.display = 'flex';
-    loadingPlaceholder.style.justifyContent = 'center';
-    loadingPlaceholder.style.alignItems = 'center';
-    loadingPlaceholder.style.width = '100%';
-    loadingPlaceholder.style.height = '100%';
-    loadingPlaceholder.style.backgroundColor = '#333';
-    loadingPlaceholder.style.color = '#fff';
-    imgBox.appendChild(loadingPlaceholder);
-
-    if (isVideo(img)) {
-        if (isMobile) {
-            createMobileFallback(imgBox, img);
-        } else {
-            const videoElement = document.createElement('video');
-            videoElement.crossOrigin = 'anonymous';
-            videoElement.preload = 'metadata';
-
-            let thumbnailAttempted = false;
-            const attemptThumbnail = () => {
-                if (thumbnailAttempted) return;
-                thumbnailAttempted = true;
-
-                try {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = 310;
-                    canvas.height = 300;
-
-                    const ctx = canvas.getContext('2d');
-                    ctx.fillStyle = '#000000';
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-                    const aspectRatio = videoElement.videoWidth / videoElement.videoHeight;
-                    let drawWidth = canvas.width;
-                    let drawHeight = canvas.height;
-
-                    if (aspectRatio > 1) {
-                        drawHeight = canvas.width / aspectRatio;
-                    } else {
-                        drawWidth = canvas.height * aspectRatio;
-                    }
-
-                    const x = (canvas.width - drawWidth) / 2;
-                    const y = (canvas.height - drawHeight) / 2;
-
-                    ctx.drawImage(videoElement, x, y, drawWidth, drawHeight);
-
-                    const thumbnailImg = new Image();
-                    thumbnailImg.src = canvas.toDataURL('image/jpeg', 0.9);
-                    thumbnailImg.alt = img;
-                    thumbnailImg.style.width = '100%';
-                    thumbnailImg.style.height = '100%';
-                    thumbnailImg.style.objectFit = 'cover';
-
-                    imgBox.innerHTML = '';
-                    imgBox.appendChild(thumbnailImg);
-                    imgBox.appendChild(createImageTypeOverlay(img));
-
-                    return true;
-                } catch (error) {
-                    console.error('Thumbnail generation failed:', error);
-                    return false;
-                }
-            };
-
-            videoElement.oncanplay = () => {
-                videoElement.currentTime = 1.2;
-            };
-
-            videoElement.onseeked = () => {
-                attemptThumbnail();
-            };
-
-            videoElement.onerror = () => {
-                console.error('Video loading failed');
-                createFallbackThumbnail(imgBox, img);
-            };
-
-            videoElement.src = mediaUrl;
-        }
-    } else {
-        const imgElement = new Image();
-        imgElement.crossOrigin = 'anonymous';
-        imgElement.src = mediaUrl;
-        imgElement.style.width = '100%';
-        imgElement.style.height = '100%';
-        imgElement.style.objectFit = 'cover';
-
-        imgElement.onload = () => {
-            imgBox.innerHTML = '';
-            imgBox.appendChild(imgElement);
-            imgBox.appendChild(createImageTypeOverlay(img));
-        };
-
-        imgElement.onerror = () => {
-            loadingPlaceholder.textContent = 'Failed to load image';
-        };
-    }
-
-    imgBox.onclick = () => openOverlay(mediaUrl);
-    return imgBox;
-}
-
-
-function createMobileFallback(imgBox, img) {
-    const canvas = document.createElement('canvas');
-    canvas.width = 200;
-    canvas.height = 200;
-    
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#333';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-    ctx.beginPath();
-    ctx.arc(canvas.width/2, canvas.height/2, 30, 0, 2 * Math.PI);
-    ctx.fill();
-    
-    ctx.fillStyle = '#333';
-    ctx.beginPath();
-    ctx.moveTo(90, 85);
-    ctx.lineTo(90, 115);
-    ctx.lineTo(120, 100);
-    ctx.closePath();
-    ctx.fill();
-    
-    const thumbnailImg = new Image();
-    thumbnailImg.src = canvas.toDataURL('image/jpeg', 0.8);
-    thumbnailImg.alt = img;
-    thumbnailImg.style.width = '100%';
-    thumbnailImg.style.height = '100%';
-    thumbnailImg.style.objectFit = 'cover';
-    
-    imgBox.innerHTML = '';
-    imgBox.appendChild(thumbnailImg);
-    imgBox.appendChild(createImageTypeOverlay(img));
-}
-
-
-
-function generateVideoThumbnail(videoUrl) {
-    return new Promise((resolve, reject) => {
-        const thumbnailTimeout = setTimeout(() => {
-            reject(new Error('Thumbnail generation timed out'));
-        }, 10000);
-
-        const tempVideo = document.createElement('video');
-        tempVideo.crossOrigin = 'anonymous';
-        tempVideo.preload = 'metadata';
-        
-        tempVideo.oncanplay = () => {
-            clearTimeout(thumbnailTimeout);
-            tempVideo.currentTime = 1.2; //THUMBNAIL TIME
-            
-            tempVideo.onseeked = () => {
-                try {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = 160;
-                    canvas.height = 90;
-                    
-                    const ctx = canvas.getContext('2d');
-                    ctx.fillStyle = '#000000';
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    
-                    const aspectRatio = tempVideo.videoWidth / tempVideo.videoHeight;
-                    let drawWidth = canvas.width;
-                    let drawHeight = canvas.height;
-                    
-                    if (aspectRatio > canvas.width / canvas.height) {
-                        drawHeight = canvas.width / aspectRatio;
-                    } else {
-                        drawWidth = canvas.height * aspectRatio;
-                    }
-                    
-                    const x = (canvas.width - drawWidth) / 2;
-                    const y = (canvas.height - drawHeight) / 2;
-                    
-                    ctx.drawImage(tempVideo, x, y, drawWidth, drawHeight);
-                    
-                    resolve(canvas.toDataURL('image/jpeg', 1));
-                } catch (error) {
-                    reject(error);
-                }
-            };
-        };
-        
-        tempVideo.onerror = () => {
-            clearTimeout(thumbnailTimeout);
-            reject(new Error('Video loading failed'));
-        };
-        
-        tempVideo.src = videoUrl;
-    });
-}
-
-function createFallbackThumbnail(imgBox, img) {
-    const fallbackDiv = document.createElement('div');
-    fallbackDiv.style.width = '100%';
-    fallbackDiv.style.height = '100%';
-    fallbackDiv.style.backgroundColor = '#333';
-    fallbackDiv.style.display = 'flex';
-    fallbackDiv.style.justifyContent = 'center';
-    fallbackDiv.style.alignItems = 'center';
-    fallbackDiv.style.color = '#fff';
-    fallbackDiv.textContent = 'Load Time Extended! Video Thumbnail still loading.';
-    
-    imgBox.innerHTML = ''; 
-    imgBox.appendChild(fallbackDiv);
-    imgBox.appendChild(createImageTypeOverlay(img));
-}
-
 </script>
-
-<script>
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-            window.location.href = 'index.html';
-        }
-    });
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const overlay = document.getElementById('imageOverlay');
-        overlay.style.display = 'none';
-    });
-</script>
-
-<style>
-
-    video::-webkit-media-controls-timeline { display: none !important; }
-    video::-webkit-media-controls-play-button { display: none !important; }
-    video::-webkit-media-controls-volume-slider { display: none !important; }
-    video::-webkit-media-controls-mute-button { display: none !important; }
-    video::-webkit-media-controls-current-time-display { display: none !important; }
-    video::-webkit-media-controls-time-remaining-display { display: none !important; }
-    video::-webkit-media-controls-fullscreen-button { display: none !important; }
-    video::-webkit-media-controls-rewind-button { display: none !important; }
-    video::-webkit-media-controls-return-to-realtime-button { display: none !important; }
-    video::-webkit-media-controls-toggle-closed-captions-button { display: none !important; }
-    video::-webkit-media-controls-enclosure { display: none !important; }
-
-    @-moz-document url-prefix() {
-        video {
-            outline: none;
-        }
-    }
-
-    #enlargedVideo::-webkit-media-controls-enclosure { display: flex !important; }
-    #enlargedVideo::-webkit-media-controls-panel { display: flex !important; }
-</style>
 
 <div style="display: flex; flex-direction: column; min-height: 0.5vh; margin: 0; padding: 0; margin-bottom: 1px;">
 </div>
-    
+
 <div style="flex-grow: 1;"></div>
-    
+
 <footer style="padding: 10px; text-align: center; color: #ffbe82; font-size: 0.8em; 
 width: 100%; box-sizing: border-box; margin-bottom: 0px; margin-top: 90px;">
 
@@ -1265,9 +560,7 @@ width: 100%; box-sizing: border-box; margin-bottom: 0px; margin-top: 90px;">
 <p style="text-align: center; color: #ffbe82; margin-bottom: 0%;">2024 Chribs - All Rights Reserved.</p>
 
 <p><a href="privacy.html" style="color: rgb(250, 114, 114); text-decoration: none; margin-top: 0px;">PRIVACY POLICY</a> | <a href="index.html" style="color: rgb(250, 114, 114); text-decoration: none;">HOME</a></p>
-    
+
 </footer>
-
-
 </body>
 </html>

@@ -351,7 +351,7 @@ video {
         function populateCategories() {
             for (const [categoryId, tag] of Object.entries(categories)) {
                 const imageContainer = document.getElementById(`${categoryId}-images`);
-                const latestImages = getLatestImagesByTag(tag, 6);
+                const latestImages = getLatestImagesByTag(tag, 8);
                 if (latestImages.length === 0) {
                     imageContainer.innerHTML = '<p>Images coming soon.</p>';
                     continue;

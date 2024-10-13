@@ -243,10 +243,6 @@ video {
         height: 250px;
     }
 
-    .hide-on-search {
-    display: none !important;
-}
-
 }
 @media (min-width: 701px) {
     .categories {
@@ -371,43 +367,33 @@ video {
         }
     
         function searchImages() {
-            const query = document.getElementById('searchInput').value.toLowerCase().trim();
-            const resultsContainer = document.getElementById('results');
-            const categoriesContainer = document.getElementById('categories');
-            const latestImagesText = document.querySelector('p[style*="color: #ff6969"]');
-            const message = document.getElementById('message');
-            const loadingOverlay = document.getElementById('loading');
-    
-            resultsContainer.innerHTML = '';
-            message.style.display = 'none';
-            loadingOverlay.style.display = 'flex';
-            loadingOverlay.style.overflow = 'hidden'; 
-    
-            const isMobile = window.innerWidth <= 700;
-    
-            if (isMobile && query !== '') {
-                categoriesContainer.classList.add('mobile-hide-on-search');
-                latestImagesText.classList.add('mobile-hide-on-search');
-            } else {
-                categoriesContainer.classList.remove('mobile-hide-on-search');
-                latestImagesText.classList.remove('mobile-hide-on-search');
-            }
-    
-            if (isMobile && query !== '') {
-                categoriesContainer.classList.add('hide-on-search');
-                latestImagesText.classList.add('hide-on-search');
-            } else {
-                categoriesContainer.classList.remove('hide-on-search');
-                latestImagesText.classList.remove('hide-on-search');
-            }
-    
-            if (query === '') {
-                message.innerText = 'Please enter image Tag/s';
-                message.style.display = 'block';
-                loadingOverlay.style.display = 'none';
-                loadingOverlay.style.overflow = 'hidden'; 
-                return;
-            }
+    const query = document.getElementById('searchInput').value.toLowerCase().trim();
+    const resultsContainer = document.getElementById('results');
+    const categoriesContainer = document.getElementById('categories');
+    const latestImagesText = document.getElementById('latestImagesText');
+    const message = document.getElementById('message');
+    const loadingOverlay = document.getElementById('loading');
+
+    resultsContainer.innerHTML = '';
+    message.style.display = 'none';
+    loadingOverlay.style.display = 'flex';
+    loadingOverlay.style.overflow = 'hidden'; 
+
+    if (query !== '') {
+        categoriesContainer.style.display = 'none';
+        latestImagesText.style.display = 'none';
+    } else {
+        categoriesContainer.style.display = 'flex';
+        latestImagesText.style.display = 'block';
+    }
+
+    if (query === '') {
+        message.innerText = 'Please enter image Tag/s';
+        message.style.display = 'block';
+        loadingOverlay.style.display = 'none';
+        loadingOverlay.style.overflow = 'hidden'; 
+        return;
+    }
     
             let imagesToLoad = 0;
             let imagesLoaded = 0;

@@ -215,5 +215,10 @@ const images = [
     'spiderman shower crying cry scream pain suffer suffering shout pain dramatic nocontext photo onknees defeat giveup.jpeg',
     'spiderman shower sobbing sob crying cry pain suffer suffering pain dramatic nocontext photo defeat giveup.jpeg',
     'meme stupid template hotdog hotdogs anime twitter.jpg',
+    'happy birthday happybirthday chris chribs mrbean gif.gif',
+    'cat apple apples silly meme greed downfall squish.jpg',
+    'hogs tumblr meme dots hog supply trapped.jpg',
+    'lego nightmare fredbear fnaf fnaf4 photo taisei.jpeg',
+    'ps2 playstation playstation2 sky redsky insert disc error creepy.jpeg',
 
 ];

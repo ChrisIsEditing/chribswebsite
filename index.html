@@ -64,18 +64,52 @@
         }
 
         #hello-user {
-            color: salmon;
+            color: rgb(252, 124, 109);
+            text-align: center;
+            font-style: italic;
             margin-bottom: 5px;
-            text-decoration: underline;
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px #fd5f5f, 0 0 30px #fd4b4b, 0 0 40px #fa4c4c;
+            animation: flicker 1s infinite; 
+            margin-top: 15px;
+            
         }
+        @keyframes flicker {
+    0% { opacity: 1; }
+    10% { opacity: 1; }
+    20% { opacity: 0.9; }
+    30% { opacity: 1; }
+    40% { opacity: 1; }
+    50% { opacity: 0.8; }
+    60% { opacity: 0.9; }
+    70% { opacity: 1; }
+    80% { opacity: 0.9; }
+    90% { opacity: 1; }
+    100% { opacity: 1; }
+    
+        }
+
         #how-can-i-assist-you-today {
-            color: rgb(255, 196, 182);
+            color: rgb(211, 187, 181);
             margin-top: 0px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: small;
+            letter-spacing: 5px;
+            text-align: center;
+            text-shadow: 0 0 10px #ffffff;
+        }
+        #titlesep {
+            color: #b98e71;
+            width: 500px;
+
         }
         #buttonsep {
-            color: rgb(255, 169, 89);
+            margin-top: 30px;
+            color: rgb(252, 162, 78);
             font-size: medium;
             font-family: 'Courier New', Courier, monospace;
+            text-shadow: 0 0 10px #ffa24c;
         }
         .button-container {
             display: flex;
@@ -92,7 +126,7 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.3s, color 0.1s;
             text-decoration: none;
             display: inline-block;
             font-family: 'Courier New', Courier, monospace;
@@ -113,9 +147,9 @@
     </style>
 </head>
 <body>
-    <h1 id="hello-user">Hello user!</h1>
-    <h3 id="how-can-i-assist-you-today">How can I assist you today?</h3>
-    <hr style="width: 42%; color: rgb(233, 139, 122);">
+    <h1 id="hello-user">CHRIBSWEBSITE</h1>
+    <h3 id="how-can-i-assist-you-today">DESIGNED FOR THE USER</h3>
+    <hr id="titlesep">
     <br>
 
 
@@ -124,7 +158,7 @@
         <a href="blog.html" class="nav-button">Blog</a>
         <a href="contact.html" class="nav-button">Contact</a>
     </div>
-    <br>
+
 
     <h3 id="buttonsep">/// SUBSYSTEMS ///</h3>
     <div class="button-container">
@@ -139,7 +173,7 @@
         
     </div>
     
-    <br>
+
     <h3 id="buttonsep">/// RESOURCE PAGES ///</h3>
     <div class="button-container">
         <a href="https://github.com/ChrisIsEditing/chribswebsite/issues" class="nav-button">Issue Submissions</a>
@@ -170,5 +204,25 @@
 
         audio.addEventListener('play', fadeIn);
     </script>
+
+<script>
+    function randomFlicker(element) {
+        const flickerInterval = Math.random() * (12000 - 5000) + 5000; 
+        element.style.animation = `flicker ${flickerInterval}ms infinite`;
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+        const neonText = document.querySelector('#hello-user');
+        randomFlicker(neonText);
+    });
+</script>
+        
+        <div style="display: flex; flex-direction: column; min-height: 0.5vh; margin: 0; padding: 0; margin-bottom: 1px;"></div>
+        <div style="flex-grow: 1;"></div>
+        <footer style="padding: 10px; text-align: center; color: #ffbe82; font-size: 0.8em; 
+        width: 100%; box-sizing: border-box; margin-bottom: 0px; margin-top: 10px;">  
+        <hr style="width: 280px; margin-bottom: 10px; color: #333;">
+        <p style="text-align: center; color: #ffbe82; margin-bottom: 0%;">2024 Chribs - All Rights Reserved.</p>
+        <p><a href="privacy.html" style="color: rgb(250, 114, 114); text-decoration: none; margin-top: 0px;">PRIVACY POLICY</a> | <a href="index.html" style="color: rgb(250, 114, 114); text-decoration: none;">HOME</a></p>
+        
 </body>
 </html>

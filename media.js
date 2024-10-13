@@ -206,5 +206,14 @@ const images = [
     'cats cat gif pixelart pixel art halloween autum vertical animated.webp',
     '8ball png transparent 8 ball.png',
     'initiald intial d supra toyota rx7 drift drive driving race racing anime gif closeup.webp',
+    'mickey mouse clubhouse suprise tool mouse disney shitpost.png',
+    'blueji foxy fnaf smoking smoke weed blunt joint j art.jpeg',
+    'pj pjs pajamas bed bedtime sleepy sleep vintage silly sleeping DMs.png',
+    'obama meme no meme lighter bonjue.png',
+    'alastor radiodemon hazbin asexual ace aromantic gas leak love shitpost.jpg',
+    'alastor radiodemon hazbin asexual ace smirk gotcha aromantic no uno card shitpost.jpg',
+    'spiderman shower crying cry scream pain suffer suffering shout pain dramatic nocontext photo onknees defeat giveup.jpeg',
+    'spiderman shower sobbing sob crying cry pain suffer suffering pain dramatic nocontext photo defeat giveup.jpeg',
+    'meme stupid template hotdog hotdogs anime twitter.jpg',
 
 ];

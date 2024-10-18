@@ -317,11 +317,6 @@ video {
         <video id="enlargedVideo" controls style="display: none; max-width: 90%; max-height: 90%;"></video>
     </div>
 
-    <div id="loading" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.5);">
-        <img src="https://chrisisediting.github.io/chribswebsite/Assets/loading.gif" alt="Loading...">
-    </div>
-
-
     <script src="media.js"></script>
     <script>
         const categories = {
@@ -372,12 +367,9 @@ video {
     const categoriesContainer = document.getElementById('categories');
     const latestImagesText = document.getElementById('latestImagesText');
     const message = document.getElementById('message');
-    const loadingOverlay = document.getElementById('loading');
 
-    resultsContainer.innerHTML = '';
+    resultsContainer.innerHTML = '';  // Remove loading text completely
     message.style.display = 'none';
-    loadingOverlay.style.display = 'flex';
-    loadingOverlay.style.overflow = 'hidden'; 
 
     if (query !== '') {
         categoriesContainer.style.display = 'none';
@@ -386,45 +378,57 @@ video {
         categoriesContainer.style.display = 'flex';
         latestImagesText.style.display = 'block';
     }
-
     if (query === '') {
         message.innerText = 'Please enter image Tag/s';
         message.style.display = 'block';
-        loadingOverlay.style.display = 'none';
-        loadingOverlay.style.overflow = 'hidden'; 
+        resultsContainer.innerHTML = ''; 
         return;
     }
     
-            let imagesToLoad = 0;
-            let imagesLoaded = 0;
-    
-            function checkAllImagesLoaded() {
-                if (imagesLoaded === imagesToLoad) {
-                    setTimeout(() => {
-                        loadingOverlay.style.display = 'none';
-                    }, 1); 
-                }
-            }
-    
-            function createImageElement(img) {
+    let imagesToLoad = 0;
+    let imagesLoaded = 0;
+
+    function checkAllImagesLoaded() {
+    if (imagesLoaded === imagesToLoad) {
+        console.log("All images loaded!");
+    }
+}
+
+
+    function createImageElement(img) {
     const imgBox = document.createElement('div');
     imgBox.className = 'image-box';
+    const loadingText = document.createElement('p');
+    loadingText.textContent = "Loading...";
+    loadingText.style.color = '#ff6969';
+    imgBox.appendChild(loadingText); 
+
+    const filename = document.createElement('p');
+    filename.textContent = img;
+    filename.style.color = '#666';
     
     const imgElement = document.createElement('img');
+    imgElement.style.display = 'none'; 
     imgElement.src = `Media/${encodeURIComponent(img)}`;
     imgElement.alt = img;
     imgElement.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
+    
     imgElement.onload = () => {
+        loadingText.remove();
         imagesLoaded++;
+        filename.remove();
+        imgElement.style.display = 'block'; 
         checkAllImagesLoaded();
     };
+    
     imgElement.onerror = () => {
+        loadingText.textContent = 'Failed to load image'; 
         imagesLoaded++;
         checkAllImagesLoaded();
     };
     
     imgBox.appendChild(imgElement);
-  
+    
     const overlay = createImageTypeOverlay(img);
     imgBox.appendChild(overlay);
     
@@ -432,50 +436,46 @@ video {
     imagesToLoad++;
 }
 
-            function matchTags(img, searchTags) {
-                const tags = extractTags(img);
-                return searchTags.every(tag => tags.includes(tag));
-            }
-    
-            const searchTags = query.split(' ');
-    
-            if (query === '/all') {
-                const allImages = images.slice().reverse();
-                allImages.forEach(createImageElement);
-    
-                if (allImages.length === 0) {
-                    resultsContainer.innerHTML = '<p>No images found! :(</p>';
-                    loadingOverlay.style.display = 'none';
-                }
-            } else {
-                const filteredImages = images.filter(img => matchTags(img, searchTags)).reverse();
-    
-                filteredImages.forEach(createImageElement);
-    
-                if (filteredImages.length === 0) {
-                    resultsContainer.innerHTML = '<p>No images found! :(</p>';
-                    loadingOverlay.style.display = 'none';
-                }
-            }
-    
-            if (imagesToLoad === 0) {
-                loadingOverlay.style.display = 'none';
-            }
+    function matchTags(img, searchTags) {
+        const tags = extractTags(img);
+        return searchTags.every(tag => tags.includes(tag));
+    }
 
-            return imgBox;
+    const searchTags = query.split(' ');
+
+    if (query === '/all') {
+        const allImages = images.slice().reverse();
+        allImages.forEach(createImageElement);
+
+        if (allImages.length === 0) {
+            resultsContainer.innerHTML = '<p>No images found! :(</p>';
         }
+    } else {
+        const filteredImages = images.filter(img => matchTags(img, searchTags)).reverse();
+        filteredImages.forEach(createImageElement);
+
+        if (filteredImages.length === 0) {
+            resultsContainer.innerHTML = '<p>No images found! :(</p>';
+        }
+    }
+
+    if (imagesToLoad === 0) {
+    }
+
+}
     
         function searchCategory(category) {
     const resultsContainer = document.getElementById('results');
     const categoriesContainer = document.getElementById('categories');
     const latestImagesText = document.getElementById('latestImagesText');
-    
-    resultsContainer.innerHTML = '';
-    
+
+    resultsContainer.innerHTML = '<p style="color: #ff6969; font-size: 1.2em;">Loading images...</p>';
     categoriesContainer.style.display = 'none';
     latestImagesText.style.display = 'none';
 
     const latestImages = getLatestImagesByTag(categories[category]);
+    resultsContainer.innerHTML = ''; 
+    
     latestImages.forEach(img => {
         const imgBox = document.createElement('div');
         imgBox.className = 'image-box';
@@ -492,7 +492,6 @@ video {
     if (latestImages.length === 0) {
         resultsContainer.innerHTML = '<p>No images in this category :(.</p>';
     }
-
 }
 
 function showCategories() {

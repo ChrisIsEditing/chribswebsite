@@ -341,5 +341,14 @@ const images = [
     'AlphaRecdyt goku shitpost fortnite.jpeg',
     'dodo photo meme silly yes please please?.png',
     'phone anime ringing 90s gif.webp',
+    'trickortreat halloween mini pumpkins peppers shitpost.jpeg',
+    'allyoucaneat monkey watch security watching buffet eat customers shitpost 196.jpeg',
+    'dirtyhandsprinting skull fire flames eyes burn burning red art weed 420 smoking.jpg',
+    'skeleton spooky halloween abstract gif art.gif',
+    'corpsebride skeletons dance dancing gif movie.webp',
+    'jim helpert theoffice shocked uhoh uh oh shit fuck worried concern concerned gif.webp',
+    'fast&thefurious fastandthefurious tokyo drift tokyodrift cars driving racing race movie gif.webp',
+    'shrek shrek2 donkey mexican food my favourite favorite gif.webp',
+    "darknight joker no I'm im not gif movie.gif",
 
 ];

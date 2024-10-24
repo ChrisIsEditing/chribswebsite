@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     searchButton.addEventListener("click", searchSongs);
-    commandsButton.addEventListener("click", commandsButton);
+    commandsButton.addEventListener("click", showCommandsPopup);
     nextButton.addEventListener("click", playNextInQueue);
     downloadButton.addEventListener("click", downloadCurrentSong);
 });
@@ -30,6 +30,7 @@ function loadSongs() {
                 cover_url: item.cover_url
             }));
             console.log(songs);
+            songsLoaded = true; //Songs Loaded 
         })
         .catch(error => console.error('Error loading songs:', error));
 }
@@ -121,7 +122,7 @@ function playSelectedSong(queueIndex) {
 
 
 function downloadCurrentSong() {
-    if (currentSongIndex === -1) {
+    if (currentSongIndex === -1) { 
         console.log("No song is currently playing.");
         return;
     }
@@ -134,186 +135,119 @@ function downloadCurrentSong() {
     a.click();
 }
 
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1)); //Shuffle Math
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
 function searchSongs() {
     const query = document.getElementById("searchInput").value.toLowerCase();
-
-    if (query === "/random") {
-        
+    
+    function processCommand(songList = null, maxSongs = Infinity) {
         const filteredSongs = songs.filter((song, index) => index !== currentSongIndex);
-        const shuffledSongs = filteredSongs.sort(() => 0.4 - Math.random()).slice(0, 30);
-
-       
-        queue.length = 0;
-
-        shuffledSongs.forEach(song => addToQueue(song, songs.indexOf(song)));
-
-        if (shuffledSongs.length > 0) {
-            
-            if (currentSongIndex === -1) {
-                playSong(shuffledSongs[0], songs.indexOf(shuffledSongs[0]));
-            }
-        }
-        return;
-    }
-
-
-    if (query === "/clear") {
+        let selectedSongs;
         
-        queue.length = 0;
-        console.log("Queue cleared.");
-        updateQueueDisplay();
-        return;
+        if (songList) {
+            selectedSongs = filteredSongs.filter(song => songList.includes(song.title.toLowerCase()));
+        } else {
+            selectedSongs = shuffleArray([...filteredSongs]).slice(0, maxSongs);
+        }
+
+        if (currentSongIndex === -1 && selectedSongs.length > 0) {
+            const firstSong = selectedSongs[0];
+            playSong(firstSong, songs.indexOf(firstSong));
+            selectedSongs.slice(1).forEach(song => addToQueue(song, songs.indexOf(song)));
+        } else {
+            selectedSongs.forEach(song => addToQueue(song, songs.indexOf(song)));
+        }
     }
 
-    if (query === "/party") {
-        
-        const filteredSongs = songs.filter((song, index) => index !== currentSongIndex);
-        const shuffledSongs = filteredSongs.sort(() => 0.4 - Math.random()).slice(0, 90);
+    switch (query) {
+        case "/random":
+            processCommand(null, 30);
+            return;
 
-       
-        queue.length = 0;
+        case "/party":
+            processCommand(null, 90);
+            return;
 
-        shuffledSongs.forEach(song => addToQueue(song, songs.indexOf(song)));
+        case "/clear":
+            queue.length = 0;
+            updateQueueDisplay();
+            return;
 
-        if (shuffledSongs.length > 0) {
-            
-            if (currentSongIndex === -1) {
-                playSong(shuffledSongs[0], songs.indexOf(shuffledSongs[0]));
-            }
-        }
-        return;
+        case "/all":
+            showLoadingGif();
+            processCommand(null, Infinity);
+            return;
+
+        case "/fnaf":
+            const fnafSongs = [
+                "five nights at freddy's", 
+                "you can't hide", 
+                "join us for a bite", 
+                "i got no time",
+                "stay calm",
+                "stuck inside",
+                "it's me",
+                "it's been so long",
+                "they'll find you",
+                "this comes from inside"
+            ];
+            processCommand(fnafSongs);
+            return;
+
+        case "/chribs":
+            const chribsSongs = [
+                "onions",
+                "elephant",
+                'cells'
+
+            ];
+            processCommand(chribsSongs);
+            return;
+
+            case "/chribs":
+                const testSongs = [
+                    "scarlet fire", 
+                ];
+                processCommand(testSongs);
+                return;
     }
 
-    if (query === "/chribs") {
-        const ChribsSongs = [
-            "onions", 
-            "elephant", 
-
-        ];
-
-
-        const matchingChribsSongs = songs
-            .filter(song => ChribsSongs.includes(song.title.toLowerCase()) &&
-                            songs.indexOf(song) !== currentSongIndex);
-
-        queue.length = 0;
-
-        matchingChribsSongs.forEach(song => addToQueue(song, songs.indexOf(song)));
-
-        if (matchingChribsSongs.length > 0) {
-           
-            if (currentSongIndex === -1) {
-                playSong(matchingChribsSongs[0], songs.indexOf(matchingChribsSongs[0]));
-            }
-        }
-        return;
-    }
-
-
-    if (query === "/fnaf") {
-        const fnafSongs = [
-            "five nights at freddy's", 
-            "you can't hide", 
-            "join us for a bite", 
-            "i got no time",
-            "stay calm",
-            "stuck inside",
-            "it's me",
-            "it's been so long",
-            "they'll find you",
-            "this comes from inside",
-        ];
-
-
-        const matchingFnafSongs = songs
-            .filter(song => fnafSongs.includes(song.title.toLowerCase()) &&
-                            songs.indexOf(song) !== currentSongIndex);
-
-        queue.length = 0;
-
-        matchingFnafSongs.forEach(song => addToQueue(song, songs.indexOf(song)));
-
-        if (matchingFnafSongs.length > 0) {
-           
-            if (currentSongIndex === -1) {
-                playSong(matchingFnafSongs[0], songs.indexOf(matchingFnafSongs[0]));
-            }
-        }
-        return;
-    }
-
-    function showLoadingGif() {
-        const loadingOverlay = document.getElementById('loadingOverlay');
-        loadingOverlay.style.display = 'flex';
-    
-        
-        setTimeout(() => {
-          loadingOverlay.style.display = 'none';
-        }, 4000);
-      }
-    
-      if (query === "/all") {
-        showLoadingGif();
-    
-        const filteredSongs = songs.filter((song, index) => index !== currentSongIndex);
-    
-        queue.length = 0;
-    
-        filteredSongs.forEach(song => addToQueue(song, songs.indexOf(song)));
-    
-        if (filteredSongs.length > 0) {
-          if (currentSongIndex === -1) {
-            playSong(filteredSongs[0], songs.indexOf(filteredSongs[0]));
-          }
-        }
-        return;
-      }
-    
     const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
 
     if (matchingSongs.length > 0) {
         const songIndex = songs.findIndex(song => song.title === matchingSongs[0].title);
         const foundSong = matchingSongs[0];
     
-        if (currentSongIndex !== -1 && songIndex !== currentSongIndex) {
+        if (currentSongIndex === -1) {
+            playSong(foundSong, songIndex);
+        } else if (songIndex !== currentSongIndex) {
             addToQueue(foundSong, songIndex);
             console.log(`Added "${foundSong.title}" to the queue`);
-        } else {
-            playSong(foundSong, songIndex);
         }
     } else {
-        const matchingSongs = songs.filter(song => song.title.toLowerCase().includes(query));
+        const errorMessage = document.getElementById("errorMessage");
+        errorMessage.textContent = "I couldn't find that song :(";
+        errorMessage.style.display = "flex";
+        errorMessage.classList.remove("slide-out");
+        errorMessage.classList.add("slide-in");
 
-        if (matchingSongs.length > 0) {
-            const songIndex = songs.findIndex(song => song.title === matchingSongs[0].title);
-            const foundSong = matchingSongs[0];
-        
-            if (currentSongIndex !== -1 && songIndex !== currentSongIndex) {
-                addToQueue(foundSong, songIndex);
-                console.log(`Added "${foundSong.title}" to the queue`);
-            } else {
-                playSong(foundSong, songIndex);
-            }
-        } else {
-            console.log("No matching songs found."); 
-            const errorMessage = document.getElementById("errorMessage");
-            errorMessage.textContent = "I couldn't find that song :(";
-            errorMessage.style.display = "flex"; 
-            errorMessage.classList.remove("slide-out"); 
-            errorMessage.classList.add("slide-in"); 
-        
-            setTimeout(() => {
-                errorMessage.classList.remove("slide-in"); 
-                errorMessage.classList.add("slide-out"); 
-            }, 3000); 
-        
-            setTimeout(() => {
-                errorMessage.style.display = "none"; 
-                errorMessage.classList.remove("slide-out"); 
-            }, 3500); 
-        }
+        setTimeout(() => {
+            errorMessage.classList.remove("slide-in");
+            errorMessage.classList.add("slide-out");
+        }, 3000);
+
+        setTimeout(() => {
+            errorMessage.style.display = "none";
+            errorMessage.classList.remove("slide-out");
+        }, 3500);
     }
-}           
+}
 document.getElementById("searchInput").addEventListener("keydown", function(event) {
     if (event.key === 'Enter') {
         document.getElementById("searchButton").click();

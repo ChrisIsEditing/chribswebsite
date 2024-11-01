@@ -377,5 +377,9 @@ const images = [
     'no rat skeleton bone bones cross x nocontext.jpg',
     'theshining shining movie gif blood elevator iconic slowmo.webp',
     'internet archive servers server internetarchive jasonscott selfie photo wideangle.jpeg',
+    'smoking cigarette put out ash goth gif.webp',
+    'arcade game gameplay pacman retro gif playing.webp',
+    'mtv musictelevison halloween shirt spookyseason jackolantern 2000s.jpg',
+    'fnaf 2 fnafmovie fnaf2 fnaf2movie first day filming suit meme.png',
 
 ];

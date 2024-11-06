@@ -381,5 +381,6 @@ const images = [
     'arcade game gameplay pacman retro gif playing.webp',
     'mtv musictelevison halloween shirt spookyseason jackolantern 2000s.jpg',
     'fnaf 2 fnafmovie fnaf2 fnaf2movie first day filming suit meme.png',
+    'garfield cat bell shitpost 196 nocontext.png',
 
 ];

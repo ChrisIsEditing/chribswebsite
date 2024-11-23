@@ -122,18 +122,47 @@ function playSelectedSong(queueIndex) {
 
 
 function downloadCurrentSong() {
+
     if (currentSongIndex === -1) { 
         console.log("No song is currently playing.");
         return;
     }
 
     const song = songs[currentSongIndex];
-    const downloadUrl = song.download_url;
-    const a = document.createElement("a");
-    a.href = downloadUrl;
-    a.download = song.title + ".mp3";
-    a.click();
+    if (!song || !song.download_url) {
+        console.error("Invalid song data");
+        return;
+    }
+
+    try {
+
+        const a = document.createElement("a");
+        a.href = song.download_url;
+        a.download = `${song.title}.mp3`;
+        
+        document.body.appendChild(a);
+        
+        // Trigger download
+        a.click();
+        
+        // Cleanup
+        setTimeout(() => {
+            document.body.removeChild(a);
+        }, 100);
+    } catch (error) {
+        console.error("Error downloading song:", error);
+    }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const downloadButton = document.getElementById("downloadButton");
+    if (downloadButton) {
+        downloadButton.addEventListener("click", downloadCurrentSong);
+    } else {
+        console.error("Download button not found in the DOM");
+    }
+});
+
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {

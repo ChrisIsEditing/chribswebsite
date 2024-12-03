@@ -15,6 +15,13 @@ document.addEventListener('DOMContentLoaded', function () {
     downloadButton.addEventListener("click", downloadCurrentSong);
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    const nextButton = document.getElementById("nextButton");
+    if (nextButton) {
+        nextButton.addEventListener("click", playNextInQueue);
+    }
+});
+
 const keysPressed = new Set();
 let songs = [];
 const queue = [];
@@ -53,7 +60,7 @@ function playNextInQueue() {
         return;
     }
 
-    const nextSong = queue.shift();
+    const nextSong = queue.shift(); 
     if (nextSong) {
         playSong(nextSong.song, nextSong.index);
     }

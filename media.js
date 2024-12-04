@@ -406,5 +406,12 @@ const images = [
     'femboy gay homo homsexual 196 meme liberal liberals homosex uwu.webp',
     'house autum sunset aesthetic peaceful old woods forrest photo 1.jpg',
     'house autum sunset aesthetic peaceful old woods forrest photo 2.jpg',
+    'jagermister jager therapy shitpost 196 drink.jpg',
+    'cube cubeman stonks man 196 nocontext.jpg',
+    'daffy duck lowres nocontext compressed ultracompressed whatthefuckdoievencallthis.jpg',
+    'blahaj shark ikea pile sharks plushies plushie 196 photo.jpg',
+    'slam adman savage mythbusters oogabooga green smash tinfoil ball lowres gif.gif',
+    'pipebomb bomb pipe anime miku shitpost 196 so cool explosive.jpg',
+    'cults smoking middle finger gif nocontext madeline brian.gif',
 
 ];

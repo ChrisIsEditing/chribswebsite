@@ -413,5 +413,7 @@ const images = [
     'slam adman savage mythbusters oogabooga green smash tinfoil ball lowres gif.gif',
     'pipebomb bomb pipe anime miku shitpost 196 so cool explosive.jpg',
     'cults smoking middle finger gif nocontext madeline brian.gif',
+    'i dont fuck cutoff shitpost asexual ace acememes pokemon 196.jpg',
+    'children died missing kids bodies fnaf fnaf1 poster news gameplay spooky.jpg',
 
 ];

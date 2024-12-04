@@ -11,3 +11,18 @@
 <div class="separator"></div>
 <br>
 </div>
+
+
+
+/ Return to previous page
+
+<script>
+    document.getElementById("page-title").onclick = function() {
+        let previousPage = document.referrer;
+        if (previousPage) {
+            window.location.href = previousPage;
+        } else {
+            alert("No previous page found.");
+        }
+    };
+</script>

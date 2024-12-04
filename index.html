@@ -147,7 +147,7 @@
     </style>
 </head>
 <body>
-    <h1 id="hello-user">CHRIBSWEBSITE</h1>
+    <h1 id="hello-user" id="page-title">CHRIBSWEBSITE</h1>
     <h3 id="how-can-i-assist-you-today">DESIGNED FOR THE USER</h3>
     <hr id="titlesep">
     <br>
@@ -214,6 +214,16 @@
         const neonText = document.querySelector('#hello-user');
         randomFlicker(neonText);
     });
+</script>
+<script>
+    document.getElementById("page-title").onclick = function() {
+        let previousPage = document.referrer;
+        if (previousPage) {
+            window.location.href = previousPage;
+        } else {
+            alert("No previous page found.");
+        }
+    };
 </script>
         
         <div style="display: flex; flex-direction: column; min-height: 0.5vh; margin: 0; padding: 0; margin-bottom: 1px;"></div>

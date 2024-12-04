@@ -25,6 +25,7 @@
             position: sticky;
             margin-bottom: 20px;
             text-align: center;
+            cursor: pointer;
         }
 
         .description {
@@ -67,7 +68,7 @@
     </style>
 </head>
 <body>
-    <h1>S.Y.S.T.E.M. CLASS STRUCTURES</h1>
+    <h1 id="page-title">S.Y.S.T.E.M. CLASS STRUCTURES</h1>
     
 
     <div class="description">
@@ -86,5 +87,17 @@
         <p>Reserved. - Designed for programs that should do one simple task, and remain focused on it.</p>
         <p>(If program does only one task, this label should be applied.)</p>
     </div>
+
+    <script>
+        document.getElementById("page-title").onclick = function() {
+            let previousPage = document.referrer;
+            if (previousPage) {
+                window.location.href = previousPage;
+            } else {
+                alert("No previous page found.");
+            }
+        };
+    </script>
+    
 </body>
 </html>

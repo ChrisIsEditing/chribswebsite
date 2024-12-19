@@ -417,6 +417,17 @@ const images = [
     'children died missing kids bodies fnaf fnaf1 poster news gameplay spooky.jpg',
     'cat listen listening music kitten cute meirl blackandwhite monochrome photo research.webp',
     'grandma granny mrbeast wall sticker inhaler 2016 nocontext promoimage image old wtf oldyoutube 2016youtube.jpg',
-    
+    'candy sweets halloween trickortreat gif lowres.webp',
+    'vlc media player cone 196 photo nocontext warrior.jpg',
+    'happy smile axolotl axolotol silly meirl lowres photo underwater 196.jpg',
+    'do not tap on the glass scare scary donuts doughnuts doughnut donut silly photo 196.jpg',
+    'we got it hot chocolate train conducter conductor polar express rage movie singing.png',
+    'we got it hot chocolate train conducter conductor polar express rage movie singing tumblr comments.png',
+    'we got it hot chocolate train conducter conductor polar express dancing extremeangle.jpg',
+    'cat finger eat munch monch bite treat nottreat lowres photo.jpg',
+    'colourful dice.jpg',
+    'fingers hands hair photot haircut barber crazy nocontext.jpg',
+    'william defoe oranges blank rotten spoiled nocontext photo actor.webp',
+    'get well some day someday baloon balloon heart stanley parable.jpg',
 
 ];

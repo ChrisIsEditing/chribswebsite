@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SILLY GAME!!!</title>
+    <style>
+        body {
+            background-color: rgb(10, 10, 10);
+            color: #d8d8d8;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            margin: 0;
+        }
+
+        h1 {
+            color: #ff6b6b;
+            font-size: 40px;
+            margin: 20px 0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .game-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .prompt {
+            background-color: black;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.5em;
+            margin: 20px auto;
+            color: #ffa07a;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .control-panel {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #fa6464;
+            color: rgb(22, 22, 22);
+            cursor: pointer;
+            font-weight: 800;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .mode-select {
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: 1px solid #ff6b6b;
+            border-radius: 5px;
+        }
+
+        .special-rules {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .rule-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 30px;  
+    }
+    .game-container {
+        padding: 10px;  
+    }
+    .prompt {
+        font-size: 1.2em; 
+        padding: 10px; 
+    }
+    .control-panel {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    button {
+        width: 75%;  
+        padding: 12px;
+        margin-top: 2%;
+    }
+    .mode-select {
+        width: 80%;  
+        padding: 12px;
+    }
+    .special-rules {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    .special-rules label {
+    display: block; 
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+    .rule-toggle {
+        font-size: 1.1em;
+    }
+}
+
+ @media (max-width: 600px) {
+    .control-panel {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .special-rules {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+    </style>
+</head>
+<body>
+    <h1>🎲 SILLY GAME 🎲</h1>
+    <p style="color: #ffa07a; margin-bottom: 0%; font-style: italic;">The Classic Chribs Drinking Shitshow!</p>
+    <p style="color: red; margin-top: 1px; font-size: small; font-family: Impact; font-weight: 600;">NO UNDER 18s</p>
+    <div class="game-container">
+        <div class="control-panel">
+            <select class="mode-select" id="gameMode">
+                <option value="casual">Casual Mode</option>
+                <option value="party">Party Mode</option>
+                <option value="extreme">Extreme Mode</option>
+                <option value="nsfw">NSFW Mode</option>
+            </select>
+            <button onclick="getPrompt()">Next Challenge!</button>
+        </div>
+        <div class="special-rules">
+                <input type="checkbox" name="rule" id="doublePoints" value="doublePoints"> Double Drinks
+            </label>
+            <label class="rule-toggle">
+                <input type="checkbox" name="rule" id="cascadingDrinks" value="cascadingDrinks"> Cascading Drinks
+            </label>
+            <label class="rule-toggle">
+                <input type="checkbox" name="rule" id="teamMode" value="teamMode"> Team Mode
+            </label>
+            <label class="rule-toggle" style="text-decoration: line-through;">
+                
+            </label>
+        </div>
+        
+        <div class="prompt" id="promptDisplay">
+            Click 'Next Challenge' to start!
+        </div>
+        <div>
+
+    </div>
+    </div>
+        <script type="module">
+        import { gameQuestions, gameModes, specialRules, modeRules } from './drinkgame.js';
+
+        let timer;
+
+        window.getPrompt = function() {
+            const mode = document.getElementById('gameMode').value;
+            const availableCategories = gameModes[mode];
+            let allPrompts = [];
+
+            availableCategories.forEach(category => {
+                allPrompts = allPrompts.concat(gameQuestions[category]);
+            });
+
+            const randomPrompt = allPrompts[Math.floor(Math.random() * allPrompts.length)];
+            const promptDisplay = document.getElementById('promptDisplay');
+            const rules = modeRules[mode];
+            let modifiedPrompt = randomPrompt;
+
+            if (rules.timeLimit) {
+                clearTimeout(timer);
+                modifiedPrompt += ` (${rules.timeLimit} SECOND TO COMPLETE!)`;
+                timer = setTimeout(() => {
+                    promptDisplay.textContent += "\nTIME'S UP! Drink! " + rules.challengePenalty + " times!";
+                }, rules.timeLimit * 1000);
+            }
+            if (!rules.skipAllowed) {
+                modifiedPrompt += " (No skips allowed!)";
+            }
+            modifiedPrompt = modifiedPrompt.replace(/drink[s]?/gi, `drink ${rules.drinkAmount} times`);
+
+            if (document.getElementById('doublePoints').checked) {
+                modifiedPrompt += " (DOUBLE DRINKS!)";
+            }
+            if (document.getElementById('cascadingDrinks').checked) {
+                modifiedPrompt += " (Cascade to the left!)";
+            }
+            if (document.getElementById('teamMode').checked) {
+                modifiedPrompt += " (Team drinks together!)";
+            }
+
+            // Animation
+            promptDisplay.style.opacity = 0;
+            setTimeout(() => {
+                promptDisplay.textContent = modifiedPrompt;
+                promptDisplay.style.opacity = 1;
+            }, 200);
+        };
+
+        const promptDisplay = document.getElementById('promptDisplay');
+        promptDisplay.style.transition = 'opacity 0.2s ease-in-out';
+    </script>
+
+<div id="ageConfirmation" style="display: block; text-align: center; background-color: rgba(0, 0, 0, 0.95); padding: 20px; position: fixed; top: 0; left: 0; width: 100%; height: 100%; color: white; display: flex; justify-content: center; align-items: center; flex-direction: column; box-sizing: border-box;">
+    <h2 style="font-size: 1.2em; margin-bottom: 15px; max-width: 90%; word-wrap: break-word;">You must be 18 or older to play Silly Game. Are you?</h2>
+    <div style="width: 100%; max-width: 350px;">
+    <button onclick="confirmAge()" style="width: 100%; padding: 12px; font-size: 1em; margin-bottom: 8px; background-color: #28a745; color: white; border: none; border-radius: 5px;">Yes, I am 18 or older</button>
+    <button onclick="denyAge()" style="width: 100%; padding: 12px; font-size: 1em; background-color: #dc3545; color: white; border: none; border-radius: 5px;">No, I'm under 18</button>
+</div>
+</div>
+<script>
+    function confirmAge() {
+        document.getElementById('ageConfirmation').style.display = 'none'; 
+    }
+    function denyAge() {
+        window.location.href = 'index.html'; 
+    }
+</script>
+</body>
+</html>

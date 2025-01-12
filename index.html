@@ -165,6 +165,8 @@
 
         <a href="music.html" class="nav-button">Music</a>
         <a href="books.html" class="nav-button">Books</a>
+        <a href="passtest.html" class="nav-button">PastTest</a>
+
         
         <a href="iss.html" class="nav-button">ISS Tracker</a>
         <a href="media.html" class="nav-button">Media</a>
@@ -180,29 +182,6 @@
     </div>
 
     <div id="footer"></div>
-
-    <audio id="background-music" src="Assets/evolve.mp3" autoplay loop></audio>
-    <script>
-        const audio = document.getElementById('background-music');
-        audio.volume = 0;  
-        let volume = 0;
-        const fadeDuration = 7000;  
-        const intervalTime = 600;   
-        const fadeStep = intervalTime / fadeDuration;  
-
-        function fadeIn() {
-            const fadeInterval = setInterval(() => {
-                if (volume < 0.5) {
-                    volume += fadeStep;  
-                    audio.volume = Math.min(volume, 0.4); 
-                } else {
-                    clearInterval(fadeInterval);  
-                }
-            }, intervalTime);
-        }
-
-        audio.addEventListener('play', fadeIn);
-    </script>
 
 <script>
     function randomFlicker(element) {

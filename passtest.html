@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="https://chrisisediting.github.io/chribswebsite/Assets/keyasset.png" type="image/png">
+<title>PassTest</title>
+<style>
+        .password-container {
+            background-color: rgb(10, 10, 10);
+            color: #d8d8d8;
+            font-family: 'Courier New', Courier, monospace;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .password-input {
+            width: 80%;
+            padding: 12px;
+            margin: 20px 0;
+            background-color: #333;
+            border: 1px solid #ff6b6b;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+        }
+        .strength-meter {
+            height: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        .strength-fill {
+            height: 100%;
+            width: 0%;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+        }
+        .feedback {
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .requirements {
+            text-align: left;
+            margin: 20px auto;
+            max-width: 80%;
+            font-size: 14px;
+        }
+        .requirement {
+            margin: 5px 0;
+            transition: color 0.3s ease;
+        }
+        .met {
+            color: #4CAF50;
+        }
+        .unmet {
+            color: #ff6b6b;
+        }
+        h2 {
+            color: #ff6b6b;
+            font-size: 28px;
+            margin: 10px 0;
+            font-family:monospace;
+            font-weight: 500;
+            font-style: italic;
+        }
+</style>
+</head>
+<body style="background-color: #111;">
+    <div class="password-container">
+        <h2>_P@ssT3st!_</h2>
+        <input type="password" class="password-input" id="passwordInput" placeholder="Enter your password" autocomplete="off">
+        <div class="strength-meter">
+            <div class="strength-fill" id="strengthFill"></div>
+        </div>
+        <div class="feedback" id="feedback"></div>
+        <div class="requirements" id="requirements">
+            <div class="requirement" id="length">• Minimum 8 characters</div>
+            <div class="requirement" id="uppercase">• Contains uppercase letter</div>
+            <div class="requirement" id="lowercase">• Contains lowercase letter</div>
+            <div class="requirement" id="number">• Contains number</div>
+            <div class="requirement" id="special">• Contains special character</div>
+            <div class="requirement" id="common">• Avoids common patterns</div>
+        </div>
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById('passwordInput');
+        const strengthFill = document.getElementById('strengthFill');
+        const feedback = document.getElementById('feedback');
+        
+        const commonPatterns = [
+            'password', '123456', 'qwerty', 'admin', 'letmein', 'welcome',
+            'monkey', 'dragon', 'master', 'hello', 'name', 'test', 'love'
+        ];
+
+        const specialChars = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+        const uncommonLetters = 'jqxzwk';
+
+        function updateStrength(password) {
+            let score = 0;
+            let maxScore = 100;
+
+            if (password.length >= 8) {
+                score += 20;
+                document.getElementById('length').classList.add('met');
+            } else {
+                document.getElementById('length').classList.remove('met');
+            }
+
+            if (/[A-Z]/.test(password)) {
+                score += 10;
+                document.getElementById('uppercase').classList.add('met');
+            } else {
+                document.getElementById('uppercase').classList.remove('met');
+            }
+
+            if (/[a-z]/.test(password)) {
+                score += 10;
+                document.getElementById('lowercase').classList.add('met');
+            } else {
+                document.getElementById('lowercase').classList.remove('met');
+            }
+
+            if (/[0-9]/.test(password)) {
+                score += 10;
+                document.getElementById('number').classList.add('met');
+            } else {
+                document.getElementById('number').classList.remove('met');
+            }
+
+            if (new RegExp(`[${specialChars}]`).test(password)) {
+                score += 15;
+                document.getElementById('special').classList.add('met');
+            } else {
+                document.getElementById('special').classList.remove('met');
+            }
+
+            let hasCommonPattern = false;
+            commonPatterns.forEach(pattern => {
+                if (password.toLowerCase().includes(pattern)) {
+                    hasCommonPattern = true;
+                }
+            });
+
+            if (!hasCommonPattern) {
+                score += 15;
+                document.getElementById('common').classList.add('met');
+            } else {
+                score -= 20;
+                document.getElementById('common').classList.remove('met');
+            }
+
+            [...uncommonLetters].forEach(letter => {
+                if (password.toLowerCase().includes(letter)) {
+                    score += 5;
+                }
+            });
+
+            if (password.length > 12) score += 10;
+            if (password.length > 16) score += 10;
+            if (/(.)\1{2,}/.test(password)) score -= 10;
+
+            score = Math.max(0, Math.min(score, maxScore));
+
+            strengthFill.style.width = `${score}%`;
+
+            if (score < 40) {
+                strengthFill.style.backgroundColor = '#ff4444';
+                feedback.style.color = '#ff4444';
+                feedback.textContent = 'Weak password! Consider making it stronger.';
+            } else if (score < 70) {
+                strengthFill.style.backgroundColor = '#ffa700';
+                feedback.style.color = '#ffa700';
+                feedback.textContent = 'Moderate password. Could be improved!';
+            } else {
+                strengthFill.style.backgroundColor = '#00C851';
+                feedback.style.color = '#00C851';
+                feedback.textContent = 'Strong password! Good job!';
+            }
+        }
+        
+        passwordInput.addEventListener('input', (e) => {
+            updateStrength(e.target.value);
+        });
+</script>
+</body>
+</html>

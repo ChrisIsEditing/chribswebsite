@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://chrisisediting.github.io/chribswebsite/Assets/media.png" type="image/png">
     <title>Media</title>
+    <script src="media.js"></script>
     <style>
         body {
             background-color: #0c0c0c;
@@ -56,31 +57,10 @@
             font-weight: bold;
             font-size: 1rem;
         }
-        .media-item.video {
-            cursor: pointer;
-            max-width: 100%;
-            height: auto;
-            margin: 10px;
-            border-radius: 5px;
-        }
 
         .search-button:hover {
             background-color: hotpink;
             border-color: hotpink;
-        }
-        
-        .image-type-overlay {
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            font-weight: 600;
-            padding: 5px 8px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            z-index: 10; 
-            pointer-events: none; 
         }
 
         .categories {
@@ -90,7 +70,7 @@
             padding: 0 20px;
             margin-bottom: 30px;
             display: flex;
-            flex-wrap: wrap; 
+            flex-wrap: wrap;
             justify-content: center;
             align-items: flex-start;
         }
@@ -102,6 +82,8 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
             transition: transform 0.3s, background-color 0.3s;
             cursor: pointer;
+            width: 220px;
+            margin: 10px;
         }
 
         .category-box:hover {
@@ -136,52 +118,6 @@
             transform: scale(1.1);
         }
 
-        .video-box {
-    position: relative;
-    width: 310px;
-    height: 300px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    background-color: #222;
-    cursor: pointer;
-}
-
-.play-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.play-button::after {
-    content: '';
-    border-style: solid;
-    border-width: 15px 0 15px 25px;
-    border-color: transparent transparent transparent #222;
-}
-
-video {
-    width: 90%;
-    height: 90%;
-    object-fit: cover;
-}
-
-@media (max-width: 700px) {
-    .video-box {
-        width: 280px;
-        height: 250px;
-    }
-}
-
-
         .image-container {
             display: flex;
             flex-wrap: wrap;
@@ -190,26 +126,71 @@ video {
             margin-top: 20px;
         }
 
-        .image-box {
+        .image-box, .video-box {
             width: 310px;
             height: 300px;
             border-radius: 10px;
             overflow: hidden;
             position: relative;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             background-color: #222;
             cursor: pointer;
         }
 
-        .image-box img {
+        .image-box img, .video-thumbnail {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .play-button::after {
+            content: '';
+            border-style: solid;
+            border-width: 15px 0 15px 25px;
+            border-color: transparent transparent transparent #222;
+            margin-left: 5px;
+        }
+
+        .play-overlay:hover .play-button {
+            transform: scale(1.1);
+        }
+
+        .image-type-overlay {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            font-weight: 600;
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            z-index: 10;
+            pointer-events: none;
+        }
 
         .overlay {
             position: fixed;
@@ -217,7 +198,7 @@ video {
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.9);
             display: none;
             justify-content: center;
             align-items: center;
@@ -225,105 +206,93 @@ video {
             cursor: pointer;
         }
 
-        .overlay img {
-            max-width: 90%;
-            max-height: 90%;
+        .overlay img, .overlay video {
+            max-width: 90vw;
+            max-height: 90vh;
             object-fit: contain;
         }
 
         @media (max-width: 700px) {
-    .categories {
-        display: grid;
-    }
+            .video-box, .image-box {
+                width: 280px;
+                height: 250px;
+            }
+            
+            .categories {
+                display: grid;
+            }
+            
+            .search-input {
+                width: 60%;
+            }
+            
+            .category-images img {
+                width: 50px;
+                height: 50px;
+            }
+        }
 
-    .search-input {
-        width: 60%;
-    }
-
-    .category-images img {
-        width: 50px;
-        height: 50px;
-    }
-
-    .image-box {
-        width: 280px; 
-        height: 250px;
-    }
-
-}
-@media (min-width: 701px) {
-    .categories {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    }
-}
-
-</style>
+        @media (min-width: 701px) {
+            .categories {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1 style="position: sticky; font-family: 'Times New Roman', Times, serif; margin-bottom: 0; 
-    color: darksalmon; font-weight: bold;">
-    <a href="index.html" style="color: rgb(255, 104, 104); font-size: 40px; text-decoration: none; ">I.M.A.G.E</a>
-</h1>
+    <h1 style="position: sticky; font-family: 'Times New Roman', Times, serif; margin-bottom: 0; color: darksalmon; font-weight: bold;">
+        <a href="index.html" style="color: rgb(255, 104, 104); font-size: 40px; text-decoration: none;">I.M.A.G.E</a>
+    </h1>
 
-<h3 style="color: rgb(255, 187, 166); margin-top: 0%; font-size: small;">
-    Interactive. Media. Archive. Gallery.
-    <a class="subtitle" style="text-decoration: none; color: rgb(255, 187, 166);" href="system-classes.html">E-CLASS</a>
-</h3>
+    <h3 style="color: rgb(255, 187, 166); margin-top: 0%; font-size: small;">
+        Interactive. Media. Archive. Gallery.
+        <a class="subtitle" style="text-decoration: none; color: rgb(255, 187, 166);" href="system-classes.html">E-CLASS</a>
+    </h3>
 
     <div class="search-container">
-        <input id="searchInput" class="search-input" type="text" placeholder="Search for images...">
+        <input id="searchInput" class="search-input" type="text" placeholder="Search for media...">
         <button class="search-button" onclick="searchImages()">SEARCH!</button>
     </div>
-
 
     <p id="message" style="color: #ff6969; display: none;"></p>
 
     <hr style="color: #222; width: 90%;">
 
-<p id="latestImagesText" style="color: #ff6969; text-decoration: underline; font-size: 20px;">Latest Images:</p>
+    <p id="latestImagesText" style="color: #ff6969; text-decoration: underline; font-size: 20px;">Latest Media:</p>
 
     <div id="categories" class="categories">
         <div class="category-box" data-category="memes" onclick="searchCategory('memes')">
             <h2>#Meme</h2>
-            <div class="category-images" id="memes-images">
-
-            </div>
+            <div class="category-images" id="memes-images"></div>
         </div>
         <div class="category-box" data-category="photography" onclick="searchCategory('photography')">
             <h2>#GIFs</h2>
-            <div class="category-images" id="photography-images">
-
-            </div>
+            <div class="category-images" id="photography-images"></div>
         </div>
         <div class="category-box" data-category="art" onclick="searchCategory('art')">
             <h2>#Art</h2>
-            <div class="category-images" id="art-images">
-
-            </div>
+            <div class="category-images" id="art-images"></div>
         </div>
         <div class="category-box" data-category="wallpapers" onclick="searchCategory('wallpapers')">
             <h2>#Photo</h2>
-            <div class="category-images" id="wallpapers-images">
-
-            </div>
+            <div class="category-images" id="wallpapers-images"></div>
         </div>
         <div class="category-box" data-category="chrib's-picks" onclick="searchCategory('chribs-picks')">
             <h2>#Shitpost</h2>
-            <div class="category-images" id="chribs-picks-images">
-
-            </div>
+            <div class="category-images" id="chribs-picks-images"></div>
         </div>
     </div>
-
     <div id="results" class="image-container"></div>
-
     <div id="imageOverlay" class="overlay" onclick="closeOverlay()">
         <img id="enlargedImage" src="" alt="" style="display: none;">
-        <video id="enlargedVideo" controls style="display: none; max-width: 90%; max-height: 90%;"></video>
+        <video id="enlargedVideo" controls style="display: none;"></video>
     </div>
-
-    <script src="media.js"></script>
+    <footer style="padding: 10px; text-align: center; color: #ffbe82; font-size: 0.8em; width: 100%; box-sizing: border-box; margin-bottom: 0px; margin-top: 10px;">
+        <hr style="width: 280px; margin-bottom: 10px; color: #333;">
+        <p style="text-align: center; color: #ffbe82; margin-bottom: 0%;">2024 Chribs - All Rights Reserved.</p>
+        <p><a href="privacy.html" style="color: rgb(250, 114, 114); text-decoration: none; margin-top: 0px;">PRIVACY POLICY</a> | <a href="index.html" style="color: rgb(250, 114, 114); text-decoration: none;">HOME</a></p>
+    </footer>
     <script>
         const categories = {
             'memes': 'meme',
@@ -332,219 +301,204 @@ video {
             'wallpapers': 'photo',
             'chribs-picks': 'shitpost'
         };
-    
+
         function extractTags(filename) {
             const nameWithoutExt = filename.substring(0, filename.lastIndexOf('.')) || filename;
             return nameWithoutExt.toLowerCase().split(' ');
         }
-    
+
         function getLatestImagesByTag(tag, limit = 12) {
             const taggedImages = images.filter(img => {
                 const tags = extractTags(img);
                 return tags.includes(tag);
             });
-    
             return taggedImages.slice(-limit).reverse();
         }
+
+ // Replace the createMediaElement function with this version:
+function createMediaElement(media) {
+    const isVideoFile = /\.(mp4|webm|ogg)$/i.test(media);
+    const container = document.createElement('div');
+    container.className = isVideoFile ? 'video-box' : 'image-box';
+
+    if (isVideoFile) {
+        const videoContainer = document.createElement('div');
+        videoContainer.style.width = '100%';
+        videoContainer.style.height = '100%';
+        videoContainer.style.position = 'relative';
+
+        const video = document.createElement('video');
+        video.className = 'video-thumbnail';
+        video.src = `Media/${encodeURIComponent(media)}`;
+        video.muted = true;
+        video.playsInline = true;
+        video.preload = 'metadata';
+
+        const playOverlay = document.createElement('div');
+        playOverlay.className = 'play-overlay';
+        
+        const playButton = document.createElement('div');
+        playButton.className = 'play-button';
+        
+        playOverlay.appendChild(playButton);
+        videoContainer.appendChild(video);
+        videoContainer.appendChild(playOverlay);
+        container.appendChild(videoContainer);
+
+        container.onclick = (e) => {
+            e.preventDefault();
+            openOverlay(`Media/${encodeURIComponent(media)}`);
+        };
+
+        // Add debug logging
+        video.onerror = () => console.error('Video error:', video.error);
+        video.onloadedmetadata = () => console.log('Video metadata loaded:', media);
+    } else {
+        const img = document.createElement('img');
+        img.src = `Media/${encodeURIComponent(media)}`;
+        img.alt = media;
+        img.onclick = () => openOverlay(`Media/${encodeURIComponent(media)}`);
+        container.appendChild(img);
+    }
+
+    const typeOverlay = createImageTypeOverlay(media);
+    container.appendChild(typeOverlay);
     
+    return container;
+}
+
         function populateCategories() {
             for (const [categoryId, tag] of Object.entries(categories)) {
                 const imageContainer = document.getElementById(`${categoryId}-images`);
                 const latestImages = getLatestImagesByTag(tag, 8);
                 if (latestImages.length === 0) {
-                    imageContainer.innerHTML = '<p>Images coming soon.</p>';
+                    imageContainer.innerHTML = '<p>Media coming soon.</p>';
                     continue;
                 }
-                latestImages.forEach(img => {
-                    const imgElement = document.createElement('img');
-                    imgElement.src = `Media/${encodeURIComponent(img)}`;
-                    imgElement.alt = img;
-                    imgElement.loading = 'lazy';
-    
-                    imgElement.ondblclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
-                    imageContainer.appendChild(imgElement);
+                latestImages.forEach(media => {
+                    const mediaElement = createMediaElement(media);
+                    imageContainer.appendChild(mediaElement);
                 });
             }
         }
-    
+
         function searchImages() {
-    const query = document.getElementById('searchInput').value.toLowerCase().trim();
-    const resultsContainer = document.getElementById('results');
-    const categoriesContainer = document.getElementById('categories');
-    const latestImagesText = document.getElementById('latestImagesText');
-    const message = document.getElementById('message');
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const resultsContainer = document.getElementById('results');
+            const categoriesContainer = document.getElementById('categories');
+            const latestImagesText = document.getElementById('latestImagesText');
+            const message = document.getElementById('message');
 
-    resultsContainer.innerHTML = '';
-    message.style.display = 'none';
+            resultsContainer.innerHTML = '';
+            message.style.display = 'none';
 
-    if (query !== '') {
-        categoriesContainer.style.display = 'none';
-        latestImagesText.style.display = 'none';
-    } else {
-        categoriesContainer.style.display = 'flex';
-        latestImagesText.style.display = 'block';
-    }
-    if (query === '') {
-        message.innerText = 'Please enter image Tag/s';
-        message.style.display = 'block';
-        resultsContainer.innerHTML = ''; 
-        return;
-    }
-    
-    let imagesToLoad = 0;
-    let imagesLoaded = 0;
+            if (query === '') {
+                message.innerText = 'Please enter media Tag/s';
+                message.style.display = 'block';
+                categoriesContainer.style.display = 'flex';
+                latestImagesText.style.display = 'block';
+                return;
+            }
 
-    function checkAllImagesLoaded() {
-    if (imagesLoaded === imagesToLoad) {
-        console.log("All images loaded!");
-    }
-}
+            categoriesContainer.style.display = 'none';
+            latestImagesText.style.display = 'none';
 
-    function createImageElement(img) {
-    const imgBox = document.createElement('div');
-    imgBox.className = 'image-box';
-    const loadingText = document.createElement('p');
-    loadingText.textContent = "Loading...";
-    loadingText.style.color = '#ff6969';
-    imgBox.appendChild(loadingText); 
+            const searchTags = query.split(' ');
 
-    const filename = document.createElement('p');
-    filename.textContent = img;
-    filename.style.color = '#666';
-    
-    const imgElement = document.createElement('img');
-    imgElement.style.display = 'none'; 
-    imgElement.src = `Media/${encodeURIComponent(img)}`;
-    imgElement.alt = img;
-    imgElement.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
-    
-    imgElement.onload = () => {
-        loadingText.remove();
-        imagesLoaded++;
-        filename.remove();
-        imgElement.style.display = 'block'; 
-        checkAllImagesLoaded();
-    };
-    
-    imgElement.onerror = () => {
-        loadingText.textContent = 'Failed to load image'; 
-        imagesLoaded++;
-        checkAllImagesLoaded();
-    };
-    
-    imgBox.appendChild(imgElement);
-    
-    const overlay = createImageTypeOverlay(img);
-    imgBox.appendChild(overlay);
-    
-    resultsContainer.appendChild(imgBox);
-    imagesToLoad++;
-}
+            const filteredMedia = query === '/all' 
+                ? images.slice().reverse()
+                : images.filter(media => {
+                    const tags = extractTags(media);
+                    return searchTags.every(tag => tags.includes(tag));
+                }).reverse();
 
-    function matchTags(img, searchTags) {
-        const tags = extractTags(img);
-        return searchTags.every(tag => tags.includes(tag));
-    }
+            if (filteredMedia.length === 0) {
+                resultsContainer.innerHTML = '<p>No media found! :(</p>';
+                return;
+            }
 
-    const searchTags = query.split(' ');
-
-    if (query === '/all') {
-        const allImages = images.slice().reverse();
-        allImages.forEach(createImageElement);
-
-        if (allImages.length === 0) {
-            resultsContainer.innerHTML = '<p>No images found! :(</p>';
+            filteredMedia.forEach(media => {
+                const mediaElement = createMediaElement(media);
+                resultsContainer.appendChild(mediaElement);
+            });
         }
-    } else {
-        const filteredImages = images.filter(img => matchTags(img, searchTags)).reverse();
-        filteredImages.forEach(createImageElement);
 
-        if (filteredImages.length === 0) {
-            resultsContainer.innerHTML = '<p>No images found! :(</p>';
-        }
-    }
-
-    if (imagesToLoad === 0) {
-    }
-
-}
-    
         function searchCategory(category) {
-    const resultsContainer = document.getElementById('results');
-    const categoriesContainer = document.getElementById('categories');
-    const latestImagesText = document.getElementById('latestImagesText');
+            const resultsContainer = document.getElementById('results');
+            const categoriesContainer = document.getElementById('categories');
+            const latestImagesText = document.getElementById('latestImagesText');
 
-    resultsContainer.innerHTML = '<p style="color: #ff6969; font-size: 1.2em;">Loading images...</p>';
-    categoriesContainer.style.display = 'none';
-    latestImagesText.style.display = 'none';
+            resultsContainer.innerHTML = '<p style="color: #ff6969; font-size: 1.2em;">Loading media...</p>';
+            categoriesContainer.style.display = 'none';
+            latestImagesText.style.display = 'none';
 
-    const latestImages = getLatestImagesByTag(categories[category]);
-    resultsContainer.innerHTML = ''; 
-    
-    latestImages.forEach(img => {
-        const imgBox = document.createElement('div');
-        imgBox.className = 'image-box';
-        const imgElement = document.createElement('img');
-        imgElement.src = `Media/${encodeURIComponent(img)}`;
-        imgElement.alt = img;
-        imgElement.onclick = () => openOverlay(`Media/${encodeURIComponent(img)}`);
-        imgBox.appendChild(imgElement);
-        const overlay = createImageTypeOverlay(img);
-        imgBox.appendChild(overlay);
-        resultsContainer.appendChild(imgBox);
-    });
+            const latestMedia = getLatestImagesByTag(categories[category]);
+            resultsContainer.innerHTML = '';
 
-    if (latestImages.length === 0) {
-        resultsContainer.innerHTML = '<p>No images in this category :(.</p>';
-    }
-}
+            if (latestMedia.length === 0) {
+                resultsContainer.innerHTML = '<p>No media in this category :(</p>';
+                return;
+            }
 
-function showCategories() {
-    const resultsContainer = document.getElementById('results');
-    const categoriesContainer = document.getElementById('categories');
-    const latestImagesText = document.getElementById('latestImagesText');
-    
-    resultsContainer.innerHTML = '';
-    categoriesContainer.style.display = 'flex';
-    latestImagesText.style.display = 'block';
-}
-   
-        function isVideo(filename) {
-            return /\.(mp4|webm|ogg)$/i.test(filename);
+            latestMedia.forEach(media => {
+                const mediaElement = createMediaElement(media);
+                resultsContainer.appendChild(mediaElement);
+            });
         }
-    
+
+        function showCategories() {
+            const resultsContainer = document.getElementById('results');
+            const categoriesContainer = document.getElementById('categories');
+            const latestImagesText = document.getElementById('latestImagesText');
+            
+            resultsContainer.innerHTML = '';
+            categoriesContainer.style.display = 'flex';
+            latestImagesText.style.display = 'block';
+        }
+
         function openOverlay(mediaSrc) {
             const overlay = document.getElementById('imageOverlay');
             const enlargedImage = document.getElementById('enlargedImage');
             const enlargedVideo = document.getElementById('enlargedVideo');
-    
-            if (isVideo(mediaSrc)) {
+            
+            const isVideo = /\.(mp4|webm|ogg)$/i.test(mediaSrc);
+            
+            if (isVideo) {
                 enlargedVideo.src = mediaSrc;
                 enlargedVideo.style.display = 'block';
                 enlargedImage.style.display = 'none';
+                enlargedVideo.play().catch(() => {});
             } else {
                 enlargedImage.src = mediaSrc;
                 enlargedImage.style.display = 'block';
                 enlargedVideo.style.display = 'none';
             }
-    
+            
             overlay.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
-    
+
         function closeOverlay() {
             const overlay = document.getElementById('imageOverlay');
             const enlargedVideo = document.getElementById('enlargedVideo');
-    
+
             overlay.style.display = 'none';
-    
+            document.body.style.overflow = '';
+
             if (enlargedVideo) {
                 enlargedVideo.pause();
                 enlargedVideo.currentTime = 0;
             }
-            document.body.style.overflow = '';
         }
-    
+
+        function createImageTypeOverlay(filename) {
+            const overlay = document.createElement('div');
+            overlay.className = 'image-type-overlay';
+            const extension = filename.split('.').pop().toUpperCase();
+            overlay.textContent = extension;
+            return overlay;
+        }
+
         window.onload = function() {
             populateCategories();
             document.querySelector('.search-input').addEventListener('keydown', function(event) {
@@ -554,25 +508,6 @@ function showCategories() {
                 }
             });
         };
-
-        function createImageTypeOverlay(img) {
-    const overlay = document.createElement('div');
-    overlay.className = 'image-type-overlay';
-    const extension = img.split('.').pop().toUpperCase();
-    overlay.textContent = extension; 
-    return overlay;
-}
-</script>
-
-<div style="display: flex; flex-direction: column; min-height: 0.5vh; margin: 0; padding: 0; margin-bottom: 1px;">
-</div>
-<div style="flex-grow: 1;"></div>
-<footer style="padding: 10px; text-align: center; color: #ffbe82; font-size: 0.8em; 
-width: 100%; box-sizing: border-box; margin-bottom: 0px; margin-top: 10px;">
-<hr style="width: 280px; margin-bottom: 10px; color: #333;">
-<p style="text-align: center; color: #ffbe82; margin-bottom: 0%;">2024 Chribs - All Rights Reserved.</p>
-<p><a href="privacy.html" style="color: rgb(250, 114, 114); text-decoration: none; margin-top: 0px;">PRIVACY POLICY</a> | <a href="index.html" style="color: rgb(250, 114, 114); text-decoration: none;">HOME</a></p>
-
-</footer>
+    </script>
 </body>
 </html>

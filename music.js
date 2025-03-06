@@ -295,33 +295,26 @@ function playSong(song, index) {
         console.error("Invalid song or URL");
         return;
     }
-
     const audioSource = document.getElementById("audioSource");
     audioSource.src = song.download_url;
-
     const audioPlayer = document.getElementById("audioPlayer");
     if (!audioPlayer) {
         console.error("Audio player element not found");
         return;
     }
-
     audioPlayer.load();
     audioPlayer.play().catch(error => {
         console.error("Error playing song:", error);
     });
-
     if (currentSongIndex === -1) {
         queue.length = 0;
     }
-
     currentSongIndex = index;
     updateQueueDisplay();
-
     const currentSongNameElement = document.getElementById("currentSongName");
     if (currentSongNameElement) {
         currentSongNameElement.textContent = song.title;
     }
-
     fetchAlbumArt(song.download_url); 
 }
 

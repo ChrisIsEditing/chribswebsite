@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9">
+    <link rel="icon" href="https://chrisisediting.github.io/chribswebsite/Assets/home.png" type="image/png">
+    <title>Servers</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            background-color: black; 
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 0, 0, 0.20), rgba(0, 0, 255, 0.20));
+            opacity: 0; 
+            animation: breathe 10s ease-in-out infinite, fadeBackground 5s linear infinite; 
+            z-index: -2; 
+        }
+
+        @keyframes breathe {
+            0%, 10% {
+                opacity: 0; 
+            }
+            30%, 100% {
+                opacity: 1; 
+            }
+            80%, 100% {
+                opacity: 0; 
+            }
+        }
+        @keyframes fadeBackground {
+            0% {
+                background-position: 0% 50%;
+            }
+            25% {
+                background-position: 100% 50%; 
+            }
+            50% {
+                background-position: 0% 50%;
+            }
+        }
+
+        h1, h3 {
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        #hello-user {
+            color: rgb(252, 124, 109);
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 5px;
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px #fd5f5f, 0 0 30px #fd4b4b, 0 0 40px #fa4c4c;
+            animation: flicker 1s infinite; 
+            margin-top: 15px;
+        }
+        @keyframes flicker {
+            0% { opacity: 1; }
+            10% { opacity: 1; }
+            20% { opacity: 0.9; }
+            30% { opacity: 1; }
+            40% { opacity: 1; }
+            50% { opacity: 0.8; }
+            60% { opacity: 0.9; }
+            70% { opacity: 1; }
+            80% { opacity: 0.9; }
+            90% { opacity: 1; }
+            100% { opacity: 1; }
+        }
+
+        #how-can-i-assist-you-today {
+            color: rgb(211, 187, 181);
+            margin-top: 0px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: small;
+            letter-spacing: 5px;
+            text-align: center;
+            text-shadow: 0 0 10px #ffffff;
+        }
+        #titlesep {
+            color: #b98e71;
+            width: 500px;
+        }
+        #buttonsep {
+            margin-top: 30px;
+            color: rgb(252, 162, 78);
+            font-size: medium;
+            font-family: 'Courier New', Courier, monospace;
+            text-shadow: 0 0 10px #ffa24c;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px auto;
+            max-width: 600px; 
+        }
+        .nav-button {
+            background-color: #1b1b1b;
+            color: rgb(231, 131, 98);
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.1s;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            border-radius: 8px; 
+            flex-basis: calc(25% - 10px);
+            min-width: 100px;
+        }
+        .nav-button:hover {
+            background-color: #303030;
+            color: #ff4f49;
+        }
+
+        .server-container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: rgba(30, 30, 30, 0.7);
+            border-radius: 10px;
+            text-align: left;
+        }
+        
+        .server-item {
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: rgba(40, 40, 40, 0.8);
+            border-radius: 8px;
+            border-left: 4px solid rgb(252, 124, 109);
+            transition: transform 0.3s ease;
+        }
+        
+        .server-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .server-title {
+            color: rgb(252, 162, 78);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(252, 162, 78, 0.5);
+        }
+        
+        .server-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .server-spec {
+            background-color: #1b1b1b;
+            color: rgb(211, 187, 181);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        .server-description {
+            color: #fff;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        
+        .server-status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .status-online {
+            background-color: rgba(39, 174, 96, 0.3);
+            color: #2ecc71;
+        }
+        
+        .status-offline {
+            background-color: rgba(231, 76, 60, 0.3);
+            color: #e74c3c;
+        }
+        
+        .status-maintenance {
+            background-color: rgba(241, 196, 15, 0.3);
+            color: #f1c40f;
+        }
+
+        @media (max-width: 600px) {
+            .nav-button {
+                flex-basis: calc(50% - 10px);
+            }
+            .server-container {
+                padding: 10px;
+                margin: 20px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="hello-user" id="page-title">CHRIBSSERVERS</h1>
+    <h3 id="how-can-i-assist-you-today">Somewhat Reliable Servers</h3>
+    <hr id="titlesep">
+    <br>
+
+    <div class="server-container">
+        <div class="server-item">
+            <div class="server-title">JELLYFIN</div>
+            <div class="server-specs">
+                <span class="server-spec">Max Clients: ~2-3 for Stable (Up to 8 max)</span>
+                <span class="server-spec">RAM: 8GB</span>
+                <span class="server-spec">Storage: 400GB</span>
+                <span class="server-spec">Quality: 720p (Due to 'DvDs' & Compatibility)</span>
+            </div>
+            <div class="server-description">
+                Ever wished you kept that one DvD you had, so you could see that one scene, from that one movie? Well, for legal reasons, we did! :D 
+            </div>
+            <div class="server-status status-maintenance">MAINTENANCE</div>
+        </div>
+
+        <div class="server-item">
+            <div class="server-title">CHRIBSMC</div>
+            <div class="server-specs">
+                <span class="server-spec">CPU: AMD 2 Core</span>
+                <span class="server-spec">RAM: 10GB</span>
+                <span class="server-spec">Storage: ~</span>
+                <span class="server-spec">RenderDistance: 14</span>
+                <span class="server-spec">SubServers: Squaremap</span>
+                <span class="server-spec">Platforms: Java 1.21.4 (Bedrock Experimental Available)</span>
+            </div>
+            <div class="server-description">
+                Out of iron, again? 
+            </div>
+            <div class="server-status status-online">STANDBY - READY</div>
+        </div>
+
+        <div class="server-item">
+            <div class="server-title">IMAGE</div>
+            <div class="server-specs">
+                <span class="server-spec">Health: Excellent</span>
+                <span class="server-spec">Versions: Latest - Stable</span>
+                <span class="server-spec">Status: Processing</span>
+                <span class="server-spec">Issues: SmartSearch buffer</span>
+            </div>
+            <div class="server-description">
+               Mom get the camera!
+            </div>
+            <div class="server-status status-maintenance">ONLINE</div>
+        </div>
+
+            <div class="server-item">
+                <div class="server-title">ZERO</div>
+                <div class="server-specs">
+                    <span class="server-spec">Health: Good</span>
+                    <span class="server-spec">Last Test: April 2025</span>
+                    <span class="server-spec">Status: Running</span>
+                    <span class="server-spec">Issues: Resolving</span>
+                </div>
+                <div class="server-description">
+                   Does this work yet?
+                </div>
+                <div class="server-status status-maintenance">ONLINE</div>    
+        </div>
+    </div>
+
+    <h3 id="buttonsep">/// QUICK NAVIGATION ///</h3>
+    <div class="button-container">
+        <a href="index.html" class="nav-button">Home</a>
+        <a href="contact.html" class="nav-button">Contact</a>
+        <a href="blog.html" class="nav-button">Blog</a>
+    </div>
+
+    <div id="footer"></div>
+
+    <script>
+        function randomFlicker(element) {
+            const flickerInterval = Math.random() * (12000 - 5000) + 5000; 
+            element.style.animation = `flicker ${flickerInterval}ms infinite`;
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            const neonText = document.querySelector('#hello-user');
+            randomFlicker(neonText);
+        });
+    </script>
+    <script>
+        document.getElementById("page-title").onclick = function() {
+            let previousPage = document.referrer;
+            if (previousPage) {
+                window.location.href = previousPage;
+            } else {
+                alert("No previous page found.");
+            }
+        };
+    </script>
+ 
+ <div style="display: flex; flex-direction: column; min-height: 0.5vh; margin: 0; padding: 0; margin-bottom: 1px;"></div>
+ <div style="flex-grow: 1;"></div>
+ <footer style="padding: 10px; text-align: center; color: #ffbe82; font-size: 0.8em; 
+ width: 100%; box-sizing: border-box; margin-bottom: 0px; margin-top: 10px;">  
+ <hr style="width: 280px; margin-bottom: 10px; color: #333;">
+ <p style="text-align: center; color: #ffbe82; margin-bottom: 0%;">Chribs - All Rights Reserved.</p>
+ <p><a href="privacy.html" style="color: rgb(250, 114, 114); text-decoration: none; margin-top: 0px;">PRIVACY POLICY</a> | <a href="index.html" style="color: rgb(250, 114, 114); text-decoration: none;">HOME</a></p>
+ </footer>
+
+    </footer>
+</body>
+</html>

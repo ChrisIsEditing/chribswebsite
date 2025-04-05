@@ -1,134 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="icon" href="https://chrisisediting.github.io/chribswebsite/Assets/message.png" type="image/png">
     <title>Contact</title>
     <style>
-       
-       
-    body {
-    background-color: black;
-    color: darksalmon;
-    font-family: monospace;
-    margin: 0;
-    height: 90%;
-    width: 100%;
-    text-align: center;
-    font-size: larger;
-    margin-top: 70px;
-    }
-
-    * {
-    box-sizing: border-box;
-}
-        .command {
-            color: #00ff00;
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+        }
+        body {
+            background-color: black;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            margin-top: 70px;
+            font-size: larger;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         
-        .option {
-            margin-left: 20px;
-            display: block;
-            font-size: larger;
+        * {
+            box-sizing: border-box;
         }
-        .instagram {
-            color: #ff00ff; 
-            font-size: large;
+
+        #page-title {
+            color: rgb(252, 124, 109);
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 5px;
+            margin-top: auto;
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px #fd5f5f, 0 0 30px #fd4b4b, 0 0 40px #fa4c4c;
+            animation: flicker 1s infinite; 
+            cursor: pointer;
         }
-        .telegram {
-            color: #00ffff; 
-            font-size: large;
+        
+        @keyframes flicker {
+            0% { opacity: 1; }
+            10% { opacity: 1; }
+            20% { opacity: 0.9; }
+            30% { opacity: 1; }
+            40% { opacity: 1; }
+            50% { opacity: 0.8; }
+            60% { opacity: 0.9; }
+            70% { opacity: 1; }
+            80% { opacity: 0.9; }
+            90% { opacity: 1; }
+            100% { opacity: 1; }
         }
-        .twitter {
-            color: #1DA1F2; 
-            font-size: large;
-        }
-        .email {
-            color: #ffc400; /* if i remove this comment it breaks the entire html */
-            font-size: large;
-        }
-        .option:hover {
+
+        #subtitle {
+            color: rgb(211, 187, 181);
+            margin-top: 1px;
+            font-size: small;
             text-decoration: underline;
+            text-underline-offset: 2px;
+            letter-spacing: 5px;
+            text-align: center;
+            text-shadow: 0 0 10px #ffffff;
         }
-        @media (max-width: 600px) {
-    body {
-        font-size: medium;
-        margin-top: 50px;
-    }
-    #banner {
-    top: 20px; 
-    padding: 15px 10px; 
-    font-size: 18px; 
-}
 
-    .option {
-        font-size: medium;
-        margin-left: 0;
-    }
-}
-
-
-@media (max-width: 600px) {
-    #banner {
-        font-size: 13px; 
-        width: 10%; 
-        min-width: 85%
-    }
-}
-
+        .contact-container {
+            max-width: 600px;
+            margin: 40px auto;
+            margin-top: 10px;
+            padding: 20px;
+            background-color: rgba(30, 30, 30, 0.7);
+            border-radius: 10px;
+            width: 90%;
+        }
+        
+        .contact-title {
+            color: #00ff00;
+            margin-bottom: 30px;
+            font-size: 1.4em;
+            letter-spacing: 1px;
+        }
+        
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .contact-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-link:active {
+            transform: scale(0.98);
+        }
+        
+        .instagram {
+            background-color: rgba(170, 53, 193, 0.2);
+            color: #dea0fa;
+            border: 1px solid rgba(141, 18, 255, 0.767);
+        }
+        
+        .instagram:hover {
+            background-color: rgba(125, 53, 193, 0.3);
+        }
+        
+        .telegram {
+            background-color: rgba(0, 136, 204, 0.2);
+            color: #00ffff;
+            border: 1px solid rgba(0, 136, 204, 0.5);
+        }
+        
+        .telegram:hover {
+            background-color: rgba(0, 136, 204, 0.3);
+        }
+        
+        .twitter {
+            background-color: rgba(29, 161, 242, 0.2);
+            color: #1DA1F2;
+            border: 1px solid rgba(29, 161, 242, 0.5);
+        }
+        
+        .twitter:hover {
+            background-color: rgba(29, 161, 242, 0.3);
+        }
+        
+        .email {
+            background-color: rgba(255, 196, 0, 0.2);
+            color: #ffc400;
+            border: 1px solid rgba(255, 196, 0, 0.5);
+        }
+        
+        .email:hover {
+            background-color: rgba(255, 196, 0, 0.3);
+        }
+        
+        .icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        #banner {
+            background-color: rgba(32, 32, 32, 0.9);
+            color: rgb(255, 102, 102);
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30%;
+            min-width: 300px;
+            z-index: 1000;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            font-weight: bold;
+        }
+        
+        .separator {
+            width: 50%;
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, transparent, darksalmon, transparent);
+            margin: 30px auto;
+        }
+        
+        footer {
+            padding: 10px;
+            text-align: center;
+            color: #ffbe82;
+            font-size: 0.8em;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: auto;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                font-size: medium;
+                margin-top: 50px;
+            }
+            
+            #banner {
+                font-size: 13px;
+                width: 85%;
+                min-width: auto;
+                padding: 10px;
+            }
+            
+            .contact-link {
+                width: 90%;
+                padding: 12px;
+                font-size: 1em;
+            }
+            
+            .contact-container {
+                margin: 20px auto;
+                padding: 15px;
+            }
+            
+            #page-title {
+                font-size: 1.5em;
+            }
+            
+            #subtitle {
+                font-size: 0.7em;
+                letter-spacing: 3px;
+            }
+            
+            .contact-title {
+                font-size: 1.2em;
+                margin-bottom: 20px;
+            }
+            
+            .separator {
+                width: 70%;
+                margin: 20px auto;
+            }
+            
+            footer {
+                padding: 5px;
+                font-size: 0.7em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .contact-link {
+                width: 100%;
+                padding: 10px;
+            }
+            
+            #page-title {
+                font-size: 1.3em;
+            }
+            
+            .contact-title {
+                font-size: 1.1em;
+            }
+        }
+        
+        @media (max-height: 600px) {
+            body {
+                margin-top: 30px;
+            }
+            
+            .contact-container {
+                margin: 10px auto;
+            }
+            
+            .contact-links {
+                gap: 10px;
+            }
+            
+            .separator {
+                margin: 15px auto;
+            }
+        }
     </style>
-
 </head>
 <body>
-    <div id="banner" style="background-color: rgba(32, 32, 32, 0.781); color: rgb(255, 102, 102); padding: 10px; 
-    text-align: center; position: fixed; justify-content: center; top: 10px; left: 50%; transform: translateX(-50%); 
-    width: 30%; max-width: 100%; z-index: 1000; border-radius: 10px;"
-    >New and improved version coming soon!</div>
-    <br><hr style="color: darksalmon; width: 50%;">
-<br>
-
-   
-    <h2 class="command">Please select an option below:</h2>
-    <a href="https://instagram.com/chrisisediting" class="option instagram"> Instagram </a>
-    <br>
-    <a href="https://t.me/chrisisediting" class="option telegram"> Telegram </a>
-    <br>
-    <a href="https://x.com/chrisisediting" class="option twitter"> Twitter </a>
-    <br>
-    <a href="mailto:cgstudio02@gmail.com" class="option email"> Email </a>
-    <br>
-    <hr style="color: darksalmon; width: 50%;">
+    <h1 id="page-title">CHRIBSWEBSITE</h1>
+    <h3 id="subtitle">Who you gonna call?</h3>
     
+    <div class="separator"></div>
+    
+    <div class="contact-container">
+        <h2 class="contact-title">Please select an option below:</h2>
+        
+        <div class="contact-links">
+            <a href="https://tumblr.com/chrisisediting" class="contact-link instagram">
+                <span class="icon">&#9733;</span> Tumblr
+            </a>
+            
+            <a href="https://t.me/chrisisediting" class="contact-link telegram">
+                <span class="icon">&#9997;</span> Telegram
+            </a>
+            
+            <a href="https://bsky.app/profile/chrisisediting.bsky.social" class="contact-link twitter">
+                <span class="icon">&#9729;</span> BlueSky
+            </a>
+            
+            <a href="mailto:cgstudio02@gmail.com" class="contact-link email">
+                <span class="icon">&#9993;</span> Email
+            </a>
+        </div>
+    </div>
+    
+    <div class="separator"></div>
+
+    <footer>
+        <p style="text-align: center; color: #ffbe82;">2024 Chribs - All Rights Reserved.</p>
+        <p><a href="privacy.html" style="color: rgb(250, 114, 114); text-decoration: none; margin-top: 0px;">PRIVACY POLICY</a> | <a href="index.html" style="color: rgb(250, 114, 114); text-decoration: none;">HOME</a></p>
+    </footer>
 
     <script>
-        function closeBanner() {
-            document.getElementById('banner').style.display = 'none';
+        function randomFlicker(element) {
+            const flickerInterval = Math.random() * (12000 - 5000) + 5000; 
+            element.style.animation = `flicker ${flickerInterval}ms infinite`;
         }
-    </script>
-    
-
-    <div style="display: flex; flex-direction: column; min-height: 0.5vh; margin: 0; padding: 0; margin-bottom: 1px;">
-    </div>
-        <div style="flex-grow: 1;"></div>
-        <footer style="padding: 10px; text-align: center; color: #ffbe82; font-size: 0.8em; width: 100%; box-sizing: border-box; margin-bottom: 0px;">
-            <p style="text-align: center; color: #ffbe82;">2024 Chribs - All Rights Reserved.</p>
-            <p><a href="privacy.html" style="color: rgb(250, 114, 114); text-decoration: none; margin-top: 0px;">PRIVACY POLICY</a> | <a href="index.html" style="color: rgb(250, 114, 114); text-decoration: none;">HOME</a></p>
-        </footer>
-</body>
-
-
-<script>
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            const neonText = document.querySelector('#page-title');
+            randomFlicker(neonText);
+            
+            // Add touch feedback for mobile
+            const links = document.querySelectorAll('.contact-link');
+            links.forEach(link => {
+                link.addEventListener('touchstart', function() {
+                    this.style.transform = 'scale(0.98)';
+                });
+                link.addEventListener('touchend', function() {
+                    this.style.transform = '';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 100);
+                });
+            });
+        });
+        
+        document.getElementById("page-title").onclick = function() {
             window.location.href = 'index.html';
-        }
-    });
-</script>
-
-
+        };
+        
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
 </html>
-
-<!--AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->

@@ -282,7 +282,6 @@
     <h3 id="subtitle">Who you gonna call?</h3>
     
     <div class="separator"></div>
-    
     <div class="contact-container">
         <h2 class="contact-title">Please select an option below:</h2>
         
@@ -304,25 +303,20 @@
             </a>
         </div>
     </div>
-    
     <div class="separator"></div>
-
     <footer>
         <p style="text-align: center; color: #ffbe82;">2024 Chribs - All Rights Reserved.</p>
         <p><a href="privacy.html" style="color: rgb(250, 114, 114); text-decoration: none; margin-top: 0px;">PRIVACY POLICY</a> | <a href="index.html" style="color: rgb(250, 114, 114); text-decoration: none;">HOME</a></p>
     </footer>
-
     <script>
         function randomFlicker(element) {
             const flickerInterval = Math.random() * (12000 - 5000) + 5000; 
             element.style.animation = `flicker ${flickerInterval}ms infinite`;
-        }
-        
+        }   
         document.addEventListener("DOMContentLoaded", function() {
             const neonText = document.querySelector('#page-title');
             randomFlicker(neonText);
-            
-            // Add touch feedback for mobile
+
             const links = document.querySelectorAll('.contact-link');
             links.forEach(link => {
                 link.addEventListener('touchstart', function() {
@@ -340,7 +334,6 @@
         document.getElementById("page-title").onclick = function() {
             window.location.href = 'index.html';
         };
-        
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 window.location.href = 'index.html';

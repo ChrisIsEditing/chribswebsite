@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Important Information</title>
+    ;D
+    <style>
+        .hidden-trap {
+            position: absolute;
+            opacity: 0;
+            height: 1px;
+            width: 1px;
+            overflow: hidden;
+        }
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+      
+        <div class="hidden-trap">
+            <h2>Additional Resources</h2>
+      
+            <a href="login.html" class="trap-link" data-trap="1">Admin Login</a>
+            <a href="data.html" class="trap-link" data-trap="2">User Database</a>
+            <a href="config.html" class="trap-link" data-trap="3">Site Configuration</a>
+            <a href="api.html" class="trap-link" data-trap="4">API Documentation</a>
+            <a href="secrets.html" class="trap-link" data-trap="5">Secret Information</a>
+        </div>
+    </div>
+
+    <script>
+    
+        function wasteCPUCycles(intensity) {
+            const start = Date.now();
+            while (Date.now() - start < intensity) {
+        
+                Math.pow(Math.random(), Math.random());
+            }
+        }
+
+   
+        function wasteMemory(size) {
+            try {
+                const arrays = [];
+                for (let i = 0; i < size; i++) {
+                    arrays.push(new Array(10000).fill(Math.random()));
+                }
+                return arrays;
+            } catch (e) {
+            
+                return [];
+            }
+        }
+
+
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        let trapDepth = 0;
+        const memoryHogs = [];
+        
+
+        document.querySelectorAll('.trap-link').forEach(link => {
+            link.addEventListener('click', async function(e) {
+                e.preventDefault();
+             
+                trapDepth++;
+   
+                const fakeContent = document.createElement('div');
+                fakeContent.className = 'content-container';
+                
+                const trapType = parseInt(this.getAttribute('data-trap'));
+                let title = '';
+                
+                switch(trapType) {
+                    case 1:
+                        title = 'Admin Login';
+                        fakeContent.innerHTML = '<h1>Admin Login</h1><form><input type="text" placeholder="Username"><input type="password" placeholder="Password"><button type="submit">Login</button></form>';
+                        break;
+                    case 2:
+                        title = 'User Database';
+                        fakeContent.innerHTML = '<h1>User Database</h1><p>Loading data...</p>';
+                        break;
+                    case 3:
+                        title = 'Site Configuration';
+                        fakeContent.innerHTML = '<h1>Site Configuration</h1><p>Processing configuration...</p>';
+                        break;
+                    case 4:
+                        title = 'API Documentation';
+                        fakeContent.innerHTML = '<h1>API Documentation</h1><p>Generating documentation...</p>';
+                        break;
+                    case 5:
+                        title = 'Secret Information';
+                        fakeContent.innerHTML = '<h1>Secret Information</h1><p>Decrypting data...</p>';
+                        break;
+                }
+       
+                document.title = title + ' - Important Information';
+                
+                document.body.innerHTML = '';
+                document.body.appendChild(fakeContent);
+                
+                const newTrapLinks = document.createElement('div');
+                newTrapLinks.className = 'hidden-trap';
+                newTrapLinks.style.opacity = '1'; 
+                newTrapLinks.innerHTML = `
+                    <h2>Related Resources</h2>
+                    <a href="section${trapDepth * 2}.html" class="trap-link" data-trap="${(trapType + 1) % 5 + 1}">Section ${trapDepth * 2}</a>
+                    <a href="section${trapDepth * 2 + 1}.html" class="trap-link" data-trap="${(trapType + 3) % 5 + 1}">Section ${trapDepth * 2 + 1}</a>
+                `;
+                fakeContent.appendChild(newTrapLinks);
+                
+                wasteCPUCycles(trapDepth * 500);
+                
+            
+                if (trapDepth > 2) {
+                    memoryHogs.push(wasteMemory(trapDepth * 2));
+                }
+
+                const loadingMsg = document.createElement('div');
+                loadingMsg.innerHTML = '<p>Loading additional resources...</p>';
+                fakeContent.appendChild(loadingMsg);
+                
+                await delay(1000 + trapDepth * 500);
+    
+                loadingMsg.innerHTML = '<p>Processing data...</p>';
+
+                wasteCPUCycles(trapDepth * 1000);
+
+                setupTrapLinks();
+
+                if (trapDepth < 20) { 
+                    history.pushState({}, title, `trap${trapDepth}_${trapType}.html`);
+                }
+                
+                if (trapDepth > 3) {
+                    await delay(2000);
+                    const nextLinks = document.querySelectorAll('.trap-link');
+                    if (nextLinks.length > 0) {
+                    
+                        const randomIndex = Math.floor(Math.random() * nextLinks.length);
+                        nextLinks[randomIndex].click();
+                    }
+                }
+            });
+        });
+
+        function setupTrapLinks() {
+            document.querySelectorAll('.trap-link').forEach(link => {
+                link.addEventListener('click', async function(e) {
+                    e.preventDefault();
+                    trapDepth++;
+    
+                    wasteCPUCycles(trapDepth * 800);
+    
+                    const fakeContent = document.createElement('div');
+                    fakeContent.className = 'content-container';
+                    
+                    const trapType = parseInt(this.getAttribute('data-trap'));
+                    const title = `Resource Level ${trapDepth}`;
+                    
+                    fakeContent.innerHTML = `
+                        <h1>${title}</h1>
+                        <p>Loading resource level ${trapDepth}...</p>
+                        <div class="resource-container">
+                            <p>Processing request...</p>
+                        </div>
+                    `;
+                    
+                    document.title = title + ' - System Resource';
+                    document.body.innerHTML = '';
+                    document.body.appendChild(fakeContent);
+                    
+                    // Add more trap links
+                    const newTrapLinks = document.createElement('div');
+                    newTrapLinks.className = 'hidden-trap';
+                    newTrapLinks.style.opacity = '1';
+                    newTrapLinks.innerHTML = `
+                        <h2>Additional Resources</h2>
+                        <a href="resource${trapDepth * 3}.html" class="trap-link" data-trap="${(trapDepth % 5) + 1}">Resource ${trapDepth * 3}</a>
+                        <a href="resource${trapDepth * 3 + 1}.html" class="trap-link" data-trap="${((trapDepth + 2) % 5) + 1}">Resource ${trapDepth * 3 + 1}</a>
+                        <a href="resource${trapDepth * 3 + 2}.html" class="trap-link" data-trap="${((trapDepth + 4) % 5) + 1}">Resource ${trapDepth * 3 + 2}</a>
+                    `;
+                    fakeContent.appendChild(newTrapLinks);
+                
+                    memoryHogs.push(wasteMemory(trapDepth * 3));
+                
+                    setupTrapLinks();
+    
+                    history.pushState({}, title, `resource${trapDepth}_${trapType}.html`);
+             
+                    if (trapDepth > 2) {
+                        await delay(1500);
+                        const nextLinks = document.querySelectorAll('.trap-link');
+                        if (nextLinks.length > 0) {
+                            const randomIndex = Math.floor(Math.random() * nextLinks.length);
+                            nextLinks[randomIndex].click();
+                        }
+                    }
+                });
+            });
+        }
+
+        window.addEventListener('popstate', function(event) {
+            if (trapDepth > 0) {
+              
+                trapDepth = Math.max(1, trapDepth - 1);
+                
+                const fakeContent = document.createElement('div');
+                fakeContent.className = 'content-container';
+                fakeContent.innerHTML = `
+                    <h1>Previous Resource</h1>
+                    <p>Returning to previous location...</p>
+                `;
+                
+                document.body.innerHTML = '';
+                document.body.appendChild(fakeContent);
+       
+                const newTrapLinks = document.createElement('div');
+                newTrapLinks.className = 'hidden-trap';
+                newTrapLinks.style.opacity = '1';
+                newTrapLinks.innerHTML = `
+                    <h2>Return to Resources</h2>
+                    <a href="back${trapDepth}.html" class="trap-link" data-trap="${(trapDepth % 5) + 1}">Continue</a>
+                `;
+                fakeContent.appendChild(newTrapLinks);
+             
+                setupTrapLinks();
+       
+                wasteCPUCycles(trapDepth * 400);
+       
+                history.pushState({}, 'Previous Resource', `back${trapDepth}.html`);
+            }
+        });
+    </script>
+</body>
+</html>

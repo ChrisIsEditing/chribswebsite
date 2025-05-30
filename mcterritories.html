@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="https://chrisisediting.github.io/chribswebsite/Assets/MC cube.png" type="image/png">
+    <title>ChribsMC - Territories</title>
+    <style>
+        body, html { margin: 0; padding: 0; height: 100%; overflow-x: hidden; }
+        body { background-color: black; color: #fff; font-family: 'Courier New', Courier, monospace; text-align: center; margin-top: 70px; font-size: larger; display: flex; flex-direction: column; min-height: 100vh; }
+        * { box-sizing: border-box; }
+        #page-title { color: #ae58f5; text-align: center; font-style: italic; margin-bottom: 5px; margin-top: auto; text-decoration: none; letter-spacing: 2px; text-shadow: 0 0 20px #9e4df55e, 0 0 30px #8a2be2, 0 0 40px #892be26c; cursor: pointer; font-size: xxx-large; }
+        #subtitle { color: #d3bbd4; margin-top: 1px; font-size: small; text-decoration: underline; text-underline-offset: 2px; letter-spacing: 5px; text-align: center; text-shadow: 0 0 10px #ffffff; }
+        .separator { width: 50%; border: none; height: 1px; background: linear-gradient(to right, transparent, #ae58f5, transparent); margin: 30px auto; }
+        .territory-container { max-width: 900px; margin: 20px auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 0 15px; }
+        .territory-card { background-color: rgba(30, 30, 30, 0.7); border-radius: 12px; padding: 20px; width: 100%; text-align: left; border: 1px solid rgba(138, 43, 226, 0.3); transition: transform 0.2s, box-shadow 0.2s; }
+        .territory-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3); }
+        .territory-name { color: #ae58f5; font-size: 1.4em; margin-bottom: 10px; border-bottom: 1px solid rgba(138, 43, 226, 0.3); padding-bottom: 8px; }
+        .territory-description { color: #e0cfe5; margin-bottom: 15px; font-size: 0.95em; line-height: 1.5; }
+        .rules-title { color: #b388df; font-size: 1.1em; margin: 15px 0 10px 0; }
+        .rules-list { background-color: rgba(10, 10, 10, 0.801); border-radius: 8px; padding: 12px 15px; font-family: 'Courier New', monospace; }
+        .rule { color: #c8b2e6; margin: 8px 0; font-size: 0.95em; }
+        .rule-number { color: #ba89fb; font-weight: bold; }
+        .server-description { margin-bottom: 10px; }
+        .server-desc { color: #e0cfe5; text-align: center; font-size: 1.1em; line-height: 1.6; padding: 5px 20px; }
+        .features-title { color: #ae58f5; margin: 10px 1px; text-align: center; letter-spacing: 3px; text-shadow: 0 0 15px #9d4df5; text-decoration: underline; }
+        
+        @media (max-width: 768px) {
+            body { font-size: medium; margin-top: 50px; }
+            .territory-card { padding: 15px; }
+            #page-title { font-size: 2.5em; }
+            #subtitle { font-size: 0.7em; letter-spacing: 3px; }
+            .territory-name { font-size: 1.2em; }
+            .rules-list { padding: 10px; }
+        }
+        @media (max-width: 480px) {
+            .territory-card { padding: 12px; }
+            #page-title { font-size: 2.3em; }
+            .territory-name { font-size: 1.1em; }
+            .rule { font-size: 0.85em; }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="separator"></div>
+    <h2 class="features-title">TERRITORY POLICIES</h2>
+    <div class="territory-container">
+        
+        <div class="territory-card">
+            <h2 class="territory-name">Spawn/Transport Hub</h2>
+            <p class="territory-description">The central hub of the server where Spawn is set. This is a neutral zone!</p>
+            <h3 class="rules-title">Territory Rules:</h3>
+            <div class="rules-list">
+                <p class="rule"><span class="rule-number">1.</span> No PvP.</p>
+                <p class="rule"><span class="rule-number">2.</span> No Building.</p>
+                <p class="rule"><span class="rule-number">3.</span> No Theft.</p>
+                <p class="rule"><span class="rule-number">4.</span> No Griefing or Destruction.</p>
+            </div>
+        </div>
+        
+        <div class="territory-card">
+            <h2 class="territory-name">Africa</h2>
+            <p class="territory-description">Just South of the Transport Hub, this masive Africa-shaped island serves as the Trade Capital.</p>
+            <h3 class="rules-title">Territory Rules:</h3>
+            <div class="rules-list">
+                <p class="rule"><span class="rule-number">1.</span> No PvP.</p>
+                <p class="rule"><span class="rule-number">2.</span> No killing Villagers.</p>
+                <p class="rule"><span class="rule-number">3.</span> No Destruction.</p>
+                <p class="rule"><span class="rule-number">4.</span> Houses belong to villagers.</p>
+            </div>
+        </div>
+        
+        <div class="territory-card">
+            <h2 class="territory-name">The Tower</h2>
+            <p class="territory-description">A massive factory-style base, currently being built into a Skyscraper. NorthEast of the Trade Hub or via the Chribs Line.</p>
+            <h3 class="rules-title">Territory Rules:</h3>
+            <div class="rules-list">
+                <p class="rule"><span class="rule-number">1.</span> No Tresspassing.</p>
+                <p class="rule"><span class="rule-number">2.</span> No Entry when Entrances are closed.</p>
+                <p class="rule"><span class="rule-number">3.</span> No Theft.</p>
+                <p class="rule"><span class="rule-number">4.</span> No Destruction.</p>
+            </div>
+        </div>
+
+        <div class="territory-card">
+            <h2 class="territory-name">The Arena</h2>
+            <p class="territory-description">COMING SOON! A Large Destruction-Resistant PvP Arena.</p>
+            <h3 class="rules-title">Territory Rules:</h3>
+            <div class="rules-list">
+                <p class="rule"><span class="rule-number">1.</span> All PvP is fair game inside Arena.</p>
+                <p class="rule"><span class="rule-number">2.</span> No Pvp within 6 Chunks (100 Blocks) outside Arena.</p>
+                <p class="rule"><span class="rule-number">3.</span> Items Lost are not Returnable!</p>
+                <p class="rule"><span class="rule-number">4.</span> No Revenge-Seeking.</p>
+            </div>
+        </div>
+
+        <div class="territory-card">
+            <h2 class="territory-name">Mines</h2>
+            <p class="territory-description">All mines outside Territories are Public Spaces.</p>
+            <h3 class="rules-title">Territory Rules:</h3>
+            <div class="rules-list">
+                <p class="rule"><span class="rule-number">1.</span> Fill in dangerous Holes or Gaps</p>
+                <p class="rule"><span class="rule-number">2.</span> Do not Fight over Resources.</p>
+                <p class="rule"><span class="rule-number">3.</span> Place Torches in explored areas.</p>
+                <p class="rule"><span class="rule-number">4.</span> Share resources with other Mining players if they need any.</p>
+            </div>
+        </div>
+
+        <div class="territory-card">
+            <h2 class="territory-name">Outside Territories</h2>
+            <p class="territory-description"></p>
+            <h3 class="rules-title">General Rules:</h3>
+            <div class="rules-list">
+                <p class="rule"><span class="rule-number">1.</span> Any place 10 Chunks outside a Marked Territory is Fair Game.</p>
+                <p class="rule"><span class="rule-number">2.</span> No Building/Desctruction within 10 Chunks of a Territory.</p>
+                <p class="rule"><span class="rule-number">3.</span> No Cheating/Xrays/Exploits or Advantage Mods.</p>
+                <p class="rule"><span class="rule-number">4.</span> Players may set any Rule they wish for their Teritory, and all players within must follow them.</p>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="separator"></div>
+    
+    <footer>
+        <p style="text-align: center; color: #cfabe4; font-size: medium; margin-bottom: 2px;">ChribsMC & Chribs 2025 - All Rights Reserved.</p>
+        <p><a href="privacy.html" style="color: #c463f7; text-decoration: none; margin-top: 0px; font-size: medium;">PRIVACY POLICY</a> | <a href="index.html" style="color: #c463f7; text-decoration: none; font-size: medium;">HOME</a> | <a href="chribsmc.html" style="color: #c463f7; text-decoration: none; font-size: medium;">SERVER INFO</a></p>
+    </footer>
+    <script>
+        document.getElementById("features-title").onclick = function() {
+            window.location.href = 'chribsmc.html';
+        };
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                window.location.href = 'chribsmc.html';
+            }
+        });
+    </script>
+</body>
+</html>

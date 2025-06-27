@@ -469,6 +469,6 @@ const images = [
     'jump bunnies sticker.webp',
     'mixer cocaine faders.jpg',
     'sleepy sleep car cat meme.jpg',
+    'msshake fnaf sotm cpw chica milkshake poster retro 70s chicaspartyworld.jpg',
     
-
 ];
